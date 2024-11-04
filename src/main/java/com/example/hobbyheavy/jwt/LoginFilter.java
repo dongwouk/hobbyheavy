@@ -28,6 +28,9 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
     private final JWTUtil jwtUtil;
     private final RefreshRepository refreshRepository;
 
+    private final Long ACCESS_EXPIRED = 600000L;
+    private final Long REFRESH_EXPIRED = 86400000L;
+
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
 
@@ -55,7 +58,7 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
     }
     //로그인 성공시 실행하는 메소드 (여기서 JWT를 발급하면 됨)
     @Override
-    protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authentication) {
+    protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authentication) throws IOException {
 
         // user info
         String username = authentication.getName();
@@ -67,17 +70,24 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
 
         // 토큰 생성
         // 600000L 10분 , 86400000L 24시간
-        String access = jwtUtil.createJwt("access", username, role, 600000L);
-        String refresh = jwtUtil.createJwt("refresh", username, role, 86400000L);
+        String access = jwtUtil.createJwt("access", username, role, ACCESS_EXPIRED);
+        String refresh = jwtUtil.createJwt("refresh", username, role, REFRESH_EXPIRED);
 
         // Refresh token DB에 저장
-        addRefreshEntity(username, refresh, 86400000L);
+        addRefreshEntity(username, refresh, REFRESH_EXPIRED);
+
+        // 응답 본문에 토큰을 JSON 형태로 추가
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+
+        // JSON 형태로 응답
+        String jsonResponse = String.format("{\"accessToken\": \"%s\", \"refreshToken\": \"%s\"}", access, refresh);
+        response.getWriter().write(jsonResponse);
 
         // 응답 설정
         response.setHeader("access", access);
         response.addCookie(createCookie("refresh",refresh));
         response.setStatus(HttpStatus.OK.value());
-
     }
 
     //로그인 실패시 실행하는 메소드
