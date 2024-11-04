@@ -81,12 +81,12 @@ public class SecurityConfig {
         //경로별 인가 작업
         http
                 .authorizeHttpRequests((auth) -> auth
-                        .requestMatchers("/login", "/", "/join").permitAll()
+                        .requestMatchers("/login", "/", "/join","/reissue").permitAll()
                         .requestMatchers("/user/my-info").authenticated()
                         .requestMatchers("/board").permitAll() // POST 요청 허용
                         .requestMatchers("/board/**").authenticated()
                         .requestMatchers("/admin").hasRole("ADMIN")
-                        .requestMatchers("/reissue").permitAll()
+                        .requestMatchers("/api/schedules/**").authenticated() // 모임 일정 관련 모든 경로는 인증 필요
                         .anyRequest().authenticated());
 
         //세션 설정

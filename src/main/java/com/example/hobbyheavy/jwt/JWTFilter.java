@@ -30,7 +30,7 @@ public class JWTFilter extends OncePerRequestFilter {
         String requestURI = request.getRequestURI();
 
         // 인증이 필요 없는 경로들은 JWT 필터에서 제외
-        if ("/join".equals(requestURI) || "/login".equals(requestURI) || "/reissue".equals(requestURI)) {
+        if ("/join".equals(requestURI) || "/login".equals(requestURI) || "/reissue".equals(requestURI) || "/api/schedules/public".equals(requestURI)) {
             filterChain.doFilter(request, response);
             return;
         }
