@@ -15,7 +15,7 @@ import java.time.LocalTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Meetups extends BaseEntity {
+public class Meetups extends Base {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
