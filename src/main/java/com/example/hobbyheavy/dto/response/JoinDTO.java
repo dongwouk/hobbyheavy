@@ -15,7 +15,11 @@ import lombok.NoArgsConstructor;
 public class JoinDTO {
     @NotNull
     @Size(min = 3, max = 50)
-    private String username;
+    private String userId; // 로그인용 ID
+
+    @NotNull
+    @Size(min = 3, max = 50)
+    private String username; // 유저의 이름
 
     @NotNull
     @Size(min = 8, max = 100)

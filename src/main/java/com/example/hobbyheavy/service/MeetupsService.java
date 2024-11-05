@@ -5,7 +5,7 @@ import com.example.hobbyheavy.dto.request.MeetupUpdateRequest;
 import com.example.hobbyheavy.dto.response.MeetupInfoResponse;
 import com.example.hobbyheavy.entity.Hobby;
 import com.example.hobbyheavy.entity.Meetups;
-import com.example.hobbyheavy.entity.UserEntity;
+import com.example.hobbyheavy.entity.User;
 import com.example.hobbyheavy.repository.HobbyRepository;
 import com.example.hobbyheavy.repository.MeetupsRepository;
 import com.example.hobbyheavy.repository.UserRepository;
@@ -35,7 +35,7 @@ public class MeetupsService {
             throw new IllegalArgumentException("중복된 모임명입니다.");
         }
 
-        UserEntity userEntity = userRepository.findByUsername(request.getHostName());
+        User user = userRepository.findByUserId(request.getHostName());
 
         Meetups meetups = Meetups.builder()
                 .meetupName(request.getMeetupName())
@@ -43,7 +43,7 @@ public class MeetupsService {
                 .location(request.getLocation())
                 .recurrenceRule(request.getRecurrenceRule())
                 .maxParticipants(request.getMaxParticipants())
-                .userId(userEntity)
+                .userId(user)
                 .build();
 
         if (request.getHobbyName() != null) {

@@ -15,7 +15,7 @@ import java.time.LocalTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Meetups extends BaseEntity {
+public class Meetups extends Base {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -54,7 +54,7 @@ public class Meetups extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private UserEntity userId;
+    private User userId;
 
     public void updateMeetupName(String newMeetupName) {
         this.meetupName = newMeetupName;

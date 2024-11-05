@@ -27,7 +27,7 @@ public class MeetupInfoResponse {
         this.meetupId = meetups.getMeetupId();
         this.meetupName = meetups.getMeetupName();
         this.description = meetups.getDescription();
-        this.hostName = meetups.getUserId().getUsername();
+        this.hostName = meetups.getUserId().getUserId();
         this.location = meetups.getLocation();
         this.recurrenceRule = meetups.getRecurrenceRule();
         this.nextOccurrence = meetups.getNextOccurrence();
