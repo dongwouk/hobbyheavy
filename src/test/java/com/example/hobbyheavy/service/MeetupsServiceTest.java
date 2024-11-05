@@ -3,7 +3,7 @@ package com.example.hobbyheavy.service;
 import com.example.hobbyheavy.dto.request.MeetupCreateRequest;
 import com.example.hobbyheavy.entity.Hobby;
 import com.example.hobbyheavy.entity.Meetups;
-import com.example.hobbyheavy.entity.UserEntity;
+import com.example.hobbyheavy.entity.User;
 import com.example.hobbyheavy.repository.HobbyRepository;
 import com.example.hobbyheavy.repository.MeetupsRepository;
 import com.example.hobbyheavy.repository.UserRepository;
@@ -68,8 +68,8 @@ class MeetupsServiceTest {
     void createMeetup_whenHobbyNameIsValid_thenCreatesMeetup() {
         // given
         when(meetupsRepository.existsByMeetupName(request.getMeetupName())).thenReturn(false);
-        when(userRepository.findByUsername(request.getHostName()))
-                .thenReturn(UserEntity.builder().id(1L).username(request.getHostName()).build());
+        when(userRepository.findByUserId(request.getHostName()))
+                .thenReturn(User.builder().id(1L).user_id(request.getHostName()).build());
         when(hobbyRepository.findFirstByHobbyName(request.getHobbyName()))
                 .thenReturn(Optional.of(Hobby.builder().hobbyId(1L).hobbyName(request.getHobbyName()).build()));
 
@@ -85,8 +85,8 @@ class MeetupsServiceTest {
     void createMeetup_whenHobbyNameIsInvalid_thenThrowsException() {
         // given
         when(meetupsRepository.existsByMeetupName(request.getMeetupName())).thenReturn(false);
-        when(userRepository.findByUsername(request.getHostName()))
-                .thenReturn(UserEntity.builder().id(1L).username(request.getHostName()).build());
+        when(userRepository.findByUserId(request.getHostName()))
+                .thenReturn(User.builder().id(1L).user_id(request.getHostName()).build());
         when(hobbyRepository.findFirstByHobbyName(request.getHobbyName())).thenReturn(Optional.empty());
 
         // when & then

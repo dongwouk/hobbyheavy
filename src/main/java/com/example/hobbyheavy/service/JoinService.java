@@ -1,7 +1,7 @@
 package com.example.hobbyheavy.service;
 
 import com.example.hobbyheavy.dto.response.JoinDTO;
-import com.example.hobbyheavy.entity.UserEntity;
+import com.example.hobbyheavy.entity.User;
 import com.example.hobbyheavy.repository.UserRepository;
 import com.example.hobbyheavy.type.Role;
 import jakarta.transaction.Transactional;
@@ -23,12 +23,13 @@ public class JoinService {
     @Transactional
     public void joinProcess(JoinDTO joinDTO) {
 
-        String username = joinDTO.getUsername();
+        String userId = joinDTO.getUserId(); // 로그인 ID는 userId로 사용
+        String username = joinDTO.getUsername(); // 사용자의 이름
         String password = joinDTO.getPassword();
         String email = joinDTO.getEmail();
 
-        // Username 중복 체크
-        if(userRepository.existsByUsername(username)) {
+        // UserId 중복 체크
+        if(userRepository.existsByUserId(userId)) {
             throw new IllegalArgumentException("중복된 아이디입니다.");
         }
 
@@ -36,7 +37,8 @@ public class JoinService {
         String encodedPassword = bCryptPasswordEncoder.encode(password);
 
         // UserEntity 생성
-        UserEntity data = UserEntity.builder()
+        User data = User.builder()
+                .userId(userId)
                 .username(username)
                 .password(encodedPassword)
                 .email(email)

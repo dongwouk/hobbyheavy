@@ -1,10 +1,10 @@
 package com.example.hobbyheavy.repository;
 
-import com.example.hobbyheavy.entity.RefreshEntity;
+import com.example.hobbyheavy.entity.Refresh;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface RefreshRepository extends JpaRepository<RefreshEntity, Long> {
+public interface RefreshRepository extends JpaRepository<Refresh, Long> {
 
     // refresh token 존재여부 확인
     Boolean existsByRefresh(String refresh);
