@@ -1,10 +1,7 @@
 package com.example.hobbyheavy.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @Getter
@@ -28,6 +25,12 @@ public class Participant extends Base{
 
     @Column(name = "status", length = 10, nullable = false)
     private String status = "대기중";
+
+    @Column(name = "meetup_role", nullable = false)
+    private String meetupRole;
+
+    @Column(name = "meetup_alram", nullable = false)
+    private Boolean meetupAlarm = true;
 
     public void updateStatus(String status) {
         this.status = status;

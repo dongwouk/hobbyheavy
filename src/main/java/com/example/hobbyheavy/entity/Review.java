@@ -29,7 +29,7 @@ public class Review extends Base{
     @Column(name = "rating")
     private Integer rating;
 
-    @Column(columnDefinition = "TEXT")
+    @Column(columnDefinition = "TEXT", nullable = false)
     private String content;
 
     public void updateRating(int rating) {
