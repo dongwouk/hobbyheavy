@@ -1,6 +1,7 @@
 package com.example.hobbyheavy.service;
 
 import com.example.hobbyheavy.dto.response.JoinDTO;
+import com.example.hobbyheavy.entity.Hobby;
 import com.example.hobbyheavy.entity.User;
 import com.example.hobbyheavy.repository.UserRepository;
 import com.example.hobbyheavy.type.Role;
@@ -27,10 +28,18 @@ public class JoinService {
         String username = joinDTO.getUsername(); // 사용자의 이름
         String password = joinDTO.getPassword();
         String email = joinDTO.getEmail();
+        Boolean gender = joinDTO.getGender();
+        Integer age = joinDTO.getAge();
+        Hobby hobby = joinDTO.getHobby();
 
         // UserId 중복 체크
         if(userRepository.existsByUserId(userId)) {
             throw new IllegalArgumentException("중복된 아이디입니다.");
+        }
+
+        // email 중복 체크
+        if (userRepository.existsByEmail(email)) {
+            throw new IllegalArgumentException("중복된 이메일입니다.");
         }
 
         // password 암호화
@@ -42,6 +51,9 @@ public class JoinService {
                 .username(username)
                 .password(encodedPassword)
                 .email(email)
+                .gender(gender)
+                .age(age)
+                .hobby(hobby)
                 .role(Collections.singleton(Role.ROLE_USER)) // 역할이 존재할 때 설정
                 .build();
 
