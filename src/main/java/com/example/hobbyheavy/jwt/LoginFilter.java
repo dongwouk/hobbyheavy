@@ -51,6 +51,12 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
             };
         }
 
+        // Refresh 토큰이 이미 있는지 확인 (이미 로그인된 사용자인지 확인)
+        if (refreshRepository.existsByUserId(userId)) {
+            // Refresh 토큰이 존재하면, 이미 로그인된 사용자이므로 예외 처리
+            throw new AuthenticationException("이미 로그인된 사용자입니다.") {};
+        }
+
         //스프링 시큐리티에서 userId와 password를 검증하기 위해서는 token에 담아야 함
         UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(userId, password); // 매개변수 null 추가???
 
@@ -63,6 +69,9 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
 
         // user info
         String userId = authentication.getName();
+
+        // 기존 Refresh 토큰이 DB에 있다면 삭제
+        refreshRepository.findByUserId(userId).ifPresent(refreshRepository::delete);
 
         // 사용자가 가진 모든 권한을 쉼표로 구분된 문자열로 병합하기 위한 방식
         String role = authentication.getAuthorities().stream()
