@@ -1,7 +1,6 @@
 package com.example.hobbyheavy.dto.response;
 
 import com.example.hobbyheavy.entity.Hobby;
-import com.example.hobbyheavy.entity.User;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
