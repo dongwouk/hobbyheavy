@@ -2,7 +2,7 @@ package com.example.hobbyheavy.service;
 
 import com.example.hobbyheavy.dto.request.MeetupCreateRequest;
 import com.example.hobbyheavy.entity.Hobby;
-import com.example.hobbyheavy.entity.Meetups;
+import com.example.hobbyheavy.entity.Meetup;
 import com.example.hobbyheavy.entity.User;
 import com.example.hobbyheavy.repository.HobbyRepository;
 import com.example.hobbyheavy.repository.MeetupsRepository;
@@ -23,7 +23,7 @@ import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 @DisplayName("모임 생성 테스트")
-class MeetupsServiceTest {
+class MeetupServiceTest {
 
     @InjectMocks
     private MeetupsService meetupsService;
@@ -60,7 +60,7 @@ class MeetupsServiceTest {
 
         // when & then
         assertThrows(IllegalArgumentException.class, () -> meetupsService.createMeetup(request));
-        verify(meetupsRepository, never()).save(any(Meetups.class));
+        verify(meetupsRepository, never()).save(any(Meetup.class));
     }
 
     @Test
@@ -77,7 +77,7 @@ class MeetupsServiceTest {
         meetupsService.createMeetup(request);
 
         // then
-        verify(meetupsRepository, times(1)).save(any(Meetups.class));
+        verify(meetupsRepository, times(1)).save(any(Meetup.class));
     }
 
     @Test
@@ -91,6 +91,6 @@ class MeetupsServiceTest {
 
         // when & then
         assertThrows(IllegalArgumentException.class, () -> meetupsService.createMeetup(request));
-        verify(meetupsRepository, never()).save(any(Meetups.class));
+        verify(meetupsRepository, never()).save(any(Meetup.class));
     }
 }
