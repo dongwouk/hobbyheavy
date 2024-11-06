@@ -30,6 +30,19 @@ public class User extends Base {
     @Column(length = 50)
     private String email;
 
+    @Column(nullable = false)
+    private Boolean gender; // 성별
+
+    @Column(nullable = false)
+    private Integer age; // 나이
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "hobby_id")
+    private Hobby hobby; // 취미 ID
+
+    @Column
+    private Boolean alarm = true; // 알림구독 여부
+
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
