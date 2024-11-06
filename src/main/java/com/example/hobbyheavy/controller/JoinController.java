@@ -23,7 +23,7 @@ public class JoinController {
         logger.info("회원가입 요청: {}", joinDTO);
         try {
             joinService.joinProcess(joinDTO);
-            logger.info("회원가입 처리 완료: {}", joinDTO.getUsername());
+            logger.info("회원가입 처리 완료: {}", joinDTO.getUserId());
             return ResponseEntity.status(HttpStatus.CREATED).body("회원가입 성공");
         } catch (IllegalArgumentException e) {
             logger.error("회원가입 중 오류 발생: {}", e.getMessage());

@@ -1,12 +1,12 @@
 package com.example.hobbyheavy.repository;
 
-import com.example.hobbyheavy.entity.UserEntity;
+import com.example.hobbyheavy.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserRepository extends JpaRepository<UserEntity, Long> {
+public interface UserRepository extends JpaRepository<User, Long> {
 
-    Boolean existsByUsername(String username);
+    Boolean existsByUserId(String userId);
 
-    UserEntity findByUsername(String username);
+    User findByUserId(String userId);
 
 }

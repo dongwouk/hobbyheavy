@@ -1,6 +1,6 @@
 package com.example.hobbyheavy.service;
 
-import com.example.hobbyheavy.entity.RefreshEntity;
+import com.example.hobbyheavy.entity.Refresh;
 import com.example.hobbyheavy.jwt.JWTUtil;
 import com.example.hobbyheavy.repository.RefreshRepository;
 import io.jsonwebtoken.ExpiredJwtException;
@@ -48,16 +48,16 @@ public class ReissueService {
         }
 
         // 토큰 정보에서 사용자와 권한 추출
-        String username = jwtUtil.getUsername(refresh);
+        String userId = jwtUtil.getUserId(refresh);
         String role = jwtUtil.getRole(refresh);
 
         // 새로운 Access Token 및 Refresh Token 발급
-        String newAccess = jwtUtil.createJwt("access", username, role, 600_000L);
-        String newRefresh = jwtUtil.createJwt("refresh", username, role, 86_400_000L);
+        String newAccess = jwtUtil.createJwt("access", userId, role, 600_000L);
+        String newRefresh = jwtUtil.createJwt("refresh", userId, role, 86_400_000L);
 
         // 기존 Refresh Token 삭제 및 새 토큰 저장
         refreshRepository.deleteByRefresh(refresh);
-        addRefreshEntity(username, newRefresh, 86_400_000L);
+        addRefreshEntity(userId, newRefresh, 86_400_000L);
 
         // 응답에 새로운 토큰 추가
         response.setHeader("access", newAccess);
@@ -86,11 +86,11 @@ public class ReissueService {
         return cookie;
     }
 
-    private void addRefreshEntity(String username, String refresh, Long expiredMs) {
+    private void addRefreshEntity(String userId, String refresh, Long expiredMs) {
         Date expirationDate = new Date(System.currentTimeMillis() + expiredMs);
 
-        RefreshEntity refreshEntity = RefreshEntity.builder()
-                .username(username)
+        Refresh refreshEntity = Refresh.builder()
+                .userId(userId)
                 .refresh(refresh)
                 .expiration(expirationDate.toString())
                 .build();

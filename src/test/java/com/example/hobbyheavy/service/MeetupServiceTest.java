@@ -2,8 +2,8 @@ package com.example.hobbyheavy.service;
 
 import com.example.hobbyheavy.dto.request.MeetupCreateRequest;
 import com.example.hobbyheavy.entity.Hobby;
-import com.example.hobbyheavy.entity.Meetups;
-import com.example.hobbyheavy.entity.UserEntity;
+import com.example.hobbyheavy.entity.Meetup;
+import com.example.hobbyheavy.entity.User;
 import com.example.hobbyheavy.repository.HobbyRepository;
 import com.example.hobbyheavy.repository.MeetupsRepository;
 import com.example.hobbyheavy.repository.UserRepository;
@@ -23,7 +23,7 @@ import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 @DisplayName("모임 생성 테스트")
-class MeetupsServiceTest {
+class MeetupServiceTest {
 
     @InjectMocks
     private MeetupsService meetupsService;
@@ -60,7 +60,7 @@ class MeetupsServiceTest {
 
         // when & then
         assertThrows(IllegalArgumentException.class, () -> meetupsService.createMeetup(request));
-        verify(meetupsRepository, never()).save(any(Meetups.class));
+        verify(meetupsRepository, never()).save(any(Meetup.class));
     }
 
     @Test
@@ -68,8 +68,8 @@ class MeetupsServiceTest {
     void createMeetup_whenHobbyNameIsValid_thenCreatesMeetup() {
         // given
         when(meetupsRepository.existsByMeetupName(request.getMeetupName())).thenReturn(false);
-        when(userRepository.findByUsername(request.getHostName()))
-                .thenReturn(UserEntity.builder().id(1L).username(request.getHostName()).build());
+        when(userRepository.findByUserId(request.getHostName()))
+                .thenReturn(User.builder().id(1L).user_id(request.getHostName()).build());
         when(hobbyRepository.findFirstByHobbyName(request.getHobbyName()))
                 .thenReturn(Optional.of(Hobby.builder().hobbyId(1L).hobbyName(request.getHobbyName()).build()));
 
@@ -77,7 +77,7 @@ class MeetupsServiceTest {
         meetupsService.createMeetup(request);
 
         // then
-        verify(meetupsRepository, times(1)).save(any(Meetups.class));
+        verify(meetupsRepository, times(1)).save(any(Meetup.class));
     }
 
     @Test
@@ -85,12 +85,12 @@ class MeetupsServiceTest {
     void createMeetup_whenHobbyNameIsInvalid_thenThrowsException() {
         // given
         when(meetupsRepository.existsByMeetupName(request.getMeetupName())).thenReturn(false);
-        when(userRepository.findByUsername(request.getHostName()))
-                .thenReturn(UserEntity.builder().id(1L).username(request.getHostName()).build());
+        when(userRepository.findByUserId(request.getHostName()))
+                .thenReturn(User.builder().id(1L).user_id(request.getHostName()).build());
         when(hobbyRepository.findFirstByHobbyName(request.getHobbyName())).thenReturn(Optional.empty());
 
         // when & then
         assertThrows(IllegalArgumentException.class, () -> meetupsService.createMeetup(request));
-        verify(meetupsRepository, never()).save(any(Meetups.class));
+        verify(meetupsRepository, never()).save(any(Meetup.class));
     }
 }

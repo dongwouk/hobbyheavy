@@ -1,6 +1,6 @@
 package com.example.hobbyheavy.dto.request;
 
-import com.example.hobbyheavy.entity.UserEntity;
+import com.example.hobbyheavy.entity.User;
 import com.example.hobbyheavy.type.Role;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
@@ -14,12 +14,12 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class CustomUserDetails implements UserDetails {
 
-    private final UserEntity userEntity;
+    private final User user;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
 
-        Set<Role> roles = userEntity.getRole(); // 열거형 Role 사용
+        Set<Role> roles = user.getRole(); // 열거형 Role 사용
         return roles.stream()
                 .map(role -> new SimpleGrantedAuthority(role.name()))
                 .collect(Collectors.toSet());
@@ -27,12 +27,12 @@ public class CustomUserDetails implements UserDetails {
 
     @Override
     public String getPassword() {
-        return userEntity.getPassword();
+        return user.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return userEntity.getUsername();
+        return user.getUserId();
     }
 
     @Override

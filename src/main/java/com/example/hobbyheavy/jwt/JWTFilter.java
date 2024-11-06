@@ -1,7 +1,7 @@
 package com.example.hobbyheavy.jwt;
 
 import com.example.hobbyheavy.dto.request.CustomUserDetails;
-import com.example.hobbyheavy.entity.UserEntity;
+import com.example.hobbyheavy.entity.User;
 import com.example.hobbyheavy.type.Role;
 import io.jsonwebtoken.ExpiredJwtException;
 import jakarta.servlet.FilterChain;
@@ -66,10 +66,10 @@ public class JWTFilter extends OncePerRequestFilter {
             return;
         }
 
-        // username, role 값을 획득
-        String username = jwtUtil.getUsername(accessToken);
+        // userId, role 값을 획득
+        String userId = jwtUtil.getUserId(accessToken);
         String roleString = jwtUtil.getRole(accessToken);
-        log.info("JWTFilter - Username: {}, Role: {}", username, roleString);
+        log.info("JWTFilter - UserId: {}, Role: {}", userId, roleString);
 
         // 열거형 Role 값으로 변환
         Role role;
@@ -83,14 +83,14 @@ public class JWTFilter extends OncePerRequestFilter {
         }
 
         // UserEntity 생성 및 역할 설정
-        UserEntity userEntity = UserEntity.builder()
-                .username(username)
+        User user = User.builder()
+                .userId(userId)
                 .role(Collections.singleton(role))
                 .build();
 
 
         // CustomUserDetails 생성
-        CustomUserDetails customUserDetails = new CustomUserDetails(userEntity);
+        CustomUserDetails customUserDetails = new CustomUserDetails(user);
 
         // Spring Security의 Authentication 설정
         Authentication authToken = new UsernamePasswordAuthenticationToken(customUserDetails, null, customUserDetails.getAuthorities());

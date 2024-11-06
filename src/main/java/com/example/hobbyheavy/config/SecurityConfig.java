@@ -83,8 +83,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests((auth) -> auth
                         .requestMatchers("/login", "/", "/join").permitAll()
                         .requestMatchers("/user/my-info").authenticated()
-                        .requestMatchers("/board").permitAll() // POST 요청 허용
                         .requestMatchers("/board/**").authenticated()
+                        .requestMatchers("/board").permitAll() // POST 요청 허용
                         .requestMatchers("/admin").hasRole("ADMIN")
                         .requestMatchers("/reissue").permitAll()
                         .anyRequest().authenticated());

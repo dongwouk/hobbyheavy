@@ -8,24 +8,40 @@ import java.util.Set;
 
 @Entity
 @Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class UserEntity extends BaseEntity {
+@Table(name = "user")
+public class User extends Base {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id; // PK
 
-    @Column(unique = true, length = 20, nullable = false)
-    private String username;
+    @Column(name = "user_id", unique = true, length = 20, nullable = false)
+    private String userId; // 로그인 시 사용하는 ID
+
+    @Column(name = "user_name", length = 20, nullable = false)
+    private String username; // 사용자의 이름
 
     @Column(nullable = false)
     private String password;
 
     @Column(length = 50)
     private String email;
+
+    @Column(nullable = false)
+    private Boolean gender; // 성별
+
+    @Column(nullable = false)
+    private Integer age; // 나이
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "hobby_id")
+    private Hobby hobby; // 취미 ID
+
+    @Column
+    private Boolean alarm = true; // 알림구독 여부
 
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)

@@ -4,8 +4,8 @@ import com.example.hobbyheavy.dto.request.MeetupCreateRequest;
 import com.example.hobbyheavy.dto.request.MeetupUpdateRequest;
 import com.example.hobbyheavy.dto.response.MeetupInfoResponse;
 import com.example.hobbyheavy.entity.Hobby;
-import com.example.hobbyheavy.entity.Meetups;
-import com.example.hobbyheavy.entity.UserEntity;
+import com.example.hobbyheavy.entity.Meetup;
+import com.example.hobbyheavy.entity.User;
 import com.example.hobbyheavy.repository.HobbyRepository;
 import com.example.hobbyheavy.repository.MeetupsRepository;
 import com.example.hobbyheavy.repository.UserRepository;
@@ -25,8 +25,8 @@ public class MeetupsService {
     private final UserRepository userRepository;
 
     public MeetupInfoResponse infoMeetup(Long meetupId) {
-        Meetups meetups = findMeetup(meetupId);
-        return new MeetupInfoResponse(meetups);
+        Meetup meetup = findMeetup(meetupId);
+        return new MeetupInfoResponse(meetup);
     }
 
     public void createMeetup(MeetupCreateRequest request) {
@@ -35,46 +35,46 @@ public class MeetupsService {
             throw new IllegalArgumentException("중복된 모임명입니다.");
         }
 
-        UserEntity userEntity = userRepository.findByUsername(request.getHostName());
+        User user = userRepository.findByUserId(request.getHostName());
 
-        Meetups meetups = Meetups.builder()
+        Meetup meetup = Meetup.builder()
                 .meetupName(request.getMeetupName())
                 .description(request.getDescription())
                 .location(request.getLocation())
                 .recurrenceRule(request.getRecurrenceRule())
                 .maxParticipants(request.getMaxParticipants())
-                .userId(userEntity)
+                .userId(user)
                 .build();
 
         if (request.getHobbyName() != null) {
             Hobby hobby = hobbyRepository.findFirstByHobbyName(request.getHobbyName())
                     .orElseThrow(() -> new IllegalArgumentException("취미 이름이 없습니다."));
-            meetups.updateHobby(hobby);
+            meetup.updateHobby(hobby);
         }
 
-        meetupsRepository.save(meetups);
+        meetupsRepository.save(meetup);
     }
 
     @Transactional
     public void updateMeetup(Long meetupId, MeetupUpdateRequest request) throws AccessDeniedException {
 
-        Meetups meetups = findMeetup(meetupId);
+        Meetup meetup = findMeetup(meetupId);
 
-        if(meetups.getUserId().equals(SecurityContextHolder.getContext().getAuthentication().getName())){
+        if(meetup.getUserId().equals(SecurityContextHolder.getContext().getAuthentication().getName())){
             throw new AccessDeniedException("모임의 수정 권한이 없습니다.");
         }
 
-        meetups.updateMeetupName(request.getMeetupName());
-        meetups.updateDescription(request.getDescription());
-        meetups.updateLocation(request.getLocation());
-        meetups.updateRecurrenceRule(request.getRecurrenceRule());
+        meetup.updateMeetupName(request.getMeetupName());
+        meetup.updateDescription(request.getDescription());
+        meetup.updateLocation(request.getLocation());
+        meetup.updateRecurrenceRule(request.getRecurrenceRule());
     }
 
     public void deleteMeetup(Long meetupId) {
         meetupsRepository.deleteMeetupsByMeetupId(meetupId);
     }
 
-    private Meetups findMeetup (Long meetupId) {
+    private Meetup findMeetup (Long meetupId) {
         return meetupsRepository.findFirstByMeetupId(meetupId)
                 .orElseThrow(() -> new IllegalArgumentException("모임이 존재하지 않습니다."));
     }
