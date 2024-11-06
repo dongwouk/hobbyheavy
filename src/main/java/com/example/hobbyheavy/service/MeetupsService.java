@@ -43,7 +43,7 @@ public class MeetupsService {
                 .location(request.getLocation())
                 .recurrenceRule(request.getRecurrenceRule())
                 .maxParticipants(request.getMaxParticipants())
-                .userId(user)
+                .hostUser(user)
                 .build();
 
         if (request.getHobbyName() != null) {
@@ -60,7 +60,7 @@ public class MeetupsService {
 
         Meetup meetup = findMeetup(meetupId);
 
-        if(meetup.getUserId().equals(SecurityContextHolder.getContext().getAuthentication().getName())){
+        if(!meetup.getHostUser().getUserId().equals(SecurityContextHolder.getContext().getAuthentication().getName())){
             throw new AccessDeniedException("모임의 수정 권한이 없습니다.");
         }
 

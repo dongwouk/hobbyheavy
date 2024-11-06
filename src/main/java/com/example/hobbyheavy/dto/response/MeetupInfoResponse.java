@@ -27,14 +27,11 @@ public class MeetupInfoResponse {
         this.meetupId = meetup.getMeetupId();
         this.meetupName = meetup.getMeetupName();
         this.description = meetup.getDescription();
-        this.hostName = meetup.getUserId().getUserId();
+        this.hostName = meetup.getHostUser().getUserId();
         this.location = meetup.getLocation();
         this.recurrenceRule = meetup.getRecurrenceRule();
-        this.nextOccurrence = meetup.getNextOccurrence();
-        this.startTime = meetup.getStartTime();
-        this.endTime = meetup.getEndTime();
         this.maxParticipants = meetup.getMaxParticipants();
         this.createdAt = meetup.getCreatedDate();
-        this.updatedAt = meetup.getModifiedDate();
+        this.updatedAt = meetup.getUpdatedDate();
     }
 }

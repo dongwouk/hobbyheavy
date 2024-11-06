@@ -9,7 +9,8 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class MeetupSchedule extends BaseEntity{
+@Entity
+public class MeetupSchedule extends Base {
 
     // 일정 ID
     @Id
@@ -20,7 +21,7 @@ public class MeetupSchedule extends BaseEntity{
     // 모임 고유 ID
     @ManyToOne
     @JoinColumn(name = "meetup_id", nullable = false)
-    private Meetups meetup;
+    private Meetup meetup;
 
     // 제안된 날짜 및 시간
     @Column(name = "proposal_date", nullable = true)
