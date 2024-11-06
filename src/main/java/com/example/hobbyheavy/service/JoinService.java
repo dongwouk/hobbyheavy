@@ -20,7 +20,7 @@ public class JoinService {
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-
+    // 회원 가입 메서드
     @Transactional
     public void joinProcess(JoinDTO joinDTO) {
 
@@ -59,5 +59,25 @@ public class JoinService {
 
         // 사용자 저장
         userRepository.save(data);
+    }
+
+    // 비밀번호 변경 메서드
+    @Transactional
+    public void updatePassword(String userId, String oldPassword, String newPassword) {
+
+        // 사용자 조회
+        User user = userRepository.findByUserId(userId);
+        if (user == null) {
+            throw new IllegalArgumentException("사용자를 찾을 수 없습니다.");
+        }
+
+        // 기존 비밀번호 확인
+        if (!bCryptPasswordEncoder.matches(oldPassword, user.getPassword())) {
+            throw new IllegalArgumentException("기존 비밀번호가 일치하지 않습니다.");
+        }
+
+        // 새 비밀번호로 변경
+        user.updatePassword(bCryptPasswordEncoder.encode(newPassword));
+        userRepository.save(user);
     }
 }

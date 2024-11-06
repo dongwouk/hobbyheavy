@@ -16,9 +16,6 @@ public class MeetupInfoResponse {
     private String hostName;
     private String location;
     private String recurrenceRule;
-    private LocalDate nextOccurrence;
-    private LocalTime startTime;
-    private LocalTime endTime;
     private int maxParticipants;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
