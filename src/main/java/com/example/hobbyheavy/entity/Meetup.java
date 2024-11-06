@@ -1,14 +1,12 @@
 package com.example.hobbyheavy.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.util.List;
 
 @Entity
 @Getter
@@ -22,39 +20,31 @@ public class Meetup extends Base {
     @Column(name = "meetup_id")
     private Long meetupId;
 
-    @Column(name = "meetup_name", unique = true, length = 50, nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "hobby_id", nullable = false)
+    private Hobby hobby;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "host_id", nullable = false)
+    private User hostUser;
+
+    @Column(name = "meetup_name", length = 100)
     private String meetupName;
 
-    @Column(length = 200, nullable = false)
+    @Column(name = "description", length = 255)
     private String description;
 
-    @Column(length = 100, nullable = false)
+    @Column(name = "location", length = 100)
     private String location;
 
-    @Column(name = "recurrence_rule", length = 10, nullable = false)
+    @Column(name = "recurrence_rule", length = 50)
     private String recurrenceRule;
 
-    @Column(name = "next_occurrence")
-    private LocalDate nextOccurrence;
+    @Column(name = "max_participants")
+    private Integer maxParticipants;
 
-    @Column(name = "start_time")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm")
-    private LocalTime startTime;
-
-    @Column(name = "end_time")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm")
-    private LocalTime endTime;
-
-    @Column(name = "max_participants", nullable = false)
-    private int maxParticipants;
-
-    @ManyToOne
-    @JoinColumn(name = "hobby_id")
-    private Hobby hobbyId;
-
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User userId;
+    @OneToMany(mappedBy = "meetup", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Participant> participants;
 
     public void updateMeetupName(String newMeetupName) {
         this.meetupName = newMeetupName;
@@ -72,23 +62,11 @@ public class Meetup extends Base {
         this.recurrenceRule = newRecurrenceRule;
     }
 
-    public void updateNextOccurrence(LocalDate newNextOccurrence) {
-        this.nextOccurrence = newNextOccurrence;
-    }
-
-    public void updateStartTime(LocalTime newStartTime) {
-        this.startTime = newStartTime;
-    }
-
-    public void updateEndTime(LocalTime newEndTime) {
-        this.endTime = newEndTime;
-    }
-
     public void updateMaxParticipants(int newMaxParticipants) {
         this.maxParticipants = newMaxParticipants;
     }
 
     public void updateHobby(Hobby newHobby) {
-        this.hobbyId = newHobby;
+        this.hobby = newHobby;
     }
 }
