@@ -5,12 +5,12 @@ import lombok.*;
 
 import java.time.LocalDateTime;
 
+@Entity
 @Getter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-public class MeetupSchedule extends Base {
+public class MeetupSchedule extends Base{
 
     // 일정 ID
     @Id

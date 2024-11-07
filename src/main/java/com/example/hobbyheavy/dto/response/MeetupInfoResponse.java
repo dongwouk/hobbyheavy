@@ -10,15 +10,15 @@ import java.time.LocalTime;
 @Getter
 public class MeetupInfoResponse {
 
-    private Long meetupId;
-    private String meetupName;
-    private String description;
-    private String hostName;
-    private String location;
-    private String recurrenceRule;
-    private int maxParticipants;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
+    private final Long meetupId;
+    private final String meetupName;
+    private final String description;
+    private final String hostName;
+    private final String location;
+    private final String recurrenceRule;
+    private final int maxParticipants;
+    private final LocalDateTime createdAt;
+    private final LocalDateTime updatedAt;
 
     public MeetupInfoResponse (Meetup meetup) {
         this.meetupId = meetup.getMeetupId();
