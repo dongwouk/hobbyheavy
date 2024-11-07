@@ -1,5 +1,6 @@
 package com.example.hobbyheavy.dto.response;
 
+import com.example.hobbyheavy.entity.Hobby;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -13,6 +14,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class JoinDTO {
+
     @NotNull
     @Size(min = 3, max = 50)
     private String userId; // 로그인용 ID
@@ -29,5 +31,12 @@ public class JoinDTO {
     @Email
     private String email;
 
+    @NotNull
+    private Boolean gender;
+
+    @NotNull
+    private Integer age;
+
+    private Hobby hobby;
 
 }
