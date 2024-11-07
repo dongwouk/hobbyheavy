@@ -1,5 +1,7 @@
 package com.example.hobbyheavy.entity;
 
+import com.example.hobbyheavy.type.ParticipantRole;
+import com.example.hobbyheavy.type.ParticipantStatus;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -32,8 +34,14 @@ public class Participant extends Base{
     @Column(name = "meetup_alram", nullable = false)
     private Boolean meetupAlarm = true;
 
-    public void updateStatus(String status) {
-        this.status = status;
+    public void updateStatus(ParticipantStatus status) {
+        this.status = status.getStatus();
     }
 
+    public void updateMeetupRole(ParticipantRole role) { this.meetupRole = role.getRole(); }
+
+    public Boolean updateMeetupAlarm() {
+        this.meetupAlarm = !this.meetupAlarm;
+        return this.meetupAlarm;
+    }
 }

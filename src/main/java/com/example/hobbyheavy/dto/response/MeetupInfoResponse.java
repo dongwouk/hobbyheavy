@@ -1,11 +1,12 @@
 package com.example.hobbyheavy.dto.response;
 
+import com.example.hobbyheavy.entity.Comment;
 import com.example.hobbyheavy.entity.Meetup;
+import com.example.hobbyheavy.entity.Participant;
 import lombok.Getter;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
+import java.util.List;
 
 @Getter
 public class MeetupInfoResponse {
@@ -20,7 +21,10 @@ public class MeetupInfoResponse {
     private final LocalDateTime createdAt;
     private final LocalDateTime updatedAt;
 
-    public MeetupInfoResponse (Meetup meetup) {
+    private final List<Comment> comments;
+    private final List<ParticipantApprovedResponse> participants;
+
+    public MeetupInfoResponse (Meetup meetup, List<Comment> comments, List<ParticipantApprovedResponse> participants) {
         this.meetupId = meetup.getMeetupId();
         this.meetupName = meetup.getMeetupName();
         this.description = meetup.getDescription();
@@ -30,5 +34,7 @@ public class MeetupInfoResponse {
         this.maxParticipants = meetup.getMaxParticipants();
         this.createdAt = meetup.getCreatedDate();
         this.updatedAt = meetup.getUpdatedDate();
+        this.comments = comments;
+        this.participants = participants;
     }
 }
