@@ -80,4 +80,5 @@ public class JoinService {
         user.updatePassword(bCryptPasswordEncoder.encode(newPassword));
         userRepository.save(user);
     }
+    // 1
 }
