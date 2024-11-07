@@ -21,7 +21,7 @@ public class Meetup extends Base {
     private Long meetupId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "hobby_id", nullable = false)
+    @JoinColumn(name = "hobby_id") // hobby 서비스가 생기면 추후 nullable =false 설정
     private Hobby hobby;
 
     @ManyToOne(fetch = FetchType.LAZY)

@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Notification extends BaseEntity {
+public class Notification extends Base {
 
     // 알림 고유 ID
     @Id
@@ -26,7 +26,7 @@ public class Notification extends BaseEntity {
     // 사용자 고유 ID
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
-    private UserEntity user;
+    private User user;
 
     // 알림 유형 (new meetup, nuw join)
     @Column(name = "type", nullable = true)

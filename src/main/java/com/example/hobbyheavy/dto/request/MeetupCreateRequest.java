@@ -1,5 +1,6 @@
 package com.example.hobbyheavy.dto.request;
 
+import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -24,9 +25,13 @@ public class MeetupCreateRequest {
     private String recurrenceRule;
 
     @Min(value = 1, message = "모임 참여자는 최소 1명 이상이어야 합니다.")
-    private int maxParticipants;
+    @Max(value = 100, message = "모임 참여자는 최소 100명 이하입니다.")
+    private Integer maxParticipants;
 
+    @NotBlank(message = "모임 작성자는 필수입니다.")
     private String hostName;
+
+    //@NotBlank(message = "취미 이름은 필수입니다.")
     private String hobbyName;
 
 }

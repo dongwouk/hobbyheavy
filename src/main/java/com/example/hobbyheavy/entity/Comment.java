@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Comments extends Base {
+public class Comment extends Base {
 
     @Id
     @Column(name = "comment_id")
