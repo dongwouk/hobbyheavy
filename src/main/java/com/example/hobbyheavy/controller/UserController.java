@@ -53,5 +53,6 @@ public class UserController {
         joinService.updatePassword(userId, request.getOldPassword(), request.getNewPassword());
 
         return ResponseEntity.ok("Password changed successfully");
+
     }
 }
