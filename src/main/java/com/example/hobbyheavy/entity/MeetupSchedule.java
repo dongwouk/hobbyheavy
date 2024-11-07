@@ -1,5 +1,6 @@
 package com.example.hobbyheavy.entity;
 
+import com.example.hobbyheavy.dto.request.ScheduleRequest;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -47,5 +48,13 @@ public class MeetupSchedule extends Base{
     @Column(name = "location", nullable = true)
     private String location;
 
+    public void updateFromDTO(ScheduleRequest request) {
+        this.proposalDate = request.getProposalDate();
+        this.activateTime = request.getActivateTime();
+        this.status = request.getStatus();
+        this.participant = request.getParticipant();
+        this.votes = request.getVotes();
+        this.location = request.getLocation();
+    }
 }
 
