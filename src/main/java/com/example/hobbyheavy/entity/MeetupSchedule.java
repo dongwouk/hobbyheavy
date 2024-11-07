@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class MeetupSchedule extends Base{
+public class MeetupSchedule extends Base {
 
     // 일정 ID
     @Id
