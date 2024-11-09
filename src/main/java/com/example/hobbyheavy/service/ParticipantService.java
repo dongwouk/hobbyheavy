@@ -15,6 +15,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -45,7 +46,8 @@ public class ParticipantService {
                 .map(participant -> new ParticipantApprovedResponse(
                         participant.getUser().getUserId(),
                         participant.getStatus(),
-                        participant.getMeetupRole()
+                        participant.getMeetupRole(),
+                        participant.getHasVoted()
                 )).toList();
     }
 
@@ -53,16 +55,23 @@ public class ParticipantService {
     public void joinParticipant(Long meetupId) {
         String userId = SecurityContextHolder.getContext().getAuthentication().getName();
         // 모임에 사용자가 있는지 확인
-        Participant participant = participantRepository.findByMeetup_MeetupIdAndUser_UserId(meetupId, userId);
-        if(participant != null) {
-            if(participant.getStatus().equals(ParticipantStatus.APPROVED.getStatus()) ||
-            participant.getStatus().equals(ParticipantStatus.WAITING.getStatus())) {
+        Optional<Participant> optionalParticipant  = participantRepository.findByMeetup_MeetupIdAndUser_UserId(meetupId, userId);
+
+        if (optionalParticipant .isPresent()) {
+            Participant participant = optionalParticipant.get();
+
+            // 승인 또는 대기중인 상태인 경우 예외 던짐
+            if (participant.getStatus().equals(ParticipantStatus.APPROVED.getStatus()) ||
+                    participant.getStatus().equals(ParticipantStatus.WAITING.getStatus())) {
                 throw new RuntimeException("이미 승인, 대기중인 상태는 신청할 수 없습니다.");
             }
-            // 취소, 탈퇴는 대기중으로 변경
+
+            // 취소 또는 탈퇴 상태인 경우 대기중으로 변경
             participant.updateStatus(ParticipantStatus.WAITING);
+            participantRepository.save(participant);
             return;
         }
+
         // DB 에 저장되어 있지 않은 신청자는 새로 생성
         User user = userRepository.findByUserId(userId);
         Meetup meetup = meetupRepository.findById(meetupId).orElseThrow(

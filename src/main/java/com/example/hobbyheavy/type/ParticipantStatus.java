@@ -8,8 +8,7 @@ public enum ParticipantStatus {
     WAITING("대기"),
     APPROVED("승인"),
     CANCELED("취소"),
-    WITHDRAWN("탈퇴")
-    ;
+    WITHDRAWN("탈퇴");
 
     private final String status;
 

@@ -1,9 +1,11 @@
 package com.example.hobbyheavy.entity;
 
 import com.example.hobbyheavy.dto.request.ScheduleRequest;
+import com.example.hobbyheavy.type.MeetupScheduleStatus;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -33,8 +35,9 @@ public class MeetupSchedule extends Base{
     private LocalDateTime activateTime;
 
     // 일정 상태 (제안, 취소, 확정)
-    @Column(name = "status", nullable = true)
-    private String status;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "schedule_status", nullable = true)
+    private MeetupScheduleStatus scheduleStatus = MeetupScheduleStatus.PROPOSED;
 
     // 일정 참가자
     @Column(name = "participant", nullable = true)
@@ -48,13 +51,29 @@ public class MeetupSchedule extends Base{
     @Column(name = "location", nullable = true)
     private String location;
 
+    // 투표 마감일
+    @Column(name = "voting_deadline")
+    private LocalDate votingDeadline;
+
+    // 취소 이유 (optional)
+    @Column(name = "cancellation_reason")
+    private String cancellationReason;
+
     public void updateFromDTO(ScheduleRequest request) {
         this.proposalDate = request.getProposalDate();
         this.activateTime = request.getActivateTime();
-        this.status = request.getStatus();
+        this.scheduleStatus = MeetupScheduleStatus.valueOf(request.getStatus().toUpperCase());
         this.participant = request.getParticipant();
         this.votes = request.getVotes();
         this.location = request.getLocation();
+        this.votingDeadline = request.getVotingDeadline();
+    }
+    public void setStatus(MeetupScheduleStatus scheduleStatus) {
+        this.scheduleStatus = scheduleStatus;
+    }
+
+    public void setCancellationReason(String reason) {
+        this.cancellationReason = reason;
     }
 }
 
