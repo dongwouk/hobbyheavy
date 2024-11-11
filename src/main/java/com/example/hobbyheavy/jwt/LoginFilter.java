@@ -140,8 +140,13 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
 
     // 로그인이 refresh 토큰이 존재해서(로그인 된 상태에서 재 로그인) 실패할 경우 refresh 토큰을 삭제하는 메서드
     private void handleRefreshToken(HttpServletRequest request, HttpServletResponse response) {
-        // 쿠키 또는 헤더에서 refreshToken을 가져오기
+        // 쿠키에서 refreshToken을 가져오기
         String refreshToken = jwtUtil.getJwtFromCookie(request, "refresh");
+
+        // 쿠키에서 가져오지 못한 경우 헤더에서 refreshToken 가져오기
+        if (refreshToken == null) {
+            refreshToken = request.getHeader("Authorization");
+        }
 
         if (refreshToken != null) {
             try {
