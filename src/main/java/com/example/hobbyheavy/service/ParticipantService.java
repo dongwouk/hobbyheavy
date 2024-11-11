@@ -50,7 +50,8 @@ public class ParticipantService {
                 .map(participant -> new ParticipantApprovedResponse(
                         participant.getUser().getUserId(),
                         participant.getStatus(),
-                        participant.getMeetupRole()
+                        participant.getMeetupRole(),
+                        participant.getHasVoted()
                 )).toList();
     }
 
@@ -69,6 +70,7 @@ public class ParticipantService {
     public void joinParticipant(Long meetupId) {
         String userId = SecurityContextHolder.getContext().getAuthentication().getName();
         // 모임에 사용자가 있는지 확인
+
         Optional<Participant> optionalParticipant =
                 participantRepository.findByMeetup_MeetupIdAndUser_UserId(meetupId, userId);
 

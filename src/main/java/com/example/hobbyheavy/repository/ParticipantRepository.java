@@ -13,6 +13,4 @@ public interface ParticipantRepository extends JpaRepository<Participant, Long> 
     List<Participant> findAllByMeetup_MeetupId(Long meetupId);
 
     Optional<Participant> findByMeetup_MeetupIdAndUser_UserId(Long meetupId, String userId);
-
-    List<Participant> findAllByUser_Id(Long userId);
 }

@@ -38,6 +38,9 @@ public class Participant extends Base{
     @Column(name = "meetup_alram", nullable = false)
     private Boolean meetupAlarm = true;
 
+    @Column(name = "has_voted", nullable = false)
+    private Boolean hasVoted = false;
+
     public void updateStatus(ParticipantStatus status) {
         this.status = status;
     }
@@ -47,5 +50,9 @@ public class Participant extends Base{
     public Boolean updateMeetupAlarm() {
         this.meetupAlarm = !this.meetupAlarm;
         return this.meetupAlarm;
+    }
+
+    public void setHasVoted(boolean hasVoted) {
+        this.hasVoted = hasVoted;
     }
 }

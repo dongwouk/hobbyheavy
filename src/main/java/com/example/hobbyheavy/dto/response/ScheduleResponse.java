@@ -23,12 +23,15 @@ public class ScheduleResponse {
     private String location;
 
     public static ScheduleResponse fromEntity(MeetupSchedule entity) {
+        if (entity == null) {
+            return null; // entity가 null인 경우 null 반환
+        }
         return ScheduleResponse.builder()
                 .scheduleId(entity.getScheduleId())
                 .meetupId(entity.getMeetup().getMeetupId())
                 .proposalDate(entity.getProposalDate())
                 .activateTime(entity.getActivateTime())
-                .status(entity.getStatus())
+                .status(entity.getScheduleStatus().name())
                 .participant(entity.getParticipant())
                 .votes(entity.getVotes())
                 .location(entity.getLocation())
