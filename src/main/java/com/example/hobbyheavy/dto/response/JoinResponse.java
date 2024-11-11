@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class JoinDTO {
+public class JoinResponse {
 
     @NotNull
     @Size(min = 3, max = 50, message = "아이디는 최소 3자리 이상이어야 합니다.")
