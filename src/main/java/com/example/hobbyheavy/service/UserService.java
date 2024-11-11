@@ -1,6 +1,8 @@
 package com.example.hobbyheavy.service;
 
+import com.example.hobbyheavy.dto.response.UserInfoDTO;
 import com.example.hobbyheavy.entity.User;
+import com.example.hobbyheavy.exception.UserNotFoundException;
 import com.example.hobbyheavy.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -13,6 +15,21 @@ public class UserService {
 
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    // 나의 회원정보 조회 메서드
+    public UserInfoDTO getMyUserInfo(String userId) {
+        // 사용자 정보 조회
+        User user = userRepository.findByUserId(userId);
+
+        // null 체크
+        if (user == null) {
+            throw new UserNotFoundException("User not found");
+        }
+
+        // 조회된 사용자 정보로 UserInfoDTO 생성 후 리턴
+        return new UserInfoDTO().toUserInfoDTO(user);
+
+    }
 
     // 비밀번호 변경 메서드
     @Transactional
