@@ -28,10 +28,7 @@ public class MeetupCreateRequest {
     @Max(value = 100, message = "모임 참여자는 최소 100명 이하입니다.")
     private Integer maxParticipants;
 
-    @NotBlank(message = "모임 작성자는 필수입니다.")
-    private String hostName;
-
-    //@NotBlank(message = "취미 이름은 필수입니다.")
+    @NotBlank(message = "취미 이름은 필수입니다.")
     private String hobbyName;
 
 }
