@@ -9,6 +9,8 @@ import org.springframework.stereotype.Component;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.StandardCharsets;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 @Component
@@ -37,6 +39,14 @@ public class JWTUtil {
     public Boolean isExpired(String token) {
 
         return Jwts.parser().verifyWith(secretKey).build().parseSignedClaims(token).getPayload().getExpiration().before(new Date());
+    }
+
+    public String formatLocalDateTime(LocalDateTime dateTime) {
+        return dateTime.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME); // LocalDateTime을 문자열로 변환
+    }
+
+    public LocalDateTime parseExpirationDate(String expirationDate) {
+        return LocalDateTime.parse(expirationDate, DateTimeFormatter.ISO_LOCAL_DATE_TIME); // 문자열을 LocalDateTime으로 변환
     }
 
     public String createJwt(String category, String username, String role, Long expiredMs) {

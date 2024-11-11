@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Date;
 
@@ -87,12 +88,12 @@ public class ReissueService {
     }
 
     private void addRefreshEntity(String userId, String refresh, Long expiredMs) {
-        Date expirationDate = new Date(System.currentTimeMillis() + expiredMs);
+        LocalDateTime expirationDate = LocalDateTime.now().plusSeconds(expiredMs / 1000); // 밀리초를 초 단위로 변환
 
         Refresh refreshEntity = Refresh.builder()
                 .userId(userId)
                 .refresh(refresh)
-                .expiration(expirationDate.toString())
+                .expiration(expirationDate)
                 .build();
 
         refreshRepository.save(refreshEntity);

@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Component
@@ -16,9 +17,9 @@ public class RefreshCleanupScheduler {
     // 하루에 한번, 매일 자정에 실행 (초, 분, 시, 일, 월, 요일)
     @Scheduled(cron = "0 0 0 * * *")
     public void deleteExpiredTokens() {
-        Date now = new Date();
+        LocalDateTime now = LocalDateTime.now();
 
         // 만료된 토큰 삭제
-        refreshRepository.deleteAllByExpirationBefore(now.toString());
+        refreshRepository.deleteAllByExpirationBefore(now);
     }
 }

@@ -4,6 +4,7 @@ import com.example.hobbyheavy.entity.Refresh;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 public interface RefreshRepository extends JpaRepository<Refresh, Long> {
@@ -24,5 +25,5 @@ public interface RefreshRepository extends JpaRepository<Refresh, Long> {
 
     // 만료된 토큰을 전부 제거하는 메서드
     @Transactional
-    void deleteAllByExpirationBefore(String expirationDate);
+    void deleteAllByExpirationBefore(LocalDateTime expirationDate);
 }

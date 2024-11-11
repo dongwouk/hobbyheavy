@@ -19,6 +19,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -115,11 +116,11 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
     }
 
     private void addRefreshEntity(String userId, String refresh, Long expiredMs){
-        Date date = new Date(System.currentTimeMillis() + expiredMs);
+        LocalDateTime expirationDate = LocalDateTime.now().plusSeconds(expiredMs / 1000); // 밀리초를 초 단위로 변환
         Refresh refreshEntity = Refresh.builder()
                 .userId(userId)
                 .refresh(refresh)
-                .expiration(expiredMs.toString())
+                .expiration(expirationDate)
                 .build();
         refreshRepository.save(refreshEntity);
     }
