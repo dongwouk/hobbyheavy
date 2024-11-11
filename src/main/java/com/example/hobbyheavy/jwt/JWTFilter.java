@@ -99,6 +99,5 @@ public class JWTFilter extends OncePerRequestFilter {
         // 다음 필터로 넘김
         filterChain.doFilter(request, response);
 
-
     }
 }

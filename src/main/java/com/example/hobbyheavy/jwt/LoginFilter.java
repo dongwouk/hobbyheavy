@@ -4,6 +4,7 @@ import com.example.hobbyheavy.dto.response.TokenResponseDTO;
 import com.example.hobbyheavy.entity.Refresh;
 import com.example.hobbyheavy.repository.RefreshRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.jsonwebtoken.ExpiredJwtException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
@@ -30,7 +31,7 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
     private final RefreshRepository refreshRepository;
 
     private final Long ACCESS_EXPIRED = 600000L;
-    private final Long REFRESH_EXPIRED = 86400000L;
+    private final Long REFRESH_EXPIRED = 86400000L; // 86400000 24 시간
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
@@ -53,8 +54,10 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
 
         // Refresh 토큰이 이미 있는지 확인 (이미 로그인된 사용자인지 확인)
         if (refreshRepository.existsByUserId(userId)) {
-            // Refresh 토큰이 존재하면, 이미 로그인된 사용자이므로 예외 처리
-            throw new AuthenticationException("이미 로그인된 사용자입니다.") {};
+
+            // Refresh 토큰 만료 확인 및 삭제 처리
+            handleRefreshToken(request, response);
+
         }
 
         //스프링 시큐리티에서 userId와 password를 검증하기 위해서는 token에 담아야 함
@@ -63,6 +66,7 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
         //token에 담은 검증을 위한 AuthenticationManager로 전달
         return authenticationManager.authenticate(authToken);
     }
+
     //로그인 성공시 실행하는 메소드 (여기서 JWT를 발급하면 됨)
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authentication) throws IOException {
@@ -131,6 +135,24 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
         cookie.setHttpOnly(true);
 
         return cookie;
+    }
 
+    // 로그인이 refresh 토큰이 존재해서(로그인 된 상태에서 재 로그인) 실패할 경우 refresh 토큰을 삭제하는 메서드
+    private void handleRefreshToken(HttpServletRequest request, HttpServletResponse response) {
+        // 쿠키 또는 헤더에서 refreshToken을 가져오기
+        String refreshToken = jwtUtil.getJwtFromCookie(request, "refresh");
+
+        if (refreshToken != null) {
+            try {
+                jwtUtil.isExpired(refreshToken); // 만료 확인
+            } catch (ExpiredJwtException e) {
+                // 만료된 경우 DB와 쿠키에서 삭제
+                refreshRepository.deleteByRefresh(refreshToken);
+                Cookie expiredCookie = new Cookie("refresh", null);
+                expiredCookie.setMaxAge(0);
+                expiredCookie.setPath("/"); // 쿠키 경로 설정
+                response.addCookie(expiredCookie);
+            }
+        }
     }
 }

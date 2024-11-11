@@ -2,6 +2,7 @@ package com.example.hobbyheavy.controller;
 
 import com.example.hobbyheavy.dto.response.JoinDTO;
 import com.example.hobbyheavy.service.JoinService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,7 +20,7 @@ public class JoinController {
     private final JoinService joinService;
 
     @PostMapping("/join")
-    public ResponseEntity<String> joinProcess(@RequestBody JoinDTO joinDTO) {
+    public ResponseEntity<String> joinProcess(@Valid @RequestBody JoinDTO joinDTO) {
         logger.info("회원가입 요청: {}", joinDTO);
         try {
             joinService.joinProcess(joinDTO);

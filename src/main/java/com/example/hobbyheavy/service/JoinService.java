@@ -42,6 +42,21 @@ public class JoinService {
             throw new IllegalArgumentException("중복된 이메일입니다.");
         }
 
+        // UserId 최소 3자 체크
+        if (userId.length() < 3) {
+            throw new IllegalArgumentException("아이디는 최소 3자리 이상이어야 합니다.");
+        }
+
+        // Username 최소 3자 체크
+        if (username.length() < 3) {
+            throw new IllegalArgumentException("이름은 최소 3자리 이상이어야 합니다.");
+        }
+
+        // Password 최소 8자 체크
+        if (password.length() < 8) {
+            throw new IllegalArgumentException("비밀번호는 최소 8자 이상이어야 합니다.");
+        }
+
         // password 암호화
         String encodedPassword = bCryptPasswordEncoder.encode(password);
 
@@ -61,24 +76,4 @@ public class JoinService {
         userRepository.save(data);
     }
 
-    // 비밀번호 변경 메서드
-    @Transactional
-    public void updatePassword(String userId, String oldPassword, String newPassword) {
-
-        // 사용자 조회
-        User user = userRepository.findByUserId(userId);
-        if (user == null) {
-            throw new IllegalArgumentException("사용자를 찾을 수 없습니다.");
-        }
-
-        // 기존 비밀번호 확인
-        if (!bCryptPasswordEncoder.matches(oldPassword, user.getPassword())) {
-            throw new IllegalArgumentException("기존 비밀번호가 일치하지 않습니다.");
-        }
-
-        // 새 비밀번호로 변경
-        user.updatePassword(bCryptPasswordEncoder.encode(newPassword));
-        userRepository.save(user);
-    }
-    // 1
 }

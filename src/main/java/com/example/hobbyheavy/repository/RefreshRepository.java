@@ -21,4 +21,8 @@ public interface RefreshRepository extends JpaRepository<Refresh, Long> {
     // DB에 적용하므로 transactional 어노테이션 설정
     @Transactional
     void deleteByRefresh(String refresh);
+
+    // 만료된 토큰을 전부 제거하는 메서드
+    @Transactional
+    void deleteAllByExpirationBefore(String expirationDate);
 }

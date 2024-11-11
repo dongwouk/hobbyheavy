@@ -4,7 +4,7 @@ import com.example.hobbyheavy.dto.request.PasswordUpdateRequest;
 import com.example.hobbyheavy.dto.response.UserInfoDTO;
 import com.example.hobbyheavy.entity.User;
 import com.example.hobbyheavy.repository.UserRepository;
-import com.example.hobbyheavy.service.JoinService;
+import com.example.hobbyheavy.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 
     private final UserRepository userRepository;
-    private final JoinService joinService;
+    private final UserService userService;
 
     // 유저정보 조회
     @GetMapping("/my-info")
@@ -50,8 +50,10 @@ public class UserController {
         String userId = authentication.getName();
 
         // 비밀번호 변경 수행
-        joinService.updatePassword(userId, request.getOldPassword(), request.getNewPassword());
+        userService.updatePassword(userId, request.getOldPassword(), request.getNewPassword());
 
         return ResponseEntity.ok("Password changed successfully");
     }
+
+    // 비밀번호 찾기
 }
