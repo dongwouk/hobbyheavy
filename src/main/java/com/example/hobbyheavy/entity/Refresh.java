@@ -22,6 +22,7 @@ public class Refresh {
 
     @Column(nullable = false)
     private String refresh;
+
     private String expiration;
 
     public void updateRefresh(String refresh, String expiration) {

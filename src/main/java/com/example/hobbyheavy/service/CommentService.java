@@ -15,13 +15,7 @@ public class CommentService {
 
     private final CommentRepository commentRepository;
 
-    public Comment pickComment(Long commentId) {
-        return commentRepository.findById(commentId).orElseThrow(
-                () -> new EntityNotFoundException("해당 댓글이 없습니다."));
-    }
-
     public List<Comment> meetupComments (Long meetupId) {
         return commentRepository.findAllByMeetup_MeetupId(meetupId);
     }
-
 }

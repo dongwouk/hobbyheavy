@@ -3,6 +3,7 @@ package com.example.hobbyheavy.controller;
 import com.example.hobbyheavy.dto.request.MeetupCreateRequest;
 import com.example.hobbyheavy.dto.request.MeetupUpdateRequest;
 import com.example.hobbyheavy.dto.response.MeetupInfoResponse;
+import com.example.hobbyheavy.dto.response.MeetupMyListResponse;
 import com.example.hobbyheavy.service.MeetupService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -10,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.nio.file.AccessDeniedException;
+import java.util.List;
 
 @RestController
 @RequestMapping("/meetup")
@@ -21,6 +23,11 @@ public class MeetupController {
     @GetMapping("/{meetupId}")
     public ResponseEntity<MeetupInfoResponse> meetupInfo(@PathVariable Long meetupId) {
         return ResponseEntity.ok(meetupService.infoMeetup(meetupId));
+    }
+
+    @GetMapping("/my-list")
+    public ResponseEntity<List<MeetupMyListResponse>> myMeetupInfos () {
+        return ResponseEntity.ok(meetupService.myMeetupInfos());
     }
 
     @PostMapping

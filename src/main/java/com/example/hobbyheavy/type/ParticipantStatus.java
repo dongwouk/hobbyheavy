@@ -1,6 +1,9 @@
 package com.example.hobbyheavy.type;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import lombok.Getter;
+
+import java.util.stream.Stream;
 
 @Getter
 public enum ParticipantStatus {
@@ -10,9 +13,17 @@ public enum ParticipantStatus {
     CANCELED("취소"),
     WITHDRAWN("탈퇴");
 
-    private final String status;
+    private String description;
 
-    ParticipantStatus(String status) {
-        this.status = status;
+    ParticipantStatus(String description) {
+        this.description = description;
+    }
+
+    @JsonCreator
+    public static ParticipantStatus parsing(ParticipantStatus inputValue) {
+        return Stream.of(ParticipantStatus.values())
+                .filter(status -> status.equals(inputValue))
+                .findFirst()
+                .orElse(null);
     }
 }
