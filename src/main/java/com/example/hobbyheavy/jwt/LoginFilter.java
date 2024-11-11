@@ -1,6 +1,6 @@
 package com.example.hobbyheavy.jwt;
 
-import com.example.hobbyheavy.dto.response.TokenResponseDTO;
+import com.example.hobbyheavy.dto.response.TokenResponse;
 import com.example.hobbyheavy.entity.Refresh;
 import com.example.hobbyheavy.repository.RefreshRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -20,7 +20,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -92,11 +91,11 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
         addRefreshEntity(userId, refresh, REFRESH_EXPIRED);
 
         // 응답 DTO 생성
-        TokenResponseDTO tokenResponseDTO = new TokenResponseDTO(access, refresh);
+        TokenResponse tokenResponse = new TokenResponse(access, refresh);
 
         // ObjectMapper를 이용해 JSON 형태로 변환 후 응답
         ObjectMapper objectMapper = new ObjectMapper();
-        String jsonResponse = objectMapper.writeValueAsString(tokenResponseDTO);
+        String jsonResponse = objectMapper.writeValueAsString(tokenResponse);
 
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
