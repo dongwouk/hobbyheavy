@@ -84,7 +84,7 @@ public class ScheduleService {
     }
 
     // 특정 스케줄을 확정하는 메서드
-    private void finalizeSchedule(Long scheduleId) {
+    public void finalizeSchedule(Long scheduleId) {
         Optional<MeetupSchedule> optionalSchedule = scheduleRepository.findById(scheduleId);
         if (optionalSchedule.isPresent() && optionalSchedule.get().getScheduleStatus() != MeetupScheduleStatus.CONFIRMED) {
             MeetupSchedule schedule = optionalSchedule.get();
