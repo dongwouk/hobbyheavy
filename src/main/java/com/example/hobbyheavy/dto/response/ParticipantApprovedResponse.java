@@ -1,5 +1,6 @@
 package com.example.hobbyheavy.dto.response;
 
+import com.example.hobbyheavy.type.ParticipantStatus;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -8,6 +9,6 @@ import lombok.Getter;
 public class ParticipantApprovedResponse {
 
     private String userId;
-    private String status;
+    private ParticipantStatus status;
     private String meetupRole;
 }

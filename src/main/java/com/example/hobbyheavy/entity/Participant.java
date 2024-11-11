@@ -3,7 +3,10 @@ package com.example.hobbyheavy.entity;
 import com.example.hobbyheavy.type.ParticipantRole;
 import com.example.hobbyheavy.type.ParticipantStatus;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Getter
@@ -26,7 +29,8 @@ public class Participant extends Base{
     private User user;
 
     @Column(name = "status", length = 10, nullable = false)
-    private String status = "대기중";
+    @Enumerated(EnumType.STRING)
+    private ParticipantStatus status;
 
     @Column(name = "meetup_role", nullable = false)
     private String meetupRole;
@@ -35,7 +39,7 @@ public class Participant extends Base{
     private Boolean meetupAlarm = true;
 
     public void updateStatus(ParticipantStatus status) {
-        this.status = status.getStatus();
+        this.status = status;
     }
 
     public void updateMeetupRole(ParticipantRole role) { this.meetupRole = role.getRole(); }
