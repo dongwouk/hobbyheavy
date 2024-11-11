@@ -37,7 +37,8 @@ public class ParticipantService {
                 .user(user)
                 .status(status)
                 .meetupRole(role.name())
-                .meetupAlarm(true).build();
+                .meetupAlarm(true)
+                .hasVoted(false).build();
 
         participantRepository.save(participant);
     }
@@ -103,7 +104,7 @@ public class ParticipantService {
         Optional<Participant> optionalParticipant = participantRepository.findByMeetup_MeetupIdAndUser_UserId(
                 request.getMeetupId(), request.getUserId());
 
-        if(optionalParticipant.isEmpty()) {
+        if (optionalParticipant.isEmpty()) {
             throw new EntityNotFoundException("해당 신청자가 없습니다.");
         }
 
