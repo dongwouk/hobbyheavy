@@ -5,6 +5,7 @@ import com.example.hobbyheavy.type.MeetupScheduleStatus;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -32,7 +33,7 @@ public class MeetupSchedule extends Base{
 
     // 모임 활동 시간
     @Column(name = "activate_time", nullable = true)
-    private LocalDateTime activateTime;
+    private Duration activateTime;
 
     // 일정 상태 (제안, 취소, 확정)
     @Enumerated(EnumType.STRING)
@@ -52,8 +53,9 @@ public class MeetupSchedule extends Base{
     private String location;
 
     // 투표 마감일
-    @Column(name = "voting_deadline")
-    private LocalDate votingDeadline;
+    // 투표 마감일
+    @Column(name = "voting_deadline", nullable = true)
+    private LocalDateTime votingDeadline;
 
     // 취소 이유 (optional)
     @Column(name = "cancellation_reason")
@@ -61,13 +63,14 @@ public class MeetupSchedule extends Base{
 
     public void updateFromDTO(ScheduleRequest request) {
         this.proposalDate = request.getProposalDate();
-        this.activateTime = request.getActivateTime();
+        this.activateTime = null; // activateDuration은 다른 곳에서 계산되어 설정됨
         this.scheduleStatus = MeetupScheduleStatus.valueOf(request.getStatus().toUpperCase());
         this.participant = request.getParticipant();
         this.votes = request.getVotes();
         this.location = request.getLocation();
-        this.votingDeadline = request.getVotingDeadline();
+        this.votingDeadline = null; // votingDeadline은 다른 곳에서 계산되어 설정됨
     }
+
     public void setStatus(MeetupScheduleStatus scheduleStatus) {
         this.scheduleStatus = scheduleStatus;
     }

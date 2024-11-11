@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 
 @Getter
@@ -16,7 +17,7 @@ public class ScheduleResponse {
     private Long scheduleId;
     private Long meetupId;
     private LocalDateTime proposalDate;
-    private LocalDateTime activateTime;
+    private Duration activateTime;
     private String status;
     private String participant;
     private Integer votes;
