@@ -1,6 +1,6 @@
 package com.example.hobbyheavy.controller;
 
-import com.example.hobbyheavy.dto.response.JoinResponse;
+import com.example.hobbyheavy.dto.request.JoinRequest;
 import com.example.hobbyheavy.service.JoinService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -19,11 +19,11 @@ public class JoinController {
     private final JoinService joinService;
 
     @PostMapping("/join")
-    public ResponseEntity<String> joinProcess(@Valid @RequestBody JoinResponse joinResponse) {
-        log.info("회원가입 요청: {}", joinResponse);
+    public ResponseEntity<String> joinProcess(@Valid @RequestBody JoinRequest joinRequest) {
+        log.info("회원가입 요청: {}", joinRequest);
         try {
-            joinService.joinProcess(joinResponse);
-            log.info("회원가입 처리 완료: {}", joinResponse.getUserId());
+            joinService.joinProcess(joinRequest);
+            log.info("회원가입 처리 완료: {}", joinRequest.getUserId());
             return ResponseEntity.status(HttpStatus.CREATED).body("회원가입 성공");
         } catch (IllegalArgumentException e) {
             log.error("회원가입 중 오류 발생: {}", e.getMessage());

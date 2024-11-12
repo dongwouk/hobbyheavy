@@ -1,10 +1,9 @@
 package com.example.hobbyheavy.service;
 
-import com.example.hobbyheavy.dto.response.JoinResponse;
+import com.example.hobbyheavy.dto.request.JoinRequest;
 import com.example.hobbyheavy.entity.User;
 import com.example.hobbyheavy.repository.UserRepository;
 import com.example.hobbyheavy.type.Role;
-import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -21,36 +20,35 @@ public class JoinService {
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     // 유효성 체크 메서드
-    void checkJoin(JoinResponse joinResponse) {
+    void checkJoin(JoinRequest joinRequest) {
 
         // UserId 중복 체크
-        if(userRepository.existsByUserId(joinResponse.getUserId())) {
+        if(userRepository.existsByUserId(joinRequest.getUserId())) {
             throw new IllegalArgumentException("중복된 아이디입니다.");
         }
 
         // email 중복 체크
-        if (userRepository.existsByEmail(joinResponse.getEmail())) {
+        if (userRepository.existsByEmail(joinRequest.getEmail())) {
             throw new IllegalArgumentException("중복된 이메일입니다.");
         }
 
     }
 
     // 회원 가입 메서드
-    @Transactional
-    public void joinProcess(@Valid JoinResponse joinResponse) {
+    public void joinProcess(@Valid JoinRequest joinRequest) {
 
         // 유효성 체크
-        checkJoin(joinResponse);
+        checkJoin(joinRequest);
 
         // 사용자 저장
         userRepository.save(User.builder()
-                .userId(joinResponse.getUserId())
-                .username(joinResponse.getUsername())
-                .password(bCryptPasswordEncoder.encode(joinResponse.getPassword())) // 암호화된 비밀번호
-                .email(joinResponse.getEmail())
-                .gender(joinResponse.getGender())
-                .age(joinResponse.getAge())
-                .hobby(joinResponse.getHobby())
+                .userId(joinRequest.getUserId())
+                .username(joinRequest.getUsername())
+                .password(bCryptPasswordEncoder.encode(joinRequest.getPassword())) // 암호화된 비밀번호
+                .email(joinRequest.getEmail())
+                .gender(joinRequest.getGender())
+                .age(joinRequest.getAge())
+                .hobby(joinRequest.getHobby())
                 .role(Collections.singleton(Role.ROLE_USER)) // 역할이 존재할 때 설정
                 .build());
     }
