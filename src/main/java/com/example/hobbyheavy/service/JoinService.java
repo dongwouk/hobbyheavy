@@ -1,11 +1,11 @@
 package com.example.hobbyheavy.service;
 
 import com.example.hobbyheavy.dto.response.JoinResponse;
-import com.example.hobbyheavy.entity.Hobby;
 import com.example.hobbyheavy.entity.User;
 import com.example.hobbyheavy.repository.UserRepository;
 import com.example.hobbyheavy.type.Role;
 import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -33,26 +33,11 @@ public class JoinService {
             throw new IllegalArgumentException("중복된 이메일입니다.");
         }
 
-        // UserId 최소 3자 체크
-        if (joinResponse.getUserId().length() < 3) {
-            throw new IllegalArgumentException("아이디는 최소 3자리 이상이어야 합니다.");
-        }
-
-        // Username 최소 3자 체크
-        if (joinResponse.getUsername().length() < 3) {
-            throw new IllegalArgumentException("이름은 최소 3자리 이상이어야 합니다.");
-        }
-
-        // Password 최소 8자 체크
-        if (joinResponse.getPassword().length() < 8) {
-            throw new IllegalArgumentException("비밀번호는 최소 8자 이상이어야 합니다.");
-        }
-
     }
 
     // 회원 가입 메서드
     @Transactional
-    public void joinProcess(JoinResponse joinResponse) {
+    public void joinProcess(@Valid JoinResponse joinResponse) {
 
         // 유효성 체크
         checkJoin(joinResponse);

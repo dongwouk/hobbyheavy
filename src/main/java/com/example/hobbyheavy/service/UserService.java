@@ -56,4 +56,22 @@ public class UserService {
         userRepository.save(user);
     }
 
+    // 회원 탈퇴 메서드
+    @Transactional
+    public void deleteUser(String userId, String password) throws Exception {
+        // 사용자 조회
+        User user = userRepository.findByUserId(userId);
+        if (user == null) {
+            throw new Exception("User not found");
+        }
+
+        // 비밀번호 확인
+        if (!bCryptPasswordEncoder.matches(password, user.getPassword())) {
+            throw new Exception("비밀번호가 일치하지 않습니다.");
+        }
+
+        // 사용자 삭제
+        userRepository.delete(user);
+    }
+
 }
