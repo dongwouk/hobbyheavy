@@ -5,7 +5,6 @@ import com.example.hobbyheavy.jwt.JWTUtil;
 import com.example.hobbyheavy.repository.RefreshRepository;
 import com.example.hobbyheavy.util.CookieUtil;
 import io.jsonwebtoken.ExpiredJwtException;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
@@ -14,8 +13,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.Arrays;
-import java.util.Date;
 
 @Service
 @RequiredArgsConstructor
