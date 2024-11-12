@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -78,12 +79,17 @@ public class SecurityConfig {
         http
                 .httpBasic((auth) -> auth.disable());
 
+        //Oauth2
+        http
+                .oauth2Login(Customizer.withDefaults());
+
         //경로별 인가 작업
         http
                 .authorizeHttpRequests((auth) -> auth
                         .requestMatchers("/login", "/", "/join").permitAll()
                         .requestMatchers("/user/my-info").authenticated()
                         .requestMatchers("/user/password").authenticated()
+                        .requestMatchers("/user/delete").authenticated()
                         .requestMatchers("/board/**").authenticated()
                         .requestMatchers("/board").permitAll() // POST 요청 허용
                         .requestMatchers("/admin").hasRole("ADMIN")
