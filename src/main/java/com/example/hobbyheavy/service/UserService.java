@@ -38,7 +38,7 @@ public class UserService {
         // 사용자 조회
         User user = userRepository.findByUserId(userId);
         if (user == null) {
-            throw new IllegalArgumentException("사용자를 찾을 수 없습니다.");
+            throw new UserNotFoundException("사용자를 찾을 수 없습니다.");
         }
 
         // 기존 비밀번호 확인
@@ -62,7 +62,7 @@ public class UserService {
         // 사용자 조회
         User user = userRepository.findByUserId(userId);
         if (user == null) {
-            throw new Exception("User not found");
+            throw new UserNotFoundException("User not found");
         }
 
         // 비밀번호 확인
