@@ -144,7 +144,7 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
 
         // 쿠키에서 가져오지 못한 경우 헤더에서 refreshToken 가져오기
         if (refreshToken == null) {
-            refreshToken = request.getHeader("Authorization");
+            refreshToken = request.getHeader("access");
         }
 
         if (refreshToken != null) {
