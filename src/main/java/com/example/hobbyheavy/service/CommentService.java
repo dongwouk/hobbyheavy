@@ -9,13 +9,10 @@ import com.example.hobbyheavy.exception.ExceptionCode;
 import com.example.hobbyheavy.repository.CommentRepository;
 import com.example.hobbyheavy.repository.MeetupRepository;
 import com.example.hobbyheavy.repository.UserRepository;
-import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor

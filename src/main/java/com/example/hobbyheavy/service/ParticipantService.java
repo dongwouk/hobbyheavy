@@ -13,12 +13,7 @@ import com.example.hobbyheavy.repository.ParticipantRepository;
 import com.example.hobbyheavy.repository.UserRepository;
 import com.example.hobbyheavy.type.ParticipantRole;
 import com.example.hobbyheavy.type.ParticipantStatus;
-import jakarta.persistence.EntityNotFoundException;
-import jakarta.servlet.http.Part;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.security.access.AccessDeniedException;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

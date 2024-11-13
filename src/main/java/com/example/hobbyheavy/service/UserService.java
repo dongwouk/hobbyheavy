@@ -67,7 +67,7 @@ public class UserService {
 
     /** 회원 탈퇴 메서드 **/
     @Transactional
-    public void deleteUser(String userId, String password) throws Exception {
+    public void deleteUser(String userId, String password) {
         // 사용자 조회
         User user = getUser(userId);
 

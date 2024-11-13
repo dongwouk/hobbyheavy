@@ -6,7 +6,6 @@ import com.example.hobbyheavy.exception.CustomException;
 import com.example.hobbyheavy.exception.ExceptionCode;
 import com.example.hobbyheavy.repository.UserRepository;
 import com.example.hobbyheavy.type.Role;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
