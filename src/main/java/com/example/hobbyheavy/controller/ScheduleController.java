@@ -52,4 +52,24 @@ public class ScheduleController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
+    // 모임 스케줄에 투표하기
+    @PostMapping("/{scheduleId}/vote")
+    public ResponseEntity<Void> voteOnSchedule(@PathVariable Long scheduleId) {
+        scheduleService.voteOnSchedule(scheduleId);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    // 모임 스케줄 확정하기
+    @PostMapping("/{scheduleId}/confirm")
+    public ResponseEntity<String> confirmSchedule(@PathVariable Long scheduleId) {
+        scheduleService.finalizeSchedule(scheduleId);
+        return new ResponseEntity<>("스케줄이 확정되었습니다.", HttpStatus.OK);
+    }
+
+    // 모임 스케줄 취소하기
+    @PostMapping("/{scheduleId}/cancel")
+    public ResponseEntity<String> cancelSchedule(@PathVariable Long scheduleId, @RequestBody String reason) {
+        scheduleService.cancelSchedule(scheduleId, reason);
+        return new ResponseEntity<>("스케줄이 취소되었습니다.", HttpStatus.OK);
+    }
 }
