@@ -78,6 +78,10 @@ public class SecurityConfig {
         http
                 .httpBasic((auth) -> auth.disable());
 
+//        //Oauth2
+//        http
+//                .oauth2Login(Customizer.withDefaults());
+
         //경로별 인가 작업
         http
                 .authorizeHttpRequests((auth) -> auth

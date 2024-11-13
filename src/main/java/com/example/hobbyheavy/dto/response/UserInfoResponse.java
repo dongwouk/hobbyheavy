@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Getter
 @Builder
-public class UserInfoDTO {
+public class UserInfoResponse {
 
     private Long id;
     private String userId;
@@ -25,8 +25,8 @@ public class UserInfoDTO {
     private Boolean alarm; // 알림구독 여부
     private LocalDateTime createdAt;
 
-    public UserInfoDTO toUserInfoDTO(User user) {
-        return UserInfoDTO.builder()
+    public UserInfoResponse toUserInfoDTO(User user) {
+        return UserInfoResponse.builder()
                 .id(user.getId())
                 .userId(user.getUserId())
                 .username(user.getUsername())

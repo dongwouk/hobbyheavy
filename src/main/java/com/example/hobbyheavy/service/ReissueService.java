@@ -3,8 +3,8 @@ package com.example.hobbyheavy.service;
 import com.example.hobbyheavy.entity.Refresh;
 import com.example.hobbyheavy.jwt.JWTUtil;
 import com.example.hobbyheavy.repository.RefreshRepository;
+import com.example.hobbyheavy.util.CookieUtil;
 import io.jsonwebtoken.ExpiredJwtException;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
@@ -12,8 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Service
 @RequiredArgsConstructor
@@ -24,7 +23,7 @@ public class ReissueService {
     public ResponseEntity<?> reissue(HttpServletRequest request, HttpServletResponse response) {
 
         // Refresh token 획득
-        String refresh = getRefreshTokenFromCookies(request);
+        String refresh = CookieUtil.getRefreshTokenFromCookies(request, "refresh");
 
         if (refresh == null) {
             return new ResponseEntity<>("Refresh token is missing", HttpStatus.BAD_REQUEST);
@@ -61,38 +60,18 @@ public class ReissueService {
 
         // 응답에 새로운 토큰 추가
         response.setHeader("access", newAccess);
-        response.addCookie(createCookie("refresh", newRefresh));
+        response.addCookie(CookieUtil.createCookie("refresh", newRefresh));
 
         return ResponseEntity.ok("Token reissued successfully");
     }
 
-    private String getRefreshTokenFromCookies(HttpServletRequest request) {
-        if (request.getCookies() == null) {
-            return null;
-        }
-
-        return Arrays.stream(request.getCookies())
-                .filter(cookie -> "refresh".equals(cookie.getName()))
-                .map(Cookie::getValue)
-                .findFirst()
-                .orElse(null);
-    }
-
-    private Cookie createCookie(String key, String value) {
-        Cookie cookie = new Cookie(key, value);
-        cookie.setMaxAge(24 * 60 * 60);
-        cookie.setHttpOnly(true);
-        cookie.setPath("/");
-        return cookie;
-    }
-
     private void addRefreshEntity(String userId, String refresh, Long expiredMs) {
-        Date expirationDate = new Date(System.currentTimeMillis() + expiredMs);
+        LocalDateTime expirationDate = LocalDateTime.now().plusSeconds(expiredMs / 1000); // 밀리초를 초 단위로 변환
 
         Refresh refreshEntity = Refresh.builder()
                 .userId(userId)
                 .refresh(refresh)
-                .expiration(expirationDate.toString())
+                .expiration(expirationDate)
                 .build();
 
         refreshRepository.save(refreshEntity);

@@ -1,6 +1,6 @@
 package com.example.hobbyheavy.jwt;
 
-import com.example.hobbyheavy.dto.response.TokenResponseDTO;
+import com.example.hobbyheavy.dto.response.TokenResponse;
 import com.example.hobbyheavy.entity.Refresh;
 import com.example.hobbyheavy.repository.RefreshRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -19,7 +19,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import java.io.IOException;
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -91,11 +91,11 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
         addRefreshEntity(userId, refresh, REFRESH_EXPIRED);
 
         // 응답 DTO 생성
-        TokenResponseDTO tokenResponseDTO = new TokenResponseDTO(access, refresh);
+        TokenResponse tokenResponse = new TokenResponse(access, refresh);
 
         // ObjectMapper를 이용해 JSON 형태로 변환 후 응답
         ObjectMapper objectMapper = new ObjectMapper();
-        String jsonResponse = objectMapper.writeValueAsString(tokenResponseDTO);
+        String jsonResponse = objectMapper.writeValueAsString(tokenResponse);
 
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
@@ -115,11 +115,11 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
     }
 
     private void addRefreshEntity(String userId, String refresh, Long expiredMs){
-        Date date = new Date(System.currentTimeMillis() + expiredMs);
+        LocalDateTime expirationDate = LocalDateTime.now().plusSeconds(expiredMs / 1000); // 밀리초를 초 단위로 변환
         Refresh refreshEntity = Refresh.builder()
                 .userId(userId)
                 .refresh(refresh)
-                .expiration(expiredMs.toString())
+                .expiration(expirationDate)
                 .build();
         refreshRepository.save(refreshEntity);
     }
@@ -139,8 +139,13 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
 
     // 로그인이 refresh 토큰이 존재해서(로그인 된 상태에서 재 로그인) 실패할 경우 refresh 토큰을 삭제하는 메서드
     private void handleRefreshToken(HttpServletRequest request, HttpServletResponse response) {
-        // 쿠키 또는 헤더에서 refreshToken을 가져오기
+        // 쿠키에서 refreshToken을 가져오기
         String refreshToken = jwtUtil.getJwtFromCookie(request, "refresh");
+
+        // 쿠키에서 가져오지 못한 경우 헤더에서 refreshToken 가져오기
+        if (refreshToken == null) {
+            refreshToken = request.getHeader("access");
+        }
 
         if (refreshToken != null) {
             try {

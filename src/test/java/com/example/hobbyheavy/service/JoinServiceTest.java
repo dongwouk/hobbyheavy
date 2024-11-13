@@ -1,6 +1,6 @@
 package com.example.hobbyheavy.service;
 
-import com.example.hobbyheavy.dto.response.JoinDTO;
+import com.example.hobbyheavy.dto.request.JoinRequest;
 import com.example.hobbyheavy.entity.User;
 import com.example.hobbyheavy.repository.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -33,7 +33,7 @@ public class JoinServiceTest {
     void joinProcess_ShouldThrowException_WhenUsernameAlreadyExists() {
         // Given
         String username = "testUser";
-        JoinDTO joinDTO = JoinDTO.builder()
+        JoinRequest joinRequest = JoinRequest.builder()
                 .userId(username)
                 .password("password")
                 .email("test@example.com")
@@ -43,7 +43,7 @@ public class JoinServiceTest {
         when(userRepository.existsByUserId(username)).thenReturn(true);
 
         // When & Then
-        assertThrows(IllegalArgumentException.class, () -> joinService.joinProcess(joinDTO));
+        assertThrows(IllegalArgumentException.class, () -> joinService.joinProcess(joinRequest));
         verify(userRepository, times(1)).existsByUserId(username);
     }
 
@@ -53,7 +53,7 @@ public class JoinServiceTest {
         String username = "newUser";
         String password = "password";
         String email = "new@example.com";
-        JoinDTO joinDTO = JoinDTO.builder()
+        JoinRequest joinRequest = JoinRequest.builder()
                 .userId(username)
                 .password(password)
                 .email(email)
@@ -64,7 +64,7 @@ public class JoinServiceTest {
         when(bCryptPasswordEncoder.encode(password)).thenReturn("encodedPassword");
 
         // When
-        joinService.joinProcess(joinDTO);
+        joinService.joinProcess(joinRequest);
 
         // Then
         verify(userRepository, times(1)).existsByUserId(username);
