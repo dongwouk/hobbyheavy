@@ -11,8 +11,6 @@ import java.util.Optional;
 @Repository
 public interface MeetupRepository extends JpaRepository<Meetup, Long> {
 
-    Boolean existsByMeetupName(String name);
-
     Optional<Meetup> findFirstByMeetupId(Long id);
 
     @Query("SELECT m.hostUser.userId FROM Meetup m WHERE m.meetupId = :meetupId")
