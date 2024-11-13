@@ -37,7 +37,7 @@ public class JoinService {
     }
 
     // 회원 가입 메서드
-    public void joinProcess(@Valid JoinRequest joinRequest) {
+    public void joinProcess(JoinRequest joinRequest) {
 
         // 유효성 체크
         checkJoin(joinRequest);

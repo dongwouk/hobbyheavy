@@ -1,18 +1,19 @@
 package com.example.hobbyheavy.controller;
 
 import com.example.hobbyheavy.dto.request.CustomUserDetails;
+import com.example.hobbyheavy.dto.request.DeleteUserRequest;
 import com.example.hobbyheavy.dto.request.PasswordUpdateRequest;
 import com.example.hobbyheavy.dto.response.UserInfoResponse;
+import com.example.hobbyheavy.exception.CustomException;
+import com.example.hobbyheavy.exception.ExceptionCode;
 import com.example.hobbyheavy.service.UserService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Map;
 
 @RestController
 @RequestMapping("/user")
@@ -35,7 +36,7 @@ public class UserController {
 
     /** 비밀번호 변경 **/
     @PutMapping("/password")
-    public ResponseEntity<String> updatePassword(@RequestBody PasswordUpdateRequest request, Authentication authentication) {
+    public ResponseEntity<String> updatePassword(@Valid @RequestBody PasswordUpdateRequest request, Authentication authentication) {
 
         // 현재 인증된 사용자 ID를 가져옴
         String userId = authentication.getName();
@@ -49,19 +50,15 @@ public class UserController {
     /* 비밀번호 찾기 **/
 
     /** 회원 탈퇴 **/
-    @DeleteMapping("/delete")
-    public ResponseEntity<String> deleteUser(@RequestBody Map<String, String> request, @AuthenticationPrincipal CustomUserDetails userDetails) {
-        String password = request.get("password");
-
-        if (password == null || password.isEmpty()) {
-            return ResponseEntity.badRequest().body("Password is required.");
-        }
+    @DeleteMapping
+    public ResponseEntity<String> deleteUser(@Valid @RequestBody DeleteUserRequest request, @AuthenticationPrincipal CustomUserDetails userDetails) {
+        String password = request.getPassword();
 
         try {
             userService.deleteUser(userDetails.getUsername(), password); // 사용자 삭제
-            return ResponseEntity.ok("User deleted successfully.");
+            return ResponseEntity.ok("회원 탈퇴 성공.");
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to delete user.");
+            throw new CustomException(ExceptionCode.USER_DELETE_FAILED);
         }
     }
 }

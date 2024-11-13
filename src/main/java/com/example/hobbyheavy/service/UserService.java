@@ -6,6 +6,7 @@ import com.example.hobbyheavy.exception.CustomException;
 import com.example.hobbyheavy.exception.ExceptionCode;
 import com.example.hobbyheavy.repository.UserRepository;
 import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -19,7 +20,7 @@ public class UserService {
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    // 나의 회원정보 조회 메서드
+    /** 나의 회원정보 조회 메서드 **/
     public UserInfoResponse getMyUserInfo(String userId) {
 
         // 사용자 조회
@@ -34,7 +35,7 @@ public class UserService {
 
     }
 
-    // 비밀번호 변경 메서드
+    /** 비밀번호 변경 메서드 **/
     @Transactional
     public void updatePassword(String userId, String oldPassword, String newPassword) {
 
@@ -50,9 +51,9 @@ public class UserService {
             throw new CustomException(ExceptionCode.PASSWORD_MISMATCH);
         }
 
-        // Password 최소 8자 체크
-        if (newPassword.length() < 8) {
-            throw new CustomException(ExceptionCode.PASSWORD_TOO_SHORT);
+        // 기존 비밀번호와 새 비밀번호가 같을 경우 예외 처리
+        if (bCryptPasswordEncoder.matches(newPassword, user.getPassword())) {
+            throw new CustomException(ExceptionCode.PASSWORD_SAME_AS_OLD);
         }
 
         // 새 비밀번호로 변경
@@ -60,7 +61,7 @@ public class UserService {
         userRepository.save(user);
     }
 
-    // 회원 탈퇴 메서드
+    /** 회원 탈퇴 메서드 **/
     @Transactional
     public void deleteUser(String userId, String password) throws Exception {
         // 사용자 조회
