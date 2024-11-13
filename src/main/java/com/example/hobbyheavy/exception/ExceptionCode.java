@@ -19,9 +19,10 @@ public enum ExceptionCode {
     FORBIDDEN_ACTION(HttpStatus.FORBIDDEN, "요청하신 작업을 수행할 권한이 없습니다."),
     USER_NOT_FOUND(HttpStatus.NOT_FOUND, "사용자를 찾을수 없습니다."),
     PASSWORD_MISMATCH(HttpStatus.BAD_REQUEST, "비밀번호가 일치하지 않습니다."),
-    PASSWORD_TOO_SHORT(HttpStatus.BAD_REQUEST, "비밀번호는 최소 8자 이상이어야 합니다."),
+    PASSWORD_SAME_AS_OLD(HttpStatus.BAD_REQUEST, "새 비밀번호는 기존 비밀번호와 같을 수 없습니다."),
     USER_ID_ALREADY_IN_USE(HttpStatus.CONFLICT, "이미 사용중인 아이디 입니다."),
     EMAIL_ALREADY_IN_USE(HttpStatus.CONFLICT, "이미 사용중인 이메일 입니다."),
+    USER_DELETE_FAILED(HttpStatus.INTERNAL_SERVER_ERROR, "회원 탈퇴에 실패 하였습니다."),
 
     /** Token **/
     INVALID_TOKEN(HttpStatus.BAD_REQUEST, "잘못된 토큰입니다."),
