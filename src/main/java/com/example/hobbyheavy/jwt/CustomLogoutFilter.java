@@ -51,7 +51,7 @@ public class CustomLogoutFilter extends GenericFilterBean {
 
         // refresh token null check
         if (refresh == null) {
-            log.warn("refresh token이 없어서 로그아웃을 처리할 수 없습니다.");
+            log.warn("refresh token이 없어서 로그아웃을 처리할 수 없습니다.(이미 로그아웃이 된 상태)");
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             return;
         }
