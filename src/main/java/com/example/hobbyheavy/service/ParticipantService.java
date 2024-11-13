@@ -33,6 +33,11 @@ public class ParticipantService {
     private final MeetupRepository meetupRepository;
     private final UserRepository userRepository;
 
+    private User getUser (String userId) {
+        return userRepository.findByUserId(userId)
+                .orElseThrow(() -> new CustomException(ExceptionCode.USER_NOT_FOUND));
+    }
+
     public void createParticipant(Meetup meetup, User user, ParticipantStatus status, ParticipantRole role) {
 
         Participant participant = Participant.builder().meetup(meetup).user(user).status(status).meetupRole(role.name()).meetupAlarm(true).hasVoted(false).build();
@@ -69,7 +74,7 @@ public class ParticipantService {
             participant.updateStatus(ParticipantStatus.WAITING);
             participantRepository.save(participant);
         }, () -> {
-            User user = userRepository.findByUserId(userId);
+            User user = getUser(userId);
             Meetup meetup = meetupRepository.findById(meetupId).orElseThrow(() -> new CustomException(ExceptionCode.MEETUP_NOT_FOUND));
             createParticipant(meetup, user, ParticipantStatus.WAITING, ParticipantRole.MEMBER);
         });
