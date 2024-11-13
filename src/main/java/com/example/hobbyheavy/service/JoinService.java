@@ -2,6 +2,8 @@ package com.example.hobbyheavy.service;
 
 import com.example.hobbyheavy.dto.request.JoinRequest;
 import com.example.hobbyheavy.entity.User;
+import com.example.hobbyheavy.exception.CustomException;
+import com.example.hobbyheavy.exception.ExceptionCode;
 import com.example.hobbyheavy.repository.UserRepository;
 import com.example.hobbyheavy.type.Role;
 import jakarta.validation.Valid;
@@ -24,12 +26,12 @@ public class JoinService {
 
         // UserId 중복 체크
         if(userRepository.existsByUserId(joinRequest.getUserId())) {
-            throw new IllegalArgumentException("중복된 아이디입니다.");
+            throw new CustomException(ExceptionCode.USER_ID_ALREADY_IN_USE);
         }
 
         // email 중복 체크
         if (userRepository.existsByEmail(joinRequest.getEmail())) {
-            throw new IllegalArgumentException("중복된 이메일입니다.");
+            throw new CustomException(ExceptionCode.EMAIL_ALREADY_IN_USE);
         }
 
     }

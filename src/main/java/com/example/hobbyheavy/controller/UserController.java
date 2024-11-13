@@ -3,7 +3,6 @@ package com.example.hobbyheavy.controller;
 import com.example.hobbyheavy.dto.request.CustomUserDetails;
 import com.example.hobbyheavy.dto.request.PasswordUpdateRequest;
 import com.example.hobbyheavy.dto.response.UserInfoResponse;
-import com.example.hobbyheavy.repository.UserRepository;
 import com.example.hobbyheavy.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -20,10 +19,9 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class UserController {
 
-    private final UserRepository userRepository;
     private final UserService userService;
 
-    // 나의 회원정보 조회
+    /** 나의 회원정보 조회 **/
     @GetMapping("/my-info")
     public ResponseEntity<UserInfoResponse> getMyInfo(@AuthenticationPrincipal UserDetails userDetails) {
 
@@ -35,7 +33,7 @@ public class UserController {
         return ResponseEntity.ok(userInfo);
     }
 
-    // 비밀번호 변경
+    /** 비밀번호 변경 **/
     @PutMapping("/password")
     public ResponseEntity<String> updatePassword(@RequestBody PasswordUpdateRequest request, Authentication authentication) {
 
@@ -48,9 +46,9 @@ public class UserController {
         return ResponseEntity.ok("패스워드 변경 성공.");
     }
 
-    // 비밀번호 찾기
+    /* 비밀번호 찾기 **/
 
-    // 회원 탈퇴
+    /** 회원 탈퇴 **/
     @DeleteMapping("/delete")
     public ResponseEntity<String> deleteUser(@RequestBody Map<String, String> request, @AuthenticationPrincipal CustomUserDetails userDetails) {
         String password = request.get("password");
