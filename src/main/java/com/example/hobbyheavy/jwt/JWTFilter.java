@@ -1,6 +1,6 @@
 package com.example.hobbyheavy.jwt;
 
-import com.example.hobbyheavy.dto.request.CustomUserDetails;
+import com.example.hobbyheavy.auth.CustomUserDetails;
 import com.example.hobbyheavy.entity.User;
 import com.example.hobbyheavy.exception.CustomException;
 import com.example.hobbyheavy.type.Role;

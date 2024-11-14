@@ -1,6 +1,6 @@
 package com.example.hobbyheavy.controller;
 
-import com.example.hobbyheavy.dto.request.CustomUserDetails;
+import com.example.hobbyheavy.auth.CustomUserDetails;
 import com.example.hobbyheavy.dto.request.DeleteUserRequest;
 import com.example.hobbyheavy.dto.request.PasswordUpdateRequest;
 import com.example.hobbyheavy.dto.response.UserInfoResponse;
