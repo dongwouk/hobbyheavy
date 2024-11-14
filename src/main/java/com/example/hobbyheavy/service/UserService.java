@@ -1,15 +1,19 @@
 package com.example.hobbyheavy.service;
 
+import com.example.hobbyheavy.dto.request.JoinRequest;
 import com.example.hobbyheavy.dto.response.UserInfoResponse;
 import com.example.hobbyheavy.entity.User;
 import com.example.hobbyheavy.exception.CustomException;
 import com.example.hobbyheavy.exception.ExceptionCode;
 import com.example.hobbyheavy.repository.UserRepository;
+import com.example.hobbyheavy.type.Role;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.Collections;
 
 @Slf4j
 @Service
@@ -19,6 +23,21 @@ public class UserService {
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
+    /** 회원가입 유효성 체크 메서드 **/
+    void checkJoin(JoinRequest joinRequest) {
+
+        // UserId 중복 체크
+        if(userRepository.existsByUserId(joinRequest.getUserId())) {
+            throw new CustomException(ExceptionCode.USER_ID_ALREADY_IN_USE);
+        }
+
+        // email 중복 체크
+        if (userRepository.existsByEmail(joinRequest.getEmail())) {
+            throw new CustomException(ExceptionCode.EMAIL_ALREADY_IN_USE);
+        }
+
+    }
+
     /** 사용자 조회 공통 메서드 **/
     private User getUser(String userId) {
         return userRepository.findByUserId(userId)
@@ -26,6 +45,35 @@ public class UserService {
                     log.warn("사용자 조회 실패. 입력한 사용자 ID: {}", userId);
                     return new CustomException(ExceptionCode.USER_NOT_FOUND);
                 });
+    }
+
+    /** 비밀번호 확인 공통 메서드 **/
+    private void checkPassword(String userId, String password, String storedPassword) {
+        if (!bCryptPasswordEncoder.matches(password, storedPassword)) {
+            log.warn("비밀번호 불일치. 사용자 ID: {}", userId);
+            throw new CustomException(ExceptionCode.PASSWORD_MISMATCH);
+        }
+    }
+
+    /** ===비즈니스 로직=== **/
+
+    /** 회원 가입 메서드 **/
+    public void JoinUser(JoinRequest joinRequest) {
+
+        // 유효성 체크
+        checkJoin(joinRequest);
+
+        // 사용자 저장
+        userRepository.save(User.builder()
+                .userId(joinRequest.getUserId())
+                .username(joinRequest.getUsername())
+                .password(bCryptPasswordEncoder.encode(joinRequest.getPassword())) // 암호화된 비밀번호
+                .email(joinRequest.getEmail())
+                .gender(joinRequest.getGender())
+                .age(joinRequest.getAge())
+                .hobby(joinRequest.getHobby())
+                .role(Collections.singleton(Role.ROLE_USER)) // 역할이 존재할 때 설정
+                .build());
     }
 
     /** 나의 회원정보 조회 메서드 **/
@@ -48,10 +96,7 @@ public class UserService {
         User user = getUser(userId);
 
         // 기존 비밀번호 확인
-        if (!bCryptPasswordEncoder.matches(oldPassword, user.getPassword())) {
-            log.warn("기존 비밀번호 불일치. 사용자 ID: {}", userId);
-            throw new CustomException(ExceptionCode.PASSWORD_MISMATCH);
-        }
+        checkPassword(userId, oldPassword, user.getPassword());
 
         // 기존 비밀번호와 새 비밀번호가 같을 경우 예외 처리
         if (bCryptPasswordEncoder.matches(newPassword, user.getPassword())) {
@@ -72,10 +117,7 @@ public class UserService {
         User user = getUser(userId);
 
         // 비밀번호 확인
-        if (!bCryptPasswordEncoder.matches(password, user.getPassword())) {
-            log.warn("비밀번호 불일치. 사용자 ID: {}", userId);
-            throw new CustomException(ExceptionCode.PASSWORD_MISMATCH);
-        }
+        checkPassword(userId, password, user.getPassword());
 
         // 사용자 삭제
         userRepository.delete(user);
