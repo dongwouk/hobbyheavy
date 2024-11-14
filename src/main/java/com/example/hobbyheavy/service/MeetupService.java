@@ -32,6 +32,11 @@ public class MeetupService {
     private final CommentService commentService;
     private final ParticipantRepository participantRepository;
 
+    private User getUser (String userId) {
+        return userRepository.findByUserId(userId)
+                .orElseThrow(() -> new CustomException(ExceptionCode.USER_NOT_FOUND));
+    }
+
     public List<MeetupListResponse> meetupLists() {
         return meetupRepository.findAll().stream()
                 .map(MeetupListResponse::new).toList();
@@ -41,7 +46,7 @@ public class MeetupService {
      * 내 모임 조회
      **/
     public List<MeetupListResponse> myMeetupInfos(String userId) {
-        User user = userRepository.findByUserId(userId);
+        User user = getUser(userId);
         List<Participant> participants = participantRepository.findAllByUser_Id(user.getId());
         List<MeetupListResponse> myList = new ArrayList<>();
         for (Participant participant : participants) {
@@ -67,7 +72,7 @@ public class MeetupService {
      **/
     public void createMeetup(MeetupCreateRequest request, String userId) {
 
-        User user = userRepository.findByUserId(userId);
+        User user = getUser(userId);
 
         Meetup meetup = Meetup.builder()
                 .meetupName(request.getMeetupName())

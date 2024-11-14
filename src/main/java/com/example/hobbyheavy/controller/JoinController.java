@@ -1,6 +1,7 @@
 package com.example.hobbyheavy.controller;
 
 import com.example.hobbyheavy.dto.request.JoinRequest;
+import com.example.hobbyheavy.exception.CustomException;
 import com.example.hobbyheavy.service.JoinService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -25,7 +26,7 @@ public class JoinController {
             joinService.joinProcess(joinRequest);
             log.info("회원가입 처리 완료: {}", joinRequest.getUserId());
             return ResponseEntity.status(HttpStatus.CREATED).body("회원가입 성공");
-        } catch (IllegalArgumentException e) {
+        } catch (CustomException e) {
             log.error("회원가입 중 오류 발생: {}", e.getMessage());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         } catch (Exception e) {

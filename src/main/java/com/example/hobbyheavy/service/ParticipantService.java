@@ -13,12 +13,7 @@ import com.example.hobbyheavy.repository.ParticipantRepository;
 import com.example.hobbyheavy.repository.UserRepository;
 import com.example.hobbyheavy.type.ParticipantRole;
 import com.example.hobbyheavy.type.ParticipantStatus;
-import jakarta.persistence.EntityNotFoundException;
-import jakarta.servlet.http.Part;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.security.access.AccessDeniedException;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -32,6 +27,11 @@ public class ParticipantService {
     private final ParticipantRepository participantRepository;
     private final MeetupRepository meetupRepository;
     private final UserRepository userRepository;
+
+    private User getUser (String userId) {
+        return userRepository.findByUserId(userId)
+                .orElseThrow(() -> new CustomException(ExceptionCode.USER_NOT_FOUND));
+    }
 
     public void createParticipant(Meetup meetup, User user, ParticipantStatus status, ParticipantRole role) {
 
@@ -69,7 +69,7 @@ public class ParticipantService {
             participant.updateStatus(ParticipantStatus.WAITING);
             participantRepository.save(participant);
         }, () -> {
-            User user = userRepository.findByUserId(userId);
+            User user = getUser(userId);
             Meetup meetup = meetupRepository.findById(meetupId).orElseThrow(() -> new CustomException(ExceptionCode.MEETUP_NOT_FOUND));
             createParticipant(meetup, user, ParticipantStatus.WAITING, ParticipantRole.MEMBER);
         });

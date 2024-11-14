@@ -2,6 +2,8 @@ package com.example.hobbyheavy.jwt;
 
 import com.example.hobbyheavy.dto.response.TokenResponse;
 import com.example.hobbyheavy.entity.Refresh;
+import com.example.hobbyheavy.exception.CustomException;
+import com.example.hobbyheavy.exception.ExceptionCode;
 import com.example.hobbyheavy.repository.RefreshRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.ExpiredJwtException;
@@ -151,12 +153,18 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
             try {
                 jwtUtil.isExpired(refreshToken); // 만료 확인
             } catch (ExpiredJwtException e) {
-                // 만료된 경우 DB와 쿠키에서 삭제
+                // 만료된 경우 DB와 쿠키에서 삭제 후 CustomException 던지기
                 refreshRepository.deleteByRefresh(refreshToken);
                 Cookie expiredCookie = new Cookie("refresh", null);
                 expiredCookie.setMaxAge(0);
                 expiredCookie.setPath("/"); // 쿠키 경로 설정
                 response.addCookie(expiredCookie);
+
+                // 만료된 토큰에 대한 예외 처리
+                throw new CustomException(ExceptionCode.EXPIRED_TOKEN);
+            } catch (Exception e) {
+                // 다른 예외가 발생한 경우 잘못된 토큰 처리
+                throw new CustomException(ExceptionCode.INVALID_TOKEN);
             }
         }
     }

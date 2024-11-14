@@ -1,7 +1,8 @@
 package com.example.hobbyheavy.jwt;
 
-import com.example.hobbyheavy.dto.request.CustomUserDetails;
+import com.example.hobbyheavy.auth.CustomUserDetails;
 import com.example.hobbyheavy.entity.User;
+import com.example.hobbyheavy.exception.CustomException;
 import com.example.hobbyheavy.type.Role;
 import io.jsonwebtoken.ExpiredJwtException;
 import jakarta.servlet.FilterChain;
@@ -42,7 +43,7 @@ public class JWTFilter extends OncePerRequestFilter {
 
         // 토큰이 없다면 다음 필터로 넘김
         if (accessToken == null) {
-            log.warn("JWTFilter - No access token found.");
+            log.warn("JWTFilter - No access token found. Request URI: {}", requestURI);
             filterChain.doFilter(request, response);
             return;
         }
@@ -51,18 +52,18 @@ public class JWTFilter extends OncePerRequestFilter {
         try {
             jwtUtil.isExpired(accessToken);
         } catch (ExpiredJwtException e) {
-            log.error("JWTFilter - Access token expired.");
+            log.error("JWTFilter - Access token expired for token: {}", accessToken);
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-            response.getWriter().print("invalid access token");
+            response.getWriter().print("Access token expired. Please log in again.");
             return;
         }
 
         // 토큰이 access인지 확인 (발급시 페이로드에 명시)
         String category = jwtUtil.getCategory(accessToken);
         if (!"access".equals(category)) {
-            log.error("JWTFilter - Invalid token category.");
+            log.error("JWTFilter - Invalid token category: {}, expected 'access'.", category);
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-            response.getWriter().print("invalid access token");
+            response.getWriter().print("invalid access token category.");
             return;
         }
 
@@ -75,7 +76,7 @@ public class JWTFilter extends OncePerRequestFilter {
         Role role;
         try {
             role = Role.valueOf(roleString);
-        } catch (IllegalArgumentException e) {
+        } catch (CustomException e) {
             log.error("JWTFilter - Invalid role: {}", roleString);
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
             response.getWriter().print("invalid role");
@@ -95,6 +96,8 @@ public class JWTFilter extends OncePerRequestFilter {
         // Spring Security의 Authentication 설정
         Authentication authToken = new UsernamePasswordAuthenticationToken(customUserDetails, null, customUserDetails.getAuthorities());
         SecurityContextHolder.getContext().setAuthentication(authToken);
+
+        log.info("JWTFilter - Token parsed successfully for UserId: {}, Role: {}", userId, roleString);
 
         // 다음 필터로 넘김
         filterChain.doFilter(request, response);

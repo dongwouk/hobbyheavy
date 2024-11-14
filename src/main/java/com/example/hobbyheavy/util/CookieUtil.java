@@ -9,7 +9,7 @@ import java.util.Arrays;
 @UtilityClass
 public class CookieUtil {
 
-    /* @UtilityClass 로 static 키워드 추가 할 필요 없음 */
+    /** UtilityClass 로 static 키워드 추가 할 필요 없음 **/
 
     public String getRefreshTokenFromCookies(HttpServletRequest request, String name) {
         if (request.getCookies() == null) {

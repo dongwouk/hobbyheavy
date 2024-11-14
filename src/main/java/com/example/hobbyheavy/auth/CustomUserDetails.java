@@ -1,4 +1,4 @@
-package com.example.hobbyheavy.dto.request;
+package com.example.hobbyheavy.auth;
 
 import com.example.hobbyheavy.entity.User;
 import com.example.hobbyheavy.type.Role;

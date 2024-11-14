@@ -9,13 +9,10 @@ import com.example.hobbyheavy.exception.ExceptionCode;
 import com.example.hobbyheavy.repository.CommentRepository;
 import com.example.hobbyheavy.repository.MeetupRepository;
 import com.example.hobbyheavy.repository.UserRepository;
-import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -29,9 +26,14 @@ public class CommentService {
         return commentRepository.findAllByMeetup_MeetupId(meetupId);
     }
 
+    private User getUser (String userId) {
+        return userRepository.findByUserId(userId)
+                .orElseThrow(() -> new CustomException(ExceptionCode.USER_NOT_FOUND));
+    }
+
     /** 댓글 생성 **/
     public void createComment (CommentCreateRequest request, String userId) {
-        User user = userRepository.findByUserId(userId);
+        User user = getUser(userId);
         Meetup meetup = meetupRepository.findFirstByMeetupId(request.getMeetupId())
                 .orElseThrow(() -> new CustomException(ExceptionCode.MEETUP_NOT_FOUND));
         commentRepository.save(Comment.builder()
