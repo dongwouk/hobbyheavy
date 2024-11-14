@@ -36,7 +36,7 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.CREATED).body("회원가입 성공");
         } catch (CustomException e) {
             log.error("회원가입 중 오류 발생: {}", e.getMessage());
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+            throw new CustomException(ExceptionCode.USER_REGISTER_FAILED);
         } catch (Exception e) {
             log.error("예상치 못한 오류 발생: ", e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("회원가입 중 오류가 발생했습니다.");

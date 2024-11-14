@@ -106,6 +106,7 @@ public class UserService {
 
         // 새 비밀번호로 변경
         user.updatePassword(bCryptPasswordEncoder.encode(newPassword));
+
         userRepository.save(user);
         log.info("사용자 ID: {}의 비밀번호가 성공적으로 변경되었습니다.", userId);
     }
