@@ -16,4 +16,7 @@ public interface ParticipantRepository extends JpaRepository<Participant, Long> 
 
     List<Participant> findAllByUser_Id(Long userId);
 
+    // 특정 모임에 대해 투표한 참가자 수를 계산하는 메서드
+    long countByMeetup_MeetupIdAndHasVotedTrue(Long meetupId);
+
 }
