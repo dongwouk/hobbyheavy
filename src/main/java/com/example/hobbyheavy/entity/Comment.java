@@ -29,4 +29,7 @@ public class Comment extends Base {
     @Column(columnDefinition = "TEXT")
     private String content; // 댓글 내용
 
+    public void updateComment(String content) {
+        this.content = content;
+    }
 }

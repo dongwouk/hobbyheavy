@@ -1,5 +1,6 @@
 package com.example.hobbyheavy.controller;
 
+import com.example.hobbyheavy.dto.request.CommentChangeRequest;
 import com.example.hobbyheavy.dto.request.CommentCreateRequest;
 import com.example.hobbyheavy.exception.CustomException;
 import com.example.hobbyheavy.exception.ExceptionCode;
@@ -8,10 +9,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/comment")
@@ -29,9 +27,23 @@ public class CommentController {
 
     @PostMapping
     public ResponseEntity<String> createComment
-            (@Valid @RequestBody CommentCreateRequest commentCreateRequest,
+            (@Valid @RequestBody CommentCreateRequest commentRequest,
              Authentication authentication){
-        commentService.createComment(commentCreateRequest, getUserId(authentication));
+        commentService.createComment(commentRequest, getUserId(authentication));
         return ResponseEntity.ok("Create Comment Successfully.");
+    }
+
+    @PutMapping
+    public ResponseEntity<String> updateComment
+            (@Valid @RequestBody CommentChangeRequest commentRequest, Authentication authentication) {
+        commentService.updateComment(commentRequest, getUserId(authentication));
+        return ResponseEntity.ok("Create Comment Successfully.");
+    }
+
+    @DeleteMapping
+    public ResponseEntity<String> deleteComment (
+            @Valid @RequestBody CommentChangeRequest commentRequest, Authentication authentication) {
+        commentService.deleteComment(commentRequest, getUserId(authentication));
+        return  ResponseEntity.ok("Delete Comment Successfully.");
     }
 }

@@ -37,7 +37,11 @@ public enum ExceptionCode {
 
     /** Participant **/
     PARTICIPANT_NOT_FOUND(HttpStatus.NOT_FOUND, "요청한 대기자가 없습니다."),
-    ALREADY_REQUEST(HttpStatus.CONFLICT, "이미 승인, 대기중인 참여자는 신청할 수 없습니다.")
+    ALREADY_REQUEST(HttpStatus.CONFLICT, "이미 승인, 대기중인 참여자는 신청할 수 없습니다."),
+
+    /** Comment **/
+    COMMENT_NOT_FOUND(HttpStatus.NOT_FOUND, "요청한 댓글을 찾을 수 없습니다."),
+    COMMENT_USER_MISMATCH(HttpStatus.CONFLICT, "요청한 댓글의 작성자가 다릅니다.")
     ;
 
     private final HttpStatus httpStatus;
