@@ -2,6 +2,7 @@ package com.example.hobbyheavy.service;
 
 import com.example.hobbyheavy.dto.request.MeetupCreateRequest;
 import com.example.hobbyheavy.dto.request.MeetupUpdateRequest;
+import com.example.hobbyheavy.dto.response.CommentResponse;
 import com.example.hobbyheavy.dto.response.MeetupInfoResponse;
 import com.example.hobbyheavy.dto.response.MeetupListResponse;
 import com.example.hobbyheavy.dto.response.ParticipantApprovedResponse;
@@ -32,11 +33,6 @@ public class MeetupService {
     private final CommentService commentService;
     private final ParticipantRepository participantRepository;
 
-    private User getUser (String userId) {
-        return userRepository.findByUserId(userId)
-                .orElseThrow(() -> new CustomException(ExceptionCode.USER_NOT_FOUND));
-    }
-
     public List<MeetupListResponse> meetupLists() {
         return meetupRepository.findAll().stream()
                 .map(MeetupListResponse::new).toList();
@@ -62,7 +58,7 @@ public class MeetupService {
      **/
     public MeetupInfoResponse infoMeetup(Long meetupId) {
         Meetup meetup = findMeetup(meetupId);
-        List<Comment> comments = commentService.meetupComments(meetupId);
+        List<CommentResponse> comments = commentService.meetupComments(meetupId);
         List<ParticipantApprovedResponse> participants = participantService.getMeetupParticipants(meetupId);
         return new MeetupInfoResponse(meetup, comments, participants);
     }
@@ -140,5 +136,10 @@ public class MeetupService {
     private Meetup findMeetup(Long meetupId) {
         return meetupRepository.findFirstByMeetupId(meetupId)
                 .orElseThrow(() -> new CustomException(ExceptionCode.MEETUP_NOT_FOUND));
+    }
+
+    private User getUser(String userId) {
+        return userRepository.findByUserId(userId)
+                .orElseThrow(() -> new CustomException(ExceptionCode.USER_NOT_FOUND));
     }
 }

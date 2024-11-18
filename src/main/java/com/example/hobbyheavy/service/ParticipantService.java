@@ -28,14 +28,16 @@ public class ParticipantService {
     private final MeetupRepository meetupRepository;
     private final UserRepository userRepository;
 
-    private User getUser (String userId) {
-        return userRepository.findByUserId(userId)
-                .orElseThrow(() -> new CustomException(ExceptionCode.USER_NOT_FOUND));
-    }
+    public void createParticipant(Meetup meetup, User user,
+                                  ParticipantStatus status, ParticipantRole role) {
 
-    public void createParticipant(Meetup meetup, User user, ParticipantStatus status, ParticipantRole role) {
-
-        Participant participant = Participant.builder().meetup(meetup).user(user).status(status).meetupRole(role.name()).meetupAlarm(true).hasVoted(false).build();
+        Participant participant = Participant.builder()
+                .meetup(meetup)
+                .user(user)
+                .status(status)
+                .meetupRole(role.name())
+                .meetupAlarm(true)
+                .hasVoted(false).build();
 
         participantRepository.save(participant);
     }
@@ -45,7 +47,13 @@ public class ParticipantService {
      **/
     public List<ParticipantApprovedResponse> getMeetupParticipants(Long meetupId) {
         List<Participant> participants = participantRepository.findAllByMeetup_MeetupId(meetupId);
-        return participants.stream().filter(participant -> ParticipantStatus.APPROVED.equals(participant.getStatus())).map(participant -> new ParticipantApprovedResponse(participant.getUser().getUserId(), participant.getStatus(), participant.getMeetupRole(), participant.getHasVoted())).toList();
+        return participants.stream()
+                .filter(participant -> ParticipantStatus.APPROVED.equals(participant.getStatus()))
+                .map(participant -> new ParticipantApprovedResponse(
+                        participant.getUser().getUserId(),
+                        participant.getStatus(),
+                        participant.getMeetupRole(),
+                        participant.getHasVoted())).toList();
     }
 
     /**
@@ -55,23 +63,28 @@ public class ParticipantService {
         checkHost(meetupId, userId);
         List<Participant> participants = participantRepository.findAllByMeetup_MeetupId(meetupId);
 
-        return participants.stream().filter(participant -> ParticipantStatus.WAITING.equals(participant.getStatus())).map(participant -> new ParticipantWaitResponse(participant.getUser())).toList();
+        return participants.stream()
+                .filter(participant -> ParticipantStatus.WAITING.equals(participant.getStatus()))
+                .map(participant -> new ParticipantWaitResponse(participant.getUser())).toList();
     }
 
     /**
      * 모임 신청
      **/
     public void joinParticipant(Long meetupId, String userId) {
-        participantRepository.findByMeetup_MeetupIdAndUser_UserId(meetupId, userId).ifPresentOrElse(participant -> {
-            if (participant.getStatus() == ParticipantStatus.APPROVED || participant.getStatus() == ParticipantStatus.WAITING) {
-                throw new CustomException(ExceptionCode.ALREADY_REQUEST);
-            }
-            participant.updateStatus(ParticipantStatus.WAITING);
-            participantRepository.save(participant);
-        }, () -> {
-            User user = getUser(userId);
-            Meetup meetup = meetupRepository.findById(meetupId).orElseThrow(() -> new CustomException(ExceptionCode.MEETUP_NOT_FOUND));
-            createParticipant(meetup, user, ParticipantStatus.WAITING, ParticipantRole.MEMBER);
+        participantRepository.findByMeetup_MeetupIdAndUser_UserId(meetupId, userId)
+                .ifPresentOrElse(participant -> {
+                    if (participant.getStatus() == ParticipantStatus.APPROVED ||
+                            participant.getStatus() == ParticipantStatus.WAITING) {
+                        throw new CustomException(ExceptionCode.ALREADY_REQUEST);
+                    }
+                    participant.updateStatus(ParticipantStatus.WAITING);
+                    participantRepository.save(participant);
+                }, () -> {
+                    User user = getUser(userId);
+                    Meetup meetup = meetupRepository.findById(meetupId)
+                            .orElseThrow(() -> new CustomException(ExceptionCode.MEETUP_NOT_FOUND));
+                    createParticipant(meetup, user, ParticipantStatus.WAITING, ParticipantRole.MEMBER);
         });
     }
 
@@ -96,4 +109,8 @@ public class ParticipantService {
         }
     }
 
+    private User getUser(String userId) {
+        return userRepository.findByUserId(userId)
+                .orElseThrow(() -> new CustomException(ExceptionCode.USER_NOT_FOUND));
+    }
 }
