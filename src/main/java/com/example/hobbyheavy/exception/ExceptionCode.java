@@ -42,7 +42,7 @@ public enum ExceptionCode {
 
     /** Comment **/
     COMMENT_NOT_FOUND(HttpStatus.NOT_FOUND, "요청한 댓글을 찾을 수 없습니다."),
-    COMMENT_USER_MISMATCH(HttpStatus.CONFLICT, "요청한 댓글의 작성자가 다릅니다.")
+    COMMENT_USER_MISMATCH(HttpStatus.CONFLICT, "요청한 댓글의 작성자가 다릅니다."),
 
     /** Schedule **/
     SCHEDULE_NOT_FOUND(HttpStatus.NOT_FOUND, "요청한 스케줄을 찾을 수 없습니다."),
