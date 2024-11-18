@@ -36,12 +36,27 @@ public enum ExceptionCode {
     MEETUP_NOT_FOUND(HttpStatus.NOT_FOUND, "요청한 모임을 찾을 수 없습니다."),
 
     /** Participant **/
+    NO_PARTICIPANTS(HttpStatus.NOT_FOUND, "참여자가 없습니다."),
     PARTICIPANT_NOT_FOUND(HttpStatus.NOT_FOUND, "요청한 대기자가 없습니다."),
     ALREADY_REQUEST(HttpStatus.CONFLICT, "이미 승인, 대기중인 참여자는 신청할 수 없습니다."),
 
     /** Comment **/
     COMMENT_NOT_FOUND(HttpStatus.NOT_FOUND, "요청한 댓글을 찾을 수 없습니다."),
     COMMENT_USER_MISMATCH(HttpStatus.CONFLICT, "요청한 댓글의 작성자가 다릅니다.")
+
+    /** Schedule **/
+    SCHEDULE_NOT_FOUND(HttpStatus.NOT_FOUND, "요청한 스케줄을 찾을 수 없습니다."),
+    INVALID_SCHEDULE_DATE(HttpStatus.BAD_REQUEST, "스케줄 날짜가 유효하지 않습니다."),
+    DUPLICATE_SCHEDULE(HttpStatus.CONFLICT, "중복된 스케줄이 이미 존재합니다."),
+    SCHEDULE_UPDATE_FAILED(HttpStatus.INTERNAL_SERVER_ERROR, "스케줄 수정에 실패하였습니다."),
+    SCHEDULE_DELETE_FAILED(HttpStatus.INTERNAL_SERVER_ERROR, "스케줄 삭제에 실패하였습니다."),
+    SCHEDULE_CREATION_FAILED(HttpStatus.INTERNAL_SERVER_ERROR, "스케줄 생성에 실패하였습니다."),
+    SCHEDULE_VOTING_NOT_ALLOWED(HttpStatus.FORBIDDEN, "해당 스케줄에 투표할 수 없습니다."),
+    SCHEDULE_CANCELLATION_NOT_ALLOWED(HttpStatus.FORBIDDEN, "해당 스케줄은 취소할 수 없습니다."),
+    SCHEDULE_ALREADY_CONFIRMED(HttpStatus.CONFLICT, "이미 확정된 스케줄입니다."),
+
+    /** Notification **/
+    EMAIL_SEND_FAILED(HttpStatus.INTERNAL_SERVER_ERROR, "이메일 전송에 실패하였습니다.")
     ;
 
     private final HttpStatus httpStatus;
