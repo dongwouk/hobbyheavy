@@ -42,6 +42,9 @@ dependencies {
     // Security
     implementation 'org.springframework.boot:spring-boot-starter-security:3.3.4'
 
+    // Email Support
+    implementation 'org.springframework.boot:spring-boot-starter-mail'
+
     // Oauth2
 //    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
 
