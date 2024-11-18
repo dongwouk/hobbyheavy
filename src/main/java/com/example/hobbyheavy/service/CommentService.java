@@ -1,6 +1,8 @@
 package com.example.hobbyheavy.service;
 
+import com.example.hobbyheavy.dto.request.CommentChangeRequest;
 import com.example.hobbyheavy.dto.request.CommentCreateRequest;
+import com.example.hobbyheavy.dto.response.CommentResponse;
 import com.example.hobbyheavy.entity.Comment;
 import com.example.hobbyheavy.entity.Meetup;
 import com.example.hobbyheavy.entity.User;
@@ -11,6 +13,7 @@ import com.example.hobbyheavy.repository.MeetupRepository;
 import com.example.hobbyheavy.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -22,13 +25,9 @@ public class CommentService {
     private final UserRepository userRepository;
     private final MeetupRepository meetupRepository;
 
-    public List<Comment> meetupComments (Long meetupId) {
-        return commentRepository.findAllByMeetup_MeetupId(meetupId);
-    }
-
-    private User getUser (String userId) {
-        return userRepository.findByUserId(userId)
-                .orElseThrow(() -> new CustomException(ExceptionCode.USER_NOT_FOUND));
+    public List<CommentResponse> meetupComments (Long meetupId) {
+        return commentRepository.findAllByMeetup_MeetupId(meetupId)
+                .stream().map(CommentResponse::new).toList();
     }
 
     /** 댓글 생성 **/
@@ -38,5 +37,37 @@ public class CommentService {
                 .orElseThrow(() -> new CustomException(ExceptionCode.MEETUP_NOT_FOUND));
         commentRepository.save(Comment.builder()
                 .user(user).meetup(meetup).content(request.getContent()).build());
+    }
+
+    /**
+     * 댓글 수정
+     */
+    @Transactional
+    public void updateComment (CommentChangeRequest request, String userId) {
+        Comment comment = getComment(request, getUser(userId));
+        comment.updateComment(request.getContent());
+    }
+
+    /**
+     * 댓글 삭제
+     */
+    public void deleteComment (CommentChangeRequest request, String userId) {
+        commentRepository.delete(getComment(request, getUser(userId)));
+    }
+
+    private User getUser(String userId) {
+        return userRepository.findByUserId(userId)
+                .orElseThrow(() -> new CustomException(ExceptionCode.USER_NOT_FOUND));
+    }
+
+
+    private Comment getComment(CommentChangeRequest request, User user) {
+        Comment comment = commentRepository.findById(request.getCommentId())
+                .orElseThrow(() -> new CustomException(ExceptionCode.COMMENT_NOT_FOUND));
+
+        if (comment.getUser().getId().equals(user.getId())) {
+            throw new CustomException(ExceptionCode.COMMENT_USER_MISMATCH);
+        }
+        return comment;
     }
 }
