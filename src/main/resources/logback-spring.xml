@@ -4,10 +4,9 @@
     <property name="CONSOLE_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %magenta([%thread]) %highlight([%-3level]) %logger{5} - %msg %n" />
     <property name="ROLLING_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS}  %logger{5} - %msg %n" />
     <property name="FILE_NAME" value="C:\\logs\\application.log" />
-    <property name="LOG_NAME_PATTERN" value="./logs/application-%d{yyyy-MM-dd-HH-mm}.%i.log" />
-    <property name="MAX_FILE_SIZE" value="10MB" />
-    <property name="TOTAL_SIZE" value="30MB" />
-    <property name="MAX_HISTORY" value="2" />
+    <property name="LOG_NAME_PATTERN" value="./logs/application-%d{yyyy-MM-dd}.log" />
+    <property name="TOTAL_SIZE" value="50MB" />
+    <property name="MAX_HISTORY" value="3" />
 
     <!-- Console appender config -->
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
@@ -21,11 +20,10 @@
         <encoder>
             <pattern>${ROLLING_PATTERN}</pattern>
         </encoder>
-        <file>${FILE_NAME}</file>
-        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+        <!--<file>${FILE_NAME}</file> -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <fileNamePattern>${LOG_NAME_PATTERN}</fileNamePattern>
             <maxHistory>${MAX_HISTORY}</maxHistory>
-            <maxFileSize>${MAX_FILE_SIZE}</maxFileSize>
             <totalSizeCap>${TOTAL_SIZE}</totalSizeCap>
         </rollingPolicy>
     </appender>
