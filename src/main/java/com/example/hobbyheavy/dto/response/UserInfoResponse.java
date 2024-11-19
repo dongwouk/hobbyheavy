@@ -1,6 +1,5 @@
 package com.example.hobbyheavy.dto.response;
 
-import com.example.hobbyheavy.entity.Hobby;
 import com.example.hobbyheavy.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -8,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -21,7 +22,7 @@ public class UserInfoResponse {
     private String email;
     private Boolean gender;
     private Integer age;
-    private Hobby hobby; // 취미 ID
+    private Set<HobbyResponse> hobbies; // 취미 ID
     private Boolean alarm; // 알림구독 여부
     private LocalDateTime createdAt;
 
@@ -33,7 +34,9 @@ public class UserInfoResponse {
                 .email(user.getEmail())
                 .gender(user.getGender())
                 .age(user.getAge())
-                .hobby(user.getHobby())
+                .hobbies(user.getHobbies().stream()
+                        .map(HobbyResponse::fromEntity)
+                        .collect(Collectors.toSet()))
                 .alarm(user.getAlarm())
                 .createdAt(user.getCreatedDate())
                 .build();

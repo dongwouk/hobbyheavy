@@ -22,7 +22,7 @@ public class JoinServiceTest {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @InjectMocks
-    private JoinService joinService;
+    private UserService userService;
 
     @BeforeEach
     void setUp() {
@@ -43,7 +43,7 @@ public class JoinServiceTest {
         when(userRepository.existsByUserId(username)).thenReturn(true);
 
         // When & Then
-        assertThrows(IllegalArgumentException.class, () -> joinService.joinProcess(joinRequest));
+        assertThrows(IllegalArgumentException.class, () -> userService.JoinUser(joinRequest));
         verify(userRepository, times(1)).existsByUserId(username);
     }
 
@@ -64,7 +64,7 @@ public class JoinServiceTest {
         when(bCryptPasswordEncoder.encode(password)).thenReturn("encodedPassword");
 
         // When
-        joinService.joinProcess(joinRequest);
+        userService.JoinUser(joinRequest);
 
         // Then
         verify(userRepository, times(1)).existsByUserId(username);

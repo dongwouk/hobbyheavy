@@ -1,6 +1,5 @@
 package com.example.hobbyheavy.dto.request;
 
-import com.example.hobbyheavy.entity.Hobby;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -9,6 +8,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.util.Set;
 
 @Getter
 @Builder
@@ -38,6 +39,6 @@ public class JoinRequest {
     @NotNull(message = "나이를 입력해주세요.")
     private Integer age;
 
-    private Hobby hobby;
+    private Set<Long> hobbyIds; // 여러 취미 ID를 받을 수 있도록 변경
 
 }
