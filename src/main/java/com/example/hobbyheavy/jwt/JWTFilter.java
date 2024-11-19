@@ -54,7 +54,7 @@ public class JWTFilter extends OncePerRequestFilter {
         } catch (ExpiredJwtException e) {
             log.error("JWTFilter - Access token expired for token: {}", accessToken);
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-            response.getWriter().print("Access token expired. Please log in again.");
+            response.getWriter().print("Access token expired. Please login again.");
             return;
         }
 

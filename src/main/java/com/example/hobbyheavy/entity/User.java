@@ -4,10 +4,12 @@ import com.example.hobbyheavy.type.Role;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -36,9 +38,13 @@ public class User extends Base {
     @Column(nullable = false)
     private Integer age; // 나이
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "hobby_id")
-    private Hobby hobby; // 취미 ID
+    @ManyToMany
+    @JoinTable(
+            name = "user_hobby",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "hobby_id")
+    )
+    private Set<Hobby> hobbies = new HashSet<>(); // 취미 ID
 
     @Column
     private Boolean alarm = true; // 알림구독 여부
