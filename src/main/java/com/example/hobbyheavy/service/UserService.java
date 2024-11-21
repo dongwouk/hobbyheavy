@@ -109,7 +109,7 @@ public class UserService {
 
     /** 나의 회원정보 변경 메서드 **/
     @Transactional
-    public void updateUserInfo(String userId, String username, Set<Long> hobbyIds) {
+    public void updateUserInfo(String userId, String username, Boolean gender, Integer age, Set<Long> hobbyIds) {
 
         // 사용자 조회
         User user = getUser(userId);
@@ -129,6 +129,8 @@ public class UserService {
 
         // 새로운 취미 목록으로 덮어쓰기
         user.setUsername(username);  // 이름 업데이트
+        user.setGender(gender);
+        user.setAge(age);
         user.setHobbies(updatedHobbies);  // 취미 업데이트
 
         userRepository.save(user);

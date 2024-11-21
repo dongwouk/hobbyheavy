@@ -1,10 +1,7 @@
 package com.example.hobbyheavy.controller;
 
 import com.example.hobbyheavy.auth.CustomUserDetails;
-import com.example.hobbyheavy.dto.request.DeleteUserRequest;
-import com.example.hobbyheavy.dto.request.PasswordUpdateRequest;
-import com.example.hobbyheavy.dto.request.JoinRequest;
-import com.example.hobbyheavy.dto.request.UpdateUserRequest;
+import com.example.hobbyheavy.dto.request.*;
 import com.example.hobbyheavy.dto.response.UserInfoResponse;
 import com.example.hobbyheavy.exception.CustomException;
 import com.example.hobbyheavy.exception.ExceptionCode;
@@ -79,7 +76,7 @@ public class UserController {
             }
 
             // 유저 정보 업데이트
-            userService.updateUserInfo(userId, request.getUsername(), request.getHobbyIds());
+            userService.updateUserInfo(userId, request.getUsername(), request.getGender(), request.getAge(), request.getHobbyIds());
             log.info("회원정보 변경 성공. userId: {}", userId);
 
             // 성공 응답 반환

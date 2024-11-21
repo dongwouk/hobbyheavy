@@ -17,6 +17,12 @@ public class UpdateUserRequest {
     @Size(min = 3, max = 50, message = "이름은 최소 3자리 이상이어야 합니다.")
     private String username;
 
+    @NotNull(message = "성별을 입력해주세요.")
+    private Boolean gender; // 성별
+
+    @NotNull(message = "나이를 입력해주세요.")
+    private Integer age; // 나이
+
     private Set<Long> hobbyIds; // 여러 취미 ID
 
 }
