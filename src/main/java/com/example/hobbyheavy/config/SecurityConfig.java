@@ -86,6 +86,11 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests((auth) -> auth
                         .requestMatchers("/login", "/", "/join").permitAll()
+                        .requestMatchers("/swagger-ui/**",
+                                "/v3/api-docs/**",
+                                "/swagger-resources/**",
+                                "/webjars/**"
+                        ).permitAll()
                         .requestMatchers("/user/my-info").authenticated()
                         .requestMatchers("/user/password").authenticated()
                         .requestMatchers("/board/**").authenticated()
