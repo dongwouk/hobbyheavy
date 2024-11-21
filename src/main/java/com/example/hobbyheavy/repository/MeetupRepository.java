@@ -1,6 +1,8 @@
 package com.example.hobbyheavy.repository;
 
 import com.example.hobbyheavy.entity.Meetup;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -15,4 +17,12 @@ public interface MeetupRepository extends JpaRepository<Meetup, Long> {
 
     @Query("SELECT m.hostUser.userId FROM Meetup m WHERE m.meetupId = :meetupId")
     String findHostNameByMeetupId(@Param("meetupId") Long meetupId);
+
+    Page<Meetup> findAllByOrderByCreatedDateDesc(Pageable pageable);
+
+    Page<Meetup> findAllByHobby_HobbyNameOrderByCreatedDateDesc(Pageable pageable, String hobbyName);
+
+    Page<Meetup> findAllByMeetupNameContainingOrDescriptionContaining(Pageable pageable, String meetupNameKeyword, String descriptionKeyword);
+
+    Page<Meetup> findAllByLocation(Pageable pageable, String location);
 }

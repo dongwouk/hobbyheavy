@@ -4,14 +4,17 @@ import com.example.hobbyheavy.dto.request.MeetupCreateRequest;
 import com.example.hobbyheavy.dto.request.MeetupUpdateRequest;
 import com.example.hobbyheavy.dto.response.MeetupInfoResponse;
 import com.example.hobbyheavy.dto.response.MeetupListResponse;
+import com.example.hobbyheavy.entity.Meetup;
 import com.example.hobbyheavy.exception.CustomException;
 import com.example.hobbyheavy.exception.ExceptionCode;
 import com.example.hobbyheavy.service.MeetupService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -29,9 +32,60 @@ public class MeetupController {
         return authentication.getName();
     }
 
+    /**
+     * 최신순 (페이징)
+     * @param page
+     * @param size
+     * meetup?page={페이지}&size={사이즈}
+     * @return 모임 리스트 최신순
+     */
     @GetMapping
-    public ResponseEntity<List<MeetupListResponse>> allMeetupList() {
-        return ResponseEntity.ok(meetupService.meetupLists());
+    public ResponseEntity<Page<MeetupListResponse>> allMeetupList(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size
+    ) {
+        return ResponseEntity.ok(meetupService.meetupLists(page, size, "new", null));
+    }
+
+    /**
+     * 취미 검색
+     * @param hobbyName
+     * @param page
+     * @param size
+     * @return 검색한 취미의 모임들
+     */
+    @GetMapping("/hobby/{hobbyName}")
+    public ResponseEntity<Page<MeetupListResponse>> hobbyMeetupList(
+            @PathVariable String hobbyName,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size
+    ) {
+        return ResponseEntity.ok(meetupService.meetupLists(page, size, "hobby", hobbyName));
+    }
+
+    /**
+     * 키워드 검색
+     * @param keyword
+     * @param page
+     * @param size
+     * @return
+     */
+    @GetMapping("/search/{keyword}")
+    public ResponseEntity<Page<MeetupListResponse>> searchMeetupList(
+            @PathVariable String keyword,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size
+    ) {
+        return ResponseEntity.ok(meetupService.meetupLists(page, size, "search", keyword));
+    }
+
+    @GetMapping("/location/{loc}")
+    public ResponseEntity<Page<MeetupListResponse>> locationMeetupList(
+            @PathVariable String loc,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size
+    ) {
+        return ResponseEntity.ok(meetupService.meetupLists(page, size, "location", loc));
     }
 
     @GetMapping("/{meetupId}")
@@ -49,6 +103,15 @@ public class MeetupController {
             (@Valid @RequestBody MeetupCreateRequest request, Authentication authentication) {
         meetupService.createMeetup(request, getUserId(authentication));
         return ResponseEntity.status(201).body("Meetups created successfully.");
+    }
+
+    @PutMapping("/thumbnail/{meetupId}")
+    public ResponseEntity<String> uploadThumbnail(
+            @PathVariable long meetupId,
+            @RequestParam("image") MultipartFile image,
+            Authentication authentication) {
+        meetupService.uploadThumbnail(meetupId, image, getUserId(authentication));
+        return ResponseEntity.ok("Meetup thumbnail successfully.");
     }
 
     @PutMapping("/{meetupId}")
