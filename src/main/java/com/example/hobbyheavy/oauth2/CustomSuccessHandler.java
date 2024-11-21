@@ -15,8 +15,6 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.stream.Collectors;
 
 @Component
