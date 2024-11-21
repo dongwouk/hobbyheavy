@@ -11,16 +11,8 @@ import lombok.Getter;
 @Getter
 public enum NotificationMessage {
 
-    /**
-     * 스케줄 확정 알림 메시지.
-     * 템플릿: "스케줄이 확정되었습니다. 스케줄 ID: %s"
-     */
+    SCHEDULE_CREATION("새로운 스케줄이 생성되었습니다. 스케줄 ID: %d"),
     CONFIRMATION("스케줄이 확정되었습니다. 스케줄 ID: %s"),
-
-    /**
-     * 스케줄 취소 알림 메시지.
-     * 템플릿: "스케줄이 취소되었습니다. 스케줄 ID: %s"
-     */
     CANCELLATION("스케줄이 취소되었습니다. 스케줄 ID: %s");
 
     private final String template;

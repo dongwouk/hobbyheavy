@@ -54,9 +54,13 @@ public enum ExceptionCode {
     SCHEDULE_VOTING_NOT_ALLOWED(HttpStatus.FORBIDDEN, "해당 스케줄에 투표할 수 없습니다."),
     SCHEDULE_CANCELLATION_NOT_ALLOWED(HttpStatus.FORBIDDEN, "해당 스케줄은 취소할 수 없습니다."),
     SCHEDULE_ALREADY_CONFIRMED(HttpStatus.CONFLICT, "이미 확정된 스케줄입니다."),
+    SCHEDULE_CONFIRMATION_FAILED(HttpStatus.INTERNAL_SERVER_ERROR, "스케줄 확정에 실패하였습니다."),
+    ALREADY_VOTED(HttpStatus.CONFLICT, "이미 투표하셨습니다."),
 
     /** Notification **/
-    EMAIL_SEND_FAILED(HttpStatus.INTERNAL_SERVER_ERROR, "이메일 전송에 실패하였습니다.")
+    EMAIL_SEND_FAILED(HttpStatus.INTERNAL_SERVER_ERROR, "이메일 전송에 실패하였습니다."),
+    NOTIFICATION_NOT_FOUND(HttpStatus.NOT_FOUND, "해당 알림을 찾을 수 없습니다."),
+    INTERNAL_SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "서버 내부 오류가 발생했습니다.")
     ;
 
     private final HttpStatus httpStatus;

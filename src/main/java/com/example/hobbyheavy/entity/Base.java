@@ -1,8 +1,6 @@
 package com.example.hobbyheavy.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.EntityListeners;
-import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -25,13 +23,30 @@ public class Base {
     @LastModifiedDate
     private LocalDateTime updatedDate; // 수정일자
 
-    private LocalDateTime removedDate;
+    @Column(name = "deleted_at")
+    private LocalDateTime deletedDate;
 
     @Setter(AccessLevel.PRIVATE)
     private Boolean deleted = false;
 
-    public void delete() {
+    @PrePersist
+    public void prePersist() {
+        this.createdDate = LocalDateTime.now();
+    }
+
+    @PreUpdate
+    public void preUpdate() {
+        this.updatedDate = LocalDateTime.now();
+    }
+
+    // 논리적 삭제를 처리하는 메서드
+    public void markAsDeleted() {
+        this.deletedDate = LocalDateTime.now();
         this.deleted = true;
-        this.removedDate = LocalDateTime.now();
+    }
+
+    // 엔티티가 논리적으로 삭제되었는지 확인하는 메서드
+    public boolean isDeleted() {
+        return deletedDate != null;
     }
 }
