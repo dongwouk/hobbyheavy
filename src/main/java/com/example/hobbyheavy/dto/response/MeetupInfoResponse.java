@@ -12,6 +12,7 @@ public class MeetupInfoResponse {
     private final Long meetupId;
     private final String meetupName;
     private final String description;
+    private final String thumbnail;
     private final String hostName;
     private final String location;
     private final String recurrenceRule;
@@ -26,6 +27,7 @@ public class MeetupInfoResponse {
         this.meetupId = meetup.getMeetupId();
         this.meetupName = meetup.getMeetupName();
         this.description = meetup.getDescription();
+        this.thumbnail = meetup.getThumbnail();
         this.hostName = meetup.getHostUser().getUserId();
         this.location = meetup.getLocation();
         this.recurrenceRule = meetup.getRecurrenceRule();

@@ -1,15 +1,13 @@
 package com.example.hobbyheavy.dto.response;
 
 import com.example.hobbyheavy.entity.MeetupSchedule;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
 
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder

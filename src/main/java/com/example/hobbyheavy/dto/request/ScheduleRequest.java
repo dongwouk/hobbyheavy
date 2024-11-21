@@ -3,15 +3,13 @@ package com.example.hobbyheavy.dto.request;
 import com.example.hobbyheavy.entity.Meetup;
 import com.example.hobbyheavy.entity.MeetupSchedule;
 import com.example.hobbyheavy.type.MeetupScheduleStatus;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder

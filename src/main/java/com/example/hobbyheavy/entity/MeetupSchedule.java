@@ -6,15 +6,15 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.Duration;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
 @Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class MeetupSchedule extends Base{
+public class MeetupSchedule extends Base {
 
     // 일정 ID
     @Id
@@ -53,7 +53,6 @@ public class MeetupSchedule extends Base{
     private String location;
 
     // 투표 마감일
-    // 투표 마감일
     @Column(name = "voting_deadline", nullable = true)
     private LocalDateTime votingDeadline;
 
@@ -62,13 +61,21 @@ public class MeetupSchedule extends Base{
     private String cancellationReason;
 
     public void updateFromDTO(ScheduleRequest request) {
-        this.proposalDate = request.getProposalDate();
-        this.activateTime = null; // activateDuration은 다른 곳에서 계산되어 설정됨
-        this.scheduleStatus = MeetupScheduleStatus.valueOf(request.getStatus().toUpperCase());
-        this.participant = request.getParticipant();
-        this.votes = request.getVotes();
-        this.location = request.getLocation();
-        this.votingDeadline = null; // votingDeadline은 다른 곳에서 계산되어 설정됨
+        if (request.getProposalDate() != null) {
+            this.proposalDate = request.getProposalDate();
+        }
+        if (request.getStatus() != null) {
+            this.scheduleStatus = MeetupScheduleStatus.valueOf(request.getStatus().toUpperCase());
+        }
+        if (request.getParticipant() != null) {
+            this.participant = request.getParticipant();
+        }
+        if (request.getVotes() != null) {
+            this.votes = request.getVotes();
+        }
+        if (request.getLocation() != null) {
+            this.location = request.getLocation();
+        }
     }
 
     public void setStatus(MeetupScheduleStatus scheduleStatus) {
@@ -78,5 +85,5 @@ public class MeetupSchedule extends Base{
     public void setCancellationReason(String reason) {
         this.cancellationReason = reason;
     }
-}
 
+}

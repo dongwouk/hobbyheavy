@@ -3,11 +3,9 @@ package com.example.hobbyheavy.service;
 import com.example.hobbyheavy.entity.MeetupSchedule;
 import com.example.hobbyheavy.exception.CustomException;
 import com.example.hobbyheavy.exception.ExceptionCode;
-import com.example.hobbyheavy.exception.ScheduleNotFoundException;
 import com.example.hobbyheavy.repository.ScheduleRepository;
 import com.example.hobbyheavy.type.MeetupScheduleStatus;
 import jakarta.annotation.PostConstruct;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.TaskScheduler;
@@ -24,6 +22,7 @@ import java.util.List;
 public class DynamicScheduleService {
     private final ScheduleRepository scheduleRepository;
     private final TaskScheduler taskScheduler;
+    private final FinalizationService finalizationService;
 
     /**
      * 동적 스케줄링을 설정하는 메서드
@@ -35,40 +34,23 @@ public class DynamicScheduleService {
             log.info("확정된 스케줄은 스케줄링을 건너뜁니다. 스케줄 ID: {}", schedule.getScheduleId());
             return;
         }
-        try {
-            if (schedule.getVotingDeadline() != null) {
-                LocalDateTime votingDeadline = schedule.getVotingDeadline();
-                Date scheduledTime = Date.from(votingDeadline.atZone(ZoneId.systemDefault()).toInstant());
 
-                taskScheduler.schedule(() -> finalizeSchedule(schedule.getScheduleId()), scheduledTime);
-                log.info("스케줄링이 설정되었습니다. 스케줄 ID: {}, 마감 시간: {}", schedule.getScheduleId(), votingDeadline);
-            }
-        } catch (Exception e) {
-            log.error("스케줄링 설정 중 오류가 발생했습니다. 스케줄 ID: {}", schedule.getScheduleId(), e);
-            throw new CustomException(ExceptionCode.SCHEDULE_CREATION_FAILED);
+        if (schedule.getVotingDeadline() != null) {
+            LocalDateTime votingDeadline = schedule.getVotingDeadline();
+            Date scheduledTime = Date.from(votingDeadline.atZone(ZoneId.systemDefault()).toInstant());
+
+            taskScheduler.schedule(() -> {
+                try {
+                    finalizationService.finalizeSchedule(schedule.getScheduleId(), null); // 유저 ID가 필요 없는 자동 확정
+                } catch (CustomException e) {
+                    log.error("스케줄 확정 중 오류가 발생했습니다. 스케줄 ID: {}, 오류: {}", schedule.getScheduleId(), e.getMessage(), e);
+                }
+            }, scheduledTime);
+
+            log.info("스케줄링이 설정되었습니다. 스케줄 ID: {}, 마감 시간: {}", schedule.getScheduleId(), votingDeadline);
+        } else {
+            log.warn("스케줄에 투표 마감 기한이 없습니다. 스케줄링이 설정되지 않았습니다. 스케줄 ID: {}", schedule.getScheduleId());
         }
-
-
-    }
-
-    /**
-     * 특정 스케줄을 확정하는 메서드
-     *
-     * @param scheduleId 확정할 스케줄의 ID
-     * @throws ScheduleNotFoundException 스케줄이 존재하지 않거나 이미 확정된 경우
-     */
-    @Transactional
-    public void finalizeSchedule(Long scheduleId) {
-        MeetupSchedule schedule = scheduleRepository.findById(scheduleId)
-                .orElseThrow(() -> new CustomException(ExceptionCode.SCHEDULE_NOT_FOUND));
-
-        if (schedule.getScheduleStatus() == MeetupScheduleStatus.CONFIRMED) {
-            throw new CustomException(ExceptionCode.SCHEDULE_ALREADY_CONFIRMED);
-        }
-
-        schedule.setStatus(MeetupScheduleStatus.CONFIRMED);
-        scheduleRepository.save(schedule);
-        log.info("스케줄이 확정되었습니다. ID: {}", schedule.getScheduleId());
     }
 
     /**
@@ -79,11 +61,7 @@ public class DynamicScheduleService {
         List<MeetupSchedule> schedules = scheduleRepository.findAll();
         schedules.forEach(schedule -> {
             if (schedule.getVotingDeadline() != null && schedule.getVotingDeadline().isAfter(LocalDateTime.now())) {
-                try {
-                    scheduleFinalization(schedule);
-                } catch (Exception e) {
-                    log.error("스케줄링 초기화 중 오류가 발생했습니다. 스케줄 ID: {}", schedule.getScheduleId(), e);
-                }
+                scheduleFinalization(schedule);
             } else {
                 log.info("마감 시간이 지난 스케줄은 초기화에서 제외됩니다. 스케줄 ID: {}", schedule.getScheduleId());
             }

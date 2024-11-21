@@ -35,6 +35,11 @@ public enum ExceptionCode {
     /** Meetup **/
     REMAIN_PARTICIPANTS(HttpStatus.CONFLICT, "모임에 참여자가 아직 남아있습니다."),
     MEETUP_NOT_FOUND(HttpStatus.NOT_FOUND, "요청한 모임을 찾을 수 없습니다."),
+    INVALID_SEARCH_KEYWORD(HttpStatus.BAD_REQUEST, "검색 키워드가 잘못되었습니다."),
+    MEETUP_DELETE_FAILED(HttpStatus.INTERNAL_SERVER_ERROR, "모임 삭제에 실패했습니다."),
+    IMAGE_IO_EXCEPTION(HttpStatus.INTERNAL_SERVER_ERROR, "이미지 처리 중 오류가 발생했습니다."),
+    IMAGE_IS_EMPTY(HttpStatus.BAD_REQUEST, "이미지가 없습니다."),
+    IMAGE_EXTENSION_MISMATCH(HttpStatus.BAD_REQUEST, "이미지 확장자가 아닙니다."),
 
     /** Participant **/
     NO_PARTICIPANTS(HttpStatus.NOT_FOUND, "참여자가 없습니다."),
@@ -55,9 +60,13 @@ public enum ExceptionCode {
     SCHEDULE_VOTING_NOT_ALLOWED(HttpStatus.FORBIDDEN, "해당 스케줄에 투표할 수 없습니다."),
     SCHEDULE_CANCELLATION_NOT_ALLOWED(HttpStatus.FORBIDDEN, "해당 스케줄은 취소할 수 없습니다."),
     SCHEDULE_ALREADY_CONFIRMED(HttpStatus.CONFLICT, "이미 확정된 스케줄입니다."),
+    SCHEDULE_CONFIRMATION_FAILED(HttpStatus.INTERNAL_SERVER_ERROR, "스케줄 확정에 실패하였습니다."),
+    ALREADY_VOTED(HttpStatus.CONFLICT, "이미 투표하셨습니다."),
 
     /** Notification **/
-    EMAIL_SEND_FAILED(HttpStatus.INTERNAL_SERVER_ERROR, "이메일 전송에 실패하였습니다.")
+    EMAIL_SEND_FAILED(HttpStatus.INTERNAL_SERVER_ERROR, "이메일 전송에 실패하였습니다."),
+    NOTIFICATION_NOT_FOUND(HttpStatus.NOT_FOUND, "해당 알림을 찾을 수 없습니다."),
+    INTERNAL_SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "서버 내부 오류가 발생했습니다.")
     ;
 
     private final HttpStatus httpStatus;

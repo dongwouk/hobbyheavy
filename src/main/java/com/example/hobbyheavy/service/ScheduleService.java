@@ -6,45 +6,52 @@ import com.example.hobbyheavy.entity.Meetup;
 import com.example.hobbyheavy.entity.MeetupSchedule;
 import com.example.hobbyheavy.exception.CustomException;
 import com.example.hobbyheavy.exception.ExceptionCode;
-import com.example.hobbyheavy.exception.ScheduleNotFoundException;
 import com.example.hobbyheavy.repository.ScheduleRepository;
 import com.example.hobbyheavy.type.MeetupScheduleStatus;
 import com.example.hobbyheavy.util.DurationParser;
-import com.example.hobbyheavy.util.UserContextUtil;
-import jakarta.transaction.Transactional;
+import com.example.hobbyheavy.util.ScheduleUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * 스케줄과 관련된 비즈니스 로직을 처리하는 서비스 클래스.
+ */
 @Service
 @RequiredArgsConstructor
 @Slf4j
 public class ScheduleService {
     private final ScheduleRepository scheduleRepository;
-    private final AuthorizationService authorizationService;
     private final DynamicScheduleService dynamicScheduleService;
+    private final NotificationService notificationService;
 
     /**
      * 새로운 모임 스케줄을 생성합니다.
      *
      * @param scheduleRequest 생성할 스케줄의 요청 정보
+     * @param userId          사용자 ID
      * @return 생성된 스케줄의 응답 정보
+     * @throws CustomException 스케줄 생성에 실패한 경우 발생
      */
     @Transactional
-    public ScheduleResponse createSchedule(ScheduleRequest scheduleRequest) {
-        String userId = getCurrentUserId();
-        verifyUserAuthorization(userId, scheduleRequest.getMeetupId());
+    public ScheduleResponse createSchedule(ScheduleRequest scheduleRequest, String userId) {
+        log.info("스케줄 생성 요청 - 사용자 ID: {}, 요청 데이터: {}", userId, scheduleRequest);
 
         MeetupSchedule meetupSchedule = createMeetupSchedule(scheduleRequest);
         MeetupSchedule savedSchedule = scheduleRepository.save(meetupSchedule);
 
-        addDynamicSchedule(savedSchedule);
+        dynamicScheduleService.scheduleFinalization(savedSchedule);
         log.info("스케줄이 생성되었습니다. ID: {}", savedSchedule.getScheduleId());
+
+        notificationService.notifyScheduleCreation(savedSchedule);
+        log.info("스케줄 생성 알림이 발송되었습니다. 스케줄 ID: {}", savedSchedule.getScheduleId());
+
 
         return ScheduleResponse.fromEntity(savedSchedule);
     }
@@ -54,6 +61,7 @@ public class ScheduleService {
      *
      * @param scheduleId 조회할 스케줄의 ID
      * @return 조회된 스케줄의 응답 정보
+     * @throws CustomException 스케줄이 존재하지 않을 경우 발생
      */
     public ScheduleResponse getSchedule(Long scheduleId) {
         MeetupSchedule meetupSchedule = verifyAndGetSchedule(scheduleId);
@@ -79,12 +87,13 @@ public class ScheduleService {
      *
      * @param scheduleId      수정할 스케줄의 ID
      * @param scheduleRequest 수정할 스케줄의 요청 정보
+     * @param userId          사용자 ID
      * @return 수정된 스케줄의 응답 정보
+     * @throws CustomException 스케줄 수정에 실패한 경우 발생
      */
     @Transactional
-    public ScheduleResponse updateSchedule(Long scheduleId, ScheduleRequest scheduleRequest) {
-        String userId = getCurrentUserId();
-        verifyUserAuthorization(userId, scheduleRequest.getMeetupId());
+    public ScheduleResponse updateSchedule(Long scheduleId, ScheduleRequest scheduleRequest, String userId) {
+        log.info("스케줄 수정 요청 - 스케줄 ID: {}, 사용자 ID: {}, 요청 데이터: {}", scheduleId, userId, scheduleRequest);
 
         MeetupSchedule existingSchedule = verifyAndGetSchedule(scheduleId);
         existingSchedule.updateFromDTO(scheduleRequest);
@@ -95,22 +104,20 @@ public class ScheduleService {
     }
 
     /**
-     * 특정 모임 스케줄을 삭제합니다.
+     * 특정 모임 스케줄을 삭제합니다. 논리적 삭제 방식 적용.
      *
      * @param scheduleId 삭제할 스케줄의 ID
+     * @param userId     사용자 ID
+     * @throws CustomException 스케줄 삭제에 실패한 경우 발생
      */
     @Transactional
-    public void deleteSchedule(Long scheduleId) {
-        MeetupSchedule meetupSchedule = verifyAndGetSchedule(scheduleId);
-        String userId = getCurrentUserId();
-        verifyUserAuthorization(userId, meetupSchedule.getMeetup().getMeetupId());
+    public void deleteSchedule(Long scheduleId, String userId) {
+        log.info("스케줄 삭제 요청 - 스케줄 ID: {}, 사용자 ID: {}", scheduleId, userId);
 
-        try {
-            scheduleRepository.delete(meetupSchedule);
-            log.info("스케줄이 삭제되었습니다. ID: {}", scheduleId);
-        } catch (Exception e) {
-            throw new CustomException(ExceptionCode.SCHEDULE_DELETE_FAILED);
-        }
+        MeetupSchedule meetupSchedule = verifyAndGetSchedule(scheduleId);
+        meetupSchedule.markAsDeleted();
+        scheduleRepository.save(meetupSchedule);
+        log.info("스케줄이 논리적으로 삭제되었습니다. ID: {}", scheduleId);
     }
 
     /**
@@ -118,12 +125,14 @@ public class ScheduleService {
      *
      * @param scheduleId 취소할 스케줄의 ID
      * @param reason     취소 사유
+     * @param userId     사용자 ID
+     * @throws CustomException 스케줄 취소에 실패한 경우 발생
      */
     @Transactional
-    public void cancelSchedule(Long scheduleId, String reason) {
+    public void cancelSchedule(Long scheduleId, String reason, String userId) {
+        log.info("스케줄 취소 요청 - 스케줄 ID: {}, 사용자 ID: {}, 이유: {}", scheduleId, userId, reason);
+
         MeetupSchedule meetupSchedule = verifyAndGetSchedule(scheduleId);
-        String userId = getCurrentUserId();
-        verifyUserAuthorization(userId, meetupSchedule.getMeetup().getMeetupId());
 
         if (meetupSchedule.getScheduleStatus() == MeetupScheduleStatus.CANCELLED) {
             throw new CustomException(ExceptionCode.SCHEDULE_CANCELLATION_NOT_ALLOWED);
@@ -137,55 +146,17 @@ public class ScheduleService {
     }
 
     /**
-     * 스케줄을 조회하고 검증합니다.
-     *
-     * @param scheduleId 조회할 스케줄의 ID
-     * @return 조회된 스케줄 객체
-     * @throws ScheduleNotFoundException 스케줄이 존재하지 않을 경우 예외 발생
-     */
-    private MeetupSchedule verifyAndGetSchedule(Long scheduleId) {
-        return scheduleRepository.findById(scheduleId)
-                .orElseThrow(() -> new CustomException(ExceptionCode.SCHEDULE_NOT_FOUND));
-    }
-
-    /**
-     * 사용자의 권한을 검증합니다.
-     *
-     * @param userId   사용자 ID
-     * @param meetupId 모임 ID
-     */
-    private void verifyUserAuthorization(String userId, Long meetupId) {
-        try {
-            // 권한을 가진 사용자(Participant) 정보를 조회
-            authorizationService.verifyHostOrSubHostRole(userId, meetupId);
-        } catch (Exception e) {
-            // 권한이 없거나 조회에 실패한 경우 예외 발생
-            throw new CustomException(ExceptionCode.FORBIDDEN_ACTION);
-        }
-    }
-
-    /**
-     * 현재 사용자 ID를 가져옵니다.
-     *
-     * @return 현재 사용자 ID
-     */
-    private String getCurrentUserId() {
-        return UserContextUtil.getCurrentUserId();
-    }
-
-    /**
      * 주어진 요청 정보를 바탕으로 MeetupSchedule 객체를 생성합니다.
      *
      * @param scheduleRequest 생성할 스케줄의 요청 정보
      * @return 생성된 MeetupSchedule 객체
+     * @throws CustomException 스케줄 생성에 실패한 경우 발생
      */
     private MeetupSchedule createMeetupSchedule(ScheduleRequest scheduleRequest) {
         try {
             LocalDateTime proposalDate = scheduleRequest.getProposalDate();
             Duration activateDuration = DurationParser.parseDuration(scheduleRequest.getActivateTime());
-            LocalDateTime votingDeadline = (scheduleRequest.getVotingDeadline() == null)
-                    ? proposalDate.plusHours(3)
-                    : proposalDate.plus(DurationParser.parseDuration(scheduleRequest.getVotingDeadline()));
+            LocalDateTime votingDeadline = ScheduleUtils.calculateVotingDeadline(scheduleRequest, proposalDate);
 
             return MeetupSchedule.builder()
                     .meetup(Meetup.builder().meetupId(scheduleRequest.getMeetupId()).build())
@@ -200,13 +171,14 @@ public class ScheduleService {
     }
 
     /**
-     * 동적 스케줄링을 추가합니다.
+     * 스케줄을 조회하고 검증합니다.
      *
-     * @param meetupSchedule 추가할 스케줄 객체
+     * @param scheduleId 조회할 스케줄의 ID
+     * @return 조회된 스케줄 객체
+     * @throws CustomException 스케줄이 존재하지 않을 경우 발생
      */
-    private void addDynamicSchedule(MeetupSchedule meetupSchedule) {
-        dynamicScheduleService.scheduleFinalization(meetupSchedule);
-        log.info("동적 스케줄링이 추가되었습니다. ID: {}", meetupSchedule.getScheduleId());
+    private MeetupSchedule verifyAndGetSchedule(Long scheduleId) {
+        return scheduleRepository.findById(scheduleId)
+                .orElseThrow(() -> new CustomException(ExceptionCode.SCHEDULE_NOT_FOUND));
     }
-
 }

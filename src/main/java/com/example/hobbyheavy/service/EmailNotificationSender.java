@@ -50,10 +50,22 @@ public class EmailNotificationSender implements NotificationSender {
             mailMessage.setText(message);
 
             javaMailSender.send(mailMessage);
-            log.info("[이메일 전송 성공] 수신자: {}, 제목: {}, 메시지: {}", recipient, subject, message);
+            log.info("[이메일 전송 성공] 수신자: {}, 제목: {}", recipient, subject);
         } catch (Exception e) {
-            log.error("[이메일 전송 실패] 수신자: {}, 제목: {}, 메시지: {}", recipient, subject, message, e);
+            log.error("[이메일 전송 실패] 수신자: {}, 제목: {}", recipient, subject, e);
+            handleEmailSendFailure(recipient, message);
             throw new CustomException(ExceptionCode.EMAIL_SEND_FAILED);
         }
+    }
+
+    /**
+     * 이메일 전송 실패 시 처리 메서드
+     *
+     * @param recipient 이메일 수신자
+     * @param message   실패한 알림 메시지
+     */
+    private void handleEmailSendFailure(String recipient, String message) {
+        log.error("[이메일 전송 실패 처리] 수신자: {}, 메시지: {}", recipient, message);
+        // 여기에 재시도 로직이나 별도 알림 실패 처리 로직을 추가하는 것이 좋습니다.
     }
 }
