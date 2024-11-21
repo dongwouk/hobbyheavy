@@ -3,13 +3,14 @@ package com.example.hobbyheavy.service;
 import com.example.hobbyheavy.entity.MeetupSchedule;
 import com.example.hobbyheavy.entity.Participant;
 import com.example.hobbyheavy.entity.User;
-import com.example.hobbyheavy.exception.ScheduleNotFoundException;
+import com.example.hobbyheavy.exception.CustomException;
+import com.example.hobbyheavy.exception.ExceptionCode;
 import com.example.hobbyheavy.repository.ParticipantRepository;
 import com.example.hobbyheavy.repository.ScheduleRepository;
 import com.example.hobbyheavy.type.ParticipantRole;
 import com.example.hobbyheavy.type.ParticipantStatus;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -31,15 +32,16 @@ public class VoteService {
      * 투표 완료 상태로 설정됩니다.
      * </p>
      *
-     * @param scheduleId 투표할 스케줄의 ID
-     * @throws ScheduleNotFoundException 해당 ID의 스케줄이 존재하지 않을 경우 발생
+     * @param scheduleId    투표할 스케줄의 ID
+     * @param userId        투표하는 사용자의 ID
+     * @throws CustomException 해당 ID의 스케줄이 존재하지 않을 경우 발생
      * @throws RuntimeException 사용자가 이미 투표를 완료한 경우 발생
      */
-    public void voteOnSchedule(Long scheduleId) {
-        String userId = SecurityContextHolder.getContext().getAuthentication().getName();
+    @Transactional
+    public void voteOnSchedule(Long scheduleId, String userId) {
 
         MeetupSchedule meetupSchedule = scheduleRepository.findById(scheduleId)
-                .orElseThrow(() -> new ScheduleNotFoundException("Schedule not found with id: " + scheduleId));
+                .orElseThrow(() -> new CustomException(ExceptionCode.SCHEDULE_NOT_FOUND));
 
         // 참가자 조회
         Optional<Participant> optionalParticipant = participantRepository.findByMeetup_MeetupIdAndUser_UserId(meetupSchedule.getMeetup().getMeetupId(), userId);
@@ -63,7 +65,7 @@ public class VoteService {
 
             // 이미 투표했는지 확인
             if (participant.getHasVoted()) {
-                throw new RuntimeException("이미 투표하셨습니다.");
+                throw new CustomException(ExceptionCode.ALREADY_VOTED);
             }
 
             // 투표 완료 처리
