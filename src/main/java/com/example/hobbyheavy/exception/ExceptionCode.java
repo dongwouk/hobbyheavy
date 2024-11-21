@@ -35,6 +35,11 @@ public enum ExceptionCode {
     /** Meetup **/
     REMAIN_PARTICIPANTS(HttpStatus.CONFLICT, "모임에 참여자가 아직 남아있습니다."),
     MEETUP_NOT_FOUND(HttpStatus.NOT_FOUND, "요청한 모임을 찾을 수 없습니다."),
+    INVALID_SEARCH_KEYWORD(HttpStatus.BAD_REQUEST, "검색 키워드가 잘못되었습니다."),
+    MEETUP_DELETE_FAILED(HttpStatus.INTERNAL_SERVER_ERROR, "모임 삭제에 실패했습니다."),
+    IMAGE_IO_EXCEPTION(HttpStatus.INTERNAL_SERVER_ERROR, "이미지 처리 중 오류가 발생했습니다."),
+    IMAGE_IS_EMPTY(HttpStatus.BAD_REQUEST, "이미지가 없습니다."),
+    IMAGE_EXTENSION_MISMATCH(HttpStatus.BAD_REQUEST, "이미지 확장자가 아닙니다."),
 
     /** Participant **/
     NO_PARTICIPANTS(HttpStatus.NOT_FOUND, "참여자가 없습니다."),

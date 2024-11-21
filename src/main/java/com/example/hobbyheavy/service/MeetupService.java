@@ -15,15 +15,26 @@ import com.example.hobbyheavy.repository.ParticipantRepository;
 import com.example.hobbyheavy.repository.UserRepository;
 import com.example.hobbyheavy.type.ParticipantRole;
 import com.example.hobbyheavy.type.ParticipantStatus;
+import com.example.hobbyheavy.util.ImageUtil;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class MeetupService {
 
     private final HobbyRepository hobbyRepository;
@@ -33,9 +44,26 @@ public class MeetupService {
     private final CommentService commentService;
     private final ParticipantRepository participantRepository;
 
-    public List<MeetupListResponse> meetupLists() {
-        return meetupRepository.findAll().stream()
-                .map(MeetupListResponse::new).toList();
+    /**
+     * 모임 검색 (최신순, 취미별, 검색키워드, 위치)
+     * @param page
+     * @param size
+     * @return List<MeetupListResponse>
+     */
+    public Page<MeetupListResponse> meetupLists(int page, int size, String keyword, String value) {
+        Pageable pageable = PageRequest.of(page, size);
+        Page<Meetup> meetupPage = switch (keyword) {
+            case "new" ->
+                    meetupRepository.findAllByOrderByCreatedDateDesc(pageable);
+            case "hobby" ->
+                    meetupRepository.findAllByHobby_HobbyNameOrderByCreatedDateDesc(pageable, value);
+            case "search" ->
+                    meetupRepository.findAllByMeetupNameContainingOrDescriptionContaining(pageable, value, value);
+            case "location" ->
+                    meetupRepository.findAllByLocation(pageable, value);
+            default -> throw new CustomException(ExceptionCode.INVALID_SEARCH_KEYWORD);
+        };
+        return meetupPage.map(MeetupListResponse::new);
     }
 
     /**
@@ -57,7 +85,8 @@ public class MeetupService {
      * 모임 상세 조회
      **/
     public MeetupInfoResponse infoMeetup(Long meetupId) {
-        Meetup meetup = findMeetup(meetupId);
+        Meetup meetup = meetupRepository.findFirstByMeetupId(meetupId)
+                .orElseThrow(() -> new CustomException(ExceptionCode.MEETUP_NOT_FOUND));
         List<CommentResponse> comments = commentService.meetupComments(meetupId);
         List<ParticipantApprovedResponse> participants = participantService.getMeetupParticipants(meetupId);
         return new MeetupInfoResponse(meetup, comments, participants);
@@ -90,16 +119,39 @@ public class MeetupService {
     }
 
     /**
+     * 썸네일 등록
+     * @param meetupId
+     * @param image
+     */
+    @Transactional
+    public void uploadThumbnail(Long meetupId, MultipartFile image, String userId){
+        Meetup meetup = findMeetup(meetupId, userId);
+
+        // 이미지 파일 저장을 위한 경로 설정
+        String uploadsDir = "src/main/resources/static/uploads/thumbnails/";
+        String filePath = uploadsDir + meetup.getThumbnail();
+
+        File file = new File(filePath);
+        boolean result = file.delete();
+        log.info("파일 이름 : {}, 삭제 결과 : {}", filePath, result);
+
+        if (image.getSize() == 0) {
+            meetup.updateThumbnail("");
+            return;
+        }
+
+        // 이미지 파일 경로를 저장
+        String dbFilePath = ImageUtil.saveImage(image, uploadsDir);
+        meetup.updateThumbnail(dbFilePath);
+    }
+
+    /**
      * 모임 수정
      **/
     @Transactional
     public void updateMeetup(Long meetupId, MeetupUpdateRequest request, String userId) {
 
-        Meetup meetup = findMeetup(meetupId);
-
-        if (!meetup.getHostUser().getUserId().equals(userId)) {
-            throw new CustomException(ExceptionCode.FORBIDDEN_ACTION); // 권한 없음
-        }
+        Meetup meetup = findMeetup(meetupId, userId);
 
         meetup.updateMeetupName(request.getMeetupName());
         meetup.updateDescription(request.getDescription());
@@ -112,7 +164,7 @@ public class MeetupService {
      * 모임 삭제
      **/
     public void deleteMeetup(Long meetupId, String userId) {
-        Meetup meetup = findMeetup(meetupId);
+        Meetup meetup = findMeetup(meetupId, userId);
 
         long participantCount = 0;
         for (Participant participant : meetup.getParticipants()) {
@@ -124,18 +176,27 @@ public class MeetupService {
         if (participantCount > 1) {
             throw new CustomException(ExceptionCode.REMAIN_PARTICIPANTS); // 참여자가 아직 있음
         }
-        if (!meetup.getHostUser().getUserId().equals(userId)) {
-            throw new CustomException(ExceptionCode.FORBIDDEN_ACTION); // 권한 없음
+
+        try{
+            meetupRepository.deleteById(meetupId);
+        } catch (Exception e) {
+            log.error("MeetupId : {} 모임 삭제에 실패했습니다. - {}", meetupId, e.getMessage());
+            throw new CustomException(ExceptionCode.MEETUP_DELETE_FAILED);
         }
-        meetupRepository.deleteById(meetupId);
+
     }
 
     /**
      * 모임 찾기
      **/
-    private Meetup findMeetup(Long meetupId) {
-        return meetupRepository.findFirstByMeetupId(meetupId)
+    private Meetup findMeetup(Long meetupId, String userId) {
+        Meetup meetup = meetupRepository.findFirstByMeetupId(meetupId)
                 .orElseThrow(() -> new CustomException(ExceptionCode.MEETUP_NOT_FOUND));
+
+        if (!meetup.getHostUser().getUserId().equals(userId)) {
+            throw new CustomException(ExceptionCode.FORBIDDEN_ACTION); // 권한 없음
+        }
+        return meetup;
     }
 
     private User getUser(String userId) {

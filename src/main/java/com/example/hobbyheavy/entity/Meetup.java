@@ -41,6 +41,9 @@ public class Meetup extends Base {
     @Column(name = "max_participants")
     private Integer maxParticipants;
 
+    @Column(name = "thumbnail")
+    private String thumbnail;
+
     @OneToMany(mappedBy = "meetup", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Participant> participants;
 
@@ -66,5 +69,9 @@ public class Meetup extends Base {
 
     public void updateHobby(Hobby newHobby) {
         this.hobby = newHobby;
+    }
+
+    public void updateThumbnail(String image) {
+        this.thumbnail = image;
     }
 }
