@@ -1,6 +1,8 @@
 package com.example.hobbyheavy.service;
 
 import com.example.hobbyheavy.dto.request.JoinRequest;
+import com.example.hobbyheavy.dto.request.PasswordUpdateRequest;
+import com.example.hobbyheavy.dto.request.UpdateUserRequest;
 import com.example.hobbyheavy.dto.response.UserInfoResponse;
 import com.example.hobbyheavy.entity.Hobby;
 import com.example.hobbyheavy.entity.User;
@@ -92,6 +94,7 @@ public class UserService {
                 .gender(joinRequest.getGender())
                 .age(joinRequest.getAge())
                 .hobbies(hobbies)
+                .alarm(true)
                 .role(Collections.singleton(Role.ROLE_USER)) // 역할이 존재할 때 설정
                 .build());
     }
@@ -109,18 +112,18 @@ public class UserService {
 
     /** 나의 회원정보 변경 메서드 **/
     @Transactional
-    public void updateUserInfo(String userId, String username, Boolean gender, Integer age, Set<Long> hobbyIds) {
+    public void updateUserInfo(String userId, UpdateUserRequest request) {
 
         // 사용자 조회
         User user = getUser(userId);
         log.info("유저 정보 찾음. userId: {}, 현재 username: {}, 현재 hobbies: {}", userId, user.getUsername(), user.getHobbies());
-        log.info("hobbyIds: {}", hobbyIds);  // hobbyIds가 null인지, 비어있는지 확인하기 위해 추가
+        log.info("hobbyIds: {}", request.getHobbyIds());  // hobbyIds가 null인지, 비어있는지 확인하기 위해 추가
 
         // 기존 취미 목록을 Set으로 관리
         Set<Hobby> updatedHobbies = new HashSet<>();
 
-        if (hobbyIds != null && !hobbyIds.isEmpty()) {
-            for (Long hobbyId : hobbyIds) {
+        if (request.getHobbyIds() != null && !request.getHobbyIds().isEmpty()) {
+            for (Long hobbyId : request.getHobbyIds()) {
                 Hobby hobby = getHobbyById(hobbyId);
                 updatedHobbies.add(hobby);
                 log.info("취미 변경됨. hobbyId: {}", hobbyId);
@@ -128,9 +131,10 @@ public class UserService {
         }
 
         // 새로운 취미 목록으로 덮어쓰기
-        user.setUsername(username);  // 이름 업데이트
-        user.setGender(gender);
-        user.setAge(age);
+        user.setUsername(request.getUsername());  // 이름 업데이트
+        user.setGender(request.getGender());
+        user.setAge(request.getAge());
+        user.setAlarm(request.getAlarm());
         user.setHobbies(updatedHobbies);  // 취미 업데이트
 
         userRepository.save(user);
@@ -139,22 +143,22 @@ public class UserService {
 
     /** 비밀번호 변경 메서드 **/
     @Transactional
-    public void updatePassword(String userId, String oldPassword, String newPassword) {
+    public void updatePassword(String userId, PasswordUpdateRequest request) {
 
         // 사용자 조회
         User user = getUser(userId);
 
         // 기존 비밀번호 확인
-        checkPassword(userId, oldPassword, user.getPassword());
+        checkPassword(userId, request.getOldPassword(), user.getPassword());
 
         // 기존 비밀번호와 새 비밀번호가 같을 경우 예외 처리
-        if (bCryptPasswordEncoder.matches(newPassword, user.getPassword())) {
+        if (bCryptPasswordEncoder.matches(request.getNewPassword(), user.getPassword())) {
             log.warn("새 비밀번호가 기존 비밀번호와 동일합니다. 사용자 ID: {}", userId);
             throw new CustomException(ExceptionCode.PASSWORD_SAME_AS_OLD);
         }
 
         // 새 비밀번호로 변경
-        user.updatePassword(bCryptPasswordEncoder.encode(newPassword));
+        user.updatePassword(bCryptPasswordEncoder.encode(request.getNewPassword()));
 
         userRepository.save(user);
         log.info("사용자 ID: {}의 비밀번호가 성공적으로 변경되었습니다.", userId);

@@ -1,9 +1,6 @@
 package com.example.hobbyheavy.dto.request;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -37,8 +34,13 @@ public class JoinRequest {
     private Boolean gender;
 
     @NotNull(message = "나이를 입력해주세요.")
+    @Min(value = 0, message = "나이는 0 이상이어야 합니다.")
+    @Max(value = 120, message = "나이는 120 이하이어야 합니다.")
     private Integer age;
 
     private Set<Long> hobbyIds; // 여러 취미 ID를 받을 수 있도록 변경
+
+    @Builder.Default
+    private Boolean alarm = true;
 
 }
