@@ -20,7 +20,7 @@ public class User extends Base {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id; // PK
 
-    @Column(name = "user_id", unique = true, length = 20, nullable = false)
+    @Column(name = "user_id", unique = true, length = 50, nullable = false)
     private String userId; // 로그인 시 사용하는 ID
 
     @Column(name = "user_name", length = 20, nullable = false)

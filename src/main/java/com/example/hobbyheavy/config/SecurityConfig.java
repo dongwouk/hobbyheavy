@@ -4,7 +4,9 @@ import com.example.hobbyheavy.jwt.CustomLogoutFilter;
 import com.example.hobbyheavy.jwt.JWTFilter;
 import com.example.hobbyheavy.jwt.JWTUtil;
 import com.example.hobbyheavy.jwt.LoginFilter;
+import com.example.hobbyheavy.oauth2.CustomSuccessHandler;
 import com.example.hobbyheavy.repository.RefreshRepository;
+import com.example.hobbyheavy.service.CustomOAuth2UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -32,6 +34,9 @@ public class SecurityConfig {
     private final AuthenticationConfiguration authenticationConfiguration;
     private final JWTUtil jwtUtil;
     private final RefreshRepository refreshRepository;
+    // Oauth2
+    private final CustomOAuth2UserService customOAuth2UserService;
+    private final CustomSuccessHandler customSuccessHandler;
 
     //AuthenticationManager Bean 등록
     @Bean
@@ -70,7 +75,7 @@ public class SecurityConfig {
         http
                 .csrf((auth) -> auth.disable());
 
-        //From 로그인 방식 disable
+        //Form 로그인 방식 disable
         http
                 .formLogin((auth) -> auth.disable());
 
@@ -78,14 +83,24 @@ public class SecurityConfig {
         http
                 .httpBasic((auth) -> auth.disable());
 
-//        //Oauth2
+//        //JWTFilter 추가
 //        http
-//                .oauth2Login(Customizer.withDefaults());
+//                .addFilterBefore(new JWTFilter(jwtUtil), UsernamePasswordAuthenticationFilter.class);
+
+        //Oauth2
+        http
+                .oauth2Login((oauth2) -> oauth2
+                        .authorizationEndpoint(auth -> auth
+                                .baseUri("/oauth2/login"))
+                        .userInfoEndpoint((userInfoEndpointConfig) -> userInfoEndpointConfig
+                                .userService(customOAuth2UserService))
+                        .successHandler(customSuccessHandler));
 
         //경로별 인가 작업
         http
                 .authorizeHttpRequests((auth) -> auth
                         .requestMatchers("/login", "/", "/join").permitAll()
+                        .requestMatchers("/oauth2/login").permitAll()
                         .requestMatchers("/user/my-info").authenticated()
                         .requestMatchers("/user/password").authenticated()
                         .requestMatchers("/board/**").authenticated()
@@ -103,15 +118,10 @@ public class SecurityConfig {
         http
                 .addFilterBefore(new JWTFilter(jwtUtil), LoginFilter.class);
         http
-                .addFilterAt(new LoginFilter(authenticationManager(authenticationConfiguration), jwtUtil, refreshRepository), UsernamePasswordAuthenticationFilter.class);
+                .addFilterAt(new LoginFilter(authenticationManager(authenticationConfiguration), jwtUtil, refreshRepository),
+                        UsernamePasswordAuthenticationFilter.class);
         http
                 .addFilterBefore(new CustomLogoutFilter(jwtUtil, refreshRepository), LogoutFilter.class);
-
-
-//        // 세션 설정
-//        http
-//                .sessionManagement((session) -> session
-//                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
         return http.build();
     }
