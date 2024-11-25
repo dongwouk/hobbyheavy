@@ -39,9 +39,12 @@ public class ScheduleController {
 
     @GetMapping("/{scheduleId}")
     @PreAuthorize("hasRole('ROLE_HOST') or hasRole('ROLE_MEMBER')")
-    public ResponseEntity<ScheduleResponse> getSchedule(@PathVariable Long scheduleId) {
+    public ResponseEntity<ScheduleResponse> getSchedule(@PathVariable Long scheduleId,
+                                                        @RequestParam(required = false) Long notificationId) {
         log.info("Fetching schedule with ID: {}", scheduleId);
-        ScheduleResponse response = scheduleService.getSchedule(scheduleId);
+
+        // 스케줄 조회 (알림 읽음 처리 포함)
+        ScheduleResponse response = scheduleService.getSchedule(scheduleId, notificationId);
         return ResponseEntity.ok(response);
     }
 

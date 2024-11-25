@@ -32,8 +32,10 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
     private final JWTUtil jwtUtil;
     private final RefreshRepository refreshRepository;
 
-    private final Long ACCESS_EXPIRED = 600000L;
+    private final Long ACCESS_EXPIRED = 6000000L; // 100분
+//    private final Long ACCESS_EXPIRED = 10000L; // 10초
     private final Long REFRESH_EXPIRED = 86400000L; // 86400000 24 시간
+//    private final Long REFRESH_EXPIRED = 20000L; // 86400000 24 시간
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
