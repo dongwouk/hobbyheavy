@@ -63,7 +63,7 @@ public class UserService {
     }
 
     /** 취미 ID 가져오기 공통 메서드 **/
-    public Hobby getHobbyById(Long hobbyId) {
+    private Hobby getHobbyById(Long hobbyId) {
         return hobbyRepository.findById(hobbyId)
                 .orElseThrow(() -> new CustomException(ExceptionCode.HOBBY_NOT_FOUND));
     }

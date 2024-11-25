@@ -15,7 +15,7 @@ import java.util.Set;
 public class JoinRequest {
 
     @NotBlank(message = "아이디를 입력해주세요.")
-    @Size(min = 3, max = 50, message = "아이디는 최소 3자리 이상이어야 합니다.")
+    @Size(min = 3, max = 50, message = "아이디는 최소 3자 이상, 최대 50자 이하이어야 합니다.")
     private String userId; // 로그인용 ID
 
     @NotBlank(message = "이름을 입력해주세요.")
@@ -23,11 +23,12 @@ public class JoinRequest {
     private String username; // 유저의 이름
 
     @NotBlank(message = "비밀번호를 입력해주세요.")
-    @Size(min = 8, max = 100, message = "비밀번호는 최소 8자리 이상이어야 합니다.")
+    @Size(min = 8, max = 100, message = "비밀번호는 최소 8자 이상, 최대 100자 이하이어야 합니다.")
     private String password;
 
     @NotBlank(message = "이메일을 입력해주세요.")
-    @Email
+    @Size(max = 50, message = "이메일은 최대 50자 이하이어야 합니다.")
+    @Email(message = "유효한 이메일 주소를 입력해주세요.")
     private String email;
 
     @NotNull(message = "성별을 입력해주세요.")
