@@ -178,7 +178,8 @@ public class MeetupService {
         }
 
         try{
-            meetupRepository.deleteById(meetupId);
+            meetup.markAsDeleted();
+            meetupRepository.save(meetup);
         } catch (Exception e) {
             log.error("MeetupId : {} 모임 삭제에 실패했습니다. - {}", meetupId, e.getMessage());
             throw new CustomException(ExceptionCode.MEETUP_DELETE_FAILED);

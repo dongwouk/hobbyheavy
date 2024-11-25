@@ -3,6 +3,7 @@ package com.example.hobbyheavy.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.Where;
 
 import java.util.List;
 
@@ -12,6 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Where(clause = "deleted = false")
 public class Meetup extends Base {
 
     @Id
