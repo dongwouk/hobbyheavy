@@ -31,20 +31,21 @@ public class NotificationController {
         return ResponseEntity.ok(notifications);
     }
 
-    // 특정 알림 읽음 처리 (옵션)
+    // 특정 알림 읽음 처리
     @PutMapping("/{notificationId}/mark-as-read")
     @PreAuthorize("hasRole('ROLE_USER')")
     public ResponseEntity<String> markNotificationAsRead(@PathVariable Long notificationId) {
         try {
             notificationService.markAsRead(notificationId);
             log.info("Notification with ID {} marked as read", notificationId);
-            return ResponseEntity.ok("Notification marked as read");
+            return ResponseEntity.ok("알림이 읽음 처리되었습니다.");
         } catch (CustomException e) {
             log.error("Error occurred while marking notification as read: {}", e.getMessage());
             if (e.getExceptionCode() == ExceptionCode.NOTIFICATION_NOT_FOUND) {
-                return ResponseEntity.status(404).body("Notification not found");
+                return ResponseEntity.status(404).body("알림을 찾을 수 없습니다.");
             }
-            return ResponseEntity.status(500).body("An unexpected error occurred");
+            return ResponseEntity.status(500).body("예기치 못한 오류가 발생했습니다.");
         }
     }
+
 }
