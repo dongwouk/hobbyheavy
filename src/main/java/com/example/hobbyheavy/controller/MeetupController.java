@@ -98,7 +98,7 @@ public class MeetupController {
         return ResponseEntity.ok(meetupService.myMeetupInfos(getUserId(authentication)));
     }
 
-    @PostMapping
+    @PostMapping("/create")
     public ResponseEntity<String> createMeetup
             (@Valid @RequestBody MeetupCreateRequest request, Authentication authentication) {
         meetupService.createMeetup(request, getUserId(authentication));
