@@ -34,6 +34,7 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
     private final RefreshRepository refreshRepository;
     private final UserRepository userRepository;
 
+
     private final Long ACCESS_EXPIRED = 600000L; // 10분
     private final Long REFRESH_EXPIRED = 86400000L; // 86400000 24 시간
 

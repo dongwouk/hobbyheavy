@@ -12,6 +12,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -114,8 +115,11 @@ public class SecurityConfig {
 
                         .requestMatchers("/user/my-info").authenticated()
                         .requestMatchers("/user/password").authenticated()
-                        .requestMatchers("/board/**").authenticated()
-                        .requestMatchers("/board").permitAll() // POST 요청 허용
+//                        .requestMatchers("/board/**").authenticated()
+//                        .requestMatchers("/board").permitAll() // POST 요청 허용
+                        .requestMatchers(HttpMethod.GET,"/meetup").permitAll() // POST 요청 허용
+//                        .requestMatchers(HttpMethod.POST,"/meetup").authenticated() // POST 요청 허용
+//                        .requestMatchers("/meetup/**").authenticated()
                         .requestMatchers("/admin").hasRole("ADMIN")
                         .requestMatchers("/reissue").permitAll()
                         .anyRequest().authenticated());
