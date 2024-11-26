@@ -5,6 +5,7 @@ import com.example.hobbyheavy.entity.Refresh;
 import com.example.hobbyheavy.exception.CustomException;
 import com.example.hobbyheavy.exception.ExceptionCode;
 import com.example.hobbyheavy.repository.RefreshRepository;
+import com.example.hobbyheavy.repository.UserRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.ExpiredJwtException;
 import jakarta.servlet.FilterChain;
@@ -31,11 +32,11 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
     private final AuthenticationManager authenticationManager;
     private final JWTUtil jwtUtil;
     private final RefreshRepository refreshRepository;
+    private final UserRepository userRepository;
 
-    private final Long ACCESS_EXPIRED = 6000000L; // 100분
-//    private final Long ACCESS_EXPIRED = 10000L; // 10초
+
+    private final Long ACCESS_EXPIRED = 600000L; // 10분
     private final Long REFRESH_EXPIRED = 86400000L; // 86400000 24 시간
-//    private final Long REFRESH_EXPIRED = 20000L; // 86400000 24 시간
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
@@ -53,6 +54,24 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
             password = requestMap.get("password");
         } catch (IOException e) {
             throw new AuthenticationException("요청 데이터를 읽을 수 없습니다.") {
+            };
+        }
+
+        // userId 검증
+        if (userId == null || userId.isEmpty()) {
+            throw new AuthenticationException("아이디를 입력하세요.") {
+            };
+        }
+
+        // password 검증
+        if (password == null || password.isEmpty()) {
+            throw new AuthenticationException("패스워드를 입력하세요.") {
+            };
+        }
+
+        // 존재하지 않는 사용자 404
+        if (!userRepository.existsByUserId(userId)) {
+            throw new AuthenticationException("존재하지 않는 아이디입니다.") {
             };
         }
 
@@ -113,9 +132,27 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
 
     //로그인 실패시 실행하는 메소드
     @Override
-    protected void unsuccessfulAuthentication(HttpServletRequest request, HttpServletResponse response, AuthenticationException failed) {
+    protected void unsuccessfulAuthentication(HttpServletRequest request, HttpServletResponse response, AuthenticationException failed) throws IOException {
 
-        response.setStatus(401);
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+
+        String errorMessage = "인증에 실패했습니다. (아이디, 패스워드 확인)";
+        HttpStatus status = HttpStatus.UNAUTHORIZED;
+
+        if (failed.getMessage().contains("패스워드를 입력하세요.")) {
+            errorMessage = "패스워드를 입력하세요.";
+            status = HttpStatus.BAD_REQUEST;
+        } else if (failed.getMessage().contains("아이디를 입력하세요.")) {
+            errorMessage = "아이디를 입력하세요.";
+            status = HttpStatus.BAD_REQUEST;
+        } else if (failed.getMessage().contains("존재하지 않는 아이디입니다.")) {
+            errorMessage = "존재하지 않는 아이디입니다.";
+            status = HttpStatus.NOT_FOUND;
+        }
+
+        response.setStatus(status.value());
+        response.getWriter().write(String.format("{\"error\":\"%s\"}", errorMessage));
     }
 
     private void addRefreshEntity(String userId, String refresh, Long expiredMs){

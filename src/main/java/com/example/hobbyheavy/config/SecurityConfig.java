@@ -6,6 +6,7 @@ import com.example.hobbyheavy.jwt.JWTUtil;
 import com.example.hobbyheavy.jwt.LoginFilter;
 import com.example.hobbyheavy.oauth2.CustomSuccessHandler;
 import com.example.hobbyheavy.repository.RefreshRepository;
+import com.example.hobbyheavy.repository.UserRepository;
 import com.example.hobbyheavy.service.CustomOAuth2UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
@@ -35,6 +36,8 @@ public class SecurityConfig {
     private final AuthenticationConfiguration authenticationConfiguration;
     private final JWTUtil jwtUtil;
     private final RefreshRepository refreshRepository;
+    private final UserRepository userRepository;
+
     // Oauth2
     private final CustomOAuth2UserService customOAuth2UserService;
     private final CustomSuccessHandler customSuccessHandler;
@@ -89,13 +92,13 @@ public class SecurityConfig {
 //                .addFilterBefore(new JWTFilter(jwtUtil), UsernamePasswordAuthenticationFilter.class);
 
         //Oauth2
-        http
-                .oauth2Login((oauth2) -> oauth2
-                        .authorizationEndpoint(auth -> auth
-                                .baseUri("/oauth2/login"))
-                        .userInfoEndpoint((userInfoEndpointConfig) -> userInfoEndpointConfig
-                                .userService(customOAuth2UserService))
-                        .successHandler(customSuccessHandler));
+//        http
+//                .oauth2Login((oauth2) -> oauth2
+//                        .authorizationEndpoint(auth -> auth
+//                                .baseUri("/oauth2/login"))
+//                        .userInfoEndpoint((userInfoEndpointConfig) -> userInfoEndpointConfig
+//                                .userService(customOAuth2UserService))
+//                        .successHandler(customSuccessHandler));
 
         //경로별 인가 작업
         http
@@ -130,7 +133,7 @@ public class SecurityConfig {
         http
                 .addFilterBefore(new JWTFilter(jwtUtil), LoginFilter.class);
         http
-                .addFilterAt(new LoginFilter(authenticationManager(authenticationConfiguration), jwtUtil, refreshRepository),
+                .addFilterAt(new LoginFilter(authenticationManager(authenticationConfiguration), jwtUtil, refreshRepository, userRepository),
                         UsernamePasswordAuthenticationFilter.class);
         http
                 .addFilterBefore(new CustomLogoutFilter(jwtUtil, refreshRepository), LogoutFilter.class);

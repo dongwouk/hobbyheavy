@@ -8,7 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Hobby extends Base {
+public class Hobby {
 
     @Id
     @Column(name = "hobby_id")
