@@ -7,6 +7,7 @@ import com.example.hobbyheavy.exception.ExceptionCode;
 import com.example.hobbyheavy.repository.ParticipantRepository;
 import com.example.hobbyheavy.repository.ScheduleRepository;
 import com.example.hobbyheavy.type.MeetupScheduleStatus;
+import com.example.hobbyheavy.type.NotificationMessage;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -91,7 +92,7 @@ public class FinalizationService {
         scheduleRepository.save(schedule);
 
         // 알림 전송
-        notificationService.notifyScheduleConfirmation(schedule);
+        notificationService.notifyParticipants(schedule, NotificationMessage.CONFIRMATION);
         log.info("스케줄이 확정되고 알림이 전송되었습니다. ID: {}, 상태: {}", schedule.getScheduleId(), schedule.getScheduleStatus());
     }
 }

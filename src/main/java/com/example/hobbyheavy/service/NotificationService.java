@@ -65,47 +65,16 @@ public class NotificationService {
             notificationSender.send(participant.getUser().getEmail(), message);
             log.info("[알림 전송] 성공 - 참여자: {}, 메시지: {}", participant.getUser().getUsername(), message);
         } catch (Exception e) {
-            log.error("[알림 전송] 실패 - 참여자: {}, 메시지: {}", participant.getUser().getUsername(), message, e);
-            handleAsyncError(participant, message, e);
+            throw new CustomException(ExceptionCode.NOTIFICATION_SEND_FAILED, e);
         }
-    }
-
-    /**
-     * 알림 전송 실패 시 처리 메서드
-     *
-     * @param participant 참여자
-     * @param message     실패한 알림 메시지
-     * @param e           예외 객체
-     */
-    private void handleAsyncError(Participant participant, String message, Exception e) {
-        log.error("[비동기 알림 전송] 실패 처리 - 참여자: {}, 메시지: {}", participant.getUser().getUsername(), message, e);
-        // 여기에 재시도 로직이나 별도 알림 실패 처리 로직을 추가하는 것이 좋습니다.
-    }
-
-    /**
-     * 스케줄 생성 시 참가자들에게 알림을 발송합니다.
-     *
-     * @param schedule 생성된 스케줄
-     */
-    public void notifyScheduleCreation(MeetupSchedule schedule) {
-        notifyParticipants(schedule, NotificationMessage.SCHEDULE_CREATION);
-    }
-
-    /**
-     * 스케줄 확정 시 참가자들에게 알림을 발송합니다.
-     *
-     * @param meetupSchedule 확정된 스케줄 객체
-     */
-    public void notifyScheduleConfirmation(MeetupSchedule meetupSchedule) {
-        notifyParticipants(meetupSchedule, NotificationMessage.CONFIRMATION);
     }
 
     /**
      * 내부 알림 시스템을 위한 알림 저장 메서드
      *
-     * @param user          알림 수신자
-     * @param type          알림 유형
-     * @param message       알림 메시지
+     * @param user           알림 수신자
+     * @param type           알림 유형
+     * @param message        알림 메시지
      * @param meetupSchedule 관련된 스케줄 객체
      */
     private void saveNotification(User user, NotificationType type, String message, MeetupSchedule meetupSchedule) {

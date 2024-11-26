@@ -12,6 +12,7 @@ import com.example.hobbyheavy.repository.CommentRepository;
 import com.example.hobbyheavy.repository.MeetupRepository;
 import com.example.hobbyheavy.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,19 +20,22 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class CommentService {
 
     private final CommentRepository commentRepository;
     private final UserRepository userRepository;
     private final MeetupRepository meetupRepository;
 
-    public List<CommentResponse> meetupComments (Long meetupId) {
+    public List<CommentResponse> meetupComments(Long meetupId) {
         return commentRepository.findAllByMeetup_MeetupId(meetupId)
                 .stream().map(CommentResponse::new).toList();
     }
 
-    /** 댓글 생성 **/
-    public void createComment (CommentCreateRequest request, String userId) {
+    /**
+     * 댓글 생성
+     **/
+    public void createComment(CommentCreateRequest request, String userId) {
         User user = getUser(userId);
         Meetup meetup = meetupRepository.findFirstByMeetupId(request.getMeetupId())
                 .orElseThrow(() -> new CustomException(ExceptionCode.MEETUP_NOT_FOUND));
@@ -43,7 +47,7 @@ public class CommentService {
      * 댓글 수정
      */
     @Transactional
-    public void updateComment (CommentChangeRequest request, String userId) {
+    public void updateComment(CommentChangeRequest request, String userId) {
         Comment comment = getComment(request, getUser(userId));
         comment.updateComment(request.getContent());
     }
@@ -51,8 +55,15 @@ public class CommentService {
     /**
      * 댓글 삭제
      */
-    public void deleteComment (CommentChangeRequest request, String userId) {
-        commentRepository.delete(getComment(request, getUser(userId)));
+    public void deleteComment(CommentChangeRequest request, String userId) {
+        try {
+            Comment comment = getComment(request, getUser(userId));
+            comment.markAsDeleted();
+            commentRepository.save(comment);
+        } catch (Exception e) {
+            log.error("commentId : {}, 댓글 삭제 중 에러 발생 : {}", request.getCommentId(), e.getMessage());
+            throw new CustomException(ExceptionCode.COMMENT_DELETE_FAILED);
+        }
     }
 
     private User getUser(String userId) {

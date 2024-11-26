@@ -14,10 +14,12 @@ public class HobbyResponse {
 
     private Long hobbyId;
     private String hobbyName;
+    private String inOutDoor;
 
     public static HobbyResponse fromEntity (Hobby hobby) {
         return HobbyResponse.builder()
                 .hobbyId(hobby.getHobbyId())
+                .inOutDoor(hobby.getInOutDoor())
                 .hobbyName(hobby.getHobbyName())
                 .build();
     }

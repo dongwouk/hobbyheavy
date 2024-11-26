@@ -8,6 +8,7 @@ import com.example.hobbyheavy.exception.CustomException;
 import com.example.hobbyheavy.exception.ExceptionCode;
 import com.example.hobbyheavy.repository.ScheduleRepository;
 import com.example.hobbyheavy.type.MeetupScheduleStatus;
+import com.example.hobbyheavy.type.NotificationMessage;
 import com.example.hobbyheavy.util.DurationParser;
 import com.example.hobbyheavy.util.ScheduleUtils;
 import lombok.RequiredArgsConstructor;
@@ -49,7 +50,7 @@ public class ScheduleService {
         dynamicScheduleService.scheduleFinalization(savedSchedule);
         log.info("스케줄이 생성되었습니다. ID: {}", savedSchedule.getScheduleId());
 
-        notificationService.notifyScheduleCreation(savedSchedule);
+        notificationService.notifyParticipants(savedSchedule, NotificationMessage.SCHEDULE_CREATION);
         log.info("스케줄 생성 알림이 발송되었습니다. 스케줄 ID: {}", savedSchedule.getScheduleId());
 
 
@@ -57,17 +58,31 @@ public class ScheduleService {
     }
 
     /**
-     * 특정 모임 스케줄을 조회합니다.
+     * 특정 모임 스케줄을 조회하고 관련 알림을 읽음 처리합니다.
      *
-     * @param scheduleId 조회할 스케줄의 ID
+     * @param scheduleId    조회할 스케줄의 ID
+     * @param notificationId 읽음 처리할 알림의 ID (옵션)
      * @return 조회된 스케줄의 응답 정보
      * @throws CustomException 스케줄이 존재하지 않을 경우 발생
      */
-    public ScheduleResponse getSchedule(Long scheduleId) {
+    public ScheduleResponse getSchedule(Long scheduleId, Long notificationId) {
+        // 스케줄 조회 및 검증
         MeetupSchedule meetupSchedule = verifyAndGetSchedule(scheduleId);
         log.info("스케줄 조회: ID: {}", scheduleId);
+
+        // 알림 ID가 제공된 경우 해당 알림 읽음 처리
+        if (notificationId != null) {
+            try {
+                notificationService.markAsRead(notificationId);
+                log.info("알림이 읽음 처리되었습니다. 알림 ID: {}", notificationId);
+            } catch (CustomException e) {
+                log.error("알림 읽음 처리 중 오류 발생: {}", e.getMessage());
+            }
+        }
+        // 스케줄 응답 생성 및 반환
         return ScheduleResponse.fromEntity(meetupSchedule);
     }
+
 
     /**
      * 모든 모임 스케줄을 조회합니다.
