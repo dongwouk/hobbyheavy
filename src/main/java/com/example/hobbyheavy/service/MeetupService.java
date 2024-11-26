@@ -60,7 +60,7 @@ public class MeetupService {
             case "search" ->
                     meetupRepository.findAllByMeetupNameContainingOrDescriptionContaining(pageable, value, value);
             case "location" ->
-                    meetupRepository.findAllByLocation(pageable, value);
+                    meetupRepository.findAllByLocationContaining(pageable, value);
             default -> throw new CustomException(ExceptionCode.INVALID_SEARCH_KEYWORD);
         };
         return meetupPage.map(MeetupListResponse::new);

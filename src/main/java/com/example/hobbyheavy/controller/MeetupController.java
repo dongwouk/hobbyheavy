@@ -4,7 +4,6 @@ import com.example.hobbyheavy.dto.request.MeetupCreateRequest;
 import com.example.hobbyheavy.dto.request.MeetupUpdateRequest;
 import com.example.hobbyheavy.dto.response.MeetupInfoResponse;
 import com.example.hobbyheavy.dto.response.MeetupListResponse;
-import com.example.hobbyheavy.entity.Meetup;
 import com.example.hobbyheavy.exception.CustomException;
 import com.example.hobbyheavy.exception.ExceptionCode;
 import com.example.hobbyheavy.service.MeetupService;

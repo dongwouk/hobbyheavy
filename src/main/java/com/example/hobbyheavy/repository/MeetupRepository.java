@@ -24,5 +24,5 @@ public interface MeetupRepository extends JpaRepository<Meetup, Long> {
 
     Page<Meetup> findAllByMeetupNameContainingOrDescriptionContaining(Pageable pageable, String meetupNameKeyword, String descriptionKeyword);
 
-    Page<Meetup> findAllByLocation(Pageable pageable, String location);
+    Page<Meetup> findAllByLocationContaining(Pageable pageable, String location);
 }
