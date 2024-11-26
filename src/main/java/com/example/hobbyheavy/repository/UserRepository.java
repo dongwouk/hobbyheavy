@@ -15,4 +15,14 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     Optional<User> findByUserId(String userId); // userId 로 찾기
 
+    Optional<User> findByUserIdAndDeletedFalse(String userId); // userId 로 탈퇴하지 않은 사용자 찾기
+
+    boolean existsByUserIdAndDeletedFalse(String userId); // 현재 활성화된 아이디인지 체크
+
+    boolean existsByEmailAndDeletedFalse(String email); // 현재 활성화된 이미일인지 체크
+
+    Optional<User> findByUserIdAndDeletedTrue(String userId); // 현재 탈퇴된 아이디인지 체크
+
+    Optional<User> findByEmailAndDeletedTrue(String email); // 현재 탈퇴된 이메일인지 체크
+
 }

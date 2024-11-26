@@ -23,10 +23,7 @@ public enum ExceptionCode {
     USER_ID_ALREADY_IN_USE(HttpStatus.CONFLICT, "이미 사용중인 아이디 입니다."),
     EMAIL_ALREADY_IN_USE(HttpStatus.CONFLICT, "이미 사용중인 이메일 입니다."),
     USER_DELETE_FAILED(HttpStatus.INTERNAL_SERVER_ERROR, "회원 탈퇴에 실패 하였습니다."),
-    USER_REGISTER_FAILED(HttpStatus.BAD_REQUEST, "회원가입 중 오류가 발생했습니다."),
-    MISSING_USER_ID(HttpStatus.BAD_REQUEST, "아이디가 입력되지 않았습니다."),
-    MISSING_PASSWORD(HttpStatus.BAD_REQUEST, "비밀번호가 입력되지 않았습니다."),
-    INVALID_REQUEST_BODY(HttpStatus.BAD_REQUEST, "요청 데이터가 잘못되었습니다."),
+    USER_DELETED(HttpStatus.BAD_REQUEST, "탈퇴한 사용자입니다."),
 
     /** Token **/
     INVALID_TOKEN(HttpStatus.BAD_REQUEST, "잘못된 토큰입니다."),
