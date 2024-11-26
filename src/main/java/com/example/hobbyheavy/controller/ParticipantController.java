@@ -7,6 +7,7 @@ import com.example.hobbyheavy.exception.ExceptionCode;
 import com.example.hobbyheavy.service.ParticipantService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.apache.catalina.realm.AuthenticatedUserRealm;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
@@ -34,12 +35,11 @@ public class ParticipantController {
         return ResponseEntity.status(201).body("Waiting Participant Successfully.");
     }
 
-    @PutMapping("/status")
-    public ResponseEntity<String> approveParticipant
-            (@Valid @RequestBody ParticipantStatusRequest request,
-             Authentication authentication) {
-        participantService.setStatusParticipant(request, getUserId(authentication));
-        return ResponseEntity.ok("Change Participant Status Successfully.");
+    @PutMapping("/waiting-cancel/{meetupId}")
+    public ResponseEntity<String> WaitCancelParticipant
+            (@PathVariable Long meetupId, Authentication authentication) {
+        participantService.cancelWaiting(meetupId, getUserId(authentication));
+        return ResponseEntity.ok("Cancel Waiting Participant Successfully.");
     }
 
     @GetMapping("/waiting/{meetupId}")
@@ -47,6 +47,22 @@ public class ParticipantController {
             (@PathVariable Long meetupId, Authentication authentication) {
         return ResponseEntity.ok(
                 participantService.getWaitParticipant(meetupId, getUserId(authentication)));
+    }
+
+    @PutMapping("/status")
+    public ResponseEntity<String> approveParticipant
+            (@Valid @RequestBody ParticipantStatusRequest request,
+             Authentication authentication) {
+        participantService.setHostStatusParticipant(request, getUserId(authentication));
+        return ResponseEntity.ok("Change Participant Status Successfully.");
+    }
+
+    @PutMapping("/withdraw")
+    public ResponseEntity<String> changeParticipant
+            (@Valid @RequestBody ParticipantStatusRequest request,
+             Authentication authentication) {
+        participantService.withdrawParticipant(request, getUserId(authentication));
+        return ResponseEntity.ok("Change Participant Status Successfully.");
     }
 
 }

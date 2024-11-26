@@ -14,6 +14,7 @@ import com.example.hobbyheavy.repository.UserRepository;
 import com.example.hobbyheavy.type.ParticipantRole;
 import com.example.hobbyheavy.type.ParticipantStatus;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,6 +23,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class ParticipantService {
 
     private final ParticipantRepository participantRepository;
@@ -52,8 +54,18 @@ public class ParticipantService {
                 .map(participant -> new ParticipantApprovedResponse(
                         participant.getUser().getUserId(),
                         participant.getStatus(),
-                        participant.getMeetupRole(),
-                        participant.getHasVoted())).toList();
+                        participant.getMeetupRole()
+                        )).toList();
+    }
+
+    @Transactional
+    public void cancelWaiting (Long meetupId, String userId) {
+        Participant participant = getParticipant(meetupId, userId);
+        if (participant.getStatus() != ParticipantStatus.WAITING) {
+            log.error("요청한 참여자 : {}, 요청자 상태 : {}", userId, participant.getStatus());
+            throw new CustomException(ExceptionCode.NOT_STATUS_WAITING);
+        }
+        participant.updateStatus(ParticipantStatus.WITHDRAWN);
     }
 
     /**
@@ -89,17 +101,30 @@ public class ParticipantService {
     }
 
     @Transactional
-    public void setStatusParticipant(ParticipantStatusRequest request, String userId) {
+    public void setHostStatusParticipant(ParticipantStatusRequest request, String userId) {
+        checkHost(request.getMeetupId(), userId);
+        Participant participant = getParticipant(request.getMeetupId(), userId);
+        participant.updateStatus(ParticipantStatus.valueOf(request.getStatus()));
+    }
+
+    @Transactional
+    public void withdrawParticipant(ParticipantStatusRequest request, String userId) {
+        Participant participant = getParticipant(request.getMeetupId(), userId);
+        if (participant.getStatus() != ParticipantStatus.APPROVED) {
+            log.error("유저의 상태 : {}, 탈퇴를 요청자가 승인 상태가 아닙니다.", participant.getStatus());
+            throw new CustomException(ExceptionCode.NOT_STATUS_APPROVED);
+        }
+        participant.updateStatus(ParticipantStatus.WITHDRAWN);
+    }
+
+    private Participant getParticipant(Long meetupId, String userId) {
         Optional<Participant> optionalParticipant =
-                participantRepository.findByMeetup_MeetupIdAndUser_UserId(request.getMeetupId(), request.getUserId());
+                participantRepository.findByMeetup_MeetupIdAndUser_UserId(meetupId, userId);
 
         if (optionalParticipant.isEmpty()) {
             throw new CustomException(ExceptionCode.PARTICIPANT_NOT_FOUND);
         }
-
-        checkHost(request.getMeetupId(), userId);
-        Participant participant = optionalParticipant.get();
-        participant.updateStatus(ParticipantStatus.valueOf(request.getStatus()));
+        return optionalParticipant.get();
     }
 
     private void checkHost(Long meetupId, String userId) {

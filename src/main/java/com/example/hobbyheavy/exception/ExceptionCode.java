@@ -58,6 +58,8 @@ public enum ExceptionCode {
     NO_PARTICIPANTS(HttpStatus.NOT_FOUND, "참여자가 없습니다."),
     PARTICIPANT_NOT_FOUND(HttpStatus.NOT_FOUND, "요청한 대기자가 없습니다."),
     ALREADY_REQUEST(HttpStatus.CONFLICT, "이미 승인, 대기중인 참여자는 신청할 수 없습니다."),
+    NOT_STATUS_APPROVED(HttpStatus.CONFLICT, "참여자의 정보가 승인이 아닙니다."),
+    NOT_STATUS_WAITING(HttpStatus.CONFLICT, "참여자의 정보가 대기가 아닙니다."),
 
     /**
      * Comment
