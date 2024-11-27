@@ -1,5 +1,6 @@
 package com.example.hobbyheavy.controller;
 
+import com.example.hobbyheavy.dto.request.ParticipantRoleRequest;
 import com.example.hobbyheavy.dto.request.ParticipantStatusRequest;
 import com.example.hobbyheavy.dto.response.ParticipantWaitResponse;
 import com.example.hobbyheavy.exception.CustomException;
@@ -7,7 +8,6 @@ import com.example.hobbyheavy.exception.ExceptionCode;
 import com.example.hobbyheavy.service.ParticipantService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.apache.catalina.realm.AuthenticatedUserRealm;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
@@ -63,7 +63,7 @@ public class ParticipantController {
     public ResponseEntity<String> approveParticipant
             (@Valid @RequestBody ParticipantStatusRequest request,
              Authentication authentication) {
-        participantService.setHostStatusParticipant(request, getUserId(authentication));
+        participantService.setHostStatus(request, getUserId(authentication));
         return ResponseEntity.ok("Change Participant Status Successfully.");
     }
 
@@ -71,9 +71,14 @@ public class ParticipantController {
     public ResponseEntity<String> changeParticipant
             (@Valid @RequestBody ParticipantStatusRequest request,
              Authentication authentication) {
-        participantService.withdrawParticipant(request, getUserId(authentication));
+        participantService.withdraw(request, getUserId(authentication));
         return ResponseEntity.ok("Change Participant Status Successfully.");
     }
 
-
+    @PutMapping("/sub-host")
+    public ResponseEntity<String> changeRole (
+            @Valid @RequestBody ParticipantRoleRequest request, Authentication authentication) {
+        participantService.putRoleParticipant(request, getUserId(authentication));
+        return ResponseEntity.ok("Member Role Change Successfully.");
+    }
 }

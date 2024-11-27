@@ -48,6 +48,7 @@ public enum ExceptionCode {
     IMAGE_IO_EXCEPTION(HttpStatus.INTERNAL_SERVER_ERROR, "이미지 처리 중 오류가 발생했습니다."),
     IMAGE_IS_EMPTY(HttpStatus.BAD_REQUEST, "이미지가 없습니다."),
     IMAGE_EXTENSION_MISMATCH(HttpStatus.BAD_REQUEST, "이미지 확장자가 아닙니다."),
+    MEETUP_UPDATE_FAILED(HttpStatus.INTERNAL_SERVER_ERROR, "모임 수정에 실패했습니다."),
 
     /**
      * Participant
@@ -64,6 +65,17 @@ public enum ExceptionCode {
     COMMENT_NOT_FOUND(HttpStatus.NOT_FOUND, "요청한 댓글을 찾을 수 없습니다."),
     COMMENT_USER_MISMATCH(HttpStatus.CONFLICT, "요청한 댓글의 작성자가 다릅니다."),
     COMMENT_DELETE_FAILED(HttpStatus.INTERNAL_SERVER_ERROR, "댓글 삭제에 실패했습니다."),
+
+    /**
+     * Review
+     */
+    REVIEW_NOT_FOUND(HttpStatus.NOT_FOUND, "요청한 후기가 없습니다."),
+    REVIEW_UPDATE_FAILED(HttpStatus.INTERNAL_SERVER_ERROR, "후기 수정에 실패했습니다."),
+    REVIEW_DELETE_FAILED(HttpStatus.INTERNAL_SERVER_ERROR, "후기 삭제에 실패했습니다."),
+    SCHEDULE_NOT_CONFIRMED(HttpStatus.BAD_REQUEST, "확정된 스케쥴이 아닙니다."),
+    SCHEDULE_IS_BEFORE(HttpStatus.BAD_REQUEST, "활동전 후기를 작성할 수 없습니다."),
+    SCHEDULE_NOT_JOIN(HttpStatus.CONFLICT, "해당 스케쥴에 참여하지 않았습니다."),
+    INVALID_REVIEWER(HttpStatus.CONFLICT, "후기 작성자가 아닙니다."),
 
     /**
      * Schedule

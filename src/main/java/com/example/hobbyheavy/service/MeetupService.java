@@ -150,14 +150,17 @@ public class MeetupService {
      **/
     @Transactional
     public void updateMeetup(Long meetupId, MeetupUpdateRequest request, String userId) {
-
         Meetup meetup = findMeetup(meetupId, userId);
-
-        meetup.updateMeetupName(request.getMeetupName());
-        meetup.updateDescription(request.getDescription());
-        meetup.updateLocation(request.getLocation());
-        meetup.updateRecurrenceRule(request.getRecurrenceRule());
-        meetup.updateMaxParticipants(request.getMaxParticipants());
+        try {
+            meetup.updateMeetupName(request.getMeetupName());
+            meetup.updateDescription(request.getDescription());
+            meetup.updateLocation(request.getLocation());
+            meetup.updateRecurrenceRule(request.getRecurrenceRule());
+            meetup.updateMaxParticipants(request.getMaxParticipants());
+        } catch (Exception e) {
+            log.error("모임 아이디 : {}, 모임 수정에 실패했습니다. 에러 메세지 : {}", meetupId, e.getMessage());
+            throw new CustomException(ExceptionCode.MEETUP_UPDATE_FAILED);
+        }
     }
 
     /**
