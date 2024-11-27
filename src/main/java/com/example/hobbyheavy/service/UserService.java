@@ -5,10 +5,14 @@ import com.example.hobbyheavy.dto.request.UserPwUpdateRequest;
 import com.example.hobbyheavy.dto.request.UserUpdateRequest;
 import com.example.hobbyheavy.dto.response.UserInfoResponse;
 import com.example.hobbyheavy.entity.Hobby;
+import com.example.hobbyheavy.entity.Meetup;
+import com.example.hobbyheavy.entity.Participant;
 import com.example.hobbyheavy.entity.User;
 import com.example.hobbyheavy.exception.CustomException;
 import com.example.hobbyheavy.exception.ExceptionCode;
 import com.example.hobbyheavy.repository.HobbyRepository;
+import com.example.hobbyheavy.repository.MeetupRepository;
+import com.example.hobbyheavy.repository.ParticipantRepository;
 import com.example.hobbyheavy.repository.UserRepository;
 import com.example.hobbyheavy.type.UserRole;
 import jakarta.transaction.Transactional;
@@ -19,6 +23,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Slf4j
@@ -28,6 +33,8 @@ public class UserService {
 
     private final UserRepository userRepository;
     private final HobbyRepository hobbyRepository;
+    private final ParticipantRepository participantRepository;
+    private final MeetupRepository meetupRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     /** 회원가입 유효성 체크 메서드 **/
@@ -73,17 +80,15 @@ public class UserService {
     /** 회원 가입 메서드 **/
     public void JoinUser(UserJoinRequest userJoinRequest) {
 
-        // 탈퇴된 계정 DB 에서 삭제
-        userRepository.findByUserIdAndDeletedTrue(userJoinRequest.getUserId())
+        // 아이디 중복 확인
+        userRepository.findByUserIdAndDeletedFalse(userJoinRequest.getUserId())
                 .ifPresent(user -> {
-                    userRepository.delete(user);
-                    log.info("탈퇴 상태의 기존 사용자(ID: {})를 삭제했습니다.", user.getUserId());
+                    throw new CustomException(ExceptionCode.USER_ID_ALREADY_IN_USE);
                 });
 
-        userRepository.findByEmailAndDeletedTrue(userJoinRequest.getEmail())
+        userRepository.findByEmailAndDeletedFalse(userJoinRequest.getEmail())
                 .ifPresent(user -> {
-                    userRepository.delete(user);
-                    log.info("탈퇴 상태의 기존 이메일({})을 가진 사용자를 삭제했습니다.", user.getEmail());
+                    throw new CustomException(ExceptionCode.EMAIL_ALREADY_IN_USE);
                 });
 
         // 유효성 체크
@@ -184,6 +189,12 @@ public class UserService {
         // 사용자 조회
         User user = getUser(userId);
 
+        List<Participant> participants = participantRepository.findAllByUser_UserId(userId);
+        participants.forEach(participant -> participant.markAsDeleted());
+
+        List<Meetup> meetups = meetupRepository.findAllByHostUser(user);
+        meetups.forEach(meetup -> meetup.markAsDeleted());
+
         // 비밀번호 확인
         checkPassword(userId, password, user.getPassword());
 
@@ -200,5 +211,4 @@ public class UserService {
         userRepository.save(user);
         log.info("사용자 ID: {}의 계정이 논리적으로 삭제되었습니다.", userId);
     }
-
 }
