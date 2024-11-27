@@ -33,13 +33,13 @@ public class UserService {
     /** 회원가입 유효성 체크 메서드 **/
     void checkJoin(JoinRequest joinRequest) {
 
-        // UserId 중복 체크
-        if(userRepository.existsByUserId(joinRequest.getUserId())) {
+        // UserId 중복 체크 (탈퇴하지 않은 활성화된 아이디)
+        if (userRepository.existsByUserIdAndDeletedFalse(joinRequest.getUserId())) {
             throw new CustomException(ExceptionCode.USER_ID_ALREADY_IN_USE);
         }
 
-        // email 중복 체크
-        if (userRepository.existsByEmail(joinRequest.getEmail())) {
+        // Email 중복 체크 (탈퇴하지 않은 활성화된 이메일)
+        if (userRepository.existsByEmailAndDeletedFalse(joinRequest.getEmail())) {
             throw new CustomException(ExceptionCode.EMAIL_ALREADY_IN_USE);
         }
 
@@ -47,7 +47,7 @@ public class UserService {
 
     /** 사용자 조회 공통 메서드 **/
     private User getUser(String userId) {
-        return userRepository.findByUserId(userId)
+        return userRepository.findByUserIdAndDeletedFalse(userId)
                 .orElseThrow(() -> {
                     log.warn("사용자 조회 실패. 입력한 사용자 ID: {}", userId);
                     return new CustomException(ExceptionCode.USER_NOT_FOUND);
@@ -73,6 +73,19 @@ public class UserService {
     /** 회원 가입 메서드 **/
     public void JoinUser(JoinRequest joinRequest) {
 
+        // 탈퇴된 계정 DB 에서 삭제
+        userRepository.findByUserIdAndDeletedTrue(joinRequest.getUserId())
+                .ifPresent(user -> {
+                    userRepository.delete(user);
+                    log.info("탈퇴 상태의 기존 사용자(ID: {})를 삭제했습니다.", user.getUserId());
+                });
+
+        userRepository.findByEmailAndDeletedTrue(joinRequest.getEmail())
+                .ifPresent(user -> {
+                    userRepository.delete(user);
+                    log.info("탈퇴 상태의 기존 이메일({})을 가진 사용자를 삭제했습니다.", user.getEmail());
+                });
+
         // 유효성 체크
         checkJoin(joinRequest);
 
@@ -97,6 +110,7 @@ public class UserService {
                 .alarm(true)
                 .role(Collections.singleton(Role.ROLE_USER)) // 역할이 존재할 때 설정
                 .build());
+        log.info("새 사용자 가입 완료. 사용자 ID: {}", joinRequest.getUserId());
     }
 
     /** 나의 회원정보 조회 메서드 **/
@@ -173,9 +187,18 @@ public class UserService {
         // 비밀번호 확인
         checkPassword(userId, password, user.getPassword());
 
-        // 사용자 삭제
-        userRepository.delete(user);
-        log.info("사용자 ID: {}의 계정이 성공적으로 탈퇴 처리 되었습니다.", userId);
+        // 이미 논리적으로 탈퇴된 사용자 여부 확인
+        if (user.isDeleted()) {
+            log.warn("사용자 ID: {}는 이미 탈퇴한 상태입니다.", userId);
+            throw new CustomException(ExceptionCode.USER_DELETED); // 예외 처리
+        }
+
+        // 논리적 삭제 처리
+        user.markAsDeleted(); // deleted 값을 true 로 설정하고 deleted_at 시간을 기록
+
+        // 사용자 업데이트 (DB에 반영)
+        userRepository.save(user);
+        log.info("사용자 ID: {}의 계정이 논리적으로 삭제되었습니다.", userId);
     }
 
 }
