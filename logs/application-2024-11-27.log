@@ -6798,3 +6798,1340 @@ Caused by: java.sql.SQLSyntaxErrorException: Table 'meetup' already exists
 2024-11-27 18:59:18.059  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default' 
 2024-11-27 18:59:18.061  c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated... 
 2024-11-27 18:59:18.062  c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed. 
+2024-11-27 21:05:28.690  o.h.v.i.u.Version - HV000001: Hibernate Validator 8.0.1.Final 
+2024-11-27 21:05:28.714  c.e.h.HobbyheavyApplication - Starting HobbyheavyApplication using Java 17.0.12 with PID 27032 (D:\workspace\hobbyheavy\build\classes\java\main started by user in D:\workspace\hobbyheavy) 
+2024-11-27 21:05:28.715  c.e.h.HobbyheavyApplication - The following 1 profile is active: "secret" 
+2024-11-27 21:05:28.746  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable 
+2024-11-27 21:05:28.747  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG' 
+2024-11-27 21:05:29.285  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2024-11-27 21:05:29.340  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 49 ms. Found 9 JPA repository interfaces. 
+2024-11-27 21:05:29.781  o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port 8090 (http) 
+2024-11-27 21:05:29.789  o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8090"] 
+2024-11-27 21:05:29.791  o.a.c.c.StandardService - Starting service [Tomcat] 
+2024-11-27 21:05:29.792  o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.31] 
+2024-11-27 21:05:29.836  o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext 
+2024-11-27 21:05:29.837  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1089 ms 
+2024-11-27 21:05:29.933  o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default] 
+2024-11-27 21:05:29.963  o.h.Version - HHH000412: Hibernate ORM core version 6.5.3.Final 
+2024-11-27 21:05:29.984  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled 
+2024-11-27 21:05:30.175  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer 
+2024-11-27 21:05:30.195  c.z.h.HikariDataSource - HikariPool-1 - Starting... 
+2024-11-27 21:05:30.285  c.z.h.p.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2a3bb49f 
+2024-11-27 21:05:30.286  c.z.h.HikariDataSource - HikariPool-1 - Start completed. 
+2024-11-27 21:05:30.313  o.h.o.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default) 
+2024-11-27 21:05:30.985  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration) 
+2024-11-27 21:05:31.108  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2024-11-27 21:05:31.348  o.s.d.j.r.q.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used. 
+2024-11-27 21:05:31.743  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService 
+2024-11-27 21:05:32.074  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729 
+2024-11-27 21:05:32.086  o.a.c.h.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8090"] 
+2024-11-27 21:05:32.098  o.s.b.w.e.t.TomcatWebServer - Tomcat started on port 8090 (http) with context path '/' 
+2024-11-27 21:05:32.107  c.e.h.HobbyheavyApplication - Started HobbyheavyApplication in 3.678 seconds (process running for 4.072) 
+2024-11-27 21:05:37.252  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default' 
+2024-11-27 21:05:37.254  c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated... 
+2024-11-27 21:05:37.257  c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed. 
+2024-11-27 21:05:39.263  o.h.v.i.u.Version - HV000001: Hibernate Validator 8.0.1.Final 
+2024-11-27 21:05:39.287  c.e.h.HobbyheavyApplication - Starting HobbyheavyApplication using Java 17.0.12 with PID 26724 (D:\workspace\hobbyheavy\build\classes\java\main started by user in D:\workspace\hobbyheavy) 
+2024-11-27 21:05:39.287  c.e.h.HobbyheavyApplication - The following 1 profile is active: "secret" 
+2024-11-27 21:05:39.315  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable 
+2024-11-27 21:05:39.315  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG' 
+2024-11-27 21:05:39.822  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2024-11-27 21:05:39.870  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 43 ms. Found 9 JPA repository interfaces. 
+2024-11-27 21:05:40.262  o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port 8090 (http) 
+2024-11-27 21:05:40.268  o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8090"] 
+2024-11-27 21:05:40.270  o.a.c.c.StandardService - Starting service [Tomcat] 
+2024-11-27 21:05:40.270  o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.31] 
+2024-11-27 21:05:40.313  o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext 
+2024-11-27 21:05:40.313  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 997 ms 
+2024-11-27 21:05:40.405  o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default] 
+2024-11-27 21:05:40.434  o.h.Version - HHH000412: Hibernate ORM core version 6.5.3.Final 
+2024-11-27 21:05:40.454  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled 
+2024-11-27 21:05:40.640  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer 
+2024-11-27 21:05:40.658  c.z.h.HikariDataSource - HikariPool-1 - Starting... 
+2024-11-27 21:05:40.745  c.z.h.p.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@67d2a30b 
+2024-11-27 21:05:40.746  c.z.h.HikariDataSource - HikariPool-1 - Start completed. 
+2024-11-27 21:05:40.776  o.h.o.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default) 
+2024-11-27 21:05:41.438  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration) 
+2024-11-27 21:05:41.439  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2024-11-27 21:05:41.668  o.s.d.j.r.q.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used. 
+2024-11-27 21:05:42.064  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService 
+2024-11-27 21:05:42.398  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729 
+2024-11-27 21:05:42.410  o.a.c.h.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8090"] 
+2024-11-27 21:05:42.422  o.s.b.w.e.t.TomcatWebServer - Tomcat started on port 8090 (http) with context path '/' 
+2024-11-27 21:05:42.430  c.e.h.HobbyheavyApplication - Started HobbyheavyApplication in 3.407 seconds (process running for 3.78) 
+2024-11-27 21:06:13.763  o.a.c.c.C.[.[.[/] - Initializing Spring DispatcherServlet 'dispatcherServlet' 
+2024-11-27 21:06:13.763  o.s.w.s.DispatcherServlet - Initializing Servlet 'dispatcherServlet' 
+2024-11-27 21:06:13.764  o.s.w.s.DispatcherServlet - Completed initialization in 1 ms 
+2024-11-27 21:06:13.779  c.e.h.j.JWTFilter - JWTFilter - Request URI: /swagger-ui.html 
+2024-11-27 21:06:13.779  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /swagger-ui.html 
+2024-11-27 21:06:42.424  c.e.h.j.JWTFilter - JWTFilter - Request URI: /swagger-ui/index.html 
+2024-11-27 21:06:42.424  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /swagger-ui/index.html 
+2024-11-27 21:06:42.458  c.e.h.j.JWTFilter - JWTFilter - Request URI: /swagger-ui/swagger-ui.css 
+2024-11-27 21:06:42.459  c.e.h.j.JWTFilter - JWTFilter - Request URI: /swagger-ui/index.css 
+2024-11-27 21:06:42.459  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /swagger-ui/swagger-ui.css 
+2024-11-27 21:06:42.459  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /swagger-ui/index.css 
+2024-11-27 21:06:42.459  c.e.h.j.JWTFilter - JWTFilter - Request URI: /swagger-ui/swagger-ui-standalone-preset.js 
+2024-11-27 21:06:42.459  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /swagger-ui/swagger-ui-standalone-preset.js 
+2024-11-27 21:06:42.460  c.e.h.j.JWTFilter - JWTFilter - Request URI: /swagger-ui/swagger-initializer.js 
+2024-11-27 21:06:42.460  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /swagger-ui/swagger-initializer.js 
+2024-11-27 21:06:42.460  c.e.h.j.JWTFilter - JWTFilter - Request URI: /swagger-ui/swagger-ui-bundle.js 
+2024-11-27 21:06:42.460  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /swagger-ui/swagger-ui-bundle.js 
+2024-11-27 21:06:42.596  c.e.h.j.JWTFilter - JWTFilter - Request URI: /v3/api-docs/swagger-config 
+2024-11-27 21:06:42.596  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /v3/api-docs/swagger-config 
+2024-11-27 21:06:42.629  c.e.h.j.JWTFilter - JWTFilter - Request URI: /v3/api-docs 
+2024-11-27 21:06:42.629  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /v3/api-docs 
+2024-11-27 21:06:42.945  o.s.a.AbstractOpenApiResource - Init duration for springdoc-openapi is: 307 ms 
+2024-11-27 21:08:45.234  c.e.h.c.ExceptionController - 비밀번호는 최소 8자 이상, 최대 100자 이하이어야 합니다. 
+2024-11-27 21:08:45.239  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<java.lang.String> com.example.hobbyheavy.controller.UserController.joinUser(com.example.hobbyheavy.dto.request.UserJoinRequest): [Field error in object 'userJoinRequest' on field 'password': rejected value [test]; codes [Size.userJoinRequest.password,Size.password,Size.java.lang.String,Size]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [userJoinRequest.password,password]; arguments []; default message [password],100,8]; default message [비밀번호는 최소 8자 이상, 최대 100자 이하이어야 합니다.]] ] 
+2024-11-27 21:09:03.802  c.e.h.c.UserController - 회원가입 요청: com.example.hobbyheavy.dto.request.UserJoinRequest@5aa4a88d 
+2024-11-27 21:09:03.826  c.e.h.c.UserController - 회원가입 중 오류 발생: 이미 사용중인 아이디 입니다. 
+2024-11-27 21:09:26.951  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default' 
+2024-11-27 21:09:26.953  c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated... 
+2024-11-27 21:09:26.956  c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed. 
+2024-11-27 21:09:28.825  o.h.v.i.u.Version - HV000001: Hibernate Validator 8.0.1.Final 
+2024-11-27 21:09:28.849  c.e.h.HobbyheavyApplication - Starting HobbyheavyApplication using Java 17.0.12 with PID 14836 (D:\workspace\hobbyheavy\build\classes\java\main started by user in D:\workspace\hobbyheavy) 
+2024-11-27 21:09:28.850  c.e.h.HobbyheavyApplication - The following 1 profile is active: "secret" 
+2024-11-27 21:09:28.878  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable 
+2024-11-27 21:09:28.878  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG' 
+2024-11-27 21:09:29.409  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2024-11-27 21:09:29.457  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 43 ms. Found 9 JPA repository interfaces. 
+2024-11-27 21:09:29.862  o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port 8090 (http) 
+2024-11-27 21:09:29.868  o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8090"] 
+2024-11-27 21:09:29.870  o.a.c.c.StandardService - Starting service [Tomcat] 
+2024-11-27 21:09:29.870  o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.31] 
+2024-11-27 21:09:29.913  o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext 
+2024-11-27 21:09:29.913  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1035 ms 
+2024-11-27 21:09:30.012  o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default] 
+2024-11-27 21:09:30.041  o.h.Version - HHH000412: Hibernate ORM core version 6.5.3.Final 
+2024-11-27 21:09:30.060  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled 
+2024-11-27 21:09:30.246  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer 
+2024-11-27 21:09:30.264  c.z.h.HikariDataSource - HikariPool-1 - Starting... 
+2024-11-27 21:09:30.354  c.z.h.p.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@44f53d9e 
+2024-11-27 21:09:30.355  c.z.h.HikariDataSource - HikariPool-1 - Start completed. 
+2024-11-27 21:09:30.382  o.h.o.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default) 
+2024-11-27 21:09:31.065  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration) 
+2024-11-27 21:09:32.201  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2024-11-27 21:09:32.433  o.s.d.j.r.q.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used. 
+2024-11-27 21:09:32.840  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService 
+2024-11-27 21:09:33.178  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729 
+2024-11-27 21:09:33.191  o.a.c.h.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8090"] 
+2024-11-27 21:09:33.204  o.s.b.w.e.t.TomcatWebServer - Tomcat started on port 8090 (http) with context path '/' 
+2024-11-27 21:09:33.212  c.e.h.HobbyheavyApplication - Started HobbyheavyApplication in 4.639 seconds (process running for 5.045) 
+2024-11-27 21:10:00.537  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default' 
+2024-11-27 21:10:00.539  c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated... 
+2024-11-27 21:10:00.543  c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed. 
+2024-11-27 21:10:02.266  o.h.v.i.u.Version - HV000001: Hibernate Validator 8.0.1.Final 
+2024-11-27 21:10:02.289  c.e.h.HobbyheavyApplication - Starting HobbyheavyApplication using Java 17.0.12 with PID 24216 (D:\workspace\hobbyheavy\build\classes\java\main started by user in D:\workspace\hobbyheavy) 
+2024-11-27 21:10:02.290  c.e.h.HobbyheavyApplication - The following 1 profile is active: "secret" 
+2024-11-27 21:10:02.329  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable 
+2024-11-27 21:10:02.329  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG' 
+2024-11-27 21:10:02.996  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2024-11-27 21:10:03.048  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 47 ms. Found 9 JPA repository interfaces. 
+2024-11-27 21:10:03.446  o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port 8090 (http) 
+2024-11-27 21:10:03.453  o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8090"] 
+2024-11-27 21:10:03.455  o.a.c.c.StandardService - Starting service [Tomcat] 
+2024-11-27 21:10:03.455  o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.31] 
+2024-11-27 21:10:03.498  o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext 
+2024-11-27 21:10:03.499  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1170 ms 
+2024-11-27 21:10:03.595  o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default] 
+2024-11-27 21:10:03.626  o.h.Version - HHH000412: Hibernate ORM core version 6.5.3.Final 
+2024-11-27 21:10:03.646  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled 
+2024-11-27 21:10:03.844  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer 
+2024-11-27 21:10:03.863  c.z.h.HikariDataSource - HikariPool-1 - Starting... 
+2024-11-27 21:10:03.947  c.z.h.p.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@121695d9 
+2024-11-27 21:10:03.948  c.z.h.HikariDataSource - HikariPool-1 - Start completed. 
+2024-11-27 21:10:03.975  o.h.o.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default) 
+2024-11-27 21:10:04.646  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration) 
+2024-11-27 21:10:04.648  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2024-11-27 21:10:04.871  o.s.d.j.r.q.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used. 
+2024-11-27 21:10:05.272  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService 
+2024-11-27 21:10:05.601  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729 
+2024-11-27 21:10:05.612  o.a.c.h.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8090"] 
+2024-11-27 21:10:05.625  o.s.b.w.e.t.TomcatWebServer - Tomcat started on port 8090 (http) with context path '/' 
+2024-11-27 21:10:05.632  c.e.h.HobbyheavyApplication - Started HobbyheavyApplication in 3.61 seconds (process running for 3.998) 
+2024-11-27 21:10:20.913  o.a.c.c.C.[.[.[/] - Initializing Spring DispatcherServlet 'dispatcherServlet' 
+2024-11-27 21:10:20.914  o.s.w.s.DispatcherServlet - Initializing Servlet 'dispatcherServlet' 
+2024-11-27 21:10:20.915  o.s.w.s.DispatcherServlet - Completed initialization in 1 ms 
+2024-11-27 21:10:21.015  c.e.h.c.UserController - 회원가입 요청: com.example.hobbyheavy.dto.request.UserJoinRequest@3c5ae197 
+2024-11-27 21:10:21.169  c.e.h.s.UserService - 새 사용자 가입 완료. 사용자 ID: test 
+2024-11-27 21:10:21.169  c.e.h.c.UserController - 회원가입 처리 완료: test 
+2024-11-27 21:11:20.755  c.e.h.j.JWTFilter - JWTFilter - Request URI: /user/my-info 
+2024-11-27 21:11:20.775  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 21:11:20.776  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 21:11:20.780  c.e.h.s.UserService - 사용자 조회 성공. 사용자 ID: test 
+2024-11-27 21:11:53.132  c.e.h.j.JWTFilter - JWTFilter - Request URI: /user/password 
+2024-11-27 21:11:53.134  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 21:11:53.134  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 21:11:53.352  c.e.h.s.UserService - 사용자 ID: test의 비밀번호가 성공적으로 변경되었습니다. 
+2024-11-27 21:12:34.558  c.e.h.j.JWTFilter - JWTFilter - Request URI: /user/my-info 
+2024-11-27 21:12:34.560  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 21:12:34.560  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 21:12:34.564  c.e.h.c.UserController - 회원정보 변경 요청. userId: test, 변경할 username: string, 변경할 hobbyIds: [2] 
+2024-11-27 21:12:34.569  c.e.h.s.UserService - 유저 정보 찾음. userId: test, 현재 username: test, 현재 hobbies: [com.example.hobbyheavy.entity.Hobby@52aca1df, com.example.hobbyheavy.entity.Hobby@497c6012] 
+2024-11-27 21:12:34.569  c.e.h.s.UserService - hobbyIds: [2] 
+2024-11-27 21:12:34.571  c.e.h.s.UserService - 취미 변경됨. hobbyId: 2 
+2024-11-27 21:12:34.571  c.e.h.s.UserService - 유저 정보 업데이트 완료. userId: test 
+2024-11-27 21:12:34.577  c.e.h.c.UserController - 회원정보 변경 성공. userId: test 
+2024-11-27 21:12:52.823  c.e.h.j.JWTFilter - JWTFilter - Request URI: /user/my-info 
+2024-11-27 21:12:52.825  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 21:12:52.825  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 21:12:52.829  c.e.h.s.UserService - 사용자 조회 성공. 사용자 ID: test 
+2024-11-27 21:13:22.765  c.e.h.j.JWTFilter - JWTFilter - Request URI: /user 
+2024-11-27 21:13:22.766  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 21:13:22.767  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 21:13:22.842  c.e.h.s.UserService - 사용자 ID: test의 계정이 논리적으로 삭제되었습니다. 
+2024-11-27 21:13:47.497  c.e.h.j.JWTFilter - JWTFilter - Request URI: /user/my-info 
+2024-11-27 21:13:47.498  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 21:13:47.499  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 21:13:47.501  c.e.h.s.UserService - 사용자 조회 실패. 입력한 사용자 ID: test 
+2024-11-27 21:13:47.504  c.e.h.c.ExceptionController - 사용자를 찾을수 없습니다. 
+2024-11-27 21:13:47.509  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [com.example.hobbyheavy.exception.CustomException: 사용자를 찾을수 없습니다.] 
+2024-11-27 21:13:58.956  c.e.h.j.LoginFilter - An internal error occurred while trying to authenticate the user. 
+org.springframework.security.authentication.InternalAuthenticationServiceException: 사용자를 찾을수 없습니다.
+	at org.springframework.security.authentication.dao.DaoAuthenticationProvider.retrieveUser(DaoAuthenticationProvider.java:122)
+	at org.springframework.security.authentication.dao.AbstractUserDetailsAuthenticationProvider.authenticate(AbstractUserDetailsAuthenticationProvider.java:133)
+	at org.springframework.security.authentication.ProviderManager.authenticate(ProviderManager.java:182)
+	at com.example.hobbyheavy.jwt.LoginFilter.attemptAuthentication(LoginFilter.java:90)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:231)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:221)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at com.example.hobbyheavy.jwt.JWTFilter.doFilterInternal(JWTFilter.java:40)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at com.example.hobbyheavy.jwt.CustomLogoutFilter.doFilter(CustomLogoutFilter.java:36)
+	at com.example.hobbyheavy.jwt.CustomLogoutFilter.doFilter(CustomLogoutFilter.java:28)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:195)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:230)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:362)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:278)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:384)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: com.example.hobbyheavy.exception.CustomException: 사용자를 찾을수 없습니다.
+	at com.example.hobbyheavy.service.CustomUserDetailsService.lambda$loadUserByUsername$0(CustomUserDetailsService.java:24)
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403)
+	at com.example.hobbyheavy.service.CustomUserDetailsService.loadUserByUsername(CustomUserDetailsService.java:24)
+	at org.springframework.security.authentication.dao.DaoAuthenticationProvider.retrieveUser(DaoAuthenticationProvider.java:107)
+	... 70 common frames omitted
+2024-11-27 21:15:11.715  c.e.h.c.UserController - 회원가입 요청: com.example.hobbyheavy.dto.request.UserJoinRequest@63f7b310 
+2024-11-27 21:15:11.724  c.e.h.s.UserService - 탈퇴 상태의 기존 사용자(ID: test)를 삭제했습니다. 
+2024-11-27 21:15:11.804  c.e.h.s.UserService - 새 사용자 가입 완료. 사용자 ID: test 
+2024-11-27 21:15:11.804  c.e.h.c.UserController - 회원가입 처리 완료: test 
+2024-11-27 21:17:48.241  c.e.h.j.CustomLogoutFilter - 로그아웃 요청에 대한 refresh token 발견: eyJhbGciOiJIUzI1NiJ9.eyJjYXRlZ29yeSI6InJlZnJlc2giLCJ1c2VybmFtZSI6InRlc3QiLCJyb2xlIjoiUk9MRV9VU0VSIiwiaWF0IjoxNzMyNzA5ODYxLCJleHAiOjE3MzI3OTYyNjF9.ENxb44iy885jP80-8mK5dtv1hjslRXcEmUdXEqVXuLw 
+2024-11-27 21:17:48.248  c.e.h.j.CustomLogoutFilter - refresh token DB에서 제거 완료. refresh token: eyJhbGciOiJIUzI1NiJ9.eyJjYXRlZ29yeSI6InJlZnJlc2giLCJ1c2VybmFtZSI6InRlc3QiLCJyb2xlIjoiUk9MRV9VU0VSIiwiaWF0IjoxNzMyNzA5ODYxLCJleHAiOjE3MzI3OTYyNjF9.ENxb44iy885jP80-8mK5dtv1hjslRXcEmUdXEqVXuLw 
+2024-11-27 21:17:48.249  c.e.h.j.CustomLogoutFilter - 로그아웃 성공 및 refresh token 제거 완료. 
+2024-11-27 21:19:38.693  c.e.h.j.JWTFilter - JWTFilter - Request URI: /meetup 
+2024-11-27 21:19:38.694  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 21:19:38.694  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 21:19:38.710  o.s.d.w.c.SpringDataJacksonConfiguration$PageModule$WarningLoggingModifier - Serializing PageImpl instances as-is is not supported, meaning that there is no guarantee about the stability of the resulting JSON structure!
+	For a stable JSON structure, please use Spring Data's PagedModel (globally via @EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO))
+	or Spring HATEOAS and Spring Data's PagedResourcesAssembler as documented in https://docs.spring.io/spring-data/commons/reference/repositories/core-extensions.html#core.web.pageables.
+ 
+2024-11-27 21:22:28.703  c.e.h.j.JWTFilter - JWTFilter - Request URI: /meetup/create 
+2024-11-27 21:22:28.704  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 21:22:28.705  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 21:22:41.919  c.e.h.j.JWTFilter - JWTFilter - Request URI: /meetup/create 
+2024-11-27 21:22:41.920  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 21:22:41.920  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 21:22:41.929  c.e.h.c.ExceptionController - 요청한 취미 이름이 없습니다. 
+2024-11-27 21:22:41.929  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [com.example.hobbyheavy.exception.CustomException: 요청한 취미 이름이 없습니다.] 
+2024-11-27 21:22:57.119  c.e.h.j.JWTFilter - JWTFilter - Request URI: /meetup 
+2024-11-27 21:22:57.120  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 21:22:57.120  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 21:23:39.698  c.e.h.j.JWTFilter - JWTFilter - Request URI: /meetup/1 
+2024-11-27 21:23:39.699  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 21:23:39.699  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 21:24:13.564  c.e.h.j.JWTFilter - JWTFilter - Request URI: /meetup/1 
+2024-11-27 21:24:13.565  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 21:24:13.565  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 21:24:21.424  c.e.h.j.JWTFilter - JWTFilter - Request URI: /meetup/1 
+2024-11-27 21:24:21.425  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 21:24:21.426  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 21:27:42.632  c.e.h.j.JWTFilter - JWTFilter - Request URI: /meetup/thumbail/1 
+2024-11-27 21:27:42.634  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 21:27:42.634  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 21:27:42.650  c.e.h.e.GlobalExceptionHandler - 예기치 못한 예외 발생: No static resource meetup/thumbail/1. 
+2024-11-27 21:27:42.651  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource meetup/thumbail/1.] 
+2024-11-27 21:30:02.308  c.e.h.j.JWTFilter - JWTFilter - Request URI: /meetup/thumbnail/1 
+2024-11-27 21:30:02.309  c.e.h.j.JWTFilter - JWTFilter - Access token expired for token: eyJhbGciOiJIUzI1NiJ9.eyJjYXRlZ29yeSI6ImFjY2VzcyIsInVzZXJuYW1lIjoidGVzdCIsInJvbGUiOiJST0xFX1VTRVIiLCJpYXQiOjE3MzI3MDk5MDEsImV4cCI6MTczMjcxMDUwMX0.PoU1ectpjOhqj0Mo2nQw8LNvVBCCNNk3zK5O9nzSWYA 
+2024-11-27 21:30:02.310  c.e.h.j.JWTFilter - JWTFilter - No valid refresh token found. 
+2024-11-27 21:30:26.697  c.e.h.j.JWTFilter - JWTFilter - Request URI: /meetup/thumbnail/1 
+2024-11-27 21:30:26.699  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 21:30:26.699  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 21:30:26.714  c.e.h.s.MeetupService - 파일 이름 : src/main/resources/static/uploads/thumbnails/null, 삭제 결과 : false 
+2024-11-27 21:30:26.725  c.e.h.u.ImageUtil - 이미지 저장이 완료되었습니다. 파일 경로 : a197e2fd949548eea3b7494078eb7922_제목 없음.png 
+2024-11-27 21:30:44.085  c.e.h.j.JWTFilter - JWTFilter - Request URI: /meetup/1 
+2024-11-27 21:30:44.086  c.e.h.j.JWTFilter - JWTFilter - Access token expired for token: eyJhbGciOiJIUzI1NiJ9.eyJjYXRlZ29yeSI6ImFjY2VzcyIsInVzZXJuYW1lIjoidGVzdCIsInJvbGUiOiJST0xFX1VTRVIiLCJpYXQiOjE3MzI3MDk5MDEsImV4cCI6MTczMjcxMDUwMX0.PoU1ectpjOhqj0Mo2nQw8LNvVBCCNNk3zK5O9nzSWYA 
+2024-11-27 21:30:44.086  c.e.h.j.JWTFilter - JWTFilter - No valid refresh token found. 
+2024-11-27 21:31:13.279  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 5 class path changes (1 addition, 0 deletions, 4 modifications) 
+2024-11-27 21:31:13.282  o.a.c.h.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8090"] 
+2024-11-27 21:31:13.356  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default' 
+2024-11-27 21:31:13.358  c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated... 
+2024-11-27 21:31:13.362  c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed. 
+2024-11-27 21:31:13.415  c.e.h.HobbyheavyApplication - Starting HobbyheavyApplication using Java 17.0.12 with PID 24216 (D:\workspace\hobbyheavy\build\classes\java\main started by user in D:\workspace\hobbyheavy) 
+2024-11-27 21:31:13.415  c.e.h.HobbyheavyApplication - The following 1 profile is active: "secret" 
+2024-11-27 21:31:13.575  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2024-11-27 21:31:13.594  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 19 ms. Found 9 JPA repository interfaces. 
+2024-11-27 21:31:13.668  o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port 8090 (http) 
+2024-11-27 21:31:13.668  o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8090"] 
+2024-11-27 21:31:13.669  o.a.c.c.StandardService - Starting service [Tomcat] 
+2024-11-27 21:31:13.669  o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.31] 
+2024-11-27 21:31:13.685  o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext 
+2024-11-27 21:31:13.685  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 268 ms 
+2024-11-27 21:31:13.708  o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default] 
+2024-11-27 21:31:13.710  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled 
+2024-11-27 21:31:13.716  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer 
+2024-11-27 21:31:13.717  c.z.h.HikariDataSource - HikariPool-2 - Starting... 
+2024-11-27 21:31:13.720  c.z.h.p.HikariPool - HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@645054d0 
+2024-11-27 21:31:13.720  c.z.h.HikariDataSource - HikariPool-2 - Start completed. 
+2024-11-27 21:31:13.721  o.h.o.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default) 
+2024-11-27 21:31:13.809  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration) 
+2024-11-27 21:31:13.809  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2024-11-27 21:31:13.957  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService 
+2024-11-27 21:31:14.062  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729 
+2024-11-27 21:31:14.069  o.a.c.h.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8090"] 
+2024-11-27 21:31:14.071  o.s.b.w.e.t.TomcatWebServer - Tomcat started on port 8090 (http) with context path '/' 
+2024-11-27 21:31:14.075  c.e.h.HobbyheavyApplication - Started HobbyheavyApplication in 0.676 seconds (process running for 1272.44) 
+2024-11-27 21:31:14.076  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged 
+2024-11-27 21:31:36.336  o.a.c.c.C.[.[.[/] - Initializing Spring DispatcherServlet 'dispatcherServlet' 
+2024-11-27 21:31:36.336  o.s.w.s.DispatcherServlet - Initializing Servlet 'dispatcherServlet' 
+2024-11-27 21:31:36.336  o.s.w.s.DispatcherServlet - Completed initialization in 0 ms 
+2024-11-27 21:31:36.337  c.e.h.j.JWTFilter - JWTFilter - Request URI: /meetup 
+2024-11-27 21:31:36.338  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 21:31:36.339  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 21:31:36.345  o.s.d.w.c.SpringDataJacksonConfiguration$PageModule$WarningLoggingModifier - Serializing PageImpl instances as-is is not supported, meaning that there is no guarantee about the stability of the resulting JSON structure!
+	For a stable JSON structure, please use Spring Data's PagedModel (globally via @EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO))
+	or Spring HATEOAS and Spring Data's PagedResourcesAssembler as documented in https://docs.spring.io/spring-data/commons/reference/repositories/core-extensions.html#core.web.pageables.
+ 
+2024-11-27 21:31:53.995  c.e.h.j.JWTFilter - JWTFilter - Request URI: /meetup/1 
+2024-11-27 21:31:53.996  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 21:31:53.996  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 21:32:40.646  c.e.h.j.JWTFilter - JWTFilter - Request URI: /meetup/1 
+2024-11-27 21:32:40.646  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 21:32:40.647  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 21:33:01.200  c.e.h.j.JWTFilter - JWTFilter - Request URI: /meetup/1 
+2024-11-27 21:33:01.201  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 21:33:01.201  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 21:33:01.204  c.e.h.c.ExceptionController - 요청한 모임을 찾을 수 없습니다. 
+2024-11-27 21:33:01.207  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [com.example.hobbyheavy.exception.CustomException: 요청한 모임을 찾을 수 없습니다.] 
+2024-11-27 21:33:11.317  c.e.h.j.JWTFilter - JWTFilter - Request URI: /meetup 
+2024-11-27 21:33:11.318  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 21:33:11.318  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 21:34:35.219  c.e.h.j.JWTFilter - JWTFilter - Request URI: /meetup/create 
+2024-11-27 21:34:35.221  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 21:34:35.221  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 21:34:41.944  c.e.h.j.JWTFilter - JWTFilter - Request URI: /meetup/create 
+2024-11-27 21:34:41.945  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 21:34:41.945  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 21:34:50.412  c.e.h.j.JWTFilter - JWTFilter - Request URI: /meetup/create 
+2024-11-27 21:34:50.413  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 21:34:50.413  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 21:34:55.477  c.e.h.j.JWTFilter - JWTFilter - Request URI: /meetup/create 
+2024-11-27 21:34:55.478  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 21:34:55.478  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 21:35:05.352  c.e.h.j.JWTFilter - JWTFilter - Request URI: /meetup/search/a 
+2024-11-27 21:35:05.353  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 21:35:05.353  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 21:36:22.449  c.e.h.c.UserController - 회원가입 요청: com.example.hobbyheavy.dto.request.UserJoinRequest@72590798 
+2024-11-27 21:36:22.536  c.e.h.s.UserService - 새 사용자 가입 완료. 사용자 ID: asdf 
+2024-11-27 21:36:22.536  c.e.h.c.UserController - 회원가입 처리 완료: asdf 
+2024-11-27 21:36:56.338  c.e.h.j.JWTFilter - JWTFilter - Request URI: /meetup 
+2024-11-27 21:36:56.339  c.e.h.j.JWTFilter - JWTFilter - UserId: asdf, Role: ROLE_USER 
+2024-11-27 21:36:56.340  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: asdf, Role: ROLE_USER 
+2024-11-27 21:37:10.197  c.e.h.j.JWTFilter - JWTFilter - Request URI: /meetup/my-list 
+2024-11-27 21:37:10.198  c.e.h.j.JWTFilter - JWTFilter - UserId: asdf, Role: ROLE_USER 
+2024-11-27 21:37:10.198  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: asdf, Role: ROLE_USER 
+2024-11-27 21:37:25.374  c.e.h.j.JWTFilter - JWTFilter - Request URI: /meetup/create 
+2024-11-27 21:37:25.375  c.e.h.j.JWTFilter - JWTFilter - UserId: asdf, Role: ROLE_USER 
+2024-11-27 21:37:25.375  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: asdf, Role: ROLE_USER 
+2024-11-27 21:37:28.734  c.e.h.j.JWTFilter - JWTFilter - Request URI: /meetup/my-list 
+2024-11-27 21:37:28.735  c.e.h.j.JWTFilter - JWTFilter - UserId: asdf, Role: ROLE_USER 
+2024-11-27 21:37:28.735  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: asdf, Role: ROLE_USER 
+2024-11-27 21:38:05.209  c.e.h.j.JWTFilter - JWTFilter - Request URI: /meetup/location/S 
+2024-11-27 21:38:05.209  c.e.h.j.JWTFilter - JWTFilter - UserId: asdf, Role: ROLE_USER 
+2024-11-27 21:38:05.209  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: asdf, Role: ROLE_USER 
+2024-11-27 21:38:28.669  c.e.h.j.JWTFilter - JWTFilter - Request URI: /meetup/location/s 
+2024-11-27 21:38:28.670  c.e.h.j.JWTFilter - JWTFilter - UserId: asdf, Role: ROLE_USER 
+2024-11-27 21:38:28.670  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: asdf, Role: ROLE_USER 
+2024-11-27 21:38:38.819  c.e.h.j.JWTFilter - JWTFilter - Request URI: /meetup/location/%EC%B9%98 
+2024-11-27 21:38:38.819  c.e.h.j.JWTFilter - JWTFilter - UserId: asdf, Role: ROLE_USER 
+2024-11-27 21:38:38.819  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: asdf, Role: ROLE_USER 
+2024-11-27 21:38:48.258  c.e.h.j.JWTFilter - JWTFilter - Request URI: /meetup/location/string 
+2024-11-27 21:38:48.258  c.e.h.j.JWTFilter - JWTFilter - UserId: asdf, Role: ROLE_USER 
+2024-11-27 21:38:48.258  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: asdf, Role: ROLE_USER 
+2024-11-27 21:39:23.389  c.e.h.j.JWTFilter - JWTFilter - Request URI: /meetup/create 
+2024-11-27 21:39:23.390  c.e.h.j.JWTFilter - JWTFilter - UserId: asdf, Role: ROLE_USER 
+2024-11-27 21:39:23.390  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: asdf, Role: ROLE_USER 
+2024-11-27 21:39:29.057  c.e.h.j.JWTFilter - JWTFilter - Request URI: /meetup/location/b 
+2024-11-27 21:39:29.058  c.e.h.j.JWTFilter - JWTFilter - UserId: asdf, Role: ROLE_USER 
+2024-11-27 21:39:29.058  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: asdf, Role: ROLE_USER 
+2024-11-27 21:39:45.362  c.e.h.j.JWTFilter - JWTFilter - Request URI: /meetup/hobby/%EC%B6%95 
+2024-11-27 21:39:45.363  c.e.h.j.JWTFilter - JWTFilter - UserId: asdf, Role: ROLE_USER 
+2024-11-27 21:39:45.363  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: asdf, Role: ROLE_USER 
+2024-11-27 21:39:52.024  c.e.h.j.JWTFilter - JWTFilter - Request URI: /meetup/hobby/%EC%B6%95%EA%B5%AC 
+2024-11-27 21:39:52.025  c.e.h.j.JWTFilter - JWTFilter - UserId: asdf, Role: ROLE_USER 
+2024-11-27 21:39:52.025  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: asdf, Role: ROLE_USER 
+2024-11-27 21:40:00.660  c.e.h.j.JWTFilter - JWTFilter - Request URI: /meetup/hobby/%EC%B6%95 
+2024-11-27 21:40:00.661  c.e.h.j.JWTFilter - JWTFilter - UserId: asdf, Role: ROLE_USER 
+2024-11-27 21:40:00.661  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: asdf, Role: ROLE_USER 
+2024-11-27 21:48:10.360  c.e.h.c.UserController - 회원가입 요청: com.example.hobbyheavy.dto.request.UserJoinRequest@39f84c45 
+2024-11-27 21:48:10.449  c.e.h.s.UserService - 새 사용자 가입 완료. 사용자 ID: bbbb 
+2024-11-27 21:48:10.449  c.e.h.c.UserController - 회원가입 처리 완료: bbbb 
+2024-11-27 21:48:56.684  c.e.h.j.JWTFilter - JWTFilter - Request URI: /participant/3 
+2024-11-27 21:48:56.685  c.e.h.j.JWTFilter - JWTFilter - UserId: bbbb, Role: ROLE_USER 
+2024-11-27 21:48:56.685  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: bbbb, Role: ROLE_USER 
+2024-11-27 21:54:24.104  c.e.h.j.JWTFilter - JWTFilter - Request URI: /participant/status 
+2024-11-27 21:54:24.104  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 21:54:24.104  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 21:55:01.921  c.e.h.j.JWTFilter - JWTFilter - Request URI: /participant/status 
+2024-11-27 21:55:01.922  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 21:55:01.922  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 21:55:19.856  c.e.h.j.JWTFilter - JWTFilter - Request URI: /participant/status 
+2024-11-27 21:55:19.857  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 21:55:19.857  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 21:56:34.150  c.e.h.j.JWTFilter - JWTFilter - Request URI: /participant/status 
+2024-11-27 21:56:34.151  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 21:56:34.151  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 21:56:51.963  c.e.h.j.JWTFilter - JWTFilter - Request URI: /participant/waiting-cancel/3 
+2024-11-27 21:56:51.964  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 21:56:51.964  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 21:56:51.967  c.e.h.s.ParticipantService - 요청한 참여자 : test, 요청자 상태 : APPROVED 
+2024-11-27 21:56:51.969  c.e.h.c.ExceptionController - 참여자의 정보가 대기가 아닙니다. 
+2024-11-27 21:56:51.970  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [com.example.hobbyheavy.exception.CustomException: 참여자의 정보가 대기가 아닙니다.] 
+2024-11-27 21:57:38.736  c.e.h.j.JWTFilter - JWTFilter - Request URI: /participant/waiting-cancel/3 
+2024-11-27 21:57:38.737  c.e.h.j.JWTFilter - JWTFilter - UserId: bbbb, Role: ROLE_USER 
+2024-11-27 21:57:38.738  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: bbbb, Role: ROLE_USER 
+2024-11-27 21:58:57.822  c.e.h.j.JWTFilter - JWTFilter - Request URI: /participant/status 
+2024-11-27 21:58:57.823  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 21:58:57.823  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 22:02:18.424  c.e.h.j.JWTFilter - JWTFilter - Request URI: /participant/status 
+2024-11-27 22:02:18.425  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 22:02:18.425  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 22:02:45.715  c.e.h.j.JWTFilter - JWTFilter - Request URI: /participant/sub-host 
+2024-11-27 22:02:45.716  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 22:02:45.717  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 22:05:03.053  c.e.h.j.JWTFilter - JWTFilter - Request URI: /participant/sub-host 
+2024-11-27 22:05:03.054  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 22:05:03.054  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 22:05:15.898  c.e.h.j.JWTFilter - JWTFilter - Request URI: /participant/sub-host 
+2024-11-27 22:05:15.899  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 22:05:15.900  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 22:05:15.904  c.e.h.e.GlobalExceptionHandler - 예기치 못한 예외 발생: No enum constant com.example.hobbyheavy.type.ParticipantRole.일반 
+2024-11-27 22:05:15.904  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [java.lang.IllegalArgumentException: No enum constant com.example.hobbyheavy.type.ParticipantRole.일반] 
+2024-11-27 22:07:32.692  c.e.h.j.JWTFilter - JWTFilter - Request URI: /user 
+2024-11-27 22:07:32.692  c.e.h.j.JWTFilter - JWTFilter - UserId: bbbb, Role: ROLE_USER 
+2024-11-27 22:07:32.693  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: bbbb, Role: ROLE_USER 
+2024-11-27 22:07:32.768  c.e.h.s.UserService - 사용자 ID: bbbb의 계정이 논리적으로 삭제되었습니다. 
+2024-11-27 22:07:46.376  c.e.h.c.UserController - 회원가입 요청: com.example.hobbyheavy.dto.request.UserJoinRequest@750394c4 
+2024-11-27 22:07:46.393  o.h.e.j.s.SqlExceptionHelper - SQL Error: 1451, SQLState: 23000 
+2024-11-27 22:07:46.393  o.h.e.j.s.SqlExceptionHelper - Cannot delete or update a parent row: a foreign key constraint fails (`hobbyheavy`.`participant`, CONSTRAINT `FK6swb34ycyp3wv09axq83kh6yi` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)) 
+2024-11-27 22:07:46.399  c.e.h.c.UserController - 예상치 못한 오류 발생:  
+org.springframework.dao.DataIntegrityViolationException: could not execute statement [Cannot delete or update a parent row: a foreign key constraint fails (`hobbyheavy`.`participant`, CONSTRAINT `FK6swb34ycyp3wv09axq83kh6yi` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`))] [delete from user where id=?]; SQL [delete from user where id=?]; constraint [null]
+	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.convertHibernateAccessException(HibernateJpaDialect.java:290)
+	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.translateExceptionIfPossible(HibernateJpaDialect.java:241)
+	at org.springframework.orm.jpa.JpaTransactionManager.doCommit(JpaTransactionManager.java:566)
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.processCommit(AbstractPlatformTransactionManager.java:795)
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.commit(AbstractPlatformTransactionManager.java:758)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.commitTransactionAfterReturning(TransactionAspectSupport.java:663)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:413)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:138)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:165)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:223)
+	at jdk.proxy5/jdk.proxy5.$Proxy206.delete(Unknown Source)
+	at com.example.hobbyheavy.service.UserService.lambda$JoinUser$3(UserService.java:85)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at com.example.hobbyheavy.service.UserService.JoinUser(UserService.java:84)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:355)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:716)
+	at com.example.hobbyheavy.service.UserService$$SpringCGLIB$$0.JoinUser(<generated>)
+	at com.example.hobbyheavy.controller.UserController.joinUser(UserController.java:34)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108)
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365)
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:100)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:131)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:85)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:227)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:221)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at com.example.hobbyheavy.jwt.JWTFilter.doFilterInternal(JWTFilter.java:40)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at com.example.hobbyheavy.jwt.CustomLogoutFilter.doFilter(CustomLogoutFilter.java:36)
+	at com.example.hobbyheavy.jwt.CustomLogoutFilter.doFilter(CustomLogoutFilter.java:28)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:195)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:230)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:362)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:278)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:384)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: org.hibernate.exception.ConstraintViolationException: could not execute statement [Cannot delete or update a parent row: a foreign key constraint fails (`hobbyheavy`.`participant`, CONSTRAINT `FK6swb34ycyp3wv09axq83kh6yi` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`))] [delete from user where id=?]
+	at org.hibernate.exception.internal.SQLExceptionTypeDelegate.convert(SQLExceptionTypeDelegate.java:62)
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:58)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:108)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:197)
+	at org.hibernate.engine.jdbc.mutation.internal.AbstractMutationExecutor.performNonBatchedMutation(AbstractMutationExecutor.java:134)
+	at org.hibernate.engine.jdbc.mutation.internal.MutationExecutorSingleNonBatched.performNonBatchedOperations(MutationExecutorSingleNonBatched.java:55)
+	at org.hibernate.engine.jdbc.mutation.internal.AbstractMutationExecutor.execute(AbstractMutationExecutor.java:55)
+	at org.hibernate.persister.entity.mutation.AbstractDeleteCoordinator.doStaticDelete(AbstractDeleteCoordinator.java:279)
+	at org.hibernate.persister.entity.mutation.AbstractDeleteCoordinator.delete(AbstractDeleteCoordinator.java:87)
+	at org.hibernate.action.internal.EntityDeleteAction.execute(EntityDeleteAction.java:131)
+	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:633)
+	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:500)
+	at org.hibernate.event.internal.AbstractFlushingEventListener.performExecutions(AbstractFlushingEventListener.java:385)
+	at org.hibernate.event.internal.DefaultFlushEventListener.onFlush(DefaultFlushEventListener.java:41)
+	at org.hibernate.event.service.internal.EventListenerGroupImpl.fireEventOnEachListener(EventListenerGroupImpl.java:127)
+	at org.hibernate.internal.SessionImpl.doFlush(SessionImpl.java:1425)
+	at org.hibernate.internal.SessionImpl.managedFlush(SessionImpl.java:487)
+	at org.hibernate.internal.SessionImpl.flushBeforeTransactionCompletion(SessionImpl.java:2324)
+	at org.hibernate.internal.SessionImpl.beforeTransactionCompletion(SessionImpl.java:1981)
+	at org.hibernate.engine.jdbc.internal.JdbcCoordinatorImpl.beforeTransactionCompletion(JdbcCoordinatorImpl.java:439)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl.beforeCompletionCallback(JdbcResourceLocalTransactionCoordinatorImpl.java:169)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl$TransactionDriverControlImpl.commit(JdbcResourceLocalTransactionCoordinatorImpl.java:267)
+	at org.hibernate.engine.transaction.internal.TransactionImpl.commit(TransactionImpl.java:101)
+	at org.springframework.orm.jpa.JpaTransactionManager.doCommit(JpaTransactionManager.java:562)
+	... 131 common frames omitted
+Caused by: java.sql.SQLIntegrityConstraintViolationException: Cannot delete or update a parent row: a foreign key constraint fails (`hobbyheavy`.`participant`, CONSTRAINT `FK6swb34ycyp3wv09axq83kh6yi` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`))
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:118)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:912)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1054)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1003)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1312)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:988)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeUpdate(ProxyPreparedStatement.java:61)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeUpdate(HikariProxyPreparedStatement.java)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:194)
+	... 151 common frames omitted
+2024-11-27 22:17:04.861  c.e.h.c.UserController - 회원가입 요청: com.example.hobbyheavy.dto.request.UserJoinRequest@2bfa99a5 
+2024-11-27 22:17:04.947  c.e.h.s.UserService - 새 사용자 가입 완료. 사용자 ID: cccc 
+2024-11-27 22:17:04.947  c.e.h.c.UserController - 회원가입 처리 완료: cccc 
+2024-11-27 22:19:43.565  c.e.h.j.JWTFilter - JWTFilter - Request URI: /comment 
+2024-11-27 22:19:43.566  c.e.h.j.JWTFilter - JWTFilter - UserId: cccc, Role: ROLE_USER 
+2024-11-27 22:19:43.566  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: cccc, Role: ROLE_USER 
+2024-11-27 22:19:43.582  c.e.h.c.ExceptionController - 요청한 모임을 찾을 수 없습니다. 
+2024-11-27 22:19:43.583  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [com.example.hobbyheavy.exception.CustomException: 요청한 모임을 찾을 수 없습니다.] 
+2024-11-27 22:20:00.628  c.e.h.j.JWTFilter - JWTFilter - Request URI: /comment 
+2024-11-27 22:20:00.629  c.e.h.j.JWTFilter - JWTFilter - UserId: cccc, Role: ROLE_USER 
+2024-11-27 22:20:00.629  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: cccc, Role: ROLE_USER 
+2024-11-27 22:20:28.078  c.e.h.j.JWTFilter - JWTFilter - Request URI: /meetup 
+2024-11-27 22:20:28.078  c.e.h.j.JWTFilter - JWTFilter - UserId: cccc, Role: ROLE_USER 
+2024-11-27 22:20:28.078  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: cccc, Role: ROLE_USER 
+2024-11-27 22:20:35.452  c.e.h.j.JWTFilter - JWTFilter - Request URI: /meetup/2 
+2024-11-27 22:20:35.452  c.e.h.j.JWTFilter - JWTFilter - UserId: cccc, Role: ROLE_USER 
+2024-11-27 22:20:35.452  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: cccc, Role: ROLE_USER 
+2024-11-27 22:20:59.840  c.e.h.j.JWTFilter - JWTFilter - Request URI: /comment 
+2024-11-27 22:20:59.841  c.e.h.j.JWTFilter - JWTFilter - UserId: cccc, Role: ROLE_USER 
+2024-11-27 22:20:59.841  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: cccc, Role: ROLE_USER 
+2024-11-27 22:21:09.495  c.e.h.j.JWTFilter - JWTFilter - Request URI: /meetup/2 
+2024-11-27 22:21:09.495  c.e.h.j.JWTFilter - JWTFilter - UserId: cccc, Role: ROLE_USER 
+2024-11-27 22:21:09.496  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: cccc, Role: ROLE_USER 
+2024-11-27 22:21:50.245  c.e.h.j.JWTFilter - JWTFilter - Request URI: /comment 
+2024-11-27 22:21:50.245  c.e.h.j.JWTFilter - JWTFilter - UserId: cccc, Role: ROLE_USER 
+2024-11-27 22:21:50.245  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: cccc, Role: ROLE_USER 
+2024-11-27 22:21:50.251  c.e.h.c.ExceptionController - 댓글 내용은 필수입니다. 
+2024-11-27 22:21:50.253  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<java.lang.String> com.example.hobbyheavy.controller.CommentController.deleteComment(com.example.hobbyheavy.dto.request.CommentChangeRequest,org.springframework.security.core.Authentication): [Field error in object 'commentChangeRequest' on field 'content': rejected value [null]; codes [NotBlank.commentChangeRequest.content,NotBlank.content,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [commentChangeRequest.content,content]; arguments []; default message [content]]; default message [댓글 내용은 필수입니다.]] ] 
+2024-11-27 22:25:07.695  c.e.h.j.JWTFilter - JWTFilter - Request URI: /meetup/create 
+2024-11-27 22:25:07.695  c.e.h.j.JWTFilter - JWTFilter - UserId: cccc, Role: ROLE_USER 
+2024-11-27 22:25:07.695  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: cccc, Role: ROLE_USER 
+2024-11-27 22:26:08.038  c.e.h.j.JWTFilter - JWTFilter - Request URI: /participant/8 
+2024-11-27 22:26:08.039  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 22:26:08.039  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 22:26:25.563  c.e.h.c.UserController - 회원가입 요청: com.example.hobbyheavy.dto.request.UserJoinRequest@7b44629f 
+2024-11-27 22:26:25.645  c.e.h.s.UserService - 새 사용자 가입 완료. 사용자 ID: tttt 
+2024-11-27 22:26:25.645  c.e.h.c.UserController - 회원가입 처리 완료: tttt 
+2024-11-27 22:27:51.344  c.e.h.j.JWTFilter - JWTFilter - Request URI: /participant/8 
+2024-11-27 22:27:51.345  c.e.h.j.JWTFilter - JWTFilter - UserId: tttt, Role: ROLE_USER 
+2024-11-27 22:27:51.345  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: tttt, Role: ROLE_USER 
+2024-11-27 22:29:30.528  c.e.h.j.JWTFilter - JWTFilter - Request URI: /participant/status 
+2024-11-27 22:29:30.528  c.e.h.j.JWTFilter - JWTFilter - UserId: cccc, Role: ROLE_USER 
+2024-11-27 22:29:30.529  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: cccc, Role: ROLE_USER 
+2024-11-27 22:29:35.049  c.e.h.j.JWTFilter - JWTFilter - Request URI: /participant/status 
+2024-11-27 22:29:35.050  c.e.h.j.JWTFilter - JWTFilter - UserId: cccc, Role: ROLE_USER 
+2024-11-27 22:29:35.050  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: cccc, Role: ROLE_USER 
+2024-11-27 22:29:35.054  c.e.h.c.ExceptionController - 요청한 모임을 찾을 수 없습니다. 
+2024-11-27 22:29:35.054  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [com.example.hobbyheavy.exception.CustomException: 요청한 모임을 찾을 수 없습니다.] 
+2024-11-27 22:30:08.425  c.e.h.j.JWTFilter - JWTFilter - Request URI: /participant/status 
+2024-11-27 22:30:08.426  c.e.h.j.JWTFilter - JWTFilter - UserId: cccc, Role: ROLE_USER 
+2024-11-27 22:30:08.426  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: cccc, Role: ROLE_USER 
+2024-11-27 22:30:08.433  c.e.h.c.ExceptionController - 요청한 모임을 찾을 수 없습니다. 
+2024-11-27 22:30:08.433  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [com.example.hobbyheavy.exception.CustomException: 요청한 모임을 찾을 수 없습니다.] 
+2024-11-27 22:30:19.762  c.e.h.j.JWTFilter - JWTFilter - Request URI: /participant/status 
+2024-11-27 22:30:19.763  c.e.h.j.JWTFilter - JWTFilter - UserId: cccc, Role: ROLE_USER 
+2024-11-27 22:30:19.763  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: cccc, Role: ROLE_USER 
+2024-11-27 22:32:27.374  c.e.h.j.JWTFilter - JWTFilter - Request URI: /schedules 
+2024-11-27 22:32:27.374  c.e.h.j.JWTFilter - JWTFilter - UserId: cccc, Role: ROLE_USER 
+2024-11-27 22:32:27.375  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: cccc, Role: ROLE_USER 
+2024-11-27 22:32:27.385  c.e.h.c.ExceptionController - 제안 날짜는 미래 또는 현재여야 합니다 
+2024-11-27 22:32:27.385  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<com.example.hobbyheavy.dto.response.ScheduleResponse> com.example.hobbyheavy.controller.ScheduleController.createSchedule(com.example.hobbyheavy.dto.request.ScheduleRequest,org.springframework.security.core.Authentication): [Field error in object 'scheduleRequest' on field 'proposalDate': rejected value [2024-11-27T13:30:55.058]; codes [FutureOrPresent.scheduleRequest.proposalDate,FutureOrPresent.proposalDate,FutureOrPresent.java.time.LocalDateTime,FutureOrPresent]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [scheduleRequest.proposalDate,proposalDate]; arguments []; default message [proposalDate]]; default message [제안 날짜는 미래 또는 현재여야 합니다]] ] 
+2024-11-27 22:32:39.766  c.e.h.j.JWTFilter - JWTFilter - Request URI: /schedules 
+2024-11-27 22:32:39.766  c.e.h.j.JWTFilter - JWTFilter - UserId: cccc, Role: ROLE_USER 
+2024-11-27 22:32:39.766  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: cccc, Role: ROLE_USER 
+2024-11-27 22:32:39.767  c.e.h.c.ScheduleController - User cccc is attempting to create a new schedule 
+2024-11-27 22:32:39.768  c.e.h.c.ScheduleController - User cccc has authority: ROLE_USER 
+2024-11-27 22:32:39.768  c.e.h.s.ScheduleService - 스케줄 생성 요청 - 사용자 ID: cccc, 요청 데이터: com.example.hobbyheavy.dto.request.ScheduleRequest@50b90b6 
+2024-11-27 22:32:39.792  c.e.h.s.ScheduleDynamicService - 스케줄링이 설정되었습니다. 스케줄 ID: 1, 마감 시간: 2024-11-27T22:42:39.787410 
+2024-11-27 22:32:39.792  c.e.h.s.ScheduleService - 스케줄이 생성되었습니다. ID: 1 
+2024-11-27 22:32:43.891  c.e.h.s.NotificationSenderService - [이메일 전송 성공] 수신자: kwondw30@naver.com, 제목: 알림 메일 
+2024-11-27 22:32:43.891  c.e.h.s.NotificationService - [알림 전송] 성공 - 참여자: cccc, 메시지: 새로운 스케줄이 생성되었습니다. 스케줄 ID: 1 
+2024-11-27 22:32:43.898  c.e.h.s.NotificationService - [내부 알림 저장] 알림이 저장되었습니다. 사용자 ID: cccc, 알림 유형: SCHEDULE_CREATION, 메시지: 새로운 스케줄이 생성되었습니다. 스케줄 ID: 1 
+2024-11-27 22:32:47.591  c.e.h.s.NotificationSenderService - [이메일 전송 성공] 수신자: today6215@gmail.com, 제목: 알림 메일 
+2024-11-27 22:32:47.591  c.e.h.s.NotificationService - [알림 전송] 성공 - 참여자: aaaa, 메시지: 새로운 스케줄이 생성되었습니다. 스케줄 ID: 1 
+2024-11-27 22:32:47.593  c.e.h.s.NotificationService - [내부 알림 저장] 알림이 저장되었습니다. 사용자 ID: test, 알림 유형: SCHEDULE_CREATION, 메시지: 새로운 스케줄이 생성되었습니다. 스케줄 ID: 1 
+2024-11-27 22:32:51.116  c.e.h.s.NotificationSenderService - [이메일 전송 성공] 수신자: test11@naver.com, 제목: 알림 메일 
+2024-11-27 22:32:51.116  c.e.h.s.NotificationService - [알림 전송] 성공 - 참여자: tttt, 메시지: 새로운 스케줄이 생성되었습니다. 스케줄 ID: 1 
+2024-11-27 22:32:51.117  c.e.h.s.NotificationService - [내부 알림 저장] 알림이 저장되었습니다. 사용자 ID: tttt, 알림 유형: SCHEDULE_CREATION, 메시지: 새로운 스케줄이 생성되었습니다. 스케줄 ID: 1 
+2024-11-27 22:32:51.117  c.e.h.s.ScheduleService - 스케줄 생성 알림이 발송되었습니다. 스케줄 ID: 1 
+2024-11-27 22:34:46.261  c.e.h.j.JWTFilter - JWTFilter - Request URI: /schedules 
+2024-11-27 22:34:46.261  c.e.h.j.JWTFilter - JWTFilter - UserId: cccc, Role: ROLE_USER 
+2024-11-27 22:34:46.262  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: cccc, Role: ROLE_USER 
+2024-11-27 22:34:46.262  c.e.h.c.ScheduleController - User cccc is attempting to fetch all schedules 
+2024-11-27 22:34:46.270  c.e.h.s.ScheduleService - User cccc가 속한 모든 스케줄 조회. 총 1개의 스케줄이 있습니다. 
+2024-11-27 22:35:36.411  c.e.h.j.JWTFilter - JWTFilter - Request URI: /schedules/1 
+2024-11-27 22:35:36.412  c.e.h.j.JWTFilter - JWTFilter - UserId: cccc, Role: ROLE_USER 
+2024-11-27 22:35:36.412  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: cccc, Role: ROLE_USER 
+2024-11-27 22:35:36.413  c.e.h.c.ScheduleController - User cccc is attempting to update schedule with ID: 1 
+2024-11-27 22:35:36.413  c.e.h.s.ScheduleService - 스케줄 수정 요청 - 스케줄 ID: 1, 사용자 ID: cccc, 요청 데이터: com.example.hobbyheavy.dto.request.ScheduleRequest@4e07afd6 
+2024-11-27 22:35:39.978  c.e.h.s.NotificationSenderService - [이메일 전송 성공] 수신자: kwondw30@naver.com, 제목: 알림 메일 
+2024-11-27 22:35:39.978  c.e.h.s.NotificationService - [알림 전송] 성공 - 참여자: cccc, 메시지: 스케줄이 업데이트되었습니다. 스케줄 ID: 1 
+2024-11-27 22:35:39.978  c.e.h.e.GlobalExceptionHandler - 예기치 못한 예외 발생: No enum constant com.example.hobbyheavy.type.Notification.UPDATE 
+2024-11-27 22:35:39.979  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [java.lang.IllegalArgumentException: No enum constant com.example.hobbyheavy.type.Notification.UPDATE] 
+2024-11-27 22:35:58.263  c.e.h.j.JWTFilter - JWTFilter - Request URI: /schedules/1 
+2024-11-27 22:35:58.264  c.e.h.j.JWTFilter - JWTFilter - UserId: cccc, Role: ROLE_USER 
+2024-11-27 22:35:58.264  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: cccc, Role: ROLE_USER 
+2024-11-27 22:35:58.264  c.e.h.c.ScheduleController - User cccc is attempting to update schedule with ID: 1 
+2024-11-27 22:35:58.265  c.e.h.s.ScheduleService - 스케줄 수정 요청 - 스케줄 ID: 1, 사용자 ID: cccc, 요청 데이터: com.example.hobbyheavy.dto.request.ScheduleRequest@b50febf 
+2024-11-27 22:36:01.761  c.e.h.s.NotificationSenderService - [이메일 전송 성공] 수신자: kwondw30@naver.com, 제목: 알림 메일 
+2024-11-27 22:36:01.761  c.e.h.s.NotificationService - [알림 전송] 성공 - 참여자: cccc, 메시지: 스케줄이 업데이트되었습니다. 스케줄 ID: 1 
+2024-11-27 22:36:01.763  c.e.h.e.GlobalExceptionHandler - 예기치 못한 예외 발생: No enum constant com.example.hobbyheavy.type.Notification.UPDATE 
+2024-11-27 22:36:01.764  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [java.lang.IllegalArgumentException: No enum constant com.example.hobbyheavy.type.Notification.UPDATE] 
+2024-11-27 22:40:03.812  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default' 
+2024-11-27 22:40:03.813  c.z.h.HikariDataSource - HikariPool-2 - Shutdown initiated... 
+2024-11-27 22:40:03.814  c.z.h.HikariDataSource - HikariPool-2 - Shutdown completed. 
+2024-11-27 22:40:06.747  o.h.v.i.u.Version - HV000001: Hibernate Validator 8.0.1.Final 
+2024-11-27 22:40:06.769  c.e.h.HobbyheavyApplication - Starting HobbyheavyApplication using Java 17.0.12 with PID 26380 (D:\workspace\hobbyheavy\build\classes\java\main started by user in D:\workspace\hobbyheavy) 
+2024-11-27 22:40:06.769  c.e.h.HobbyheavyApplication - The following 1 profile is active: "secret" 
+2024-11-27 22:40:06.795  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable 
+2024-11-27 22:40:06.795  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG' 
+2024-11-27 22:40:07.319  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2024-11-27 22:40:07.368  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 44 ms. Found 9 JPA repository interfaces. 
+2024-11-27 22:40:07.760  o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port 8090 (http) 
+2024-11-27 22:40:07.766  o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8090"] 
+2024-11-27 22:40:07.768  o.a.c.c.StandardService - Starting service [Tomcat] 
+2024-11-27 22:40:07.769  o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.31] 
+2024-11-27 22:40:07.810  o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext 
+2024-11-27 22:40:07.811  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1014 ms 
+2024-11-27 22:40:07.909  o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default] 
+2024-11-27 22:40:07.942  o.h.Version - HHH000412: Hibernate ORM core version 6.5.3.Final 
+2024-11-27 22:40:07.961  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled 
+2024-11-27 22:40:08.141  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer 
+2024-11-27 22:40:08.165  c.z.h.HikariDataSource - HikariPool-1 - Starting... 
+2024-11-27 22:40:08.253  c.z.h.p.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@77238082 
+2024-11-27 22:40:08.254  c.z.h.HikariDataSource - HikariPool-1 - Start completed. 
+2024-11-27 22:40:08.281  o.h.o.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default) 
+2024-11-27 22:40:08.944  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration) 
+2024-11-27 22:40:08.946  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2024-11-27 22:40:09.172  o.s.d.j.r.q.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used. 
+2024-11-27 22:40:09.492  c.e.h.s.ScheduleDynamicService - 스케줄링이 설정되었습니다. 스케줄 ID: 1, 마감 시간: 2024-11-27T22:42:39.787410 
+2024-11-27 22:40:09.586  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService 
+2024-11-27 22:40:09.921  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729 
+2024-11-27 22:40:09.933  o.a.c.h.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8090"] 
+2024-11-27 22:40:09.948  o.s.b.w.e.t.TomcatWebServer - Tomcat started on port 8090 (http) with context path '/' 
+2024-11-27 22:40:09.956  c.e.h.HobbyheavyApplication - Started HobbyheavyApplication in 3.449 seconds (process running for 3.841) 
+2024-11-27 22:40:20.892  o.a.c.c.C.[.[.[/] - Initializing Spring DispatcherServlet 'dispatcherServlet' 
+2024-11-27 22:40:20.893  o.s.w.s.DispatcherServlet - Initializing Servlet 'dispatcherServlet' 
+2024-11-27 22:40:20.894  o.s.w.s.DispatcherServlet - Completed initialization in 1 ms 
+2024-11-27 22:40:20.909  c.e.h.j.JWTFilter - JWTFilter - Request URI: /schedules/1 
+2024-11-27 22:40:20.956  c.e.h.j.JWTFilter - JWTFilter - Access token expired for token: eyJhbGciOiJIUzI1NiJ9.eyJjYXRlZ29yeSI6ImFjY2VzcyIsInVzZXJuYW1lIjoiY2NjYyIsInJvbGUiOiJST0xFX1VTRVIiLCJpYXQiOjE3MzI3MTQxMDcsImV4cCI6MTczMjcxNDcwN30.cq8ETnYlJx0hBbviQ9mAn_5kcU8RUitmaLZCOJF_vUo 
+2024-11-27 22:40:20.957  c.e.h.j.JWTFilter - JWTFilter - No valid refresh token found. 
+2024-11-27 22:40:37.426  c.e.h.j.JWTFilter - JWTFilter - Request URI: /swagger-ui/index.html 
+2024-11-27 22:40:37.426  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /swagger-ui/index.html 
+2024-11-27 22:40:37.461  c.e.h.j.JWTFilter - JWTFilter - Request URI: /swagger-ui/swagger-ui.css 
+2024-11-27 22:40:37.461  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /swagger-ui/swagger-ui.css 
+2024-11-27 22:40:37.461  c.e.h.j.JWTFilter - JWTFilter - Request URI: /swagger-ui/index.css 
+2024-11-27 22:40:37.461  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /swagger-ui/index.css 
+2024-11-27 22:40:37.461  c.e.h.j.JWTFilter - JWTFilter - Request URI: /swagger-ui/swagger-ui-bundle.js 
+2024-11-27 22:40:37.461  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /swagger-ui/swagger-ui-bundle.js 
+2024-11-27 22:40:37.461  c.e.h.j.JWTFilter - JWTFilter - Request URI: /swagger-ui/swagger-initializer.js 
+2024-11-27 22:40:37.461  c.e.h.j.JWTFilter - JWTFilter - Request URI: /swagger-ui/swagger-ui-standalone-preset.js 
+2024-11-27 22:40:37.461  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /swagger-ui/swagger-initializer.js 
+2024-11-27 22:40:37.461  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /swagger-ui/swagger-ui-standalone-preset.js 
+2024-11-27 22:40:37.575  c.e.h.j.JWTFilter - JWTFilter - Request URI: /v3/api-docs/swagger-config 
+2024-11-27 22:40:37.576  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /v3/api-docs/swagger-config 
+2024-11-27 22:40:37.591  c.e.h.j.JWTFilter - JWTFilter - Request URI: /swagger-ui/favicon-32x32.png 
+2024-11-27 22:40:37.591  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /swagger-ui/favicon-32x32.png 
+2024-11-27 22:40:37.607  c.e.h.j.JWTFilter - JWTFilter - Request URI: /v3/api-docs 
+2024-11-27 22:40:37.607  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /v3/api-docs 
+2024-11-27 22:40:37.608  c.e.h.j.JWTFilter - JWTFilter - Request URI: /swagger-ui/favicon-32x32.png 
+2024-11-27 22:40:37.608  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /swagger-ui/favicon-32x32.png 
+2024-11-27 22:40:37.867  o.s.a.AbstractOpenApiResource - Init duration for springdoc-openapi is: 252 ms 
+2024-11-27 22:41:04.192  c.e.h.j.JWTFilter - JWTFilter - Request URI: /schedules/1 
+2024-11-27 22:41:04.194  c.e.h.j.JWTFilter - JWTFilter - UserId: cccc, Role: ROLE_USER 
+2024-11-27 22:41:04.194  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: cccc, Role: ROLE_USER 
+2024-11-27 22:41:04.220  c.e.h.c.ScheduleController - User cccc is attempting to update schedule with ID: 1 
+2024-11-27 22:41:04.221  c.e.h.s.ScheduleService - 스케줄 수정 요청 - 스케줄 ID: 1, 사용자 ID: cccc, 요청 데이터: com.example.hobbyheavy.dto.request.ScheduleRequest@18e3212e 
+2024-11-27 22:41:07.865  c.e.h.s.NotificationSenderService - [이메일 전송 성공] 수신자: kwondw30@naver.com, 제목: 알림 메일 
+2024-11-27 22:41:07.865  c.e.h.s.NotificationService - [알림 전송] 성공 - 참여자: cccc, 메시지: 스케줄이 업데이트되었습니다. 스케줄 ID: 1 
+2024-11-27 22:41:07.874  c.e.h.s.NotificationService - [내부 알림 저장] 알림이 저장되었습니다. 사용자 ID: cccc, 알림 유형: SCHEDULE_UPDATE, 메시지: 스케줄이 업데이트되었습니다. 스케줄 ID: 1 
+2024-11-27 22:41:10.698  c.e.h.s.NotificationSenderService - [이메일 전송 성공] 수신자: today6215@gmail.com, 제목: 알림 메일 
+2024-11-27 22:41:10.699  c.e.h.s.NotificationService - [알림 전송] 성공 - 참여자: aaaa, 메시지: 스케줄이 업데이트되었습니다. 스케줄 ID: 1 
+2024-11-27 22:41:10.704  c.e.h.s.NotificationService - [내부 알림 저장] 알림이 저장되었습니다. 사용자 ID: test, 알림 유형: SCHEDULE_UPDATE, 메시지: 스케줄이 업데이트되었습니다. 스케줄 ID: 1 
+2024-11-27 22:41:14.235  c.e.h.s.NotificationSenderService - [이메일 전송 성공] 수신자: test11@naver.com, 제목: 알림 메일 
+2024-11-27 22:41:14.235  c.e.h.s.NotificationService - [알림 전송] 성공 - 참여자: tttt, 메시지: 스케줄이 업데이트되었습니다. 스케줄 ID: 1 
+2024-11-27 22:41:14.238  c.e.h.s.NotificationService - [내부 알림 저장] 알림이 저장되었습니다. 사용자 ID: tttt, 알림 유형: SCHEDULE_UPDATE, 메시지: 스케줄이 업데이트되었습니다. 스케줄 ID: 1 
+2024-11-27 22:41:14.238  c.e.h.s.ScheduleService - 스케줄이 수정되고 알림이 전송되었습니다. ID: 1 
+2024-11-27 22:41:14.238  c.e.h.s.ScheduleService - 스케줄이 수정되었습니다. ID: 1 
+2024-11-27 22:42:43.436  c.e.h.s.NotificationSenderService - [이메일 전송 성공] 수신자: kwondw30@naver.com, 제목: 알림 메일 
+2024-11-27 22:42:43.436  c.e.h.s.NotificationService - [알림 전송] 성공 - 참여자: cccc, 메시지: 스케줄이 확정되었습니다. 스케줄 ID: 1 
+2024-11-27 22:42:43.441  c.e.h.s.NotificationService - [내부 알림 저장] 알림이 저장되었습니다. 사용자 ID: cccc, 알림 유형: SCHEDULE_CONFIRMATION, 메시지: 스케줄이 확정되었습니다. 스케줄 ID: 1 
+2024-11-27 22:42:46.950  c.e.h.s.NotificationSenderService - [이메일 전송 성공] 수신자: today6215@gmail.com, 제목: 알림 메일 
+2024-11-27 22:42:46.951  c.e.h.s.NotificationService - [알림 전송] 성공 - 참여자: aaaa, 메시지: 스케줄이 확정되었습니다. 스케줄 ID: 1 
+2024-11-27 22:42:46.954  c.e.h.s.NotificationService - [내부 알림 저장] 알림이 저장되었습니다. 사용자 ID: test, 알림 유형: SCHEDULE_CONFIRMATION, 메시지: 스케줄이 확정되었습니다. 스케줄 ID: 1 
+2024-11-27 22:42:50.522  c.e.h.s.NotificationSenderService - [이메일 전송 성공] 수신자: test11@naver.com, 제목: 알림 메일 
+2024-11-27 22:42:50.522  c.e.h.s.NotificationService - [알림 전송] 성공 - 참여자: tttt, 메시지: 스케줄이 확정되었습니다. 스케줄 ID: 1 
+2024-11-27 22:42:50.524  c.e.h.s.NotificationService - [내부 알림 저장] 알림이 저장되었습니다. 사용자 ID: tttt, 알림 유형: SCHEDULE_CONFIRMATION, 메시지: 스케줄이 확정되었습니다. 스케줄 ID: 1 
+2024-11-27 22:42:50.524  c.e.h.s.ScheduleConfirmService - 스케줄이 확정되고 알림이 전송되었습니다. ID: 1, 상태: CONFIRMED 
+2024-11-27 22:43:15.832  c.e.h.j.JWTFilter - JWTFilter - Request URI: /schedules/1 
+2024-11-27 22:43:15.833  c.e.h.j.JWTFilter - JWTFilter - UserId: cccc, Role: ROLE_USER 
+2024-11-27 22:43:15.834  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: cccc, Role: ROLE_USER 
+2024-11-27 22:43:15.835  c.e.h.c.ScheduleController - User cccc is attempting to update schedule with ID: 1 
+2024-11-27 22:43:15.836  c.e.h.s.ScheduleService - 스케줄 수정 요청 - 스케줄 ID: 1, 사용자 ID: cccc, 요청 데이터: com.example.hobbyheavy.dto.request.ScheduleRequest@2b6c91e3 
+2024-11-27 22:43:19.508  c.e.h.s.NotificationSenderService - [이메일 전송 성공] 수신자: kwondw30@naver.com, 제목: 알림 메일 
+2024-11-27 22:43:19.508  c.e.h.s.NotificationService - [알림 전송] 성공 - 참여자: cccc, 메시지: 스케줄이 업데이트되었습니다. 스케줄 ID: 1 
+2024-11-27 22:43:19.514  c.e.h.s.NotificationService - [내부 알림 저장] 알림이 저장되었습니다. 사용자 ID: cccc, 알림 유형: SCHEDULE_UPDATE, 메시지: 스케줄이 업데이트되었습니다. 스케줄 ID: 1 
+2024-11-27 22:43:22.947  c.e.h.s.NotificationSenderService - [이메일 전송 성공] 수신자: today6215@gmail.com, 제목: 알림 메일 
+2024-11-27 22:43:22.948  c.e.h.s.NotificationService - [알림 전송] 성공 - 참여자: aaaa, 메시지: 스케줄이 업데이트되었습니다. 스케줄 ID: 1 
+2024-11-27 22:43:22.951  c.e.h.s.NotificationService - [내부 알림 저장] 알림이 저장되었습니다. 사용자 ID: test, 알림 유형: SCHEDULE_UPDATE, 메시지: 스케줄이 업데이트되었습니다. 스케줄 ID: 1 
+2024-11-27 22:43:26.410  c.e.h.s.NotificationSenderService - [이메일 전송 성공] 수신자: test11@naver.com, 제목: 알림 메일 
+2024-11-27 22:43:26.411  c.e.h.s.NotificationService - [알림 전송] 성공 - 참여자: tttt, 메시지: 스케줄이 업데이트되었습니다. 스케줄 ID: 1 
+2024-11-27 22:43:26.412  c.e.h.s.NotificationService - [내부 알림 저장] 알림이 저장되었습니다. 사용자 ID: tttt, 알림 유형: SCHEDULE_UPDATE, 메시지: 스케줄이 업데이트되었습니다. 스케줄 ID: 1 
+2024-11-27 22:43:26.412  c.e.h.s.ScheduleService - 스케줄이 수정되고 알림이 전송되었습니다. ID: 1 
+2024-11-27 22:43:26.412  c.e.h.s.ScheduleService - 스케줄이 수정되었습니다. ID: 1 
+2024-11-27 22:45:06.005  c.e.h.j.JWTFilter - JWTFilter - Request URI: /schedules 
+2024-11-27 22:45:06.008  c.e.h.j.JWTFilter - JWTFilter - UserId: cccc, Role: ROLE_USER 
+2024-11-27 22:45:06.008  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: cccc, Role: ROLE_USER 
+2024-11-27 22:45:06.008  c.e.h.c.ScheduleController - User cccc is attempting to create a new schedule 
+2024-11-27 22:45:06.008  c.e.h.c.ScheduleController - User cccc has authority: ROLE_USER 
+2024-11-27 22:45:06.008  c.e.h.s.ScheduleService - 스케줄 생성 요청 - 사용자 ID: cccc, 요청 데이터: com.example.hobbyheavy.dto.request.ScheduleRequest@67b7b3e0 
+2024-11-27 22:45:06.014  c.e.h.s.ScheduleDynamicService - 스케줄링이 설정되었습니다. 스케줄 ID: 2, 마감 시간: 2024-11-27T22:45:06.012973 
+2024-11-27 22:45:06.015  c.e.h.s.ScheduleService - 스케줄이 생성되었습니다. ID: 2 
+2024-11-27 22:45:06.021  c.e.h.s.ScheduleDynamicService - 스케줄 확정 중 오류가 발생했습니다. 스케줄 ID: 2, 오류: 요청한 스케줄을 찾을 수 없습니다. 
+com.example.hobbyheavy.exception.CustomException: 요청한 스케줄을 찾을 수 없습니다.
+	at com.example.hobbyheavy.service.ScheduleConfirmService.lambda$getSchedule$0(ScheduleConfirmService.java:63)
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403)
+	at com.example.hobbyheavy.service.ScheduleConfirmService.getSchedule(ScheduleConfirmService.java:63)
+	at com.example.hobbyheavy.service.ScheduleConfirmService.finalizeSchedule(ScheduleConfirmService.java:38)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:355)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:768)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:379)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:768)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:720)
+	at com.example.hobbyheavy.service.ScheduleConfirmService$$SpringCGLIB$$0.finalizeSchedule(<generated>)
+	at com.example.hobbyheavy.service.ScheduleDynamicService.lambda$scheduleFinalization$0(ScheduleDynamicService.java:43)
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2024-11-27 22:45:08.988  c.e.h.s.NotificationSenderService - [이메일 전송 성공] 수신자: kwondw30@naver.com, 제목: 알림 메일 
+2024-11-27 22:45:08.988  c.e.h.s.NotificationService - [알림 전송] 성공 - 참여자: cccc, 메시지: 새로운 스케줄이 생성되었습니다. 스케줄 ID: 2 
+2024-11-27 22:45:08.990  c.e.h.s.NotificationService - [내부 알림 저장] 알림이 저장되었습니다. 사용자 ID: cccc, 알림 유형: SCHEDULE_CREATION, 메시지: 새로운 스케줄이 생성되었습니다. 스케줄 ID: 2 
+2024-11-27 22:45:12.334  c.e.h.s.NotificationSenderService - [이메일 전송 성공] 수신자: today6215@gmail.com, 제목: 알림 메일 
+2024-11-27 22:45:12.335  c.e.h.s.NotificationService - [알림 전송] 성공 - 참여자: aaaa, 메시지: 새로운 스케줄이 생성되었습니다. 스케줄 ID: 2 
+2024-11-27 22:45:12.339  c.e.h.s.NotificationService - [내부 알림 저장] 알림이 저장되었습니다. 사용자 ID: test, 알림 유형: SCHEDULE_CREATION, 메시지: 새로운 스케줄이 생성되었습니다. 스케줄 ID: 2 
+2024-11-27 22:45:15.832  c.e.h.s.NotificationSenderService - [이메일 전송 성공] 수신자: test11@naver.com, 제목: 알림 메일 
+2024-11-27 22:45:15.833  c.e.h.s.NotificationService - [알림 전송] 성공 - 참여자: tttt, 메시지: 새로운 스케줄이 생성되었습니다. 스케줄 ID: 2 
+2024-11-27 22:45:15.837  c.e.h.s.NotificationService - [내부 알림 저장] 알림이 저장되었습니다. 사용자 ID: tttt, 알림 유형: SCHEDULE_CREATION, 메시지: 새로운 스케줄이 생성되었습니다. 스케줄 ID: 2 
+2024-11-27 22:45:15.837  c.e.h.s.ScheduleService - 스케줄 생성 알림이 발송되었습니다. 스케줄 ID: 2 
+2024-11-27 22:49:12.502  c.e.h.j.JWTFilter - JWTFilter - Request URI: /schedules 
+2024-11-27 22:49:12.503  c.e.h.j.JWTFilter - JWTFilter - UserId: cccc, Role: ROLE_USER 
+2024-11-27 22:49:12.504  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: cccc, Role: ROLE_USER 
+2024-11-27 22:49:12.507  c.e.h.c.ScheduleController - User cccc is attempting to create a new schedule 
+2024-11-27 22:49:12.507  c.e.h.c.ScheduleController - User cccc has authority: ROLE_USER 
+2024-11-27 22:49:12.508  c.e.h.s.ScheduleService - 스케줄 생성 요청 - 사용자 ID: cccc, 요청 데이터: com.example.hobbyheavy.dto.request.ScheduleRequest@49b83bab 
+2024-11-27 22:49:12.517  c.e.h.s.ScheduleDynamicService - 스케줄링이 설정되었습니다. 스케줄 ID: 3, 마감 시간: 2024-11-27T22:50:12.513174 
+2024-11-27 22:49:12.517  c.e.h.s.ScheduleService - 스케줄이 생성되었습니다. ID: 3 
+2024-11-27 22:49:15.411  c.e.h.s.NotificationSenderService - [이메일 전송 성공] 수신자: kwondw30@naver.com, 제목: 알림 메일 
+2024-11-27 22:49:15.412  c.e.h.s.NotificationService - [알림 전송] 성공 - 참여자: cccc, 메시지: 새로운 스케줄이 생성되었습니다. 스케줄 ID: 3 
+2024-11-27 22:49:15.416  c.e.h.s.NotificationService - [내부 알림 저장] 알림이 저장되었습니다. 사용자 ID: cccc, 알림 유형: SCHEDULE_CREATION, 메시지: 새로운 스케줄이 생성되었습니다. 스케줄 ID: 3 
+2024-11-27 22:49:18.939  c.e.h.s.NotificationSenderService - [이메일 전송 성공] 수신자: today6215@gmail.com, 제목: 알림 메일 
+2024-11-27 22:49:18.940  c.e.h.s.NotificationService - [알림 전송] 성공 - 참여자: aaaa, 메시지: 새로운 스케줄이 생성되었습니다. 스케줄 ID: 3 
+2024-11-27 22:49:18.944  c.e.h.s.NotificationService - [내부 알림 저장] 알림이 저장되었습니다. 사용자 ID: test, 알림 유형: SCHEDULE_CREATION, 메시지: 새로운 스케줄이 생성되었습니다. 스케줄 ID: 3 
+2024-11-27 22:49:22.322  c.e.h.s.NotificationSenderService - [이메일 전송 성공] 수신자: test11@naver.com, 제목: 알림 메일 
+2024-11-27 22:49:22.322  c.e.h.s.NotificationService - [알림 전송] 성공 - 참여자: tttt, 메시지: 새로운 스케줄이 생성되었습니다. 스케줄 ID: 3 
+2024-11-27 22:49:22.324  c.e.h.s.NotificationService - [내부 알림 저장] 알림이 저장되었습니다. 사용자 ID: tttt, 알림 유형: SCHEDULE_CREATION, 메시지: 새로운 스케줄이 생성되었습니다. 스케줄 ID: 3 
+2024-11-27 22:49:22.324  c.e.h.s.ScheduleService - 스케줄 생성 알림이 발송되었습니다. 스케줄 ID: 3 
+2024-11-27 22:50:15.413  c.e.h.s.NotificationSenderService - [이메일 전송 성공] 수신자: kwondw30@naver.com, 제목: 알림 메일 
+2024-11-27 22:50:15.414  c.e.h.s.NotificationService - [알림 전송] 성공 - 참여자: cccc, 메시지: 스케줄이 확정되었습니다. 스케줄 ID: 3 
+2024-11-27 22:50:15.418  c.e.h.s.NotificationService - [내부 알림 저장] 알림이 저장되었습니다. 사용자 ID: cccc, 알림 유형: SCHEDULE_CONFIRMATION, 메시지: 스케줄이 확정되었습니다. 스케줄 ID: 3 
+2024-11-27 22:50:18.825  c.e.h.s.NotificationSenderService - [이메일 전송 성공] 수신자: today6215@gmail.com, 제목: 알림 메일 
+2024-11-27 22:50:18.825  c.e.h.s.NotificationService - [알림 전송] 성공 - 참여자: aaaa, 메시지: 스케줄이 확정되었습니다. 스케줄 ID: 3 
+2024-11-27 22:50:18.828  c.e.h.s.NotificationService - [내부 알림 저장] 알림이 저장되었습니다. 사용자 ID: test, 알림 유형: SCHEDULE_CONFIRMATION, 메시지: 스케줄이 확정되었습니다. 스케줄 ID: 3 
+2024-11-27 22:50:22.248  c.e.h.s.NotificationSenderService - [이메일 전송 성공] 수신자: test11@naver.com, 제목: 알림 메일 
+2024-11-27 22:50:22.248  c.e.h.s.NotificationService - [알림 전송] 성공 - 참여자: tttt, 메시지: 스케줄이 확정되었습니다. 스케줄 ID: 3 
+2024-11-27 22:50:22.252  c.e.h.s.NotificationService - [내부 알림 저장] 알림이 저장되었습니다. 사용자 ID: tttt, 알림 유형: SCHEDULE_CONFIRMATION, 메시지: 스케줄이 확정되었습니다. 스케줄 ID: 3 
+2024-11-27 22:50:22.253  c.e.h.s.ScheduleConfirmService - 스케줄이 확정되고 알림이 전송되었습니다. ID: 3, 상태: CONFIRMED 
+2024-11-27 22:51:39.355  c.e.h.j.JWTFilter - JWTFilter - Request URI: /schedules/2/confirm 
+2024-11-27 22:51:39.356  c.e.h.j.JWTFilter - JWTFilter - Access token expired for token: eyJhbGciOiJIUzI1NiJ9.eyJjYXRlZ29yeSI6ImFjY2VzcyIsInVzZXJuYW1lIjoiY2NjYyIsInJvbGUiOiJST0xFX1VTRVIiLCJpYXQiOjE3MzI3MTQ4MzEsImV4cCI6MTczMjcxNTQzMX0.L2EqOfblyH5I-vP6Cxqt9NX6H7V675vYC7a_P7oT0Tg 
+2024-11-27 22:51:39.356  c.e.h.j.JWTFilter - JWTFilter - No valid refresh token found. 
+2024-11-27 22:52:09.666  c.e.h.j.JWTFilter - JWTFilter - Request URI: /schedules/2/confirm 
+2024-11-27 22:52:09.667  c.e.h.j.JWTFilter - JWTFilter - UserId: cccc, Role: ROLE_USER 
+2024-11-27 22:52:09.667  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: cccc, Role: ROLE_USER 
+2024-11-27 22:52:09.668  c.e.h.c.ScheduleController - User cccc is attempting to confirm schedule with ID: 2 
+2024-11-27 22:52:13.256  c.e.h.s.NotificationSenderService - [이메일 전송 성공] 수신자: kwondw30@naver.com, 제목: 알림 메일 
+2024-11-27 22:52:13.257  c.e.h.s.NotificationService - [알림 전송] 성공 - 참여자: cccc, 메시지: 스케줄이 확정되었습니다. 스케줄 ID: 2 
+2024-11-27 22:52:13.261  c.e.h.s.NotificationService - [내부 알림 저장] 알림이 저장되었습니다. 사용자 ID: cccc, 알림 유형: SCHEDULE_CONFIRMATION, 메시지: 스케줄이 확정되었습니다. 스케줄 ID: 2 
+2024-11-27 22:52:16.730  c.e.h.s.NotificationSenderService - [이메일 전송 성공] 수신자: today6215@gmail.com, 제목: 알림 메일 
+2024-11-27 22:52:16.730  c.e.h.s.NotificationService - [알림 전송] 성공 - 참여자: aaaa, 메시지: 스케줄이 확정되었습니다. 스케줄 ID: 2 
+2024-11-27 22:52:16.732  c.e.h.s.NotificationService - [내부 알림 저장] 알림이 저장되었습니다. 사용자 ID: test, 알림 유형: SCHEDULE_CONFIRMATION, 메시지: 스케줄이 확정되었습니다. 스케줄 ID: 2 
+2024-11-27 22:52:19.729  c.e.h.s.NotificationSenderService - [이메일 전송 성공] 수신자: test11@naver.com, 제목: 알림 메일 
+2024-11-27 22:52:19.729  c.e.h.s.NotificationService - [알림 전송] 성공 - 참여자: tttt, 메시지: 스케줄이 확정되었습니다. 스케줄 ID: 2 
+2024-11-27 22:52:19.733  c.e.h.s.NotificationService - [내부 알림 저장] 알림이 저장되었습니다. 사용자 ID: tttt, 알림 유형: SCHEDULE_CONFIRMATION, 메시지: 스케줄이 확정되었습니다. 스케줄 ID: 2 
+2024-11-27 22:52:19.734  c.e.h.s.ScheduleConfirmService - 스케줄이 확정되고 알림이 전송되었습니다. ID: 2, 상태: CONFIRMED 
+2024-11-27 22:53:02.778  c.e.h.j.JWTFilter - JWTFilter - Request URI: /schedules/1/vote 
+2024-11-27 22:53:02.779  c.e.h.j.JWTFilter - JWTFilter - UserId: cccc, Role: ROLE_USER 
+2024-11-27 22:53:02.779  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: cccc, Role: ROLE_USER 
+2024-11-27 22:53:02.780  c.e.h.c.ScheduleController - User cccc is attempting to vote on schedule with ID: 1 
+2024-11-27 22:53:52.631  c.e.h.j.JWTFilter - JWTFilter - Request URI: /schedules/1 
+2024-11-27 22:53:52.633  c.e.h.j.JWTFilter - JWTFilter - UserId: cccc, Role: ROLE_USER 
+2024-11-27 22:53:52.633  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: cccc, Role: ROLE_USER 
+2024-11-27 22:53:52.634  c.e.h.c.ScheduleController - User cccc is attempting to fetch schedule with ID: 1 
+2024-11-27 22:53:52.638  c.e.h.s.ScheduleService - 스케줄 조회: ID: 1 
+2024-11-27 22:54:37.353  c.e.h.j.JWTFilter - JWTFilter - Request URI: /schedules/1 
+2024-11-27 22:54:37.354  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 22:54:37.354  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 22:54:37.355  c.e.h.c.ScheduleController - User test is attempting to fetch schedule with ID: 1 
+2024-11-27 22:54:37.358  c.e.h.s.ScheduleService - 스케줄 조회: ID: 1 
+2024-11-27 22:54:45.085  c.e.h.j.JWTFilter - JWTFilter - Request URI: /schedules/1/vote 
+2024-11-27 22:54:45.086  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 22:54:45.086  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 22:54:45.087  c.e.h.c.ScheduleController - User test is attempting to vote on schedule with ID: 1 
+2024-11-27 22:54:48.717  c.e.h.j.JWTFilter - JWTFilter - Request URI: /schedules/1 
+2024-11-27 22:54:48.718  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 22:54:48.719  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 22:54:48.719  c.e.h.c.ScheduleController - User test is attempting to fetch schedule with ID: 1 
+2024-11-27 22:54:48.722  c.e.h.s.ScheduleService - 스케줄 조회: ID: 1 
+2024-11-27 22:55:12.807  c.e.h.j.JWTFilter - JWTFilter - Request URI: /schedules/1/unvote 
+2024-11-27 22:55:12.808  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 22:55:12.808  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 22:55:12.808  c.e.h.c.ScheduleController - User test is attempting to unvote on schedule with ID: 1 
+2024-11-27 22:55:24.270  c.e.h.j.JWTFilter - JWTFilter - Request URI: /schedules/1 
+2024-11-27 22:55:24.271  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 22:55:24.271  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 22:55:24.272  c.e.h.c.ScheduleController - User test is attempting to fetch schedule with ID: 1 
+2024-11-27 22:55:24.275  c.e.h.s.ScheduleService - 스케줄 조회: ID: 1 
+2024-11-27 22:55:39.442  c.e.h.j.JWTFilter - JWTFilter - Request URI: /schedules/1/cancel 
+2024-11-27 22:55:39.443  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 22:55:39.443  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 22:55:39.447  c.e.h.c.ScheduleController - User test is attempting to cancel schedule with ID: 1 for reason: string 
+2024-11-27 22:55:39.448  c.e.h.s.ScheduleService - 스케줄 취소 요청 - 스케줄 ID: 1, 사용자 ID: test, 이유: string 
+2024-11-27 22:55:39.455  c.e.h.c.ExceptionController - 요청하신 작업을 수행할 권한이 없습니다. 
+2024-11-27 22:55:39.457  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [com.example.hobbyheavy.exception.CustomException: 요청하신 작업을 수행할 권한이 없습니다.] 
+2024-11-27 22:56:02.459  c.e.h.j.JWTFilter - JWTFilter - Request URI: /schedules/1/cancel 
+2024-11-27 22:56:02.459  c.e.h.j.JWTFilter - JWTFilter - UserId: cccc, Role: ROLE_USER 
+2024-11-27 22:56:02.460  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: cccc, Role: ROLE_USER 
+2024-11-27 22:56:02.460  c.e.h.c.ScheduleController - User cccc is attempting to cancel schedule with ID: 1 for reason: string 
+2024-11-27 22:56:02.461  c.e.h.s.ScheduleService - 스케줄 취소 요청 - 스케줄 ID: 1, 사용자 ID: cccc, 이유: string 
+2024-11-27 22:56:06.042  c.e.h.s.NotificationSenderService - [이메일 전송 성공] 수신자: kwondw30@naver.com, 제목: 알림 메일 
+2024-11-27 22:56:06.042  c.e.h.s.NotificationService - [알림 전송] 성공 - 참여자: cccc, 메시지: 스케줄이 취소되었습니다. 스케줄 ID: 1 
+2024-11-27 22:56:06.044  c.e.h.e.GlobalExceptionHandler - 예기치 못한 예외 발생: No enum constant com.example.hobbyheavy.type.Notification.CANCELLATION 
+2024-11-27 22:56:06.045  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [java.lang.IllegalArgumentException: No enum constant com.example.hobbyheavy.type.Notification.CANCELLATION] 
+2024-11-27 22:57:12.754  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default' 
+2024-11-27 22:57:12.756  c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated... 
+2024-11-27 22:57:12.759  c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed. 
+2024-11-27 22:57:29.462  o.h.v.i.u.Version - HV000001: Hibernate Validator 8.0.1.Final 
+2024-11-27 22:57:29.486  c.e.h.HobbyheavyApplication - Starting HobbyheavyApplication using Java 17.0.12 with PID 28264 (D:\workspace\hobbyheavy\build\classes\java\main started by user in D:\workspace\hobbyheavy) 
+2024-11-27 22:57:29.487  c.e.h.HobbyheavyApplication - The following 1 profile is active: "secret" 
+2024-11-27 22:57:29.516  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable 
+2024-11-27 22:57:29.516  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG' 
+2024-11-27 22:57:30.038  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2024-11-27 22:57:30.086  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 43 ms. Found 9 JPA repository interfaces. 
+2024-11-27 22:57:30.478  o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port 8090 (http) 
+2024-11-27 22:57:30.484  o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8090"] 
+2024-11-27 22:57:30.486  o.a.c.c.StandardService - Starting service [Tomcat] 
+2024-11-27 22:57:30.486  o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.31] 
+2024-11-27 22:57:30.529  o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext 
+2024-11-27 22:57:30.529  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1012 ms 
+2024-11-27 22:57:30.621  o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default] 
+2024-11-27 22:57:30.649  o.h.Version - HHH000412: Hibernate ORM core version 6.5.3.Final 
+2024-11-27 22:57:30.669  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled 
+2024-11-27 22:57:30.852  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer 
+2024-11-27 22:57:30.871  c.z.h.HikariDataSource - HikariPool-1 - Starting... 
+2024-11-27 22:57:30.967  c.z.h.p.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5bd446fc 
+2024-11-27 22:57:30.968  c.z.h.HikariDataSource - HikariPool-1 - Start completed. 
+2024-11-27 22:57:30.997  o.h.o.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default) 
+2024-11-27 22:57:31.673  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration) 
+2024-11-27 22:57:31.675  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2024-11-27 22:57:31.905  o.s.d.j.r.q.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used. 
+2024-11-27 22:57:32.235  c.e.h.s.ScheduleDynamicService - 마감 시간이 지난 스케줄은 초기화에서 제외됩니다. 스케줄 ID: 1 
+2024-11-27 22:57:32.235  c.e.h.s.ScheduleDynamicService - 마감 시간이 지난 스케줄은 초기화에서 제외됩니다. 스케줄 ID: 2 
+2024-11-27 22:57:32.235  c.e.h.s.ScheduleDynamicService - 마감 시간이 지난 스케줄은 초기화에서 제외됩니다. 스케줄 ID: 3 
+2024-11-27 22:57:32.334  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService 
+2024-11-27 22:57:32.672  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729 
+2024-11-27 22:57:32.684  o.a.c.h.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8090"] 
+2024-11-27 22:57:32.697  o.s.b.w.e.t.TomcatWebServer - Tomcat started on port 8090 (http) with context path '/' 
+2024-11-27 22:57:32.705  c.e.h.HobbyheavyApplication - Started HobbyheavyApplication in 3.488 seconds (process running for 3.876) 
+2024-11-27 22:57:41.923  o.a.c.c.C.[.[.[/] - Initializing Spring DispatcherServlet 'dispatcherServlet' 
+2024-11-27 22:57:41.923  o.s.w.s.DispatcherServlet - Initializing Servlet 'dispatcherServlet' 
+2024-11-27 22:57:41.924  o.s.w.s.DispatcherServlet - Completed initialization in 1 ms 
+2024-11-27 22:57:41.940  c.e.h.j.JWTFilter - JWTFilter - Request URI: /schedules/1/cancel 
+2024-11-27 22:57:41.988  c.e.h.j.JWTFilter - JWTFilter - UserId: cccc, Role: ROLE_USER 
+2024-11-27 22:57:41.989  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: cccc, Role: ROLE_USER 
+2024-11-27 22:57:42.053  c.e.h.c.ScheduleController - User cccc is attempting to cancel schedule with ID: 1 for reason: string 
+2024-11-27 22:57:42.054  c.e.h.s.ScheduleService - 스케줄 취소 요청 - 스케줄 ID: 1, 사용자 ID: cccc, 이유: string 
+2024-11-27 22:57:45.607  c.e.h.s.NotificationSenderService - [이메일 전송 성공] 수신자: kwondw30@naver.com, 제목: 알림 메일 
+2024-11-27 22:57:45.607  c.e.h.s.NotificationService - [알림 전송] 성공 - 참여자: cccc, 메시지: 스케줄이 취소되었습니다. 스케줄 ID: 1 
+2024-11-27 22:57:45.628  o.h.e.j.s.SqlExceptionHelper - SQL Error: 1265, SQLState: 01000 
+2024-11-27 22:57:45.628  o.h.e.j.s.SqlExceptionHelper - Data truncated for column 'type' at row 1 
+2024-11-27 22:57:45.633  c.e.h.e.GlobalExceptionHandler - 예기치 못한 예외 발생: could not execute statement [Data truncated for column 'type' at row 1] [insert into Notification (created_at,deleted,deleted_at,is_read,meetup_id,message,type,updated_at,user_id) values (?,?,?,?,?,?,?,?,?)] 
+2024-11-27 22:57:45.640  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.orm.jpa.JpaSystemException: could not execute statement [Data truncated for column 'type' at row 1] [insert into Notification (created_at,deleted,deleted_at,is_read,meetup_id,message,type,updated_at,user_id) values (?,?,?,?,?,?,?,?,?)]] 
+2024-11-27 23:02:09.838  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default' 
+2024-11-27 23:02:09.840  c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated... 
+2024-11-27 23:02:09.843  c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed. 
+2024-11-27 23:02:12.328  o.h.v.i.u.Version - HV000001: Hibernate Validator 8.0.1.Final 
+2024-11-27 23:02:12.351  c.e.h.HobbyheavyApplication - Starting HobbyheavyApplication using Java 17.0.12 with PID 23944 (D:\workspace\hobbyheavy\build\classes\java\main started by user in D:\workspace\hobbyheavy) 
+2024-11-27 23:02:12.352  c.e.h.HobbyheavyApplication - The following 1 profile is active: "secret" 
+2024-11-27 23:02:12.378  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable 
+2024-11-27 23:02:12.378  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG' 
+2024-11-27 23:02:12.908  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2024-11-27 23:02:12.955  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 43 ms. Found 9 JPA repository interfaces. 
+2024-11-27 23:02:13.353  o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port 8090 (http) 
+2024-11-27 23:02:13.359  o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8090"] 
+2024-11-27 23:02:13.361  o.a.c.c.StandardService - Starting service [Tomcat] 
+2024-11-27 23:02:13.361  o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.31] 
+2024-11-27 23:02:13.402  o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext 
+2024-11-27 23:02:13.402  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1024 ms 
+2024-11-27 23:02:13.492  o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default] 
+2024-11-27 23:02:13.521  o.h.Version - HHH000412: Hibernate ORM core version 6.5.3.Final 
+2024-11-27 23:02:13.541  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled 
+2024-11-27 23:02:13.727  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer 
+2024-11-27 23:02:13.745  c.z.h.HikariDataSource - HikariPool-1 - Starting... 
+2024-11-27 23:02:13.855  c.z.h.p.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2de5ae50 
+2024-11-27 23:02:13.856  c.z.h.HikariDataSource - HikariPool-1 - Start completed. 
+2024-11-27 23:02:13.885  o.h.o.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default) 
+2024-11-27 23:02:14.582  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration) 
+2024-11-27 23:02:14.584  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2024-11-27 23:02:14.822  o.s.d.j.r.q.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used. 
+2024-11-27 23:02:15.143  c.e.h.s.ScheduleDynamicService - 마감 시간이 지난 스케줄은 초기화에서 제외됩니다. 스케줄 ID: 1 
+2024-11-27 23:02:15.143  c.e.h.s.ScheduleDynamicService - 마감 시간이 지난 스케줄은 초기화에서 제외됩니다. 스케줄 ID: 2 
+2024-11-27 23:02:15.143  c.e.h.s.ScheduleDynamicService - 마감 시간이 지난 스케줄은 초기화에서 제외됩니다. 스케줄 ID: 3 
+2024-11-27 23:02:15.241  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService 
+2024-11-27 23:02:15.572  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729 
+2024-11-27 23:02:15.592  o.a.c.h.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8090"] 
+2024-11-27 23:02:15.605  o.s.b.w.e.t.TomcatWebServer - Tomcat started on port 8090 (http) with context path '/' 
+2024-11-27 23:02:15.613  c.e.h.HobbyheavyApplication - Started HobbyheavyApplication in 3.528 seconds (process running for 3.908) 
+2024-11-27 23:02:33.176  o.a.c.c.C.[.[.[/] - Initializing Spring DispatcherServlet 'dispatcherServlet' 
+2024-11-27 23:02:33.176  o.s.w.s.DispatcherServlet - Initializing Servlet 'dispatcherServlet' 
+2024-11-27 23:02:33.177  o.s.w.s.DispatcherServlet - Completed initialization in 1 ms 
+2024-11-27 23:02:33.192  c.e.h.j.JWTFilter - JWTFilter - Request URI: /schedules/1/cancel 
+2024-11-27 23:02:33.240  c.e.h.j.JWTFilter - JWTFilter - UserId: cccc, Role: ROLE_USER 
+2024-11-27 23:02:33.241  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: cccc, Role: ROLE_USER 
+2024-11-27 23:02:33.301  c.e.h.c.ScheduleController - User cccc is attempting to cancel schedule with ID: 1 for reason: asdfsadfas 
+2024-11-27 23:02:33.301  c.e.h.s.ScheduleService - 스케줄 취소 요청 - 스케줄 ID: 1, 사용자 ID: cccc, 이유: asdfsadfas 
+2024-11-27 23:02:36.758  c.e.h.s.NotificationSenderService - [이메일 전송 성공] 수신자: kwondw30@naver.com, 제목: 알림 메일 
+2024-11-27 23:02:36.758  c.e.h.s.NotificationService - [알림 전송] 성공 - 참여자: cccc, 메시지: 스케줄이 취소되었습니다. 스케줄 ID: 1 
+2024-11-27 23:02:36.777  o.h.e.j.s.SqlExceptionHelper - SQL Error: 1265, SQLState: 01000 
+2024-11-27 23:02:36.777  o.h.e.j.s.SqlExceptionHelper - Data truncated for column 'type' at row 1 
+2024-11-27 23:02:36.782  c.e.h.e.GlobalExceptionHandler - 예기치 못한 예외 발생: could not execute statement [Data truncated for column 'type' at row 1] [insert into Notification (created_at,deleted,deleted_at,is_read,meetup_id,message,type,updated_at,user_id) values (?,?,?,?,?,?,?,?,?)] 
+2024-11-27 23:02:36.789  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.orm.jpa.JpaSystemException: could not execute statement [Data truncated for column 'type' at row 1] [insert into Notification (created_at,deleted,deleted_at,is_read,meetup_id,message,type,updated_at,user_id) values (?,?,?,?,?,?,?,?,?)]] 
+2024-11-27 23:04:08.513  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default' 
+2024-11-27 23:04:08.515  c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated... 
+2024-11-27 23:04:08.519  c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed. 
+2024-11-27 23:04:11.072  o.h.v.i.u.Version - HV000001: Hibernate Validator 8.0.1.Final 
+2024-11-27 23:04:11.096  c.e.h.HobbyheavyApplication - Starting HobbyheavyApplication using Java 17.0.12 with PID 27736 (D:\workspace\hobbyheavy\build\classes\java\main started by user in D:\workspace\hobbyheavy) 
+2024-11-27 23:04:11.096  c.e.h.HobbyheavyApplication - The following 1 profile is active: "secret" 
+2024-11-27 23:04:11.123  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable 
+2024-11-27 23:04:11.123  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG' 
+2024-11-27 23:04:11.654  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2024-11-27 23:04:11.704  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 45 ms. Found 9 JPA repository interfaces. 
+2024-11-27 23:04:12.142  o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port 8090 (http) 
+2024-11-27 23:04:12.149  o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8090"] 
+2024-11-27 23:04:12.152  o.a.c.c.StandardService - Starting service [Tomcat] 
+2024-11-27 23:04:12.152  o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.31] 
+2024-11-27 23:04:12.195  o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext 
+2024-11-27 23:04:12.195  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1071 ms 
+2024-11-27 23:04:12.288  o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default] 
+2024-11-27 23:04:12.317  o.h.Version - HHH000412: Hibernate ORM core version 6.5.3.Final 
+2024-11-27 23:04:12.337  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled 
+2024-11-27 23:04:12.524  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer 
+2024-11-27 23:04:12.544  c.z.h.HikariDataSource - HikariPool-1 - Starting... 
+2024-11-27 23:04:12.632  c.z.h.p.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@10a1daf0 
+2024-11-27 23:04:12.633  c.z.h.HikariDataSource - HikariPool-1 - Start completed. 
+2024-11-27 23:04:12.664  o.h.o.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default) 
+2024-11-27 23:04:13.359  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration) 
+2024-11-27 23:04:13.361  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2024-11-27 23:04:13.595  o.s.d.j.r.q.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used. 
+2024-11-27 23:04:13.930  c.e.h.s.ScheduleDynamicService - 마감 시간이 지난 스케줄은 초기화에서 제외됩니다. 스케줄 ID: 1 
+2024-11-27 23:04:13.931  c.e.h.s.ScheduleDynamicService - 마감 시간이 지난 스케줄은 초기화에서 제외됩니다. 스케줄 ID: 2 
+2024-11-27 23:04:13.931  c.e.h.s.ScheduleDynamicService - 마감 시간이 지난 스케줄은 초기화에서 제외됩니다. 스케줄 ID: 3 
+2024-11-27 23:04:14.029  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService 
+2024-11-27 23:04:14.384  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729 
+2024-11-27 23:04:14.396  o.a.c.h.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8090"] 
+2024-11-27 23:04:14.409  o.s.b.w.e.t.TomcatWebServer - Tomcat started on port 8090 (http) with context path '/' 
+2024-11-27 23:04:14.418  c.e.h.HobbyheavyApplication - Started HobbyheavyApplication in 3.598 seconds (process running for 3.986) 
+2024-11-27 23:04:27.073  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default' 
+2024-11-27 23:04:27.075  c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated... 
+2024-11-27 23:04:27.078  c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed. 
+2024-11-27 23:04:29.768  o.h.v.i.u.Version - HV000001: Hibernate Validator 8.0.1.Final 
+2024-11-27 23:04:29.791  c.e.h.HobbyheavyApplication - Starting HobbyheavyApplication using Java 17.0.12 with PID 22872 (D:\workspace\hobbyheavy\build\classes\java\main started by user in D:\workspace\hobbyheavy) 
+2024-11-27 23:04:29.791  c.e.h.HobbyheavyApplication - The following 1 profile is active: "secret" 
+2024-11-27 23:04:29.817  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable 
+2024-11-27 23:04:29.817  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG' 
+2024-11-27 23:04:30.322  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2024-11-27 23:04:30.370  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 43 ms. Found 9 JPA repository interfaces. 
+2024-11-27 23:04:30.768  o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port 8090 (http) 
+2024-11-27 23:04:30.775  o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8090"] 
+2024-11-27 23:04:30.777  o.a.c.c.StandardService - Starting service [Tomcat] 
+2024-11-27 23:04:30.777  o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.31] 
+2024-11-27 23:04:30.819  o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext 
+2024-11-27 23:04:30.820  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1002 ms 
+2024-11-27 23:04:30.912  o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default] 
+2024-11-27 23:04:30.943  o.h.Version - HHH000412: Hibernate ORM core version 6.5.3.Final 
+2024-11-27 23:04:30.963  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled 
+2024-11-27 23:04:31.148  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer 
+2024-11-27 23:04:31.166  c.z.h.HikariDataSource - HikariPool-1 - Starting... 
+2024-11-27 23:04:31.254  c.z.h.p.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@339078eb 
+2024-11-27 23:04:31.256  c.z.h.HikariDataSource - HikariPool-1 - Start completed. 
+2024-11-27 23:04:31.283  o.h.o.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default) 
+2024-11-27 23:04:31.960  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration) 
+2024-11-27 23:04:31.962  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2024-11-27 23:04:32.190  o.s.d.j.r.q.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used. 
+2024-11-27 23:04:32.517  c.e.h.s.ScheduleDynamicService - 마감 시간이 지난 스케줄은 초기화에서 제외됩니다. 스케줄 ID: 1 
+2024-11-27 23:04:32.517  c.e.h.s.ScheduleDynamicService - 마감 시간이 지난 스케줄은 초기화에서 제외됩니다. 스케줄 ID: 2 
+2024-11-27 23:04:32.517  c.e.h.s.ScheduleDynamicService - 마감 시간이 지난 스케줄은 초기화에서 제외됩니다. 스케줄 ID: 3 
+2024-11-27 23:04:32.612  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService 
+2024-11-27 23:04:32.947  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729 
+2024-11-27 23:04:32.960  o.a.c.h.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8090"] 
+2024-11-27 23:04:32.972  o.s.b.w.e.t.TomcatWebServer - Tomcat started on port 8090 (http) with context path '/' 
+2024-11-27 23:04:32.981  c.e.h.HobbyheavyApplication - Started HobbyheavyApplication in 3.454 seconds (process running for 3.844) 
+2024-11-27 23:04:36.828  o.a.c.c.C.[.[.[/] - Initializing Spring DispatcherServlet 'dispatcherServlet' 
+2024-11-27 23:04:36.829  o.s.w.s.DispatcherServlet - Initializing Servlet 'dispatcherServlet' 
+2024-11-27 23:04:36.829  o.s.w.s.DispatcherServlet - Completed initialization in 0 ms 
+2024-11-27 23:04:36.847  c.e.h.j.JWTFilter - JWTFilter - Request URI: /schedules/1/cancel 
+2024-11-27 23:04:36.898  c.e.h.j.JWTFilter - JWTFilter - UserId: cccc, Role: ROLE_USER 
+2024-11-27 23:04:36.899  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: cccc, Role: ROLE_USER 
+2024-11-27 23:04:36.957  c.e.h.c.ScheduleController - User cccc is attempting to cancel schedule with ID: 1 for reason: asdfsadfas 
+2024-11-27 23:04:36.958  c.e.h.s.ScheduleService - 스케줄 취소 요청 - 스케줄 ID: 1, 사용자 ID: cccc, 이유: asdfsadfas 
+2024-11-27 23:04:40.768  c.e.h.s.NotificationSenderService - [이메일 전송 성공] 수신자: kwondw30@naver.com, 제목: 알림 메일 
+2024-11-27 23:04:40.768  c.e.h.s.NotificationService - [알림 전송] 성공 - 참여자: cccc, 메시지: 스케줄이 취소되었습니다. 스케줄 ID: 1 
+2024-11-27 23:04:40.788  o.h.e.j.s.SqlExceptionHelper - SQL Error: 1265, SQLState: 01000 
+2024-11-27 23:04:40.788  o.h.e.j.s.SqlExceptionHelper - Data truncated for column 'type' at row 1 
+2024-11-27 23:04:40.793  c.e.h.e.GlobalExceptionHandler - 예기치 못한 예외 발생: could not execute statement [Data truncated for column 'type' at row 1] [insert into Notification (created_at,deleted,deleted_at,is_read,meetup_id,message,type,updated_at,user_id) values (?,?,?,?,?,?,?,?,?)] 
+2024-11-27 23:04:40.800  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.orm.jpa.JpaSystemException: could not execute statement [Data truncated for column 'type' at row 1] [insert into Notification (created_at,deleted,deleted_at,is_read,meetup_id,message,type,updated_at,user_id) values (?,?,?,?,?,?,?,?,?)]] 
+2024-11-27 23:05:07.133  c.e.h.j.JWTFilter - JWTFilter - Request URI: /schedules/1 
+2024-11-27 23:05:07.135  c.e.h.j.JWTFilter - JWTFilter - UserId: cccc, Role: ROLE_USER 
+2024-11-27 23:05:07.135  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: cccc, Role: ROLE_USER 
+2024-11-27 23:05:07.136  c.e.h.c.ScheduleController - User cccc is attempting to delete schedule with ID: 1 
+2024-11-27 23:05:07.137  c.e.h.s.ScheduleService - 스케줄 삭제 요청 - 스케줄 ID: 1, 사용자 ID: cccc 
+2024-11-27 23:05:07.142  c.e.h.s.ScheduleService - 스케줄이 논리적으로 삭제되었습니다. ID: 1 
+2024-11-27 23:06:24.840  c.e.h.j.JWTFilter - JWTFilter - Request URI: /review/create 
+2024-11-27 23:06:24.841  c.e.h.j.JWTFilter - JWTFilter - Access token expired for token: eyJhbGciOiJIUzI1NiJ9.eyJjYXRlZ29yeSI6ImFjY2VzcyIsInVzZXJuYW1lIjoiY2NjYyIsInJvbGUiOiJST0xFX1VTRVIiLCJpYXQiOjE3MzI3MTU3NTMsImV4cCI6MTczMjcxNjM1M30.dpaXlgbsyiy_Jn6Y4F7iD4if8EmDgyf_y208Ghn6lAM 
+2024-11-27 23:06:24.841  c.e.h.j.JWTFilter - JWTFilter - No valid refresh token found. 
+2024-11-27 23:07:47.285  c.e.h.j.JWTFilter - JWTFilter - Request URI: /review/create 
+2024-11-27 23:07:47.287  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 23:07:47.287  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 23:07:47.298  c.e.h.c.ExceptionController - 해당 스케쥴에 참여하지 않았습니다. 
+2024-11-27 23:07:47.303  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [com.example.hobbyheavy.exception.CustomException: 해당 스케쥴에 참여하지 않았습니다.] 
+2024-11-27 23:08:24.962  c.e.h.j.JWTFilter - JWTFilter - Request URI: /schedules/2/vote 
+2024-11-27 23:08:24.964  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 23:08:24.965  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 23:08:24.965  c.e.h.c.ScheduleController - User test is attempting to vote on schedule with ID: 2 
+2024-11-27 23:08:28.661  c.e.h.j.JWTFilter - JWTFilter - Request URI: /review/create 
+2024-11-27 23:08:28.662  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 23:08:28.662  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 23:10:10.065  c.e.h.j.JWTFilter - JWTFilter - Request URI: /review/1 
+2024-11-27 23:10:10.066  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 23:10:10.066  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 23:10:10.077  c.e.h.c.ExceptionController - 활동전 후기를 작성할 수 없습니다. 
+2024-11-27 23:10:10.078  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [com.example.hobbyheavy.exception.CustomException: 활동전 후기를 작성할 수 없습니다.] 
+2024-11-27 23:10:20.133  c.e.h.j.JWTFilter - JWTFilter - Request URI: /review/1 
+2024-11-27 23:10:20.134  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 23:10:20.134  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 23:10:20.140  c.e.h.c.ExceptionController - 활동전 후기를 작성할 수 없습니다. 
+2024-11-27 23:10:20.140  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [com.example.hobbyheavy.exception.CustomException: 활동전 후기를 작성할 수 없습니다.] 
+2024-11-27 23:10:24.964  c.e.h.j.JWTFilter - JWTFilter - Request URI: /review/1 
+2024-11-27 23:10:24.965  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 23:10:24.965  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 23:10:24.971  c.e.h.c.ExceptionController - 활동전 후기를 작성할 수 없습니다. 
+2024-11-27 23:10:24.972  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [com.example.hobbyheavy.exception.CustomException: 활동전 후기를 작성할 수 없습니다.] 
+2024-11-27 23:10:30.406  c.e.h.j.JWTFilter - JWTFilter - Request URI: /review/1 
+2024-11-27 23:10:30.408  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 23:10:30.408  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 23:10:30.413  c.e.h.c.ExceptionController - 활동전 후기를 작성할 수 없습니다. 
+2024-11-27 23:10:30.414  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [com.example.hobbyheavy.exception.CustomException: 활동전 후기를 작성할 수 없습니다.] 
+2024-11-27 23:10:34.600  c.e.h.j.JWTFilter - JWTFilter - Request URI: /review/1 
+2024-11-27 23:10:34.601  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 23:10:34.602  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 23:10:34.606  c.e.h.c.ExceptionController - 활동전 후기를 작성할 수 없습니다. 
+2024-11-27 23:10:34.607  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [com.example.hobbyheavy.exception.CustomException: 활동전 후기를 작성할 수 없습니다.] 
+2024-11-27 23:15:06.983  c.e.h.j.JWTFilter - JWTFilter - Request URI: /schedules/3/vote 
+2024-11-27 23:15:06.984  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 23:15:06.985  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 23:15:06.986  c.e.h.c.ScheduleController - User test is attempting to vote on schedule with ID: 3 
+2024-11-27 23:15:20.418  c.e.h.j.JWTFilter - JWTFilter - Request URI: /review/create 
+2024-11-27 23:15:20.419  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 23:15:20.419  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 23:15:37.377  c.e.h.j.JWTFilter - JWTFilter - Request URI: /review/3 
+2024-11-27 23:15:37.378  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 23:15:37.378  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 23:15:37.382  c.e.h.c.ExceptionController - 요청한 후기가 없습니다. 
+2024-11-27 23:15:37.383  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [com.example.hobbyheavy.exception.CustomException: 요청한 후기가 없습니다.] 
+2024-11-27 23:15:47.105  c.e.h.j.JWTFilter - JWTFilter - Request URI: /review/2 
+2024-11-27 23:15:47.107  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 23:15:47.107  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 23:15:47.112  c.e.h.c.ExceptionController - 활동전 후기를 작성할 수 없습니다. 
+2024-11-27 23:15:47.112  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [com.example.hobbyheavy.exception.CustomException: 활동전 후기를 작성할 수 없습니다.] 
+2024-11-27 23:16:08.280  c.e.h.j.JWTFilter - JWTFilter - Request URI: /review/3 
+2024-11-27 23:16:08.281  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 23:16:08.281  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 23:16:08.285  c.e.h.c.ExceptionController - 요청한 후기가 없습니다. 
+2024-11-27 23:16:08.286  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [com.example.hobbyheavy.exception.CustomException: 요청한 후기가 없습니다.] 
+2024-11-27 23:16:12.442  c.e.h.j.JWTFilter - JWTFilter - Request URI: /review/2 
+2024-11-27 23:16:12.444  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 23:16:12.444  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 23:16:12.450  c.e.h.c.ExceptionController - 활동전 후기를 작성할 수 없습니다. 
+2024-11-27 23:16:12.451  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [com.example.hobbyheavy.exception.CustomException: 활동전 후기를 작성할 수 없습니다.] 
+2024-11-27 23:17:38.689  c.e.h.j.JWTFilter - JWTFilter - Request URI: /review/2 
+2024-11-27 23:17:38.690  c.e.h.j.JWTFilter - JWTFilter - Access token expired for token: eyJhbGciOiJIUzI1NiJ9.eyJjYXRlZ29yeSI6ImFjY2VzcyIsInVzZXJuYW1lIjoidGVzdCIsInJvbGUiOiJST0xFX1VTRVIiLCJpYXQiOjE3MzI3MTY0NDksImV4cCI6MTczMjcxNzA0OX0.s0Oj_Otlp7JxfHCHNsfPaVg5BnrNYYHbqf_oYkQWqTQ 
+2024-11-27 23:17:38.690  c.e.h.j.JWTFilter - JWTFilter - No valid refresh token found. 
+2024-11-27 23:18:07.528  c.e.h.j.JWTFilter - JWTFilter - Request URI: /review/2 
+2024-11-27 23:18:07.529  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 23:18:07.529  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 23:18:07.534  c.e.h.c.ExceptionController - 활동전 후기를 작성할 수 없습니다. 
+2024-11-27 23:18:07.535  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [com.example.hobbyheavy.exception.CustomException: 활동전 후기를 작성할 수 없습니다.] 
+2024-11-27 23:18:39.918  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default' 
+2024-11-27 23:18:39.920  c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated... 
+2024-11-27 23:18:39.924  c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed. 
+2024-11-27 23:18:42.385  o.h.v.i.u.Version - HV000001: Hibernate Validator 8.0.1.Final 
+2024-11-27 23:18:42.411  c.e.h.HobbyheavyApplication - Starting HobbyheavyApplication using Java 17.0.12 with PID 1588 (D:\workspace\hobbyheavy\build\classes\java\main started by user in D:\workspace\hobbyheavy) 
+2024-11-27 23:18:42.412  c.e.h.HobbyheavyApplication - The following 1 profile is active: "secret" 
+2024-11-27 23:18:42.440  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable 
+2024-11-27 23:18:42.441  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG' 
+2024-11-27 23:18:43.074  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2024-11-27 23:18:43.128  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 49 ms. Found 9 JPA repository interfaces. 
+2024-11-27 23:18:43.551  o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port 8090 (http) 
+2024-11-27 23:18:43.562  o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8090"] 
+2024-11-27 23:18:43.565  o.a.c.c.StandardService - Starting service [Tomcat] 
+2024-11-27 23:18:43.565  o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.31] 
+2024-11-27 23:18:43.603  o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext 
+2024-11-27 23:18:43.603  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1162 ms 
+2024-11-27 23:18:43.696  o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default] 
+2024-11-27 23:18:43.725  o.h.Version - HHH000412: Hibernate ORM core version 6.5.3.Final 
+2024-11-27 23:18:43.744  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled 
+2024-11-27 23:18:43.938  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer 
+2024-11-27 23:18:43.957  c.z.h.HikariDataSource - HikariPool-1 - Starting... 
+2024-11-27 23:18:44.047  c.z.h.p.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@455345d3 
+2024-11-27 23:18:44.048  c.z.h.HikariDataSource - HikariPool-1 - Start completed. 
+2024-11-27 23:18:44.076  o.h.o.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default) 
+2024-11-27 23:18:44.798  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration) 
+2024-11-27 23:18:44.799  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2024-11-27 23:18:45.036  o.s.d.j.r.q.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used. 
+2024-11-27 23:18:45.367  c.e.h.s.ScheduleDynamicService - 마감 시간이 지난 스케줄은 초기화에서 제외됩니다. 스케줄 ID: 1 
+2024-11-27 23:18:45.367  c.e.h.s.ScheduleDynamicService - 마감 시간이 지난 스케줄은 초기화에서 제외됩니다. 스케줄 ID: 2 
+2024-11-27 23:18:45.367  c.e.h.s.ScheduleDynamicService - 마감 시간이 지난 스케줄은 초기화에서 제외됩니다. 스케줄 ID: 3 
+2024-11-27 23:18:45.462  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService 
+2024-11-27 23:18:45.803  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729 
+2024-11-27 23:18:45.815  o.a.c.h.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8090"] 
+2024-11-27 23:18:45.828  o.s.b.w.e.t.TomcatWebServer - Tomcat started on port 8090 (http) with context path '/' 
+2024-11-27 23:18:45.836  c.e.h.HobbyheavyApplication - Started HobbyheavyApplication in 3.697 seconds (process running for 4.072) 
+2024-11-27 23:19:01.607  o.a.c.c.C.[.[.[/] - Initializing Spring DispatcherServlet 'dispatcherServlet' 
+2024-11-27 23:19:01.607  o.s.w.s.DispatcherServlet - Initializing Servlet 'dispatcherServlet' 
+2024-11-27 23:19:01.608  o.s.w.s.DispatcherServlet - Completed initialization in 1 ms 
+2024-11-27 23:19:01.624  c.e.h.j.JWTFilter - JWTFilter - Request URI: /review/2 
+2024-11-27 23:19:01.674  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 23:19:01.675  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 23:19:18.412  c.e.h.j.JWTFilter - JWTFilter - Request URI: /review/2 
+2024-11-27 23:19:18.414  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 23:19:18.414  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 23:19:30.066  c.e.h.j.JWTFilter - JWTFilter - Request URI: /review/2 
+2024-11-27 23:19:30.068  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 23:19:30.068  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 23:19:41.223  c.e.h.j.JWTFilter - JWTFilter - Request URI: /review/2 
+2024-11-27 23:19:41.225  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 23:19:41.225  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 23:19:41.228  c.e.h.e.GlobalExceptionHandler - 예기치 못한 예외 발생: JSON parse error: Numeric value (-9999999999999) out of range of int (-2147483648 - 2147483647) 
+2024-11-27 23:19:41.229  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Numeric value (-9999999999999) out of range of int (-2147483648 - 2147483647)] 
+2024-11-27 23:19:48.226  c.e.h.j.JWTFilter - JWTFilter - Request URI: /review/2 
+2024-11-27 23:19:48.227  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 23:19:48.227  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 23:20:10.705  c.e.h.j.JWTFilter - JWTFilter - Request URI: /review/3 
+2024-11-27 23:20:10.706  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 23:20:10.707  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 23:20:10.727  o.s.d.w.c.SpringDataJacksonConfiguration$PageModule$WarningLoggingModifier - Serializing PageImpl instances as-is is not supported, meaning that there is no guarantee about the stability of the resulting JSON structure!
+	For a stable JSON structure, please use Spring Data's PagedModel (globally via @EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO))
+	or Spring HATEOAS and Spring Data's PagedResourcesAssembler as documented in https://docs.spring.io/spring-data/commons/reference/repositories/core-extensions.html#core.web.pageables.
+ 
+2024-11-27 23:20:23.812  c.e.h.j.JWTFilter - JWTFilter - Request URI: /review/info/3 
+2024-11-27 23:20:23.813  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 23:20:23.813  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 23:20:23.817  c.e.h.c.ExceptionController - 요청한 후기가 없습니다. 
+2024-11-27 23:20:23.821  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [com.example.hobbyheavy.exception.CustomException: 요청한 후기가 없습니다.] 
+2024-11-27 23:21:17.182  c.e.h.j.JWTFilter - JWTFilter - Request URI: /review/3 
+2024-11-27 23:21:17.183  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 23:21:17.183  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 23:21:17.187  c.e.h.c.ExceptionController - 요청한 후기가 없습니다. 
+2024-11-27 23:21:17.188  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [com.example.hobbyheavy.exception.CustomException: 요청한 후기가 없습니다.] 
+2024-11-27 23:21:26.213  c.e.h.j.JWTFilter - JWTFilter - Request URI: /review/2 
+2024-11-27 23:21:26.214  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 23:21:26.214  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 23:23:24.872  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default' 
+2024-11-27 23:23:24.874  c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated... 
+2024-11-27 23:23:24.878  c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed. 

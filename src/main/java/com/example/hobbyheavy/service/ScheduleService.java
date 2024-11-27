@@ -194,7 +194,7 @@ public class ScheduleService {
         Schedule updatedSchedule = scheduleRepository.save(existingSchedule);
 
         // 스케줄 수정 알림 발송
-        notificationService.notifyParticipants(updatedSchedule, NotificationMessage.UPDATE);
+        notificationService.notifyParticipants(updatedSchedule, NotificationMessage.SCHEDULE_UPDATE);
         log.info("스케줄이 수정되고 알림이 전송되었습니다. ID: {}", scheduleId);
 
         log.info("스케줄이 수정되었습니다. ID: {}", scheduleId);
@@ -262,7 +262,6 @@ public class ScheduleService {
 
         // 스케줄 취소 알림 발송
         notificationService.notifyParticipants(schedule, NotificationMessage.CANCELLATION);
-
         log.info("스케줄이 취소되었습니다. ID: {}, 이유: {}", scheduleId, reason);
     }
 
