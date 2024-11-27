@@ -1,9 +1,8 @@
 package com.example.hobbyheavy.dto.response;
 
-import com.example.hobbyheavy.entity.MeetupSchedule;
+import com.example.hobbyheavy.entity.Schedule;
 import lombok.*;
 
-import java.time.Duration;
 import java.time.LocalDateTime;
 
 @Getter
@@ -21,7 +20,7 @@ public class ScheduleResponse {
     private String location;
     private LocalDateTime votingDeadline;
 
-    public static ScheduleResponse fromEntity(MeetupSchedule entity) {
+    public static ScheduleResponse fromEntity(Schedule entity) {
         if (entity == null) {
             return null; // entity가 null인 경우 null 반환
         }

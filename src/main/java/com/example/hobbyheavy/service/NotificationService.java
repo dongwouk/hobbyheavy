@@ -1,16 +1,15 @@
 package com.example.hobbyheavy.service;
 
 import com.example.hobbyheavy.dto.response.NotificationResponse;
-import com.example.hobbyheavy.entity.MeetupSchedule;
-import com.example.hobbyheavy.entity.Notification;
+import com.example.hobbyheavy.entity.Schedule;
 import com.example.hobbyheavy.entity.Participant;
 import com.example.hobbyheavy.entity.User;
 import com.example.hobbyheavy.exception.CustomException;
 import com.example.hobbyheavy.exception.ExceptionCode;
 import com.example.hobbyheavy.repository.NotificationRepository;
 import com.example.hobbyheavy.repository.ParticipantRepository;
+import com.example.hobbyheavy.type.Notification;
 import com.example.hobbyheavy.type.NotificationMessage;
-import com.example.hobbyheavy.type.NotificationType;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -32,28 +31,28 @@ public class NotificationService {
     /**
      * 참여자들에게 스케줄 알림을 전송하는 메서드
      *
-     * @param meetupSchedule 스케줄 객체
+     * @param schedule 스케줄 객체
      * @param messageType    알림 메시지 타입(enum)
      */
-    public void notifyParticipants(MeetupSchedule meetupSchedule, NotificationMessage messageType) {
+    public void notifyParticipants(Schedule schedule, NotificationMessage messageType) {
         // 알림 설정이 활성화된 참여자만 필터링
-        List<Participant> participants = participantRepository.findAllByMeetup_MeetupId(meetupSchedule.getMeetup().getMeetupId())
+        List<Participant> participants = participantRepository.findAllByMeetup_MeetupId(schedule.getMeetup().getMeetupId())
                 .stream()
                 .filter(Participant::getMeetupAlarm) // meetupAlarm이 true인 경우만 선택
                 .collect(Collectors.toList());
 
         if (participants.isEmpty()) {
-            log.warn("[알림 전송] 참여자가 없습니다. 스케줄 ID: {}", meetupSchedule.getScheduleId());
+            log.warn("[알림 전송] 참여자가 없습니다. 스케줄 ID: {}", schedule.getScheduleId());
             throw new CustomException(ExceptionCode.NO_PARTICIPANTS);
         }
 
         for (Participant participant : participants) {
-            String personalizedMessage = messageType.format(meetupSchedule.getScheduleId());
+            String personalizedMessage = messageType.format(schedule.getScheduleId());
             sendNotification(participant, personalizedMessage);
 
             // NotificationType으로 변환
-            NotificationType notificationType = NotificationType.valueOf(messageType.name());
-            saveNotification(participant.getUser(), notificationType, personalizedMessage, meetupSchedule);
+            Notification notification = Notification.valueOf(messageType.name());
+            saveNotification(participant.getUser(), notification, personalizedMessage, schedule);
         }
     }
 
@@ -79,14 +78,14 @@ public class NotificationService {
      * @param user           알림 수신자
      * @param type           알림 유형
      * @param message        알림 메시지
-     * @param meetupSchedule 관련된 스케줄 객체
+     * @param schedule 관련된 스케줄 객체
      */
-    private void saveNotification(User user, NotificationType type, String message, MeetupSchedule meetupSchedule) {
-        Notification notification = Notification.builder()
+    private void saveNotification(User user, Notification type, String message, Schedule schedule) {
+        com.example.hobbyheavy.entity.Notification notification = com.example.hobbyheavy.entity.Notification.builder()
                 .user(user)
                 .type(type)  // NotificationType 타입 사용
                 .message(message)
-                .meetup(meetupSchedule.getMeetup())
+                .meetup(schedule.getMeetup())
                 .isRead(false)
                 .build();
 
@@ -102,7 +101,7 @@ public class NotificationService {
      */
     @Transactional
     public void markAsRead(Long notificationId) {
-        Notification notification = notificationRepository.findById(notificationId)
+        com.example.hobbyheavy.entity.Notification notification = notificationRepository.findById(notificationId)
                 .orElseThrow(() -> new CustomException(ExceptionCode.NOTIFICATION_NOT_FOUND));
 
         if (notification.getIsRead()) {
@@ -116,7 +115,7 @@ public class NotificationService {
     }
 
     public List<NotificationResponse> getUserNotifications(String userId) {
-        List<Notification> notifications = notificationRepository.findAllByUser_UserId(userId);
+        List<com.example.hobbyheavy.entity.Notification> notifications = notificationRepository.findAllByUser_UserId(userId);
         return notifications.stream()
                 .map(notification -> NotificationResponse.builder()
                         .notificationId(notification.getNotificationId())

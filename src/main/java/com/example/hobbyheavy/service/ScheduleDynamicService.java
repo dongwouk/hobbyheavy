@@ -1,10 +1,9 @@
 package com.example.hobbyheavy.service;
 
-import com.example.hobbyheavy.entity.MeetupSchedule;
+import com.example.hobbyheavy.entity.Schedule;
 import com.example.hobbyheavy.exception.CustomException;
-import com.example.hobbyheavy.exception.ExceptionCode;
 import com.example.hobbyheavy.repository.ScheduleRepository;
-import com.example.hobbyheavy.type.MeetupScheduleStatus;
+import com.example.hobbyheavy.type.ScheduleStatus;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,18 +18,18 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class DynamicScheduleService {
+public class ScheduleDynamicService {
     private final ScheduleRepository scheduleRepository;
     private final TaskScheduler taskScheduler;
-    private final FinalizationService finalizationService;
+    private final ScheduleConfirmService scheduleConfirmService;
 
     /**
      * 동적 스케줄링을 설정하는 메서드
      *
      * @param schedule 확정할 스케줄 객체
      */
-    public void scheduleFinalization(MeetupSchedule schedule) {
-        if (schedule.getScheduleStatus() == MeetupScheduleStatus.CONFIRMED) {
+    public void scheduleFinalization(Schedule schedule) {
+        if (schedule.getScheduleStatus() == ScheduleStatus.CONFIRMED) {
             log.info("확정된 스케줄은 스케줄링을 건너뜁니다. 스케줄 ID: {}", schedule.getScheduleId());
             return;
         }
@@ -41,7 +40,7 @@ public class DynamicScheduleService {
 
             taskScheduler.schedule(() -> {
                 try {
-                    finalizationService.finalizeSchedule(schedule.getScheduleId(), null); // 유저 ID가 필요 없는 자동 확정
+                    scheduleConfirmService.finalizeSchedule(schedule.getScheduleId(), null); // 유저 ID가 필요 없는 자동 확정
                 } catch (CustomException e) {
                     log.error("스케줄 확정 중 오류가 발생했습니다. 스케줄 ID: {}, 오류: {}", schedule.getScheduleId(), e.getMessage(), e);
                 }
@@ -58,7 +57,7 @@ public class DynamicScheduleService {
      */
     @PostConstruct
     public void initializeDynamicSchedules() {
-        List<MeetupSchedule> schedules = scheduleRepository.findAll();
+        List<Schedule> schedules = scheduleRepository.findAll();
         schedules.forEach(schedule -> {
             if (schedule.getVotingDeadline() != null && schedule.getVotingDeadline().isAfter(LocalDateTime.now())) {
                 scheduleFinalization(schedule);

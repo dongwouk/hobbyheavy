@@ -1,6 +1,6 @@
 package com.example.hobbyheavy.entity;
 
-import com.example.hobbyheavy.type.Role;
+import com.example.hobbyheavy.type.UserRole;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -49,10 +49,10 @@ public class User extends Base {
     @Column(nullable = false)
     private Boolean alarm = true; // 알림구독 여부
 
-    @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
+    @ElementCollection(targetClass = UserRole.class, fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
-    private Set<Role> role;
+    private Set<UserRole> userRole;
 
     public void updatePassword(String password) {
         this.password = password;

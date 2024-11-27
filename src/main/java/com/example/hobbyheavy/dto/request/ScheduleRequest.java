@@ -1,12 +1,11 @@
 package com.example.hobbyheavy.dto.request;
 
 import com.example.hobbyheavy.entity.Meetup;
-import com.example.hobbyheavy.entity.MeetupSchedule;
-import com.example.hobbyheavy.type.MeetupScheduleStatus;
+import com.example.hobbyheavy.entity.Schedule;
+import com.example.hobbyheavy.type.ScheduleStatus;
 import jakarta.validation.constraints.FutureOrPresent;
 import lombok.*;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
@@ -23,12 +22,12 @@ public class ScheduleRequest {
     private String status;
     private String location;
 
-    public static MeetupSchedule toEntity(ScheduleRequest dto) {
-        return MeetupSchedule.builder()
+    public static Schedule toEntity(ScheduleRequest dto) {
+        return Schedule.builder()
                 .meetup(Meetup.builder().meetupId(dto.getMeetupId()).build())
                 .proposalDate(dto.getProposalDate())
                 .activateTime(dto.getActivateTime())
-                .scheduleStatus(dto.getStatus() != null ? MeetupScheduleStatus.valueOf(dto.getStatus().toUpperCase()) : MeetupScheduleStatus.PROPOSED)
+                .scheduleStatus(dto.getStatus() != null ? ScheduleStatus.valueOf(dto.getStatus().toUpperCase()) : ScheduleStatus.PROPOSED)
                 .location(dto.getLocation())
                 .votingDeadline(null) // votingDeadline은 다른 곳에서 계산되어 설정됨
                 .build();

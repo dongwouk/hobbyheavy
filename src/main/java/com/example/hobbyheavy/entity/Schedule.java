@@ -1,12 +1,11 @@
 package com.example.hobbyheavy.entity;
 
 import com.example.hobbyheavy.dto.request.ScheduleRequest;
-import com.example.hobbyheavy.type.MeetupScheduleStatus;
-import com.example.hobbyheavy.util.ScheduleUtils;
+import com.example.hobbyheavy.type.ScheduleStatus;
+import com.example.hobbyheavy.util.ScheduleUtil;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
@@ -17,7 +16,7 @@ import java.util.Set;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class MeetupSchedule extends Base {
+public class Schedule extends Base {
 
     // 일정 ID
     @Id
@@ -41,7 +40,7 @@ public class MeetupSchedule extends Base {
     // 일정 상태 (제안, 취소, 확정)
     @Enumerated(EnumType.STRING)
     @Column(name = "schedule_status", nullable = true)
-    private MeetupScheduleStatus scheduleStatus = MeetupScheduleStatus.PROPOSED;
+    private ScheduleStatus scheduleStatus = ScheduleStatus.PROPOSED;
 
     // 일정 투표한 사용자 ID 목록
     @ElementCollection
@@ -74,11 +73,11 @@ public class MeetupSchedule extends Base {
         }
         if (request.getVotingDeadline() != null) {
             // DurationParser를 사용해 요청된 문자열 형식을 LocalDateTime으로 변환 후 votingDeadline에 설정
-            this.votingDeadline = ScheduleUtils.calculateVotingDeadline(request);
+            this.votingDeadline = ScheduleUtil.calculateVotingDeadline(request);
         }
     }
 
-    public void setStatus(MeetupScheduleStatus scheduleStatus) {
+    public void setStatus(ScheduleStatus scheduleStatus) {
         this.scheduleStatus = scheduleStatus;
     }
 

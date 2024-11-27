@@ -1,11 +1,10 @@
 package com.example.hobbyheavy.service;
 
-import com.example.hobbyheavy.entity.MeetupSchedule;
+import com.example.hobbyheavy.entity.Schedule;
 import com.example.hobbyheavy.repository.ScheduleRepository;
-import com.example.hobbyheavy.type.MeetupScheduleStatus;
+import com.example.hobbyheavy.type.ScheduleStatus;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.scheduling.TaskScheduler;
@@ -19,7 +18,7 @@ import java.util.List;
 import static org.mockito.Mockito.*;
 
 @SpringBootTest
-public class DynamicScheduleServiceTest {
+public class ScheduleDynamicServiceTest {
 
     @MockBean
     private ScheduleRepository scheduleRepository;
@@ -28,35 +27,35 @@ public class DynamicScheduleServiceTest {
     private TaskScheduler taskScheduler;
 
     @MockBean
-    private FinalizationService finalizationService;
+    private ScheduleConfirmService scheduleConfirmService;
 
-    private DynamicScheduleService dynamicScheduleService;
+    private ScheduleDynamicService scheduleDynamicService;
 
     @BeforeEach
     public void setUp() {
-        dynamicScheduleService = new DynamicScheduleService(scheduleRepository, taskScheduler, finalizationService);
+        scheduleDynamicService = new ScheduleDynamicService(scheduleRepository, taskScheduler, scheduleConfirmService);
     }
 
     @Test
     public void testDependencyInjection() {
         // 각 필드가 주입되었는지 확인
-        assertNotNull(dynamicScheduleService, "DynamicScheduleService가 주입되지 않았습니다.");
+        assertNotNull(scheduleDynamicService, "DynamicScheduleService가 주입되지 않았습니다.");
         assertNotNull(scheduleRepository, "ScheduleRepository가 주입되지 않았습니다.");
         assertNotNull(taskScheduler, "TaskScheduler가 주입되지 않았습니다.");
-        assertNotNull(finalizationService, "FinalizationService가 주입되지 않았습니다.");
+        assertNotNull(scheduleConfirmService, "FinalizationService가 주입되지 않았습니다.");
     }
 
     @Test
     public void testScheduleFinalization_WhenScheduleIsConfirmed_ShouldSkipScheduling() {
         // Confirmed 상태의 스케줄 생성
-        MeetupSchedule confirmedSchedule = MeetupSchedule.builder()
+        Schedule confirmedSchedule = Schedule.builder()
                 .scheduleId(1L)
-                .scheduleStatus(MeetupScheduleStatus.CONFIRMED)
+                .scheduleStatus(ScheduleStatus.CONFIRMED)
                 .votingDeadline(LocalDateTime.now().plusDays(1))
                 .build();
 
         // 동적 스케줄링 메서드 호출
-        dynamicScheduleService.scheduleFinalization(confirmedSchedule);
+        scheduleDynamicService.scheduleFinalization(confirmedSchedule);
 
         // taskScheduler가 호출되지 않았는지 확인
         verify(taskScheduler, never()).schedule(any(Runnable.class), any(Date.class));
@@ -65,14 +64,14 @@ public class DynamicScheduleServiceTest {
     @Test
     public void testScheduleFinalization_WhenVotingDeadlineIsNull_ShouldSkipScheduling() {
         // 마감 시간이 없는 스케줄 생성
-        MeetupSchedule scheduleWithoutDeadline = MeetupSchedule.builder()
+        Schedule scheduleWithoutDeadline = Schedule.builder()
                 .scheduleId(2L)
-                .scheduleStatus(MeetupScheduleStatus.PROPOSED)
+                .scheduleStatus(ScheduleStatus.PROPOSED)
                 .votingDeadline(null)
                 .build();
 
         // 동적 스케줄링 메서드 호출
-        dynamicScheduleService.scheduleFinalization(scheduleWithoutDeadline);
+        scheduleDynamicService.scheduleFinalization(scheduleWithoutDeadline);
 
         // taskScheduler가 호출되지 않았는지 확인
         verify(taskScheduler, never()).schedule(any(Runnable.class), any(Date.class));
@@ -81,14 +80,14 @@ public class DynamicScheduleServiceTest {
     @Test
     public void testScheduleFinalization_WhenValidSchedule_ShouldScheduleFinalization() {
         // 유효한 스케줄 생성
-        MeetupSchedule validSchedule = MeetupSchedule.builder()
+        Schedule validSchedule = Schedule.builder()
                 .scheduleId(3L)
-                .scheduleStatus(MeetupScheduleStatus.PROPOSED)
+                .scheduleStatus(ScheduleStatus.PROPOSED)
                 .votingDeadline(LocalDateTime.now().plusDays(1))
                 .build();
 
         // 동적 스케줄링 메서드 호출
-        dynamicScheduleService.scheduleFinalization(validSchedule);
+        scheduleDynamicService.scheduleFinalization(validSchedule);
 
         // taskScheduler가 호출되었는지 확인
         verify(taskScheduler, times(1)).schedule(any(Runnable.class), any(Date.class));
@@ -97,31 +96,31 @@ public class DynamicScheduleServiceTest {
     @Test
     public void testInitializeDynamicSchedules() {
         // 기존 스케줄 목록 생성
-        MeetupSchedule schedule1 = MeetupSchedule.builder()
+        Schedule schedule1 = Schedule.builder()
                 .scheduleId(4L)
-                .scheduleStatus(MeetupScheduleStatus.PROPOSED)
+                .scheduleStatus(ScheduleStatus.PROPOSED)
                 .votingDeadline(LocalDateTime.now().plusDays(1))
                 .build();
 
-        MeetupSchedule schedule2 = MeetupSchedule.builder()
+        Schedule schedule2 = Schedule.builder()
                 .scheduleId(5L)
-                .scheduleStatus(MeetupScheduleStatus.CONFIRMED)
+                .scheduleStatus(ScheduleStatus.CONFIRMED)
                 .votingDeadline(LocalDateTime.now().plusDays(2))
                 .build();
 
-        MeetupSchedule expiredSchedule = MeetupSchedule.builder()
+        Schedule expiredSchedule = Schedule.builder()
                 .scheduleId(6L)
-                .scheduleStatus(MeetupScheduleStatus.PROPOSED)
+                .scheduleStatus(ScheduleStatus.PROPOSED)
                 .votingDeadline(LocalDateTime.now().minusDays(1))
                 .build();
 
-        List<MeetupSchedule> schedules = Arrays.asList(schedule1, schedule2, expiredSchedule);
+        List<Schedule> schedules = Arrays.asList(schedule1, schedule2, expiredSchedule);
 
         // 스케줄 저장소의 findAll() 메서드가 스케줄 목록을 반환하도록 설정
         when(scheduleRepository.findAll()).thenReturn(schedules);
 
         // 동적 스케줄 초기화 메서드 호출
-        dynamicScheduleService.initializeDynamicSchedules();
+        scheduleDynamicService.initializeDynamicSchedules();
 
         // 만료되지 않은 스케줄만 스케줄링되었는지 확인
         verify(taskScheduler, atLeast(1)).schedule(any(Runnable.class), any(Date.class));

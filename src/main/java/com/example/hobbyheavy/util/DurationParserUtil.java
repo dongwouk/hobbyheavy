@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
  * </p>
  */
 @UtilityClass
-public class DurationParser {
+public class DurationParserUtil {
 
     /**
      * 문자열로 표현된 기간을 파싱하여 {@link Duration} 객체로 변환합니다.

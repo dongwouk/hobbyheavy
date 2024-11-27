@@ -1,6 +1,5 @@
 package com.example.hobbyheavy.entity;
 
-import com.example.hobbyheavy.type.NotificationType;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -31,7 +30,7 @@ public class Notification extends Base {
     // 알림 유형 (Enum 타입으로 설정)
     @Enumerated(EnumType.STRING)
     @Column(name = "type", nullable = false)
-    private NotificationType type;
+    private com.example.hobbyheavy.type.Notification type;
 
     // 알림 메세지 내용
     @Column(name = "message", nullable = false)

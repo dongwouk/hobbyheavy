@@ -1,6 +1,6 @@
 package com.example.hobbyheavy.type;
 
-public enum Role {
+public enum UserRole {
     ROLE_USER,
     ROLE_ADMIN
 }

@@ -1,7 +1,7 @@
 package com.example.hobbyheavy.auth;
 
 import com.example.hobbyheavy.entity.User;
-import com.example.hobbyheavy.type.Role;
+import com.example.hobbyheavy.type.UserRole;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -19,8 +19,8 @@ public class CustomUserDetails implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
 
-        Set<Role> roles = user.getRole(); // 열거형 Role 사용
-        return roles.stream()
+        Set<UserRole> userRoles = user.getUserRole(); // 열거형 Role 사용
+        return userRoles.stream()
                 .map(role -> new SimpleGrantedAuthority(role.name()))
                 .collect(Collectors.toSet());
     }

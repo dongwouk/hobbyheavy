@@ -178,7 +178,7 @@ Caused by: org.springframework.dao.DataIntegrityViolationException: Could not ex
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
 	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:223)
 	at jdk.proxy4/jdk.proxy4.$Proxy172.findAll(Unknown Source)
-	at com.example.hobbyheavy.service.DynamicScheduleService.initializeDynamicSchedules(DynamicScheduleService.java:61)
+	at com.example.hobbyheavy.service.ScheduleDynamicService.initializeDynamicSchedules(DynamicScheduleService.java:61)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -557,9 +557,9 @@ Caused by: com.mysql.cj.exceptions.DataConversionException: Unsupported conversi
 2024-11-26 03:51:02.333  o.h.e.j.s.SqlExceptionHelper - Cannot add or update a child row: a foreign key constraint fails (`hobbyheavy`.`meetupschedule`, CONSTRAINT `FKfrnf633bg40fm8627sjjcfuby` FOREIGN KEY (`meetup_id`) REFERENCES `meetup` (`meetup_id`)) 
 2024-11-26 03:51:02.341  c.e.h.e.GlobalExceptionHandler - 예기치 못한 예외 발생: could not execute statement [Cannot add or update a child row: a foreign key constraint fails (`hobbyheavy`.`meetupschedule`, CONSTRAINT `FKfrnf633bg40fm8627sjjcfuby` FOREIGN KEY (`meetup_id`) REFERENCES `meetup` (`meetup_id`))] [insert into MeetupSchedule (activate_time,cancellation_reason,created_at,deleted,deleted_at,location,meetup_id,participant,proposal_date,schedule_status,updated_at,votes,voting_deadline) values (?,?,?,?,?,?,?,?,?,?,?,?,?)]; SQL [insert into MeetupSchedule (activate_time,cancellation_reason,created_at,deleted,deleted_at,location,meetup_id,participant,proposal_date,schedule_status,updated_at,votes,voting_deadline) values (?,?,?,?,?,?,?,?,?,?,?,?,?)]; constraint [null] 
 2024-11-26 03:51:02.349  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.dao.DataIntegrityViolationException: could not execute statement [Cannot add or update a child row: a foreign key constraint fails (`hobbyheavy`.`meetupschedule`, CONSTRAINT `FKfrnf633bg40fm8627sjjcfuby` FOREIGN KEY (`meetup_id`) REFERENCES `meetup` (`meetup_id`))] [insert into MeetupSchedule (activate_time,cancellation_reason,created_at,deleted,deleted_at,location,meetup_id,participant,proposal_date,schedule_status,updated_at,votes,voting_deadline) values (?,?,?,?,?,?,?,?,?,?,?,?,?)]; SQL [insert into MeetupSchedule (activate_time,cancellation_reason,created_at,deleted,deleted_at,location,meetup_id,participant,proposal_date,schedule_status,updated_at,votes,voting_deadline) values (?,?,?,?,?,?,?,?,?,?,?,?,?)]; constraint [null]] 
-2024-11-26 03:52:59.921  c.e.h.c.UserController - 회원가입 요청: com.example.hobbyheavy.dto.request.JoinRequest@e5dc613 
+2024-11-26 03:52:59.921  c.e.h.c.UserController - 회원가입 요청: com.example.hobbyheavy.dto.request.UserJoinRequest@e5dc613
 2024-11-26 03:52:59.943  c.e.h.c.UserController - 회원가입 중 오류 발생: 요청한 취미 이름이 없습니다. 
-2024-11-26 03:53:22.430  c.e.h.c.UserController - 회원가입 요청: com.example.hobbyheavy.dto.request.JoinRequest@1bb6bc71 
+2024-11-26 03:53:22.430  c.e.h.c.UserController - 회원가입 요청: com.example.hobbyheavy.dto.request.UserJoinRequest@1bb6bc71
 2024-11-26 03:53:22.541  c.e.h.c.UserController - 회원가입 처리 완료: kwon 
 2024-11-26 03:53:41.397  c.e.h.j.JWTFilter - JWTFilter - Request URI: /meetup/create 
 2024-11-26 03:53:41.398  c.e.h.j.JWTFilter - JWTFilter - Access token expired for token: eyJhbGciOiJIUzI1NiJ9.eyJjYXRlZ29yeSI6ImFjY2VzcyIsInVzZXJuYW1lIjoia3dvbiIsInJvbGUiOiJST0xFX1VTRVIiLCJpYXQiOjE3MzI1MTgxMDYsImV4cCI6MTczMjUyNDEwNn0.N46DjFJa_XjFygrqFZizXjmYMLBixLkbP2ByPpFq8YU 
@@ -713,10 +713,10 @@ Caused by: com.mysql.cj.exceptions.DataConversionException: Unsupported conversi
 2024-11-26 15:09:01.825  c.e.h.s.ScheduleService - 스케줄이 생성되었습니다. ID: 6 
 2024-11-26 15:09:01.834  c.e.h.s.DynamicScheduleService - 스케줄 확정 중 오류가 발생했습니다. 스케줄 ID: 6, 오류: 요청한 스케줄을 찾을 수 없습니다. 
 com.example.hobbyheavy.exception.CustomException: 요청한 스케줄을 찾을 수 없습니다.
-	at com.example.hobbyheavy.service.FinalizationService.lambda$getSchedule$0(FinalizationService.java:56)
+	at com.example.hobbyheavy.service.ScheduleConfirmService.lambda$getSchedule$0(FinalizationService.java:56)
 	at java.base/java.util.Optional.orElseThrow(Optional.java:403)
-	at com.example.hobbyheavy.service.FinalizationService.getSchedule(FinalizationService.java:56)
-	at com.example.hobbyheavy.service.FinalizationService.finalizeSchedule(FinalizationService.java:37)
+	at com.example.hobbyheavy.service.ScheduleConfirmService.getSchedule(FinalizationService.java:56)
+	at com.example.hobbyheavy.service.ScheduleConfirmService.finalizeSchedule(FinalizationService.java:37)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -730,8 +730,8 @@ com.example.hobbyheavy.exception.CustomException: 요청한 스케줄을 찾을 
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
 	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:768)
 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:720)
-	at com.example.hobbyheavy.service.FinalizationService$$SpringCGLIB$$0.finalizeSchedule(<generated>)
-	at com.example.hobbyheavy.service.DynamicScheduleService.lambda$scheduleFinalization$0(DynamicScheduleService.java:44)
+	at com.example.hobbyheavy.service.ScheduleConfirmService$$SpringCGLIB$$0.finalizeSchedule(<generated>)
+	at com.example.hobbyheavy.service.ScheduleDynamicService.lambda$scheduleFinalization$0(DynamicScheduleService.java:44)
 	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54)
 	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
 	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
@@ -743,7 +743,7 @@ com.example.hobbyheavy.exception.CustomException: 요청한 스케줄을 찾을 
 2024-11-26 15:09:05.226  c.e.h.s.NotificationService - [알림 전송] 성공 - 참여자: kwon, 메시지: 새로운 스케줄이 생성되었습니다. 스케줄 ID: 6 
 2024-11-26 15:09:05.231  c.e.h.s.NotificationService - [내부 알림 저장] 알림이 저장되었습니다. 사용자 ID: kwon, 알림 유형: SCHEDULE_CREATION, 메시지: 새로운 스케줄이 생성되었습니다. 스케줄 ID: 6 
 2024-11-26 15:09:05.232  c.e.h.s.ScheduleService - 스케줄 생성 알림이 발송되었습니다. 스케줄 ID: 6 
-2024-11-26 15:13:41.366  c.e.h.c.UserController - 회원가입 요청: com.example.hobbyheavy.dto.request.JoinRequest@4c619ea5 
+2024-11-26 15:13:41.366  c.e.h.c.UserController - 회원가입 요청: com.example.hobbyheavy.dto.request.UserJoinRequest@4c619ea5
 2024-11-26 15:13:41.463  c.e.h.c.UserController - 회원가입 처리 완료: 1234 
 2024-11-26 15:15:32.436  c.e.h.j.JWTFilter - JWTFilter - Request URI: /participant/1 
 2024-11-26 15:15:32.438  c.e.h.j.JWTFilter - JWTFilter - UserId: 1234, Role: ROLE_USER 
@@ -1235,11 +1235,11 @@ Caused by: java.sql.SQLSyntaxErrorException: Table 'hobbyheavy.schedule_votes' d
 2024-11-26 23:50:04.133  o.a.c.c.C.[.[.[/] - Initializing Spring DispatcherServlet 'dispatcherServlet' 
 2024-11-26 23:50:04.133  o.s.w.s.DispatcherServlet - Initializing Servlet 'dispatcherServlet' 
 2024-11-26 23:50:04.134  o.s.w.s.DispatcherServlet - Completed initialization in 1 ms 
-2024-11-26 23:50:04.231  c.e.h.c.UserController - 회원가입 요청: com.example.hobbyheavy.dto.request.JoinRequest@62428e62 
+2024-11-26 23:50:04.231  c.e.h.c.UserController - 회원가입 요청: com.example.hobbyheavy.dto.request.UserJoinRequest@62428e62
 2024-11-26 23:50:04.253  c.e.h.c.UserController - 회원가입 중 오류 발생: 요청한 취미 이름이 없습니다. 
-2024-11-26 23:50:31.363  c.e.h.c.UserController - 회원가입 요청: com.example.hobbyheavy.dto.request.JoinRequest@f4801b3 
+2024-11-26 23:50:31.363  c.e.h.c.UserController - 회원가입 요청: com.example.hobbyheavy.dto.request.UserJoinRequest@f4801b3
 2024-11-26 23:50:31.494  c.e.h.c.UserController - 회원가입 처리 완료: 1234 
-2024-11-26 23:50:38.997  c.e.h.c.UserController - 회원가입 요청: com.example.hobbyheavy.dto.request.JoinRequest@48f86255 
+2024-11-26 23:50:38.997  c.e.h.c.UserController - 회원가입 요청: com.example.hobbyheavy.dto.request.UserJoinRequest@48f86255
 2024-11-26 23:50:39.077  c.e.h.c.UserController - 회원가입 처리 완료: 1111 
 2024-11-26 23:51:06.515  c.e.h.j.JWTFilter - JWTFilter - Request URI: /meetup 
 2024-11-26 23:51:06.533  c.e.h.j.JWTFilter - JWTFilter - UserId: 1111, Role: ROLE_USER 
@@ -1286,5 +1286,5 @@ Caused by: java.sql.SQLSyntaxErrorException: Table 'hobbyheavy.schedule_votes' d
 2024-11-26 23:57:21.935  c.e.h.s.NotificationService - [알림 전송] 성공 - 참여자: 1234, 메시지: 새로운 스케줄이 생성되었습니다. 스케줄 ID: 1 
 2024-11-26 23:57:21.938  c.e.h.s.NotificationService - [내부 알림 저장] 알림이 저장되었습니다. 사용자 ID: 1234, 알림 유형: SCHEDULE_CREATION, 메시지: 새로운 스케줄이 생성되었습니다. 스케줄 ID: 1 
 2024-11-26 23:57:21.938  c.e.h.s.ScheduleService - 스케줄 생성 알림이 발송되었습니다. 스케줄 ID: 1 
-2024-11-26 23:57:21.942  c.e.h.e.GlobalExceptionHandler - 예기치 못한 예외 발생: Cannot invoke "java.util.Set.size()" because the return value of "com.example.hobbyheavy.entity.MeetupSchedule.getVotes()" is null 
-2024-11-26 23:57:21.942  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [java.lang.NullPointerException: Cannot invoke "java.util.Set.size()" because the return value of "com.example.hobbyheavy.entity.MeetupSchedule.getVotes()" is null] 
+2024-11-26 23:57:21.942  c.e.h.e.GlobalExceptionHandler - 예기치 못한 예외 발생: Cannot invoke "java.util.Set.size()" because the return value of "com.example.hobbyheavy.entity.Schedule.getVotes()" is null
+2024-11-26 23:57:21.942  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [java.lang.NullPointerException: Cannot invoke "java.util.Set.size()" because the return value of "com.example.hobbyheavy.entity.Schedule.getVotes()" is null]

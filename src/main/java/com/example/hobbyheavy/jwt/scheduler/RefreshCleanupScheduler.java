@@ -1,4 +1,4 @@
-package com.example.hobbyheavy.scheduler;
+package com.example.hobbyheavy.jwt.scheduler;
 
 import com.example.hobbyheavy.repository.RefreshRepository;
 import lombok.RequiredArgsConstructor;

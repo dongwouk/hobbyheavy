@@ -1,8 +1,7 @@
 package com.example.hobbyheavy.service;
 
 import com.example.hobbyheavy.entity.User;
-import com.example.hobbyheavy.type.Role;
-import jakarta.validation.ConstraintViolation;
+import com.example.hobbyheavy.type.UserRole;
 import jakarta.validation.Validator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -38,7 +37,7 @@ public class UserSignupTest {
                 .email("testuser@example.com")
                 .gender(true) // true: 남성, false: 여성
                 .age(25)
-                .role(Set.of(Role.ROLE_USER))
+                .userRole(Set.of(UserRole.ROLE_USER))
                 .build();
 
         // When: 비밀번호가 암호화되었는지 확인한다.
@@ -50,7 +49,7 @@ public class UserSignupTest {
         assertEquals("testuser@example.com", user.getEmail(), "이메일이 일치해야 합니다.");
         assertTrue(isPasswordMatch, "비밀번호가 올바르게 암호화되어야 합니다.");
         assertEquals(25, user.getAge(), "나이가 일치해야 합니다.");
-        assertTrue(user.getRole().contains(Role.ROLE_USER), "유저의 역할이 ROLE_USER여야 합니다.");
+        assertTrue(user.getUserRole().contains(UserRole.ROLE_USER), "유저의 역할이 ROLE_USER여야 합니다.");
     }
 
 

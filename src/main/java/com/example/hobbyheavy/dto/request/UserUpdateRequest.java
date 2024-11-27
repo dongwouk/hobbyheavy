@@ -13,7 +13,7 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class UpdateUserRequest {
+public class UserUpdateRequest {
 
     @NotNull(message = "이름을 입력해주세요.")
     @Size(min = 3, max = 50, message = "이름은 최소 3자리 이상이어야 합니다.")
