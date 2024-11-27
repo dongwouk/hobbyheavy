@@ -10,26 +10,27 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class SwaggerConfig {
+
     @Bean
     public OpenAPI openAPI() {
-        String jwt = "JWT";
-        SecurityRequirement securityRequirement = new SecurityRequirement().addList(jwt);
-        Components components = new Components().addSecuritySchemes(jwt, new SecurityScheme()
-                .name(jwt)
-                .type(SecurityScheme.Type.HTTP)
-                .scheme("bearer")
-                .bearerFormat("JWT")
-        );
+        String customSchemeName = "AccessTokenAuth";
+
+        // Security Requirement 설정
+        SecurityRequirement securityRequirement = new SecurityRequirement().addList(customSchemeName);
+
+        // Security Scheme 설정 (Bearer 없이 access라는 키로 설정)
+        Components components = new Components().addSecuritySchemes(customSchemeName,
+                new SecurityScheme()
+                        .name("access") // 헤더 키 이름을 "access"로 설정
+                        .type(SecurityScheme.Type.APIKEY) // API Key 형식
+                        .in(SecurityScheme.In.HEADER) // 헤더에 위치
+                        .description("Enter your access token without the 'Bearer ' prefix"));
+
         return new OpenAPI()
-                .components(new Components())
-                .info(apiInfo())
-                .addSecurityItem(securityRequirement)
-                .components(components);
-    }
-    private Info apiInfo() {
-        return new Info()
-                .title("API Test") // API의 제목
-                .description("Swagger UI Description") // API에 대한 설명
-                .version("1.0.0"); // API의 버전
+                .components(components)
+                .info(new Info().title("HobbyHeavy API")
+                        .description("Hobby Sharing Platform API Documentation")
+                        .version("1.0.0"))
+                .addSecurityItem(securityRequirement);
     }
 }
