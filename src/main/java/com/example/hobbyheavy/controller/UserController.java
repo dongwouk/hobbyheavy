@@ -76,7 +76,7 @@ public class UserController {
             }
 
             // 유저 정보 업데이트
-            userService.updateUserInfo(userId, request.getUsername(), request.getGender(), request.getAge(), request.getHobbyIds());
+            userService.updateUserInfo(userId, request);
             log.info("회원정보 변경 성공. userId: {}", userId);
 
             // 성공 응답 반환
@@ -96,7 +96,7 @@ public class UserController {
         String userId = authentication.getName();
 
         // 비밀번호 변경 수행
-        userService.updatePassword(userId, request.getOldPassword(), request.getNewPassword());
+        userService.updatePassword(userId, request);
 
         return ResponseEntity.ok("패스워드 변경 성공.");
     }

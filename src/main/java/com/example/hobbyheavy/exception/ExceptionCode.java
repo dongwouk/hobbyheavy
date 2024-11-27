@@ -26,6 +26,9 @@ public enum ExceptionCode {
     EMAIL_ALREADY_IN_USE(HttpStatus.CONFLICT, "이미 사용중인 이메일 입니다."),
     USER_DELETE_FAILED(HttpStatus.INTERNAL_SERVER_ERROR, "회원 탈퇴에 실패 하였습니다."),
     USER_REGISTER_FAILED(HttpStatus.BAD_REQUEST, "회원가입 중 오류가 발생했습니다."),
+    MISSING_USER_ID(HttpStatus.BAD_REQUEST, "아이디가 입력되지 않았습니다."),
+    MISSING_PASSWORD(HttpStatus.BAD_REQUEST, "비밀번호가 입력되지 않았습니다."),
+    INVALID_REQUEST_BODY(HttpStatus.BAD_REQUEST, "요청 데이터가 잘못되었습니다."),
 
     /**
      * Token
@@ -55,6 +58,8 @@ public enum ExceptionCode {
     NO_PARTICIPANTS(HttpStatus.NOT_FOUND, "참여자가 없습니다."),
     PARTICIPANT_NOT_FOUND(HttpStatus.NOT_FOUND, "요청한 대기자가 없습니다."),
     ALREADY_REQUEST(HttpStatus.CONFLICT, "이미 승인, 대기중인 참여자는 신청할 수 없습니다."),
+    NOT_STATUS_APPROVED(HttpStatus.CONFLICT, "참여자의 정보가 승인이 아닙니다."),
+    NOT_STATUS_WAITING(HttpStatus.CONFLICT, "참여자의 정보가 대기가 아닙니다."),
 
     /**
      * Comment

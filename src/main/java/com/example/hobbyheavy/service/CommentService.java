@@ -76,7 +76,7 @@ public class CommentService {
         Comment comment = commentRepository.findById(request.getCommentId())
                 .orElseThrow(() -> new CustomException(ExceptionCode.COMMENT_NOT_FOUND));
 
-        if (comment.getUser().getId().equals(user.getId())) {
+        if (!comment.getUser().getId().equals(user.getId())) {
             throw new CustomException(ExceptionCode.COMMENT_USER_MISMATCH);
         }
         return comment;

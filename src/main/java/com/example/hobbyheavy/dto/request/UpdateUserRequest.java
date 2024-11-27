@@ -1,5 +1,7 @@
 package com.example.hobbyheavy.dto.request;
 
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;
@@ -21,7 +23,11 @@ public class UpdateUserRequest {
     private Boolean gender; // 성별
 
     @NotNull(message = "나이를 입력해주세요.")
+    @Min(value = 0, message = "나이는 0 이상이어야 합니다.")
+    @Max(value = 120, message = "나이는 120 이하이어야 합니다.")
     private Integer age; // 나이
+
+    private Boolean alarm;
 
     private Set<Long> hobbyIds; // 여러 취미 ID
 

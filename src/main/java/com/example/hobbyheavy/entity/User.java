@@ -38,7 +38,7 @@ public class User extends Base {
     @Column(nullable = false)
     private Integer age; // 나이
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_hobby",
             joinColumns = @JoinColumn(name = "user_id"),
@@ -46,7 +46,7 @@ public class User extends Base {
     )
     private Set<Hobby> hobbies = new HashSet<>(); // 취미 ID
 
-    @Column
+    @Column(nullable = false)
     private Boolean alarm = true; // 알림구독 여부
 
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)

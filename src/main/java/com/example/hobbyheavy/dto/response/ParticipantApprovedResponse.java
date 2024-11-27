@@ -12,6 +12,4 @@ public class ParticipantApprovedResponse {
     private ParticipantStatus status;
     private String meetupRole;
 
-
-
 }
