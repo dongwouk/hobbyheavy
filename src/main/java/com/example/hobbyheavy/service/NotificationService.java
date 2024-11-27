@@ -36,7 +36,11 @@ public class NotificationService {
      * @param messageType    알림 메시지 타입(enum)
      */
     public void notifyParticipants(MeetupSchedule meetupSchedule, NotificationMessage messageType) {
-        List<Participant> participants = participantRepository.findAllByMeetup_MeetupId(meetupSchedule.getMeetup().getMeetupId());
+        // 알림 설정이 활성화된 참여자만 필터링
+        List<Participant> participants = participantRepository.findAllByMeetup_MeetupId(meetupSchedule.getMeetup().getMeetupId())
+                .stream()
+                .filter(Participant::getMeetupAlarm) // meetupAlarm이 true인 경우만 선택
+                .collect(Collectors.toList());
 
         if (participants.isEmpty()) {
             log.warn("[알림 전송] 참여자가 없습니다. 스케줄 ID: {}", meetupSchedule.getScheduleId());
@@ -83,6 +87,7 @@ public class NotificationService {
                 .type(type)  // NotificationType 타입 사용
                 .message(message)
                 .meetup(meetupSchedule.getMeetup())
+                .isRead(false)
                 .build();
 
         notificationRepository.save(notification);

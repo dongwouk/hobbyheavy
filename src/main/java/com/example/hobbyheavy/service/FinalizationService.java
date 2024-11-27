@@ -34,14 +34,21 @@ public class FinalizationService {
      */
     @Transactional
     public void finalizeSchedule(Long scheduleId, String userId) {
+        // 스케줄 조회
         MeetupSchedule schedule = getSchedule(scheduleId);
 
+        // 이미 확정된 스케줄인지 검증
+        validateAlreadyConfirmedSchedule(schedule);
+
+        // 유효한 상태인지 검증
         validateScheduleStatus(schedule);
+
+        // 사용자 권한 검증
         if (userId != null) {
             verifyUserAuthorization(userId, schedule);
         }
 
-
+        // 스케줄 확정
         confirmSchedule(schedule);
     }
 
@@ -92,7 +99,13 @@ public class FinalizationService {
         scheduleRepository.save(schedule);
 
         // 알림 전송
-        notificationService.notifyParticipants(schedule, NotificationMessage.CONFIRMATION);
+        notificationService.notifyParticipants(schedule, NotificationMessage.SCHEDULE_CONFIRMATION);
         log.info("스케줄이 확정되고 알림이 전송되었습니다. ID: {}, 상태: {}", schedule.getScheduleId(), schedule.getScheduleStatus());
+    }
+
+    private void validateAlreadyConfirmedSchedule(MeetupSchedule schedule) {
+        if (schedule.getScheduleStatus() == MeetupScheduleStatus.CONFIRMED) {
+            throw new CustomException(ExceptionCode.SCHEDULE_ALREADY_CONFIRMED);
+        }
     }
 }

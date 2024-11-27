@@ -29,35 +29,42 @@ public class ScheduleController {
     private final FinalizationService finalizationService;
 
     @PostMapping
-    @PreAuthorize("hasRole('ROLE_HOST') or hasRole('ROLE_MEMBER')")
     public ResponseEntity<ScheduleResponse> createSchedule(@Valid @RequestBody ScheduleRequest scheduleRequest, Authentication authentication) {
         String userId = authentication.getName();
         log.info("User {} is attempting to create a new schedule", userId);
+
+        // 현재 사용자의 권한 정보를 로깅
+        authentication.getAuthorities().forEach(authority ->
+                log.info("User {} has authority: {}", userId, authority.getAuthority())
+        );
+
         ScheduleResponse response = scheduleService.createSchedule(scheduleRequest, userId);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
     @GetMapping("/{scheduleId}")
-    @PreAuthorize("hasRole('ROLE_HOST') or hasRole('ROLE_MEMBER')")
     public ResponseEntity<ScheduleResponse> getSchedule(@PathVariable Long scheduleId,
-                                                        @RequestParam(required = false) Long notificationId) {
-        log.info("Fetching schedule with ID: {}", scheduleId);
+                                                        @RequestParam(required = false) Long notificationId,
+                                                        Authentication authentication) {
+        String userId = authentication.getName(); // 현재 인증된 사용자 ID 가져오기
+        log.info("User {} is attempting to fetch schedule with ID: {}", userId, scheduleId);
 
-        // 스케줄 조회 (알림 읽음 처리 포함)
-        ScheduleResponse response = scheduleService.getSchedule(scheduleId, notificationId);
+        // 스케줄 조회 (사용자 권한 검증 포함)
+        ScheduleResponse response = scheduleService.getSchedule(scheduleId, notificationId, userId);
         return ResponseEntity.ok(response);
     }
 
     @GetMapping
-    @PreAuthorize("hasRole('ROLE_HOST') or hasRole('ROLE_MEMBER')")
-    public ResponseEntity<List<ScheduleResponse>> getAllSchedules() {
-        log.info("Fetching all schedules");
-        List<ScheduleResponse> responseList = scheduleService.getAllSchedules();
+    public ResponseEntity<List<ScheduleResponse>> getAllSchedules(Authentication authentication) {
+        String userId = authentication.getName(); // 현재 인증된 사용자 ID 가져오기
+        log.info("User {} is attempting to fetch all schedules", userId);
+
+        // 사용자가 속한 모든 스케줄 조회
+        List<ScheduleResponse> responseList = scheduleService.getAllSchedules(userId);
         return ResponseEntity.ok(responseList);
     }
 
     @PutMapping("/{scheduleId}")
-    @PreAuthorize("hasRole('ROLE_HOST')")
     public ResponseEntity<ScheduleResponse> updateSchedule(@PathVariable Long scheduleId, @Valid @RequestBody ScheduleRequest scheduleRequest, Authentication authentication) {
         String userId = authentication.getName();
         log.info("User {} is attempting to update schedule with ID: {}", userId, scheduleId);
@@ -66,7 +73,6 @@ public class ScheduleController {
     }
 
     @DeleteMapping("/{scheduleId}")
-    @PreAuthorize("hasRole('ROLE_HOST')")
     public ResponseEntity<Void> deleteSchedule(@PathVariable Long scheduleId, Authentication authentication) {
         String userId = authentication.getName();
         log.info("User {} is attempting to delete schedule with ID: {}", userId, scheduleId);
@@ -75,7 +81,6 @@ public class ScheduleController {
     }
 
     @PostMapping("/{scheduleId}/vote")
-    @PreAuthorize("hasRole('ROLE_MEMBER')")
     public ResponseEntity<Void> voteOnSchedule(@PathVariable Long scheduleId, Authentication authentication) {
         String userId = authentication.getName();
         log.info("User {} is attempting to vote on schedule with ID: {}", userId, scheduleId);
@@ -83,8 +88,15 @@ public class ScheduleController {
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
+    @PostMapping("/{scheduleId}/unvote")
+    public ResponseEntity<Void> unvoteOnSchedule(@PathVariable Long scheduleId, Authentication authentication) {
+        String userId = authentication.getName();
+        log.info("User {} is attempting to unvote on schedule with ID: {}", userId, scheduleId);
+        voteService.removeVoteOnSchedule(scheduleId, userId);
+        return ResponseEntity.ok().build();
+    }
+
     @PostMapping("/{scheduleId}/confirm")
-    @PreAuthorize("hasRole('ROLE_HOST')")
     public ResponseEntity<String> confirmSchedule(@PathVariable Long scheduleId, Authentication authentication) {
         String userId = authentication.getName();
         log.info("User {} is attempting to confirm schedule with ID: {}", userId, scheduleId);
@@ -93,7 +105,6 @@ public class ScheduleController {
     }
 
     @PostMapping("/{scheduleId}/cancel")
-    @PreAuthorize("hasRole('ROLE_HOST')")
     public ResponseEntity<String> cancelSchedule(@PathVariable Long scheduleId, @RequestBody @Valid CancelScheduleRequest cancelRequest, Authentication authentication) {
         String userId = authentication.getName();
         String reason = cancelRequest.getReason();

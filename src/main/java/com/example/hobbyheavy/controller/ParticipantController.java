@@ -49,6 +49,16 @@ public class ParticipantController {
                 participantService.getWaitParticipant(meetupId, getUserId(authentication)));
     }
 
+
+    @PutMapping("/alarm/{meetupId}")
+    public ResponseEntity<String> toggleMeetupAlarm(
+            @PathVariable Long meetupId,
+            Authentication authentication) {
+        participantService.toggleMeetupAlarm(meetupId, getUserId(authentication));
+        return ResponseEntity.ok("Meetup Alarm toggled successfully.");
+    }
+
+
     @PutMapping("/status")
     public ResponseEntity<String> approveParticipant
             (@Valid @RequestBody ParticipantStatusRequest request,
@@ -64,5 +74,6 @@ public class ParticipantController {
         participantService.withdrawParticipant(request, getUserId(authentication));
         return ResponseEntity.ok("Change Participant Status Successfully.");
     }
+
 
 }

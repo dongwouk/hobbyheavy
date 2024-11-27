@@ -2,11 +2,14 @@ package com.example.hobbyheavy.entity;
 
 import com.example.hobbyheavy.dto.request.ScheduleRequest;
 import com.example.hobbyheavy.type.MeetupScheduleStatus;
+import com.example.hobbyheavy.util.ScheduleUtils;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -33,20 +36,19 @@ public class MeetupSchedule extends Base {
 
     // 모임 활동 시간
     @Column(name = "activate_time", nullable = true)
-    private Duration activateTime;
+    private String activateTime;
 
     // 일정 상태 (제안, 취소, 확정)
     @Enumerated(EnumType.STRING)
     @Column(name = "schedule_status", nullable = true)
     private MeetupScheduleStatus scheduleStatus = MeetupScheduleStatus.PROPOSED;
 
-    // 일정 참가자
-    @Column(name = "participant", nullable = true)
-    private String participant;
-
-    // 일정 익명 투표 수
-    @Column(name = "votes", nullable = true)
-    private Integer votes;
+    // 일정 투표한 사용자 ID 목록
+    @ElementCollection
+    @CollectionTable(name = "schedule_votes", joinColumns = @JoinColumn(name = "schedule_id"))
+    @Column(name = "user_id")
+    @Builder.Default
+    private Set<String> votes = new HashSet<>();
 
     // 모임 상세 주소
     @Column(name = "location", nullable = true)
@@ -64,17 +66,15 @@ public class MeetupSchedule extends Base {
         if (request.getProposalDate() != null) {
             this.proposalDate = request.getProposalDate();
         }
-        if (request.getStatus() != null) {
-            this.scheduleStatus = MeetupScheduleStatus.valueOf(request.getStatus().toUpperCase());
-        }
-        if (request.getParticipant() != null) {
-            this.participant = request.getParticipant();
-        }
-        if (request.getVotes() != null) {
-            this.votes = request.getVotes();
+        if (request.getActivateTime() != null) {
+            this.activateTime = request.getActivateTime();
         }
         if (request.getLocation() != null) {
             this.location = request.getLocation();
+        }
+        if (request.getVotingDeadline() != null) {
+            // DurationParser를 사용해 요청된 문자열 형식을 LocalDateTime으로 변환 후 votingDeadline에 설정
+            this.votingDeadline = ScheduleUtils.calculateVotingDeadline(request);
         }
     }
 
@@ -84,6 +84,22 @@ public class MeetupSchedule extends Base {
 
     public void setCancellationReason(String reason) {
         this.cancellationReason = reason;
+    }
+
+    /**
+     * 사용자 투표 추가 메서드.
+     * @param userId 투표한 사용자 ID
+     */
+    public void addVote(String userId) {
+        votes.add(userId);
+    }
+
+    /**
+     * 사용자 투표 제거 메서드.
+     * @param userId 투표 취소할 사용자 ID
+     */
+    public void removeVote(String userId) {
+        votes.remove(userId);
     }
 
 }

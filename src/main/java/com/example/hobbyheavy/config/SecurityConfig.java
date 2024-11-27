@@ -115,13 +115,11 @@ public class SecurityConfig {
 
                         .requestMatchers("/user/my-info").authenticated()
                         .requestMatchers("/user/password").authenticated()
-//                        .requestMatchers("/board/**").authenticated()
-//                        .requestMatchers("/board").permitAll() // POST 요청 허용
                         .requestMatchers(HttpMethod.GET,"/meetup").permitAll() // POST 요청 허용
-//                        .requestMatchers(HttpMethod.POST,"/meetup").authenticated() // POST 요청 허용
-//                        .requestMatchers("/meetup/**").authenticated()
                         .requestMatchers("/admin").hasRole("ADMIN")
                         .requestMatchers("/reissue").permitAll()
+                        // 스케줄 관련 요청은 ROLE_HOST 또는 ROLE_MEMBER 권한을 가진 사용자만 접근 가능
+//                        .requestMatchers("/schedules/**").hasAnyRole("HOST", "MEMBER")
                         .anyRequest().authenticated());
 
         //세션 설정

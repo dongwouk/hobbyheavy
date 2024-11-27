@@ -80,8 +80,12 @@ public enum ExceptionCode {
     SCHEDULE_VOTING_NOT_ALLOWED(HttpStatus.FORBIDDEN, "해당 스케줄에 투표할 수 없습니다."),
     SCHEDULE_CANCELLATION_NOT_ALLOWED(HttpStatus.FORBIDDEN, "해당 스케줄은 취소할 수 없습니다."),
     SCHEDULE_ALREADY_CONFIRMED(HttpStatus.CONFLICT, "이미 확정된 스케줄입니다."),
+    INVALID_PROPOSAL_DATE(HttpStatus.BAD_REQUEST, "제안된 스케줄 날짜가 유효하지 않습니다."),
     SCHEDULE_CONFIRMATION_FAILED(HttpStatus.INTERNAL_SERVER_ERROR, "스케줄 확정에 실패하였습니다."),
+    INVALID_VOTING_DEADLINE(HttpStatus.BAD_REQUEST, "투표 마감 시간이 유효하지 않습니다."),
+    VOTE_NOT_FOUND(HttpStatus.NOT_FOUND, "요청한 투표를 찾을 수 없습니다."),
     ALREADY_VOTED(HttpStatus.CONFLICT, "이미 투표하셨습니다."),
+
 
     /**
      * Notification
