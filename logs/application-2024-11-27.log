@@ -5545,6 +5545,176 @@ java.lang.IllegalArgumentException: Invalid character found in method name [0x16
 2024-11-27 04:25:59.521  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default' 
 2024-11-27 04:25:59.523  c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated... 
 2024-11-27 04:25:59.526  c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed. 
+2024-11-27 17:11:59.544  o.h.v.i.u.Version - HV000001: Hibernate Validator 8.0.1.Final 
+2024-11-27 17:11:59.576  c.e.h.HobbyheavyApplication - Starting HobbyheavyApplication using Java 17.0.12 with PID 12096 (D:\workspace\hobbyheavy\build\classes\java\main started by user in D:\workspace\hobbyheavy) 
+2024-11-27 17:11:59.577  c.e.h.HobbyheavyApplication - The following 1 profile is active: "secret" 
+2024-11-27 17:11:59.609  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable 
+2024-11-27 17:11:59.609  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG' 
+2024-11-27 17:12:00.305  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2024-11-27 17:12:00.355  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 45 ms. Found 8 JPA repository interfaces. 
+2024-11-27 17:12:00.809  o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port 8090 (http) 
+2024-11-27 17:12:00.819  o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8090"] 
+2024-11-27 17:12:00.822  o.a.c.c.StandardService - Starting service [Tomcat] 
+2024-11-27 17:12:00.822  o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.31] 
+2024-11-27 17:12:00.865  o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext 
+2024-11-27 17:12:00.866  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1257 ms 
+2024-11-27 17:12:00.969  o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default] 
+2024-11-27 17:12:01.016  o.h.Version - HHH000412: Hibernate ORM core version 6.5.3.Final 
+2024-11-27 17:12:01.061  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled 
+2024-11-27 17:12:01.291  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer 
+2024-11-27 17:12:01.313  c.z.h.HikariDataSource - HikariPool-1 - Starting... 
+2024-11-27 17:12:01.416  c.z.h.p.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2c721ba1 
+2024-11-27 17:12:01.418  c.z.h.HikariDataSource - HikariPool-1 - Start completed. 
+2024-11-27 17:12:01.460  o.h.o.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default) 
+2024-11-27 17:12:02.201  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration) 
+2024-11-27 17:12:02.203  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2024-11-27 17:12:02.477  o.s.d.j.r.q.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used. 
+2024-11-27 17:12:02.860  c.e.h.s.DynamicScheduleService - 마감 시간이 지난 스케줄은 초기화에서 제외됩니다. 스케줄 ID: 1 
+2024-11-27 17:12:02.860  c.e.h.s.DynamicScheduleService - 마감 시간이 지난 스케줄은 초기화에서 제외됩니다. 스케줄 ID: 2 
+2024-11-27 17:12:02.860  c.e.h.s.DynamicScheduleService - 마감 시간이 지난 스케줄은 초기화에서 제외됩니다. 스케줄 ID: 3 
+2024-11-27 17:12:02.860  c.e.h.s.DynamicScheduleService - 마감 시간이 지난 스케줄은 초기화에서 제외됩니다. 스케줄 ID: 4 
+2024-11-27 17:12:02.860  c.e.h.s.DynamicScheduleService - 마감 시간이 지난 스케줄은 초기화에서 제외됩니다. 스케줄 ID: 5 
+2024-11-27 17:12:02.860  c.e.h.s.DynamicScheduleService - 마감 시간이 지난 스케줄은 초기화에서 제외됩니다. 스케줄 ID: 6 
+2024-11-27 17:12:02.860  c.e.h.s.DynamicScheduleService - 마감 시간이 지난 스케줄은 초기화에서 제외됩니다. 스케줄 ID: 7 
+2024-11-27 17:12:02.860  c.e.h.s.DynamicScheduleService - 마감 시간이 지난 스케줄은 초기화에서 제외됩니다. 스케줄 ID: 8 
+2024-11-27 17:12:02.860  c.e.h.s.DynamicScheduleService - 마감 시간이 지난 스케줄은 초기화에서 제외됩니다. 스케줄 ID: 9 
+2024-11-27 17:12:02.982  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService 
+2024-11-27 17:12:03.336  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729 
+2024-11-27 17:12:03.348  o.a.c.h.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8090"] 
+2024-11-27 17:12:03.360  o.s.b.w.e.t.TomcatWebServer - Tomcat started on port 8090 (http) with context path '/' 
+2024-11-27 17:12:03.369  c.e.h.HobbyheavyApplication - Started HobbyheavyApplication in 4.183 seconds (process running for 4.783) 
+2024-11-27 17:12:30.746  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default' 
+2024-11-27 17:12:30.748  c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated... 
+2024-11-27 17:12:30.752  c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed. 
+2024-11-27 17:12:32.749  o.h.v.i.u.Version - HV000001: Hibernate Validator 8.0.1.Final 
+2024-11-27 17:12:32.772  c.e.h.HobbyheavyApplication - Starting HobbyheavyApplication using Java 17.0.12 with PID 1520 (D:\workspace\hobbyheavy\build\classes\java\main started by user in D:\workspace\hobbyheavy) 
+2024-11-27 17:12:32.773  c.e.h.HobbyheavyApplication - The following 1 profile is active: "secret" 
+2024-11-27 17:12:32.798  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable 
+2024-11-27 17:12:32.798  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG' 
+2024-11-27 17:12:33.306  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2024-11-27 17:12:33.361  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 51 ms. Found 8 JPA repository interfaces. 
+2024-11-27 17:12:33.761  o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port 8090 (http) 
+2024-11-27 17:12:33.769  o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8090"] 
+2024-11-27 17:12:33.771  o.a.c.c.StandardService - Starting service [Tomcat] 
+2024-11-27 17:12:33.771  o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.31] 
+2024-11-27 17:12:33.809  o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext 
+2024-11-27 17:12:33.809  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1011 ms 
+2024-11-27 17:12:33.899  o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default] 
+2024-11-27 17:12:33.927  o.h.Version - HHH000412: Hibernate ORM core version 6.5.3.Final 
+2024-11-27 17:12:33.945  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled 
+2024-11-27 17:12:34.130  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer 
+2024-11-27 17:12:34.147  c.z.h.HikariDataSource - HikariPool-1 - Starting... 
+2024-11-27 17:12:34.232  c.z.h.p.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@c3f9af0 
+2024-11-27 17:12:34.233  c.z.h.HikariDataSource - HikariPool-1 - Start completed. 
+2024-11-27 17:12:34.259  o.h.o.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default) 
+2024-11-27 17:12:34.900  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration) 
+2024-11-27 17:12:36.044  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2024-11-27 17:12:36.287  o.s.d.j.r.q.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used. 
+2024-11-27 17:12:36.681  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService 
+2024-11-27 17:12:36.997  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729 
+2024-11-27 17:12:37.009  o.a.c.h.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8090"] 
+2024-11-27 17:12:37.022  o.s.b.w.e.t.TomcatWebServer - Tomcat started on port 8090 (http) with context path '/' 
+2024-11-27 17:12:37.030  c.e.h.HobbyheavyApplication - Started HobbyheavyApplication in 4.519 seconds (process running for 4.897) 
+2024-11-27 17:12:42.386  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default' 
+2024-11-27 17:12:42.388  c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated... 
+2024-11-27 17:12:42.391  c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed. 
+2024-11-27 17:12:44.354  o.h.v.i.u.Version - HV000001: Hibernate Validator 8.0.1.Final 
+2024-11-27 17:12:44.375  c.e.h.HobbyheavyApplication - Starting HobbyheavyApplication using Java 17.0.12 with PID 1432 (D:\workspace\hobbyheavy\build\classes\java\main started by user in D:\workspace\hobbyheavy) 
+2024-11-27 17:12:44.376  c.e.h.HobbyheavyApplication - The following 1 profile is active: "secret" 
+2024-11-27 17:12:44.404  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable 
+2024-11-27 17:12:44.404  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG' 
+2024-11-27 17:12:44.912  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2024-11-27 17:12:44.960  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 43 ms. Found 8 JPA repository interfaces. 
+2024-11-27 17:12:45.346  o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port 8090 (http) 
+2024-11-27 17:12:45.353  o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8090"] 
+2024-11-27 17:12:45.355  o.a.c.c.StandardService - Starting service [Tomcat] 
+2024-11-27 17:12:45.356  o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.31] 
+2024-11-27 17:12:45.394  o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext 
+2024-11-27 17:12:45.394  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 989 ms 
+2024-11-27 17:12:45.483  o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default] 
+2024-11-27 17:12:45.514  o.h.Version - HHH000412: Hibernate ORM core version 6.5.3.Final 
+2024-11-27 17:12:45.533  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled 
+2024-11-27 17:12:45.718  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer 
+2024-11-27 17:12:45.738  c.z.h.HikariDataSource - HikariPool-1 - Starting... 
+2024-11-27 17:12:45.821  c.z.h.p.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@70a22617 
+2024-11-27 17:12:45.822  c.z.h.HikariDataSource - HikariPool-1 - Start completed. 
+2024-11-27 17:12:45.849  o.h.o.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default) 
+2024-11-27 17:12:46.501  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration) 
+2024-11-27 17:12:46.608  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2024-11-27 17:12:46.852  o.s.d.j.r.q.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used. 
+2024-11-27 17:12:47.245  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService 
+2024-11-27 17:12:47.566  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729 
+2024-11-27 17:12:47.578  o.a.c.h.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8090"] 
+2024-11-27 17:12:47.590  o.s.b.w.e.t.TomcatWebServer - Tomcat started on port 8090 (http) with context path '/' 
+2024-11-27 17:12:47.598  c.e.h.HobbyheavyApplication - Started HobbyheavyApplication in 3.475 seconds (process running for 3.879) 
+2024-11-27 17:12:54.461  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default' 
+2024-11-27 17:12:54.463  c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated... 
+2024-11-27 17:12:54.467  c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed. 
+2024-11-27 17:12:56.289  o.h.v.i.u.Version - HV000001: Hibernate Validator 8.0.1.Final 
+2024-11-27 17:12:56.311  c.e.h.HobbyheavyApplication - Starting HobbyheavyApplication using Java 17.0.12 with PID 9236 (D:\workspace\hobbyheavy\build\classes\java\main started by user in D:\workspace\hobbyheavy) 
+2024-11-27 17:12:56.312  c.e.h.HobbyheavyApplication - The following 1 profile is active: "secret" 
+2024-11-27 17:12:56.338  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable 
+2024-11-27 17:12:56.339  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG' 
+2024-11-27 17:12:56.850  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2024-11-27 17:12:56.896  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 42 ms. Found 8 JPA repository interfaces. 
+2024-11-27 17:12:57.297  o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port 8090 (http) 
+2024-11-27 17:12:57.304  o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8090"] 
+2024-11-27 17:12:57.306  o.a.c.c.StandardService - Starting service [Tomcat] 
+2024-11-27 17:12:57.306  o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.31] 
+2024-11-27 17:12:57.350  o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext 
+2024-11-27 17:12:57.351  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1012 ms 
+2024-11-27 17:12:57.447  o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default] 
+2024-11-27 17:12:57.476  o.h.Version - HHH000412: Hibernate ORM core version 6.5.3.Final 
+2024-11-27 17:12:57.496  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled 
+2024-11-27 17:12:57.679  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer 
+2024-11-27 17:12:57.699  c.z.h.HikariDataSource - HikariPool-1 - Starting... 
+2024-11-27 17:12:57.792  c.z.h.p.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@49b6c468 
+2024-11-27 17:12:57.793  c.z.h.HikariDataSource - HikariPool-1 - Start completed. 
+2024-11-27 17:12:57.821  o.h.o.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default) 
+2024-11-27 17:12:58.501  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration) 
+2024-11-27 17:12:58.503  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2024-11-27 17:12:58.744  o.s.d.j.r.q.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used. 
+2024-11-27 17:12:59.157  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService 
+2024-11-27 17:12:59.482  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729 
+2024-11-27 17:12:59.494  o.a.c.h.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8090"] 
+2024-11-27 17:12:59.511  o.s.b.w.e.t.TomcatWebServer - Tomcat started on port 8090 (http) with context path '/' 
+2024-11-27 17:12:59.519  c.e.h.HobbyheavyApplication - Started HobbyheavyApplication in 3.467 seconds (process running for 3.861) 
+2024-11-27 17:13:28.499  o.a.c.c.C.[.[.[/] - Initializing Spring DispatcherServlet 'dispatcherServlet' 
+2024-11-27 17:13:28.499  o.s.w.s.DispatcherServlet - Initializing Servlet 'dispatcherServlet' 
+2024-11-27 17:13:28.500  o.s.w.s.DispatcherServlet - Completed initialization in 1 ms 
+2024-11-27 17:13:28.516  c.e.h.j.JWTFilter - JWTFilter - Request URI: /v3/api-docs 
+2024-11-27 17:13:28.517  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /v3/api-docs 
+2024-11-27 17:13:28.864  o.s.a.AbstractOpenApiResource - Init duration for springdoc-openapi is: 326 ms 
+2024-11-27 17:13:28.919  c.e.h.j.JWTFilter - JWTFilter - Request URI: /favicon.ico 
+2024-11-27 17:13:28.919  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /favicon.ico 
+2024-11-27 17:13:40.765  c.e.h.j.JWTFilter - JWTFilter - Request URI: /swagger-ui/index.html 
+2024-11-27 17:13:40.765  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /swagger-ui/index.html 
+2024-11-27 17:13:40.781  c.e.h.j.JWTFilter - JWTFilter - Request URI: /swagger-ui/swagger-ui.css 
+2024-11-27 17:13:40.781  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /swagger-ui/swagger-ui.css 
+2024-11-27 17:13:40.781  c.e.h.j.JWTFilter - JWTFilter - Request URI: /swagger-ui/swagger-ui-standalone-preset.js 
+2024-11-27 17:13:40.781  c.e.h.j.JWTFilter - JWTFilter - Request URI: /swagger-ui/index.css 
+2024-11-27 17:13:40.781  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /swagger-ui/swagger-ui-standalone-preset.js 
+2024-11-27 17:13:40.781  c.e.h.j.JWTFilter - JWTFilter - Request URI: /swagger-ui/swagger-ui-bundle.js 
+2024-11-27 17:13:40.781  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /swagger-ui/index.css 
+2024-11-27 17:13:40.781  c.e.h.j.JWTFilter - JWTFilter - Request URI: /swagger-ui/swagger-initializer.js 
+2024-11-27 17:13:40.781  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /swagger-ui/swagger-ui-bundle.js 
+2024-11-27 17:13:40.781  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /swagger-ui/swagger-initializer.js 
+2024-11-27 17:13:40.908  c.e.h.j.JWTFilter - JWTFilter - Request URI: /v3/api-docs/swagger-config 
+2024-11-27 17:13:40.908  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /v3/api-docs/swagger-config 
+2024-11-27 17:13:40.926  c.e.h.j.JWTFilter - JWTFilter - Request URI: /swagger-ui/favicon-32x32.png 
+2024-11-27 17:13:40.926  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /swagger-ui/favicon-32x32.png 
+2024-11-27 17:13:40.934  c.e.h.j.JWTFilter - JWTFilter - Request URI: /v3/api-docs 
+2024-11-27 17:13:40.934  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /v3/api-docs 
+2024-11-27 17:15:13.990  c.e.h.c.ExceptionController - 유효한 이메일 주소를 입력해주세요. 
+2024-11-27 17:15:13.995  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<java.lang.String> com.example.hobbyheavy.controller.UserController.joinUser(com.example.hobbyheavy.dto.request.JoinRequest): [Field error in object 'joinRequest' on field 'email': rejected value [string]; codes [Email.joinRequest.email,Email.email,Email.java.lang.String,Email]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [joinRequest.email,email]; arguments []; default message [email],[Ljakarta.validation.constraints.Pattern$Flag;@2975b959,.*]; default message [유효한 이메일 주소를 입력해주세요.]] ] 
+2024-11-27 17:16:23.808  c.e.h.c.UserController - 회원가입 요청: com.example.hobbyheavy.dto.request.JoinRequest@3173f6f 
+2024-11-27 17:16:23.836  c.e.h.c.UserController - 회원가입 중 오류 발생: 요청한 취미 이름이 없습니다. 
+2024-11-27 17:16:30.905  c.e.h.c.UserController - 회원가입 요청: com.example.hobbyheavy.dto.request.JoinRequest@415a0be6 
+2024-11-27 17:16:31.049  c.e.h.s.UserService - 새 사용자 가입 완료. 사용자 ID: test 
+2024-11-27 17:16:31.049  c.e.h.c.UserController - 회원가입 처리 완료: test 
+2024-11-27 17:19:40.803  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default' 
+2024-11-27 17:19:40.805  c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated... 
+2024-11-27 17:19:40.809  c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed. 
 2024-11-27 15:59:32.842  o.h.v.i.u.Version - HV000001: Hibernate Validator 8.0.1.Final 
 2024-11-27 15:59:32.974  c.e.h.HobbyheavyApplication - Starting HobbyheavyApplication using Java 17.0.9 with PID 2251 (/Users/sooho/Desktop/ZEROBASE 21/Project/build/classes/java/main started by sooho in /Users/sooho/Desktop/ZEROBASE 21/Project) 
 2024-11-27 15:59:32.976  c.e.h.HobbyheavyApplication - The following 1 profile is active: "secret" 
@@ -6069,3 +6239,562 @@ Caused by: java.sql.SQLSyntaxErrorException: Table 'meetup' already exists
 2024-11-27 16:02:35.796  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default' 
 2024-11-27 16:02:35.803  c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated... 
 2024-11-27 16:02:35.827  c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed. 
+2024-11-27 17:20:56.509  o.h.v.i.u.Version - HV000001: Hibernate Validator 8.0.1.Final 
+2024-11-27 17:20:56.534  c.e.h.HobbyheavyApplication - Starting HobbyheavyApplication using Java 17.0.12 with PID 14296 (D:\workspace\hobbyheavy\build\classes\java\main started by user in D:\workspace\hobbyheavy) 
+2024-11-27 17:20:56.534  c.e.h.HobbyheavyApplication - The following 1 profile is active: "secret" 
+2024-11-27 17:20:56.565  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable 
+2024-11-27 17:20:56.565  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG' 
+2024-11-27 17:20:57.112  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2024-11-27 17:20:57.158  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 41 ms. Found 8 JPA repository interfaces. 
+2024-11-27 17:20:57.548  o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port 8090 (http) 
+2024-11-27 17:20:57.558  o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8090"] 
+2024-11-27 17:20:57.561  o.a.c.c.StandardService - Starting service [Tomcat] 
+2024-11-27 17:20:57.561  o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.31] 
+2024-11-27 17:20:57.600  o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext 
+2024-11-27 17:20:57.601  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1035 ms 
+2024-11-27 17:20:57.691  o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default] 
+2024-11-27 17:20:57.721  o.h.Version - HHH000412: Hibernate ORM core version 6.5.3.Final 
+2024-11-27 17:20:57.740  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled 
+2024-11-27 17:20:57.925  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer 
+2024-11-27 17:20:57.943  c.z.h.HikariDataSource - HikariPool-1 - Starting... 
+2024-11-27 17:20:58.029  c.z.h.p.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5ab0babb 
+2024-11-27 17:20:58.030  c.z.h.HikariDataSource - HikariPool-1 - Start completed. 
+2024-11-27 17:20:58.057  o.h.o.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default) 
+2024-11-27 17:20:58.722  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration) 
+2024-11-27 17:20:58.799  o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "alter table Review drop foreign key FKq2dhec7j40qwcmshkxha8usbf" via JDBC [Can't DROP 'FKq2dhec7j40qwcmshkxha8usbf'; check that column/key exists] 
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "alter table Review drop foreign key FKq2dhec7j40qwcmshkxha8usbf" via JDBC [Can't DROP 'FKq2dhec7j40qwcmshkxha8usbf'; check that column/key exists]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:94)
+	at org.hibernate.tool.schema.internal.Helper.applySqlString(Helper.java:233)
+	at org.hibernate.tool.schema.internal.Helper.applySqlStrings(Helper.java:217)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applyConstraintDropping(SchemaDropperImpl.java:476)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.dropConstraintsTablesSequences(SchemaDropperImpl.java:242)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.dropFromMetadata(SchemaDropperImpl.java:215)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.performDrop(SchemaDropperImpl.java:185)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:155)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:115)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:238)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:144)
+	at java.base/java.util.HashMap.forEach(HashMap.java:1421)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:141)
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:37)
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:35)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:322)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:457)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1506)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1853)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1802)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:954)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352)
+	at com.example.hobbyheavy.HobbyheavyApplication.main(HobbyheavyApplication.java:14)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+Caused by: java.sql.SQLSyntaxErrorException: Can't DROP 'FKq2dhec7j40qwcmshkxha8usbf'; check that column/key exists
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:770)
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:653)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80)
+	... 44 common frames omitted
+2024-11-27 17:20:58.808  o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "alter table Schedule drop foreign key FKljabgrkwiotb2bfrdpco60gav" via JDBC [Table 'hobbyheavy.schedule' doesn't exist] 
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "alter table Schedule drop foreign key FKljabgrkwiotb2bfrdpco60gav" via JDBC [Table 'hobbyheavy.schedule' doesn't exist]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:94)
+	at org.hibernate.tool.schema.internal.Helper.applySqlString(Helper.java:233)
+	at org.hibernate.tool.schema.internal.Helper.applySqlStrings(Helper.java:217)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applyConstraintDropping(SchemaDropperImpl.java:476)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.dropConstraintsTablesSequences(SchemaDropperImpl.java:242)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.dropFromMetadata(SchemaDropperImpl.java:215)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.performDrop(SchemaDropperImpl.java:185)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:155)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:115)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:238)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:144)
+	at java.base/java.util.HashMap.forEach(HashMap.java:1421)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:141)
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:37)
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:35)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:322)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:457)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1506)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1853)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1802)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:954)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352)
+	at com.example.hobbyheavy.HobbyheavyApplication.main(HobbyheavyApplication.java:14)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+Caused by: java.sql.SQLSyntaxErrorException: Table 'hobbyheavy.schedule' doesn't exist
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:770)
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:653)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80)
+	... 44 common frames omitted
+2024-11-27 17:20:58.809  o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "alter table schedule_votes drop foreign key FK24wk6v3floqq4g0xrr3a9eykv" via JDBC [Can't DROP 'FK24wk6v3floqq4g0xrr3a9eykv'; check that column/key exists] 
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "alter table schedule_votes drop foreign key FK24wk6v3floqq4g0xrr3a9eykv" via JDBC [Can't DROP 'FK24wk6v3floqq4g0xrr3a9eykv'; check that column/key exists]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:94)
+	at org.hibernate.tool.schema.internal.Helper.applySqlString(Helper.java:233)
+	at org.hibernate.tool.schema.internal.Helper.applySqlStrings(Helper.java:217)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applyConstraintDropping(SchemaDropperImpl.java:476)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.dropConstraintsTablesSequences(SchemaDropperImpl.java:242)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.dropFromMetadata(SchemaDropperImpl.java:215)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.performDrop(SchemaDropperImpl.java:185)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:155)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:115)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:238)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:144)
+	at java.base/java.util.HashMap.forEach(HashMap.java:1421)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:141)
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:37)
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:35)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:322)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:457)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1506)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1853)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1802)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:954)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352)
+	at com.example.hobbyheavy.HobbyheavyApplication.main(HobbyheavyApplication.java:14)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+Caused by: java.sql.SQLSyntaxErrorException: Can't DROP 'FK24wk6v3floqq4g0xrr3a9eykv'; check that column/key exists
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:770)
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:653)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80)
+	... 44 common frames omitted
+2024-11-27 17:20:58.852  o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "drop table if exists Meetup" via JDBC [Cannot drop table 'meetup' referenced by a foreign key constraint 'FKfrnf633bg40fm8627sjjcfuby' on table 'meetupschedule'.] 
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "drop table if exists Meetup" via JDBC [Cannot drop table 'meetup' referenced by a foreign key constraint 'FKfrnf633bg40fm8627sjjcfuby' on table 'meetupschedule'.]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:94)
+	at org.hibernate.tool.schema.internal.Helper.applySqlString(Helper.java:233)
+	at org.hibernate.tool.schema.internal.Helper.applySqlStrings(Helper.java:217)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.dropTables(SchemaDropperImpl.java:381)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.dropConstraintsTablesSequences(SchemaDropperImpl.java:253)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.dropFromMetadata(SchemaDropperImpl.java:215)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.performDrop(SchemaDropperImpl.java:185)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:155)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:115)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:238)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:144)
+	at java.base/java.util.HashMap.forEach(HashMap.java:1421)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:141)
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:37)
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:35)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:322)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:457)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1506)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1853)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1802)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:954)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352)
+	at com.example.hobbyheavy.HobbyheavyApplication.main(HobbyheavyApplication.java:14)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+Caused by: java.sql.SQLException: Cannot drop table 'meetup' referenced by a foreign key constraint 'FKfrnf633bg40fm8627sjjcfuby' on table 'meetupschedule'.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:130)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:770)
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:653)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80)
+	... 44 common frames omitted
+2024-11-27 17:20:58.992  o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "create table Meetup (deleted bit, max_participants integer, created_at datetime(6), deleted_at datetime(6), hobby_id bigint, host_id bigint not null, meetup_id bigint not null auto_increment, updated_at datetime(6), recurrence_rule varchar(50), location varchar(100), meetup_name varchar(100), description varchar(255), thumbnail varchar(255), primary key (meetup_id)) engine=InnoDB" via JDBC [Table 'meetup' already exists] 
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "create table Meetup (deleted bit, max_participants integer, created_at datetime(6), deleted_at datetime(6), hobby_id bigint, host_id bigint not null, meetup_id bigint not null auto_increment, updated_at datetime(6), recurrence_rule varchar(50), location varchar(100), meetup_name varchar(100), description varchar(255), thumbnail varchar(255), primary key (meetup_id)) engine=InnoDB" via JDBC [Table 'meetup' already exists]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:94)
+	at org.hibernate.tool.schema.internal.Helper.applySqlString(Helper.java:233)
+	at org.hibernate.tool.schema.internal.Helper.applySqlStrings(Helper.java:217)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.createTables(SchemaCreatorImpl.java:428)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.createSequencesTablesConstraints(SchemaCreatorImpl.java:344)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.createFromMetadata(SchemaCreatorImpl.java:239)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.performCreation(SchemaCreatorImpl.java:172)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:142)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:118)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:250)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:144)
+	at java.base/java.util.HashMap.forEach(HashMap.java:1421)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:141)
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:37)
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:35)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:322)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:457)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1506)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1853)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1802)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:954)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352)
+	at com.example.hobbyheavy.HobbyheavyApplication.main(HobbyheavyApplication.java:14)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+Caused by: java.sql.SQLSyntaxErrorException: Table 'meetup' already exists
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:770)
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:653)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80)
+	... 44 common frames omitted
+2024-11-27 17:20:59.773  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2024-11-27 17:21:00.001  o.s.d.j.r.q.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used. 
+2024-11-27 17:21:00.387  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService 
+2024-11-27 17:21:00.709  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729 
+2024-11-27 17:21:00.722  o.a.c.h.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8090"] 
+2024-11-27 17:21:00.734  o.s.b.w.e.t.TomcatWebServer - Tomcat started on port 8090 (http) with context path '/' 
+2024-11-27 17:21:00.742  c.e.h.HobbyheavyApplication - Started HobbyheavyApplication in 4.485 seconds (process running for 4.871) 
+2024-11-27 17:21:07.473  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default' 
+2024-11-27 17:21:07.474  c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated... 
+2024-11-27 17:21:07.478  c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed. 
+2024-11-27 17:21:09.217  o.h.v.i.u.Version - HV000001: Hibernate Validator 8.0.1.Final 
+2024-11-27 17:21:09.240  c.e.h.HobbyheavyApplication - Starting HobbyheavyApplication using Java 17.0.12 with PID 26324 (D:\workspace\hobbyheavy\build\classes\java\main started by user in D:\workspace\hobbyheavy) 
+2024-11-27 17:21:09.240  c.e.h.HobbyheavyApplication - The following 1 profile is active: "secret" 
+2024-11-27 17:21:09.267  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable 
+2024-11-27 17:21:09.268  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG' 
+2024-11-27 17:21:09.765  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2024-11-27 17:21:09.815  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 46 ms. Found 8 JPA repository interfaces. 
+2024-11-27 17:21:10.215  o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port 8090 (http) 
+2024-11-27 17:21:10.221  o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8090"] 
+2024-11-27 17:21:10.223  o.a.c.c.StandardService - Starting service [Tomcat] 
+2024-11-27 17:21:10.223  o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.31] 
+2024-11-27 17:21:10.267  o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext 
+2024-11-27 17:21:10.267  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 999 ms 
+2024-11-27 17:21:10.358  o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default] 
+2024-11-27 17:21:10.387  o.h.Version - HHH000412: Hibernate ORM core version 6.5.3.Final 
+2024-11-27 17:21:10.406  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled 
+2024-11-27 17:21:10.590  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer 
+2024-11-27 17:21:10.607  c.z.h.HikariDataSource - HikariPool-1 - Starting... 
+2024-11-27 17:21:10.694  c.z.h.p.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3a34756 
+2024-11-27 17:21:10.695  c.z.h.HikariDataSource - HikariPool-1 - Start completed. 
+2024-11-27 17:21:10.722  o.h.o.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default) 
+2024-11-27 17:21:11.398  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration) 
+2024-11-27 17:21:11.400  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2024-11-27 17:21:11.625  o.s.d.j.r.q.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used. 
+2024-11-27 17:21:12.016  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService 
+2024-11-27 17:21:12.344  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729 
+2024-11-27 17:21:12.356  o.a.c.h.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8090"] 
+2024-11-27 17:21:12.368  o.s.b.w.e.t.TomcatWebServer - Tomcat started on port 8090 (http) with context path '/' 
+2024-11-27 17:21:12.377  c.e.h.HobbyheavyApplication - Started HobbyheavyApplication in 3.397 seconds (process running for 3.772) 
+2024-11-27 17:22:26.360  o.a.c.c.C.[.[.[/] - Initializing Spring DispatcherServlet 'dispatcherServlet' 
+2024-11-27 17:22:26.361  o.s.w.s.DispatcherServlet - Initializing Servlet 'dispatcherServlet' 
+2024-11-27 17:22:26.361  o.s.w.s.DispatcherServlet - Completed initialization in 0 ms 
+2024-11-27 17:22:26.374  c.e.h.j.JWTFilter - JWTFilter - Request URI: /swagger-ui/index.html 
+2024-11-27 17:22:26.375  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /swagger-ui/index.html 
+2024-11-27 17:22:26.409  c.e.h.j.JWTFilter - JWTFilter - Request URI: /swagger-ui/swagger-ui.css 
+2024-11-27 17:22:26.409  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /swagger-ui/swagger-ui.css 
+2024-11-27 17:22:26.414  c.e.h.j.JWTFilter - JWTFilter - Request URI: /swagger-ui/index.css 
+2024-11-27 17:22:26.414  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /swagger-ui/index.css 
+2024-11-27 17:22:26.414  c.e.h.j.JWTFilter - JWTFilter - Request URI: /swagger-ui/swagger-ui-standalone-preset.js 
+2024-11-27 17:22:26.414  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /swagger-ui/swagger-ui-standalone-preset.js 
+2024-11-27 17:22:26.414  c.e.h.j.JWTFilter - JWTFilter - Request URI: /swagger-ui/swagger-ui-bundle.js 
+2024-11-27 17:22:26.414  c.e.h.j.JWTFilter - JWTFilter - Request URI: /swagger-ui/swagger-initializer.js 
+2024-11-27 17:22:26.414  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /swagger-ui/swagger-ui-bundle.js 
+2024-11-27 17:22:26.414  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /swagger-ui/swagger-initializer.js 
+2024-11-27 17:22:26.545  c.e.h.j.JWTFilter - JWTFilter - Request URI: /v3/api-docs/swagger-config 
+2024-11-27 17:22:26.545  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /v3/api-docs/swagger-config 
+2024-11-27 17:22:26.575  c.e.h.j.JWTFilter - JWTFilter - Request URI: /v3/api-docs 
+2024-11-27 17:22:26.575  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /v3/api-docs 
+2024-11-27 17:22:26.850  o.s.a.AbstractOpenApiResource - Init duration for springdoc-openapi is: 267 ms 
+2024-11-27 17:27:56.325  c.e.h.c.UserController - 회원가입 요청: com.example.hobbyheavy.dto.request.UserJoinRequest@3663dd78 
+2024-11-27 17:27:56.472  c.e.h.s.UserService - 새 사용자 가입 완료. 사용자 ID: test 
+2024-11-27 17:27:56.472  c.e.h.c.UserController - 회원가입 처리 완료: test 
+2024-11-27 17:29:22.071  c.e.h.j.JWTFilter - JWTFilter - Request URI: /user/my-info 
+2024-11-27 17:29:22.071  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /user/my-info 
+2024-11-27 17:48:46.790  c.e.h.j.JWTFilter - JWTFilter - Request URI: / 
+2024-11-27 17:48:46.791  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: / 
+2024-11-27 17:48:46.794  c.e.h.e.GlobalExceptionHandler - 예기치 못한 예외 발생: No static resource . 
+2024-11-27 17:48:46.795  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource .] 
+2024-11-27 17:49:05.490  c.e.h.j.JWTFilter - JWTFilter - Request URI: /favicon.ico 
+2024-11-27 17:49:05.491  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /favicon.ico 
+2024-11-27 17:49:09.502  c.e.h.j.JWTFilter - JWTFilter - Request URI: / 
+2024-11-27 17:49:09.502  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: / 
+2024-11-27 17:49:09.503  c.e.h.e.GlobalExceptionHandler - 예기치 못한 예외 발생: No static resource . 
+2024-11-27 17:49:09.505  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource .] 
+2024-11-27 17:49:25.765  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 7 class path changes (0 additions, 7 deletions, 0 modifications) 
+2024-11-27 17:49:25.768  o.a.c.h.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8090"] 
+2024-11-27 17:49:25.837  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default' 
+2024-11-27 17:49:25.839  c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated... 
+2024-11-27 17:49:25.843  c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed. 
+2024-11-27 17:49:25.900  c.e.h.HobbyheavyApplication - Starting HobbyheavyApplication using Java 17.0.12 with PID 26324 (D:\workspace\hobbyheavy\build\classes\java\main started by user in D:\workspace\hobbyheavy) 
+2024-11-27 17:49:25.900  c.e.h.HobbyheavyApplication - The following 1 profile is active: "secret" 
+2024-11-27 17:49:26.081  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2024-11-27 17:49:26.100  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 18 ms. Found 8 JPA repository interfaces. 
+2024-11-27 17:49:26.176  o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port 8090 (http) 
+2024-11-27 17:49:26.177  o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8090"] 
+2024-11-27 17:49:26.177  o.a.c.c.StandardService - Starting service [Tomcat] 
+2024-11-27 17:49:26.177  o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.31] 
+2024-11-27 17:49:26.194  o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext 
+2024-11-27 17:49:26.194  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 293 ms 
+2024-11-27 17:49:26.218  o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default] 
+2024-11-27 17:49:26.220  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled 
+2024-11-27 17:49:26.227  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer 
+2024-11-27 17:49:26.227  c.z.h.HikariDataSource - HikariPool-2 - Starting... 
+2024-11-27 17:49:26.231  c.z.h.p.HikariPool - HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@70cc23a3 
+2024-11-27 17:49:26.231  c.z.h.HikariDataSource - HikariPool-2 - Start completed. 
+2024-11-27 17:49:26.231  o.h.o.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default) 
+2024-11-27 17:49:26.325  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration) 
+2024-11-27 17:49:26.326  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2024-11-27 17:49:26.472  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService 
+2024-11-27 17:49:26.580  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729 
+2024-11-27 17:49:26.586  o.a.c.h.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8090"] 
+2024-11-27 17:49:26.588  o.s.b.w.e.t.TomcatWebServer - Tomcat started on port 8090 (http) with context path '/' 
+2024-11-27 17:49:26.592  c.e.h.HobbyheavyApplication - Started HobbyheavyApplication in 0.709 seconds (process running for 1697.986) 
+2024-11-27 17:49:26.593  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged 
+2024-11-27 17:49:28.022  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 7 class path changes (7 additions, 0 deletions, 0 modifications) 
+2024-11-27 17:49:28.025  o.a.c.h.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8090"] 
+2024-11-27 17:49:28.098  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default' 
+2024-11-27 17:49:28.098  c.z.h.HikariDataSource - HikariPool-2 - Shutdown initiated... 
+2024-11-27 17:49:28.100  c.z.h.HikariDataSource - HikariPool-2 - Shutdown completed. 
+2024-11-27 17:49:28.149  c.e.h.HobbyheavyApplication - Starting HobbyheavyApplication using Java 17.0.12 with PID 26324 (D:\workspace\hobbyheavy\build\classes\java\main started by user in D:\workspace\hobbyheavy) 
+2024-11-27 17:49:28.149  c.e.h.HobbyheavyApplication - The following 1 profile is active: "secret" 
+2024-11-27 17:49:28.282  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2024-11-27 17:49:28.300  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 17 ms. Found 8 JPA repository interfaces. 
+2024-11-27 17:49:28.360  o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port 8090 (http) 
+2024-11-27 17:49:28.360  o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8090"] 
+2024-11-27 17:49:28.361  o.a.c.c.StandardService - Starting service [Tomcat] 
+2024-11-27 17:49:28.361  o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.31] 
+2024-11-27 17:49:28.376  o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext 
+2024-11-27 17:49:28.376  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 226 ms 
+2024-11-27 17:49:28.397  o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default] 
+2024-11-27 17:49:28.399  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled 
+2024-11-27 17:49:28.403  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer 
+2024-11-27 17:49:28.403  c.z.h.HikariDataSource - HikariPool-3 - Starting... 
+2024-11-27 17:49:28.406  c.z.h.p.HikariPool - HikariPool-3 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1962a53f 
+2024-11-27 17:49:28.406  c.z.h.HikariDataSource - HikariPool-3 - Start completed. 
+2024-11-27 17:49:28.406  o.h.o.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default) 
+2024-11-27 17:49:28.479  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration) 
+2024-11-27 17:49:28.479  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2024-11-27 17:49:28.601  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService 
+2024-11-27 17:49:28.684  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729 
+2024-11-27 17:49:28.690  o.a.c.h.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8090"] 
+2024-11-27 17:49:28.694  o.s.b.w.e.t.TomcatWebServer - Tomcat started on port 8090 (http) with context path '/' 
+2024-11-27 17:49:28.697  c.e.h.HobbyheavyApplication - Started HobbyheavyApplication in 0.563 seconds (process running for 1700.092) 
+2024-11-27 17:49:28.698  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged 
+2024-11-27 18:08:14.965  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default' 
+2024-11-27 18:08:14.965  c.z.h.HikariDataSource - HikariPool-3 - Shutdown initiated... 
+2024-11-27 18:08:14.966  c.z.h.HikariDataSource - HikariPool-3 - Shutdown completed. 
+2024-11-27 18:19:26.581  o.h.v.i.u.Version - HV000001: Hibernate Validator 8.0.1.Final 
+2024-11-27 18:19:26.604  c.e.h.HobbyheavyApplication - Starting HobbyheavyApplication using Java 17.0.12 with PID 24328 (D:\workspace\hobbyheavy\build\classes\java\main started by user in D:\workspace\hobbyheavy) 
+2024-11-27 18:19:26.605  c.e.h.HobbyheavyApplication - The following 1 profile is active: "secret" 
+2024-11-27 18:19:26.631  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable 
+2024-11-27 18:19:26.631  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG' 
+2024-11-27 18:19:27.142  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2024-11-27 18:19:27.190  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 43 ms. Found 8 JPA repository interfaces. 
+2024-11-27 18:19:27.588  o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port 8090 (http) 
+2024-11-27 18:19:27.595  o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8090"] 
+2024-11-27 18:19:27.597  o.a.c.c.StandardService - Starting service [Tomcat] 
+2024-11-27 18:19:27.597  o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.31] 
+2024-11-27 18:19:27.640  o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext 
+2024-11-27 18:19:27.640  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1009 ms 
+2024-11-27 18:19:27.731  o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default] 
+2024-11-27 18:19:27.759  o.h.Version - HHH000412: Hibernate ORM core version 6.5.3.Final 
+2024-11-27 18:19:27.777  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled 
+2024-11-27 18:19:27.959  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer 
+2024-11-27 18:19:27.978  c.z.h.HikariDataSource - HikariPool-1 - Starting... 
+2024-11-27 18:19:28.066  c.z.h.p.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@339078eb 
+2024-11-27 18:19:28.068  c.z.h.HikariDataSource - HikariPool-1 - Start completed. 
+2024-11-27 18:19:28.096  o.h.o.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default) 
+2024-11-27 18:19:28.771  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration) 
+2024-11-27 18:19:28.773  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2024-11-27 18:19:29.001  o.s.d.j.r.q.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used. 
+2024-11-27 18:19:29.402  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService 
+2024-11-27 18:19:29.740  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729 
+2024-11-27 18:19:29.753  o.a.c.h.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8090"] 
+2024-11-27 18:19:29.766  o.s.b.w.e.t.TomcatWebServer - Tomcat started on port 8090 (http) with context path '/' 
+2024-11-27 18:19:29.774  c.e.h.HobbyheavyApplication - Started HobbyheavyApplication in 3.435 seconds (process running for 3.815) 
+2024-11-27 18:20:24.293  o.a.c.c.C.[.[.[/] - Initializing Spring DispatcherServlet 'dispatcherServlet' 
+2024-11-27 18:20:24.293  o.s.w.s.DispatcherServlet - Initializing Servlet 'dispatcherServlet' 
+2024-11-27 18:20:24.294  o.s.w.s.DispatcherServlet - Completed initialization in 1 ms 
+2024-11-27 18:20:24.309  c.e.h.j.JWTFilter - JWTFilter - Request URI: /swagger-ui/index.html 
+2024-11-27 18:20:24.309  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /swagger-ui/index.html 
+2024-11-27 18:20:24.339  c.e.h.j.JWTFilter - JWTFilter - Request URI: /swagger-ui/swagger-ui.css 
+2024-11-27 18:20:24.340  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /swagger-ui/swagger-ui.css 
+2024-11-27 18:20:24.340  c.e.h.j.JWTFilter - JWTFilter - Request URI: /swagger-ui/swagger-ui-standalone-preset.js 
+2024-11-27 18:20:24.340  c.e.h.j.JWTFilter - JWTFilter - Request URI: /swagger-ui/swagger-ui-bundle.js 
+2024-11-27 18:20:24.340  c.e.h.j.JWTFilter - JWTFilter - Request URI: /swagger-ui/swagger-initializer.js 
+2024-11-27 18:20:24.340  c.e.h.j.JWTFilter - JWTFilter - Request URI: /swagger-ui/index.css 
+2024-11-27 18:20:24.340  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /swagger-ui/swagger-ui-standalone-preset.js 
+2024-11-27 18:20:24.340  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /swagger-ui/swagger-ui-bundle.js 
+2024-11-27 18:20:24.340  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /swagger-ui/index.css 
+2024-11-27 18:20:24.340  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /swagger-ui/swagger-initializer.js 
+2024-11-27 18:20:24.456  c.e.h.j.JWTFilter - JWTFilter - Request URI: /v3/api-docs/swagger-config 
+2024-11-27 18:20:24.456  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /v3/api-docs/swagger-config 
+2024-11-27 18:20:24.472  c.e.h.j.JWTFilter - JWTFilter - Request URI: /swagger-ui/favicon-32x32.png 
+2024-11-27 18:20:24.472  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /swagger-ui/favicon-32x32.png 
+2024-11-27 18:20:24.481  c.e.h.j.JWTFilter - JWTFilter - Request URI: /v3/api-docs 
+2024-11-27 18:20:24.481  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /v3/api-docs 
+2024-11-27 18:20:24.482  c.e.h.j.JWTFilter - JWTFilter - Request URI: /swagger-ui/favicon-32x32.png 
+2024-11-27 18:20:24.482  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /swagger-ui/favicon-32x32.png 
+2024-11-27 18:20:24.745  o.s.a.AbstractOpenApiResource - Init duration for springdoc-openapi is: 253 ms 
+2024-11-27 18:21:06.918  c.e.h.j.JWTFilter - JWTFilter - Request URI: /user/my-info 
+2024-11-27 18:21:06.918  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /user/my-info 
+2024-11-27 18:22:26.998  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default' 
+2024-11-27 18:22:27.000  c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated... 
+2024-11-27 18:22:27.004  c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed. 
+2024-11-27 18:22:29.443  o.h.v.i.u.Version - HV000001: Hibernate Validator 8.0.1.Final 
+2024-11-27 18:22:29.466  c.e.h.HobbyheavyApplication - Starting HobbyheavyApplication using Java 17.0.12 with PID 12328 (D:\workspace\hobbyheavy\build\classes\java\main started by user in D:\workspace\hobbyheavy) 
+2024-11-27 18:22:29.466  c.e.h.HobbyheavyApplication - The following 1 profile is active: "secret" 
+2024-11-27 18:22:29.493  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable 
+2024-11-27 18:22:29.493  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG' 
+2024-11-27 18:22:29.982  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2024-11-27 18:22:30.027  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 41 ms. Found 8 JPA repository interfaces. 
+2024-11-27 18:22:30.413  o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port 8090 (http) 
+2024-11-27 18:22:30.419  o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8090"] 
+2024-11-27 18:22:30.421  o.a.c.c.StandardService - Starting service [Tomcat] 
+2024-11-27 18:22:30.421  o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.31] 
+2024-11-27 18:22:30.462  o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext 
+2024-11-27 18:22:30.462  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 969 ms 
+2024-11-27 18:22:30.552  o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default] 
+2024-11-27 18:22:30.580  o.h.Version - HHH000412: Hibernate ORM core version 6.5.3.Final 
+2024-11-27 18:22:30.599  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled 
+2024-11-27 18:22:30.775  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer 
+2024-11-27 18:22:30.796  c.z.h.HikariDataSource - HikariPool-1 - Starting... 
+2024-11-27 18:22:30.883  c.z.h.p.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3014817e 
+2024-11-27 18:22:30.884  c.z.h.HikariDataSource - HikariPool-1 - Start completed. 
+2024-11-27 18:22:30.911  o.h.o.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default) 
+2024-11-27 18:22:31.573  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration) 
+2024-11-27 18:22:31.575  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2024-11-27 18:22:31.805  o.s.d.j.r.q.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used. 
+2024-11-27 18:22:32.189  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService 
+2024-11-27 18:22:32.518  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729 
+2024-11-27 18:22:32.531  o.a.c.h.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8090"] 
+2024-11-27 18:22:32.543  o.s.b.w.e.t.TomcatWebServer - Tomcat started on port 8090 (http) with context path '/' 
+2024-11-27 18:22:32.551  c.e.h.HobbyheavyApplication - Started HobbyheavyApplication in 3.343 seconds (process running for 3.707) 
+2024-11-27 18:22:43.284  o.a.c.c.C.[.[.[/] - Initializing Spring DispatcherServlet 'dispatcherServlet' 
+2024-11-27 18:22:43.284  o.s.w.s.DispatcherServlet - Initializing Servlet 'dispatcherServlet' 
+2024-11-27 18:22:43.285  o.s.w.s.DispatcherServlet - Completed initialization in 0 ms 
+2024-11-27 18:22:43.297  c.e.h.j.JWTFilter - JWTFilter - Request URI: /swagger-ui/index.html 
+2024-11-27 18:22:43.297  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /swagger-ui/index.html 
+2024-11-27 18:22:43.326  c.e.h.j.JWTFilter - JWTFilter - Request URI: /swagger-ui/swagger-ui.css 
+2024-11-27 18:22:43.326  c.e.h.j.JWTFilter - JWTFilter - Request URI: /swagger-ui/swagger-ui-standalone-preset.js 
+2024-11-27 18:22:43.326  c.e.h.j.JWTFilter - JWTFilter - Request URI: /swagger-ui/index.css 
+2024-11-27 18:22:43.326  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /swagger-ui/swagger-ui-standalone-preset.js 
+2024-11-27 18:22:43.326  c.e.h.j.JWTFilter - JWTFilter - Request URI: /swagger-ui/swagger-ui-bundle.js 
+2024-11-27 18:22:43.326  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /swagger-ui/index.css 
+2024-11-27 18:22:43.326  c.e.h.j.JWTFilter - JWTFilter - Request URI: /swagger-ui/swagger-initializer.js 
+2024-11-27 18:22:43.326  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /swagger-ui/swagger-ui.css 
+2024-11-27 18:22:43.326  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /swagger-ui/swagger-initializer.js 
+2024-11-27 18:22:43.326  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /swagger-ui/swagger-ui-bundle.js 
+2024-11-27 18:22:43.394  c.e.h.j.JWTFilter - JWTFilter - Request URI: /v3/api-docs/swagger-config 
+2024-11-27 18:22:43.394  c.e.h.j.JWTFilter - JWTFilter - Request URI: /swagger-ui/favicon-32x32.png 
+2024-11-27 18:22:43.395  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /v3/api-docs/swagger-config 
+2024-11-27 18:22:43.395  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /swagger-ui/favicon-32x32.png 
+2024-11-27 18:22:43.421  c.e.h.j.JWTFilter - JWTFilter - Request URI: /v3/api-docs 
+2024-11-27 18:22:43.421  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /v3/api-docs 
+2024-11-27 18:22:43.696  o.s.a.AbstractOpenApiResource - Init duration for springdoc-openapi is: 266 ms 
+2024-11-27 18:23:00.218  c.e.h.j.JWTFilter - JWTFilter - Request URI: /user/my-info 
+2024-11-27 18:23:00.254  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 18:23:00.254  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 18:23:00.285  c.e.h.s.UserService - 사용자 조회 성공. 사용자 ID: test 
+2024-11-27 18:23:31.491  c.e.h.j.JWTFilter - JWTFilter - Request URI: /user/password 
+2024-11-27 18:23:31.493  c.e.h.j.JWTFilter - JWTFilter - UserId: test, Role: ROLE_USER 
+2024-11-27 18:23:31.493  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: test, Role: ROLE_USER 
+2024-11-27 18:23:31.738  c.e.h.s.UserService - 사용자 ID: test의 비밀번호가 성공적으로 변경되었습니다. 
+2024-11-27 18:59:18.059  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default' 
+2024-11-27 18:59:18.061  c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated... 
+2024-11-27 18:59:18.062  c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed. 
