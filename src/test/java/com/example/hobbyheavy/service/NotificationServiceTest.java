@@ -2,15 +2,14 @@ package com.example.hobbyheavy.service;
 
 import com.example.hobbyheavy.dto.response.NotificationResponse;
 import com.example.hobbyheavy.entity.Meetup;
-import com.example.hobbyheavy.entity.MeetupSchedule;
-import com.example.hobbyheavy.entity.Notification;
+import com.example.hobbyheavy.entity.Schedule;
 import com.example.hobbyheavy.entity.Participant;
 import com.example.hobbyheavy.entity.User;
 import com.example.hobbyheavy.exception.CustomException;
 import com.example.hobbyheavy.repository.NotificationRepository;
 import com.example.hobbyheavy.repository.ParticipantRepository;
+import com.example.hobbyheavy.type.Notification;
 import com.example.hobbyheavy.type.NotificationMessage;
-import com.example.hobbyheavy.type.NotificationType;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -42,7 +41,7 @@ public class NotificationServiceTest {
     @MockBean
     private NotificationRepository notificationRepository;
 
-    private MeetupSchedule meetupSchedule;
+    private Schedule schedule;
     private User user;
     private Participant participant;
 
@@ -59,7 +58,7 @@ public class NotificationServiceTest {
                 .meetupName("Test Meetup")
                 .build();
 
-        meetupSchedule = MeetupSchedule.builder()
+        schedule = Schedule.builder()
                 .scheduleId(1L)
                 .meetup(meetup)
                 .build();
@@ -78,14 +77,14 @@ public class NotificationServiceTest {
                 .thenReturn(Collections.singletonList(participant));
 
         // 알림 저장 mock 설정
-        when(notificationRepository.save(any(Notification.class))).thenReturn(Notification.builder().build());
+        when(notificationRepository.save(any(com.example.hobbyheavy.entity.Notification.class))).thenReturn(com.example.hobbyheavy.entity.Notification.builder().build());
 
         // 알림 발송 메서드 호출
-        notificationService.notifyParticipants(meetupSchedule, NotificationMessage.SCHEDULE_CREATION);
+        notificationService.notifyParticipants(schedule, NotificationMessage.SCHEDULE_CREATION);
 
         // 알림 발송 및 저장이 각각 한 번씩 호출되었는지 확인
         verify(notificationSender, times(1)).send(anyString(), anyString());
-        verify(notificationRepository, times(1)).save(any(Notification.class));
+        verify(notificationRepository, times(1)).save(any(com.example.hobbyheavy.entity.Notification.class));
     }
 
     @Test
@@ -95,7 +94,7 @@ public class NotificationServiceTest {
                 .thenReturn(Collections.emptyList());
 
         // 참여자가 없을 때 예외 발생 확인
-        assertThatThrownBy(() -> notificationService.notifyParticipants(meetupSchedule, NotificationMessage.SCHEDULE_CREATION))
+        assertThatThrownBy(() -> notificationService.notifyParticipants(schedule, NotificationMessage.SCHEDULE_CREATION))
                 .isInstanceOf(CustomException.class)
                 .hasMessageContaining("참여자가 없습니다.");
     }
@@ -126,7 +125,7 @@ public class NotificationServiceTest {
     @Test
     public void testMarkAsRead() {
         // Mock 설정: 알림 객체 반환
-        Notification notification = Notification.builder()
+        com.example.hobbyheavy.entity.Notification notification = com.example.hobbyheavy.entity.Notification.builder()
                 .notificationId(1L)
                 .user(user)
                 .isRead(false)
@@ -145,7 +144,7 @@ public class NotificationServiceTest {
     @Test
     public void testMarkAsRead_AlreadyRead() {
         // Mock 설정: 이미 읽은 알림 객체 반환
-        Notification notification = Notification.builder()
+        com.example.hobbyheavy.entity.Notification notification = com.example.hobbyheavy.entity.Notification.builder()
                 .notificationId(1L)
                 .user(user)
                 .isRead(true)
@@ -164,19 +163,19 @@ public class NotificationServiceTest {
     @Test
     public void testGetUserNotifications() {
         // Mock 설정: 알림 목록 반환
-        Notification notification1 = Notification.builder()
+        com.example.hobbyheavy.entity.Notification notification1 = com.example.hobbyheavy.entity.Notification.builder()
                 .notificationId(1L)
                 .user(user)
                 .message("Test Message 1")
-                .type(NotificationType.SCHEDULE_CREATION)
+                .type(Notification.SCHEDULE_CREATION)
                 .isRead(false)
                 .build();
 
-        Notification notification2 = Notification.builder()
+        com.example.hobbyheavy.entity.Notification notification2 = com.example.hobbyheavy.entity.Notification.builder()
                 .notificationId(2L)
                 .user(user)
                 .message("Test Message 2")
-                .type(NotificationType.SCHEDULE_CONFIRMATION)
+                .type(Notification.SCHEDULE_CONFIRMATION)
                 .isRead(true)
                 .build();
 

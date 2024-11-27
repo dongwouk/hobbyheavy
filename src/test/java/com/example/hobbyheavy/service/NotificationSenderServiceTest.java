@@ -14,13 +14,13 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
-public class EmailNotificationSenderTest {
+public class NotificationSenderServiceTest {
 
     @Mock
     private JavaMailSender javaMailSender;
 
     @InjectMocks
-    private EmailNotificationSender emailNotificationSender;
+    private NotificationSenderService notificationSenderService;
 
     @BeforeEach
     public void setUp() {
@@ -37,7 +37,7 @@ public class EmailNotificationSenderTest {
         doNothing().when(javaMailSender).send(any(SimpleMailMessage.class));
 
         // then
-        emailNotificationSender.send(recipient, message);
+        notificationSenderService.send(recipient, message);
 
         // verify
         verify(javaMailSender, times(1)).send(any(SimpleMailMessage.class));
@@ -54,7 +54,7 @@ public class EmailNotificationSenderTest {
         doNothing().when(javaMailSender).send(any(SimpleMailMessage.class));
 
         // then
-        emailNotificationSender.sendWithSubject(recipient, subject, message);
+        notificationSenderService.sendWithSubject(recipient, subject, message);
 
         // verify
         verify(javaMailSender, times(1)).send(any(SimpleMailMessage.class));
@@ -70,7 +70,7 @@ public class EmailNotificationSenderTest {
         doThrow(new RuntimeException("Email sending failed")).when(javaMailSender).send(any(SimpleMailMessage.class));
 
         // then
-        assertThatThrownBy(() -> emailNotificationSender.send(recipient, message))
+        assertThatThrownBy(() -> notificationSenderService.send(recipient, message))
                 .isInstanceOf(CustomException.class)
                 .hasFieldOrPropertyWithValue("exceptionCode", ExceptionCode.EMAIL_SEND_FAILED);
 

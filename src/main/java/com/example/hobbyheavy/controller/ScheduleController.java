@@ -1,18 +1,16 @@
 package com.example.hobbyheavy.controller;
 
 import com.example.hobbyheavy.dto.request.ScheduleRequest;
-import com.example.hobbyheavy.dto.request.CancelScheduleRequest;
+import com.example.hobbyheavy.dto.request.ScheduleCancelRequest;
 import com.example.hobbyheavy.dto.response.ScheduleResponse;
-import com.example.hobbyheavy.service.DynamicScheduleService;
-import com.example.hobbyheavy.service.FinalizationService;
+import com.example.hobbyheavy.service.ScheduleConfirmService;
 import com.example.hobbyheavy.service.ScheduleService;
-import com.example.hobbyheavy.service.VoteService;
+import com.example.hobbyheavy.service.ScheduleVoteService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,8 +23,8 @@ import java.util.List;
 public class ScheduleController {
 
     private final ScheduleService scheduleService;
-    private final VoteService voteService;
-    private final FinalizationService finalizationService;
+    private final ScheduleVoteService scheduleVoteService;
+    private final ScheduleConfirmService scheduleConfirmService;
 
     @PostMapping
     public ResponseEntity<ScheduleResponse> createSchedule(@Valid @RequestBody ScheduleRequest scheduleRequest, Authentication authentication) {
@@ -84,7 +82,7 @@ public class ScheduleController {
     public ResponseEntity<Void> voteOnSchedule(@PathVariable Long scheduleId, Authentication authentication) {
         String userId = authentication.getName();
         log.info("User {} is attempting to vote on schedule with ID: {}", userId, scheduleId);
-        voteService.voteOnSchedule(scheduleId, userId);
+        scheduleVoteService.voteOnSchedule(scheduleId, userId);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
@@ -92,7 +90,7 @@ public class ScheduleController {
     public ResponseEntity<Void> unvoteOnSchedule(@PathVariable Long scheduleId, Authentication authentication) {
         String userId = authentication.getName();
         log.info("User {} is attempting to unvote on schedule with ID: {}", userId, scheduleId);
-        voteService.removeVoteOnSchedule(scheduleId, userId);
+        scheduleVoteService.removeVoteOnSchedule(scheduleId, userId);
         return ResponseEntity.ok().build();
     }
 
@@ -100,12 +98,12 @@ public class ScheduleController {
     public ResponseEntity<String> confirmSchedule(@PathVariable Long scheduleId, Authentication authentication) {
         String userId = authentication.getName();
         log.info("User {} is attempting to confirm schedule with ID: {}", userId, scheduleId);
-        finalizationService.finalizeSchedule(scheduleId, userId);
+        scheduleConfirmService.finalizeSchedule(scheduleId, userId);
         return ResponseEntity.ok("스케줄이 확정되었습니다.");
     }
 
     @PostMapping("/{scheduleId}/cancel")
-    public ResponseEntity<String> cancelSchedule(@PathVariable Long scheduleId, @RequestBody @Valid CancelScheduleRequest cancelRequest, Authentication authentication) {
+    public ResponseEntity<String> cancelSchedule(@PathVariable Long scheduleId, @RequestBody @Valid ScheduleCancelRequest cancelRequest, Authentication authentication) {
         String userId = authentication.getName();
         String reason = cancelRequest.getReason();
         log.info("User {} is attempting to cancel schedule with ID: {} for reason: {}", userId, scheduleId, reason);

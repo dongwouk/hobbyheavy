@@ -185,7 +185,7 @@
 2024-11-27 00:38:12.621  c.e.h.s.NotificationService - [알림 전송] 성공 - 참여자: 1234, 메시지: 새로운 스케줄이 생성되었습니다. 스케줄 ID: 3 
 2024-11-27 00:38:12.625  c.e.h.s.NotificationService - [내부 알림 저장] 알림이 저장되었습니다. 사용자 ID: 1234, 알림 유형: SCHEDULE_CREATION, 메시지: 새로운 스케줄이 생성되었습니다. 스케줄 ID: 3 
 2024-11-27 00:38:12.625  c.e.h.s.ScheduleService - 스케줄 생성 알림이 발송되었습니다. 스케줄 ID: 3 
-2024-11-27 00:39:28.577  c.e.h.c.UserController - 회원가입 요청: com.example.hobbyheavy.dto.request.JoinRequest@65feb626 
+2024-11-27 00:39:28.577  c.e.h.c.UserController - 회원가입 요청: com.example.hobbyheavy.dto.request.UserJoinRequest@65feb626
 2024-11-27 00:39:28.664  c.e.h.c.UserController - 회원가입 처리 완료: 2222 
 2024-11-27 00:39:47.991  c.e.h.j.JWTFilter - JWTFilter - Request URI: /schedules 
 2024-11-27 00:39:47.992  c.e.h.j.JWTFilter - JWTFilter - UserId: 2222, Role: ROLE_USER 
@@ -1321,7 +1321,7 @@ Caused by: org.hibernate.query.SemanticException: Cannot compare left expression
 2024-11-27 01:35:07.363  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: 1234, Role: ROLE_USER 
 2024-11-27 01:35:07.364  c.e.h.c.ScheduleController - User 1234 is attempting to fetch all schedules 
 2024-11-27 01:35:07.379  c.e.h.s.ScheduleService - User 1234가 속한 모든 스케줄 조회. 총 5개의 스케줄이 있습니다. 
-2024-11-27 01:36:08.059  c.e.h.c.UserController - 회원가입 요청: com.example.hobbyheavy.dto.request.JoinRequest@cd76ecf 
+2024-11-27 01:36:08.059  c.e.h.c.UserController - 회원가입 요청: com.example.hobbyheavy.dto.request.UserJoinRequest@cd76ecf
 2024-11-27 01:36:08.141  c.e.h.c.UserController - 회원가입 처리 완료: 3333 
 2024-11-27 01:36:33.711  c.e.h.j.JWTFilter - JWTFilter - Request URI: /meetup/create 
 2024-11-27 01:36:33.712  c.e.h.j.JWTFilter - JWTFilter - UserId: 3333, Role: ROLE_USER 
@@ -1354,9 +1354,9 @@ Caused by: org.hibernate.query.SemanticException: Cannot compare left expression
 2024-11-27 01:38:08.669  c.e.h.s.EmailNotificationSender - [이메일 전송 성공] 수신자: 1111@naver.com, 제목: 알림 메일 
 2024-11-27 01:38:08.669  c.e.h.s.NotificationService - [알림 전송] 성공 - 참여자: 1111, 메시지: 스케줄이 확정되었습니다. 스케줄 ID: 3 
 2024-11-27 01:38:08.671  o.s.s.s.TaskUtils$LoggingErrorHandler - Unexpected error occurred in scheduled task 
-java.lang.IllegalArgumentException: No enum constant com.example.hobbyheavy.type.NotificationType.CONFIRMATION
+java.lang.IllegalArgumentException: No enum constant com.example.hobbyheavy.type.Notification.CONFIRMATION
 	at java.base/java.lang.Enum.valueOf(Enum.java:273)
-	at com.example.hobbyheavy.type.NotificationType.valueOf(NotificationType.java:5)
+	at com.example.hobbyheavy.type.Notification.valueOf(NotificationType.java:5)
 	at com.example.hobbyheavy.service.NotificationService.notifyParticipants(NotificationService.java:51)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
@@ -1365,8 +1365,8 @@ java.lang.IllegalArgumentException: No enum constant com.example.hobbyheavy.type
 	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:355)
 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:716)
 	at com.example.hobbyheavy.service.NotificationService$$SpringCGLIB$$0.notifyParticipants(<generated>)
-	at com.example.hobbyheavy.service.FinalizationService.confirmSchedule(FinalizationService.java:95)
-	at com.example.hobbyheavy.service.FinalizationService.finalizeSchedule(FinalizationService.java:45)
+	at com.example.hobbyheavy.service.ScheduleConfirmService.confirmSchedule(FinalizationService.java:95)
+	at com.example.hobbyheavy.service.ScheduleConfirmService.finalizeSchedule(FinalizationService.java:45)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -1380,8 +1380,8 @@ java.lang.IllegalArgumentException: No enum constant com.example.hobbyheavy.type
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
 	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:768)
 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:720)
-	at com.example.hobbyheavy.service.FinalizationService$$SpringCGLIB$$0.finalizeSchedule(<generated>)
-	at com.example.hobbyheavy.service.DynamicScheduleService.lambda$scheduleFinalization$0(DynamicScheduleService.java:44)
+	at com.example.hobbyheavy.service.ScheduleConfirmService$$SpringCGLIB$$0.finalizeSchedule(<generated>)
+	at com.example.hobbyheavy.service.ScheduleDynamicService.lambda$scheduleFinalization$0(DynamicScheduleService.java:44)
 	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54)
 	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
 	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
@@ -1409,9 +1409,9 @@ java.lang.IllegalArgumentException: No enum constant com.example.hobbyheavy.type
 2024-11-27 01:39:51.115  c.e.h.s.EmailNotificationSender - [이메일 전송 성공] 수신자: 1111@naver.com, 제목: 알림 메일 
 2024-11-27 01:39:51.115  c.e.h.s.NotificationService - [알림 전송] 성공 - 참여자: 1111, 메시지: 스케줄이 확정되었습니다. 스케줄 ID: 4 
 2024-11-27 01:39:51.115  o.s.s.s.TaskUtils$LoggingErrorHandler - Unexpected error occurred in scheduled task 
-java.lang.IllegalArgumentException: No enum constant com.example.hobbyheavy.type.NotificationType.CONFIRMATION
+java.lang.IllegalArgumentException: No enum constant com.example.hobbyheavy.type.Notification.CONFIRMATION
 	at java.base/java.lang.Enum.valueOf(Enum.java:273)
-	at com.example.hobbyheavy.type.NotificationType.valueOf(NotificationType.java:5)
+	at com.example.hobbyheavy.type.Notification.valueOf(NotificationType.java:5)
 	at com.example.hobbyheavy.service.NotificationService.notifyParticipants(NotificationService.java:51)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
@@ -1420,8 +1420,8 @@ java.lang.IllegalArgumentException: No enum constant com.example.hobbyheavy.type
 	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:355)
 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:716)
 	at com.example.hobbyheavy.service.NotificationService$$SpringCGLIB$$0.notifyParticipants(<generated>)
-	at com.example.hobbyheavy.service.FinalizationService.confirmSchedule(FinalizationService.java:95)
-	at com.example.hobbyheavy.service.FinalizationService.finalizeSchedule(FinalizationService.java:45)
+	at com.example.hobbyheavy.service.ScheduleConfirmService.confirmSchedule(FinalizationService.java:95)
+	at com.example.hobbyheavy.service.ScheduleConfirmService.finalizeSchedule(FinalizationService.java:45)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -1435,8 +1435,8 @@ java.lang.IllegalArgumentException: No enum constant com.example.hobbyheavy.type
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
 	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:768)
 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:720)
-	at com.example.hobbyheavy.service.FinalizationService$$SpringCGLIB$$0.finalizeSchedule(<generated>)
-	at com.example.hobbyheavy.service.DynamicScheduleService.lambda$scheduleFinalization$0(DynamicScheduleService.java:44)
+	at com.example.hobbyheavy.service.ScheduleConfirmService$$SpringCGLIB$$0.finalizeSchedule(<generated>)
+	at com.example.hobbyheavy.service.ScheduleDynamicService.lambda$scheduleFinalization$0(DynamicScheduleService.java:44)
 	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54)
 	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
 	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
@@ -1447,9 +1447,9 @@ java.lang.IllegalArgumentException: No enum constant com.example.hobbyheavy.type
 2024-11-27 01:43:57.037  c.e.h.s.EmailNotificationSender - [이메일 전송 성공] 수신자: 1111@naver.com, 제목: 알림 메일 
 2024-11-27 01:43:57.037  c.e.h.s.NotificationService - [알림 전송] 성공 - 참여자: 1111, 메시지: 스케줄이 확정되었습니다. 스케줄 ID: 5 
 2024-11-27 01:43:57.038  o.s.s.s.TaskUtils$LoggingErrorHandler - Unexpected error occurred in scheduled task 
-java.lang.IllegalArgumentException: No enum constant com.example.hobbyheavy.type.NotificationType.CONFIRMATION
+java.lang.IllegalArgumentException: No enum constant com.example.hobbyheavy.type.Notification.CONFIRMATION
 	at java.base/java.lang.Enum.valueOf(Enum.java:273)
-	at com.example.hobbyheavy.type.NotificationType.valueOf(NotificationType.java:5)
+	at com.example.hobbyheavy.type.Notification.valueOf(NotificationType.java:5)
 	at com.example.hobbyheavy.service.NotificationService.notifyParticipants(NotificationService.java:51)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
@@ -1458,8 +1458,8 @@ java.lang.IllegalArgumentException: No enum constant com.example.hobbyheavy.type
 	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:355)
 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:716)
 	at com.example.hobbyheavy.service.NotificationService$$SpringCGLIB$$0.notifyParticipants(<generated>)
-	at com.example.hobbyheavy.service.FinalizationService.confirmSchedule(FinalizationService.java:95)
-	at com.example.hobbyheavy.service.FinalizationService.finalizeSchedule(FinalizationService.java:45)
+	at com.example.hobbyheavy.service.ScheduleConfirmService.confirmSchedule(FinalizationService.java:95)
+	at com.example.hobbyheavy.service.ScheduleConfirmService.finalizeSchedule(FinalizationService.java:45)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -1473,8 +1473,8 @@ java.lang.IllegalArgumentException: No enum constant com.example.hobbyheavy.type
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
 	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:768)
 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:720)
-	at com.example.hobbyheavy.service.FinalizationService$$SpringCGLIB$$0.finalizeSchedule(<generated>)
-	at com.example.hobbyheavy.service.DynamicScheduleService.lambda$scheduleFinalization$0(DynamicScheduleService.java:44)
+	at com.example.hobbyheavy.service.ScheduleConfirmService$$SpringCGLIB$$0.finalizeSchedule(<generated>)
+	at com.example.hobbyheavy.service.ScheduleDynamicService.lambda$scheduleFinalization$0(DynamicScheduleService.java:44)
 	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54)
 	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
 	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
@@ -2643,11 +2643,11 @@ Caused by: org.springframework.data.mapping.PropertyReferenceException: No prope
 2024-11-27 01:56:02.128  o.a.c.c.C.[.[.[/] - Initializing Spring DispatcherServlet 'dispatcherServlet' 
 2024-11-27 01:56:02.128  o.s.w.s.DispatcherServlet - Initializing Servlet 'dispatcherServlet' 
 2024-11-27 01:56:02.129  o.s.w.s.DispatcherServlet - Completed initialization in 1 ms 
-2024-11-27 01:56:02.222  c.e.h.c.UserController - 회원가입 요청: com.example.hobbyheavy.dto.request.JoinRequest@4b8f732c 
+2024-11-27 01:56:02.222  c.e.h.c.UserController - 회원가입 요청: com.example.hobbyheavy.dto.request.UserJoinRequest@4b8f732c
 2024-11-27 01:56:02.243  c.e.h.c.UserController - 회원가입 중 오류 발생: 요청한 취미 이름이 없습니다. 
-2024-11-27 01:56:07.637  c.e.h.c.UserController - 회원가입 요청: com.example.hobbyheavy.dto.request.JoinRequest@5e2811d2 
+2024-11-27 01:56:07.637  c.e.h.c.UserController - 회원가입 요청: com.example.hobbyheavy.dto.request.UserJoinRequest@5e2811d2
 2024-11-27 01:56:07.641  c.e.h.c.UserController - 회원가입 중 오류 발생: 요청한 취미 이름이 없습니다. 
-2024-11-27 01:56:12.547  c.e.h.c.UserController - 회원가입 요청: com.example.hobbyheavy.dto.request.JoinRequest@9b9f1a8 
+2024-11-27 01:56:12.547  c.e.h.c.UserController - 회원가입 요청: com.example.hobbyheavy.dto.request.UserJoinRequest@9b9f1a8
 2024-11-27 01:56:12.551  c.e.h.c.UserController - 회원가입 중 오류 발생: 요청한 취미 이름이 없습니다. 
 2024-11-27 01:56:16.811  c.e.h.j.LoginFilter - An internal error occurred while trying to authenticate the user. 
 org.springframework.security.authentication.InternalAuthenticationServiceException: 사용자를 찾을수 없습니다.
@@ -2819,11 +2819,11 @@ Caused by: com.example.hobbyheavy.exception.CustomException: 사용자를 찾을
 	at com.example.hobbyheavy.service.CustomUserDetailsService.loadUserByUsername(CustomUserDetailsService.java:24)
 	at org.springframework.security.authentication.dao.DaoAuthenticationProvider.retrieveUser(DaoAuthenticationProvider.java:107)
 	... 76 common frames omitted
-2024-11-27 01:56:57.494  c.e.h.c.UserController - 회원가입 요청: com.example.hobbyheavy.dto.request.JoinRequest@1a62c6cf 
+2024-11-27 01:56:57.494  c.e.h.c.UserController - 회원가입 요청: com.example.hobbyheavy.dto.request.UserJoinRequest@1a62c6cf
 2024-11-27 01:56:57.657  c.e.h.c.UserController - 회원가입 처리 완료: 1111 
-2024-11-27 01:57:06.691  c.e.h.c.UserController - 회원가입 요청: com.example.hobbyheavy.dto.request.JoinRequest@487f7c19 
+2024-11-27 01:57:06.691  c.e.h.c.UserController - 회원가입 요청: com.example.hobbyheavy.dto.request.UserJoinRequest@487f7c19
 2024-11-27 01:57:06.776  c.e.h.c.UserController - 회원가입 처리 완료: 2222 
-2024-11-27 01:57:11.409  c.e.h.c.UserController - 회원가입 요청: com.example.hobbyheavy.dto.request.JoinRequest@3d7552a4 
+2024-11-27 01:57:11.409  c.e.h.c.UserController - 회원가입 요청: com.example.hobbyheavy.dto.request.UserJoinRequest@3d7552a4
 2024-11-27 01:57:11.491  c.e.h.c.UserController - 회원가입 처리 완료: 3333 
 2024-11-27 01:58:10.420  c.e.h.j.JWTFilter - JWTFilter - Request URI: /participant/1 
 2024-11-27 01:58:10.439  c.e.h.j.JWTFilter - JWTFilter - UserId: 2222, Role: ROLE_USER 
@@ -4124,8 +4124,8 @@ Caused by: org.springframework.data.mapping.PropertyReferenceException: No prope
 2024-11-27 03:07:46.294  c.e.h.c.ScheduleController - User 3333 is attempting to confirm schedule with ID: 3 
 2024-11-27 03:07:49.925  c.e.h.s.EmailNotificationSender - [이메일 전송 성공] 수신자: 3333@naver.com, 제목: 알림 메일 
 2024-11-27 03:07:49.926  c.e.h.s.NotificationService - [알림 전송] 성공 - 참여자: 3333, 메시지: 스케줄이 확정되었습니다. 스케줄 ID: 3 
-2024-11-27 03:07:49.932  c.e.h.e.GlobalExceptionHandler - 예기치 못한 예외 발생: No enum constant com.example.hobbyheavy.type.NotificationType.CONFIRMATION 
-2024-11-27 03:07:49.935  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [java.lang.IllegalArgumentException: No enum constant com.example.hobbyheavy.type.NotificationType.CONFIRMATION] 
+2024-11-27 03:07:49.932  c.e.h.e.GlobalExceptionHandler - 예기치 못한 예외 발생: No enum constant com.example.hobbyheavy.type.Notification.CONFIRMATION
+2024-11-27 03:07:49.935  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [java.lang.IllegalArgumentException: No enum constant com.example.hobbyheavy.type.Notification.CONFIRMATION]
 2024-11-27 03:13:12.251  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default' 
 2024-11-27 03:13:12.252  c.z.h.HikariDataSource - HikariPool-2 - Shutdown initiated... 
 2024-11-27 03:13:12.253  c.z.h.HikariDataSource - HikariPool-2 - Shutdown completed. 
@@ -4218,8 +4218,8 @@ Caused by: org.springframework.data.mapping.PropertyReferenceException: No prope
 2024-11-27 03:15:21.585  c.e.h.c.ScheduleController - User 3333 is attempting to confirm schedule with ID: 3 
 2024-11-27 03:15:25.333  c.e.h.s.EmailNotificationSender - [이메일 전송 성공] 수신자: 3333@naver.com, 제목: 알림 메일 
 2024-11-27 03:15:25.334  c.e.h.s.NotificationService - [알림 전송] 성공 - 참여자: 3333, 메시지: 스케줄이 확정되었습니다. 스케줄 ID: 3 
-2024-11-27 03:15:25.339  c.e.h.e.GlobalExceptionHandler - 예기치 못한 예외 발생: No enum constant com.example.hobbyheavy.type.NotificationType.CONFIRMATION 
-2024-11-27 03:15:25.350  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [java.lang.IllegalArgumentException: No enum constant com.example.hobbyheavy.type.NotificationType.CONFIRMATION] 
+2024-11-27 03:15:25.339  c.e.h.e.GlobalExceptionHandler - 예기치 못한 예외 발생: No enum constant com.example.hobbyheavy.type.Notification.CONFIRMATION
+2024-11-27 03:15:25.350  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [java.lang.IllegalArgumentException: No enum constant com.example.hobbyheavy.type.Notification.CONFIRMATION]
 2024-11-27 03:21:59.052  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default' 
 2024-11-27 03:21:59.054  c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated... 
 2024-11-27 03:21:59.058  c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed. 
@@ -4380,7 +4380,7 @@ Caused by: org.springframework.data.mapping.PropertyReferenceException: No prope
 2024-11-27 03:26:01.479  c.e.h.j.JWTFilter - JWTFilter - UserId: 3333, Role: ROLE_USER 
 2024-11-27 03:26:01.480  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: 3333, Role: ROLE_USER 
 2024-11-27 03:26:01.520  c.e.h.c.ExceptionController - 취소 이유는 필수 항목입니다. 
-2024-11-27 03:26:01.521  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [1] in public org.springframework.http.ResponseEntity<java.lang.String> com.example.hobbyheavy.controller.ScheduleController.cancelSchedule(java.lang.Long,com.example.hobbyheavy.dto.request.CancelScheduleRequest,org.springframework.security.core.Authentication): [Field error in object 'cancelScheduleRequest' on field 'reason': rejected value [null]; codes [NotBlank.cancelScheduleRequest.reason,NotBlank.reason,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [cancelScheduleRequest.reason,reason]; arguments []; default message [reason]]; default message [취소 이유는 필수 항목입니다.]] ] 
+2024-11-27 03:26:01.521  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [1] in public org.springframework.http.ResponseEntity<java.lang.String> com.example.hobbyheavy.controller.ScheduleController.cancelSchedule(java.lang.Long,com.example.hobbyheavy.dto.request.ScheduleCancelRequest,org.springframework.security.core.Authentication): [Field error in object 'cancelScheduleRequest' on field 'reason': rejected value [null]; codes [NotBlank.cancelScheduleRequest.reason,NotBlank.reason,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [cancelScheduleRequest.reason,reason]; arguments []; default message [reason]]; default message [취소 이유는 필수 항목입니다.]] ]
 2024-11-27 03:26:24.142  c.e.h.j.JWTFilter - JWTFilter - Request URI: /schedules/3/cancel 
 2024-11-27 03:26:24.143  c.e.h.j.JWTFilter - JWTFilter - UserId: 3333, Role: ROLE_USER 
 2024-11-27 03:26:24.143  c.e.h.j.JWTFilter - JWTFilter - Token parsed successfully for UserId: 3333, Role: ROLE_USER 
@@ -5013,7 +5013,7 @@ Caused by: org.springframework.data.mapping.PropertyReferenceException: No prope
 2024-11-27 03:57:20.805  o.a.c.c.C.[.[.[/] - Initializing Spring DispatcherServlet 'dispatcherServlet' 
 2024-11-27 03:57:20.805  o.s.w.s.DispatcherServlet - Initializing Servlet 'dispatcherServlet' 
 2024-11-27 03:57:20.806  o.s.w.s.DispatcherServlet - Completed initialization in 1 ms 
-2024-11-27 03:57:20.898  c.e.h.c.UserController - 회원가입 요청: com.example.hobbyheavy.dto.request.JoinRequest@6f245ad2 
+2024-11-27 03:57:20.898  c.e.h.c.UserController - 회원가입 요청: com.example.hobbyheavy.dto.request.UserJoinRequest@6f245ad2
 2024-11-27 03:57:21.034  c.e.h.c.UserController - 회원가입 처리 완료: aaaa 
 2024-11-27 03:57:54.516  c.e.h.j.JWTFilter - JWTFilter - Request URI: /meetup/create 
 2024-11-27 03:57:54.518  c.e.h.j.JWTFilter - JWTFilter - UserId: 1111, Role: ROLE_USER 
@@ -5545,3 +5545,527 @@ java.lang.IllegalArgumentException: Invalid character found in method name [0x16
 2024-11-27 04:25:59.521  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default' 
 2024-11-27 04:25:59.523  c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated... 
 2024-11-27 04:25:59.526  c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed. 
+2024-11-27 15:59:32.842  o.h.v.i.u.Version - HV000001: Hibernate Validator 8.0.1.Final 
+2024-11-27 15:59:32.974  c.e.h.HobbyheavyApplication - Starting HobbyheavyApplication using Java 17.0.9 with PID 2251 (/Users/sooho/Desktop/ZEROBASE 21/Project/build/classes/java/main started by sooho in /Users/sooho/Desktop/ZEROBASE 21/Project) 
+2024-11-27 15:59:32.976  c.e.h.HobbyheavyApplication - The following 1 profile is active: "secret" 
+2024-11-27 15:59:33.102  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable 
+2024-11-27 15:59:33.103  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG' 
+2024-11-27 15:59:35.177  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2024-11-27 15:59:35.431  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 240 ms. Found 8 JPA repository interfaces. 
+2024-11-27 15:59:36.870  o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port 8080 (http) 
+2024-11-27 15:59:36.888  o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"] 
+2024-11-27 15:59:36.894  o.a.c.c.StandardService - Starting service [Tomcat] 
+2024-11-27 15:59:36.894  o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.31] 
+2024-11-27 15:59:36.977  o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext 
+2024-11-27 15:59:36.978  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3875 ms 
+2024-11-27 15:59:37.325  o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default] 
+2024-11-27 15:59:37.372  o.h.Version - HHH000412: Hibernate ORM core version 6.5.3.Final 
+2024-11-27 15:59:37.406  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled 
+2024-11-27 15:59:37.705  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer 
+2024-11-27 15:59:37.759  c.z.h.HikariDataSource - HikariPool-1 - Starting... 
+2024-11-27 15:59:38.003  c.z.h.p.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5e1ac764 
+2024-11-27 15:59:38.005  c.z.h.HikariDataSource - HikariPool-1 - Start completed. 
+2024-11-27 15:59:38.100  o.h.o.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default) 
+2024-11-27 15:59:40.052  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration) 
+2024-11-27 15:59:40.062  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2024-11-27 15:59:40.766  o.s.d.j.r.q.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used. 
+2024-11-27 15:59:41.709  o.h.e.j.s.SqlExceptionHelper - SQL Error: 1146, SQLState: 42S02 
+2024-11-27 15:59:41.709  o.h.e.j.s.SqlExceptionHelper - Table 'hobbyheavy.schedule' doesn't exist 
+2024-11-27 15:59:41.720  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'scheduleController' defined in file [/Users/sooho/Desktop/ZEROBASE 21/Project/build/classes/java/main/com/example/hobbyheavy/controller/ScheduleController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'scheduleService' defined in file [/Users/sooho/Desktop/ZEROBASE 21/Project/build/classes/java/main/com/example/hobbyheavy/service/ScheduleService.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'scheduleDynamicService': Invocation of init method failed 
+2024-11-27 15:59:41.721  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default' 
+2024-11-27 15:59:41.726  c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated... 
+2024-11-27 15:59:41.730  c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed. 
+2024-11-27 15:59:41.737  o.a.c.c.StandardService - Stopping service [Tomcat] 
+2024-11-27 15:59:41.759  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled. 
+2024-11-27 15:59:41.782  o.s.b.SpringApplication - Application run failed 
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'scheduleController' defined in file [/Users/sooho/Desktop/ZEROBASE 21/Project/build/classes/java/main/com/example/hobbyheavy/controller/ScheduleController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'scheduleService' defined in file [/Users/sooho/Desktop/ZEROBASE 21/Project/build/classes/java/main/com/example/hobbyheavy/service/ScheduleService.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'scheduleDynamicService': Invocation of init method failed
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:795)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:237)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1375)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1212)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:971)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352)
+	at com.example.hobbyheavy.HobbyheavyApplication.main(HobbyheavyApplication.java:14)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'scheduleService' defined in file [/Users/sooho/Desktop/ZEROBASE 21/Project/build/classes/java/main/com/example/hobbyheavy/service/ScheduleService.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'scheduleDynamicService': Invocation of init method failed
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:795)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:237)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1375)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1212)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1443)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:904)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:782)
+	... 24 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'scheduleDynamicService': Invocation of init method failed
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:222)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:422)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1798)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1443)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:904)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:782)
+	... 38 common frames omitted
+Caused by: org.springframework.dao.InvalidDataAccessResourceUsageException: JDBC exception executing SQL [select s1_0.schedule_id,s1_0.activate_time,s1_0.cancellation_reason,s1_0.created_at,s1_0.deleted,s1_0.deleted_at,s1_0.location,s1_0.meetup_id,s1_0.proposal_date,s1_0.schedule_status,s1_0.updated_at,s1_0.voting_deadline from Schedule s1_0] [Table 'hobbyheavy.schedule' doesn't exist] [n/a]; SQL [n/a]
+	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.convertHibernateAccessException(HibernateJpaDialect.java:277)
+	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.translateExceptionIfPossible(HibernateJpaDialect.java:241)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.translateExceptionIfPossible(AbstractEntityManagerFactoryBean.java:550)
+	at org.springframework.dao.support.ChainedPersistenceExceptionTranslator.translateExceptionIfPossible(ChainedPersistenceExceptionTranslator.java:61)
+	at org.springframework.dao.support.DataAccessUtils.translateIfNecessary(DataAccessUtils.java:335)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:160)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:165)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:223)
+	at jdk.proxy4/jdk.proxy4.$Proxy172.findAll(Unknown Source)
+	at com.example.hobbyheavy.service.ScheduleDynamicService.initializeDynamicSchedules(ScheduleDynamicService.java:60)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMethod.invoke(InitDestroyAnnotationBeanPostProcessor.java:457)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:401)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:219)
+	... 51 common frames omitted
+Caused by: org.hibernate.exception.SQLGrammarException: JDBC exception executing SQL [select s1_0.schedule_id,s1_0.activate_time,s1_0.cancellation_reason,s1_0.created_at,s1_0.deleted,s1_0.deleted_at,s1_0.location,s1_0.meetup_id,s1_0.proposal_date,s1_0.schedule_status,s1_0.updated_at,s1_0.voting_deadline from Schedule s1_0] [Table 'hobbyheavy.schedule' doesn't exist] [n/a]
+	at org.hibernate.exception.internal.SQLExceptionTypeDelegate.convert(SQLExceptionTypeDelegate.java:66)
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:58)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:108)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:94)
+	at org.hibernate.sql.results.jdbc.internal.DeferredResultSetAccess.executeQuery(DeferredResultSetAccess.java:264)
+	at org.hibernate.sql.results.jdbc.internal.DeferredResultSetAccess.getResultSet(DeferredResultSetAccess.java:167)
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesResultSetImpl.advanceNext(JdbcValuesResultSetImpl.java:265)
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesResultSetImpl.processNext(JdbcValuesResultSetImpl.java:145)
+	at org.hibernate.sql.results.jdbc.internal.AbstractJdbcValues.next(AbstractJdbcValues.java:19)
+	at org.hibernate.sql.results.internal.RowProcessingStateStandardImpl.next(RowProcessingStateStandardImpl.java:67)
+	at org.hibernate.sql.results.spi.ListResultsConsumer.consume(ListResultsConsumer.java:204)
+	at org.hibernate.sql.results.spi.ListResultsConsumer.consume(ListResultsConsumer.java:33)
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.doExecuteQuery(JdbcSelectExecutorStandardImpl.java:211)
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.executeQuery(JdbcSelectExecutorStandardImpl.java:83)
+	at org.hibernate.sql.exec.spi.JdbcSelectExecutor.list(JdbcSelectExecutor.java:76)
+	at org.hibernate.sql.exec.spi.JdbcSelectExecutor.list(JdbcSelectExecutor.java:65)
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.lambda$new$2(ConcreteSqmSelectQueryPlan.java:139)
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.withCacheableSqmInterpretation(ConcreteSqmSelectQueryPlan.java:382)
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.performList(ConcreteSqmSelectQueryPlan.java:302)
+	at org.hibernate.query.sqm.internal.QuerySqmImpl.doList(QuerySqmImpl.java:526)
+	at org.hibernate.query.spi.AbstractSelectionQuery.list(AbstractSelectionQuery.java:423)
+	at org.hibernate.query.Query.getResultList(Query.java:120)
+	at org.springframework.data.jpa.repository.support.SimpleJpaRepository.findAll(SimpleJpaRepository.java:389)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:355)
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker$RepositoryFragmentMethodInvoker.lambda$new$0(RepositoryMethodInvoker.java:277)
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:170)
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:158)
+	at org.springframework.data.repository.core.support.RepositoryComposition$RepositoryFragments.invoke(RepositoryComposition.java:516)
+	at org.springframework.data.repository.core.support.RepositoryComposition.invoke(RepositoryComposition.java:285)
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport$ImplementationMethodExecutionInterceptor.invoke(RepositoryFactorySupport.java:628)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:173)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:148)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:70)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:379)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:138)
+	... 66 common frames omitted
+Caused by: java.sql.SQLSyntaxErrorException: Table 'hobbyheavy.schedule' doesn't exist
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:912)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:968)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeQuery(ProxyPreparedStatement.java:52)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeQuery(HikariProxyPreparedStatement.java)
+	at org.hibernate.sql.results.jdbc.internal.DeferredResultSetAccess.executeQuery(DeferredResultSetAccess.java:246)
+	... 105 common frames omitted
+2024-11-27 16:01:03.396  o.h.v.i.u.Version - HV000001: Hibernate Validator 8.0.1.Final 
+2024-11-27 16:01:03.516  c.e.h.HobbyheavyApplication - Starting HobbyheavyApplication using Java 17.0.9 with PID 2290 (/Users/sooho/Desktop/ZEROBASE 21/Project/build/classes/java/main started by sooho in /Users/sooho/Desktop/ZEROBASE 21/Project) 
+2024-11-27 16:01:03.521  c.e.h.HobbyheavyApplication - The following 1 profile is active: "secret" 
+2024-11-27 16:01:03.636  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable 
+2024-11-27 16:01:03.636  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG' 
+2024-11-27 16:01:05.509  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2024-11-27 16:01:05.775  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 254 ms. Found 8 JPA repository interfaces. 
+2024-11-27 16:01:07.071  o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port 8080 (http) 
+2024-11-27 16:01:07.081  o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"] 
+2024-11-27 16:01:07.084  o.a.c.c.StandardService - Starting service [Tomcat] 
+2024-11-27 16:01:07.084  o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.31] 
+2024-11-27 16:01:07.181  o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext 
+2024-11-27 16:01:07.183  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3545 ms 
+2024-11-27 16:01:07.499  o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default] 
+2024-11-27 16:01:07.546  o.h.Version - HHH000412: Hibernate ORM core version 6.5.3.Final 
+2024-11-27 16:01:07.574  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled 
+2024-11-27 16:01:07.881  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer 
+2024-11-27 16:01:07.932  c.z.h.HikariDataSource - HikariPool-1 - Starting... 
+2024-11-27 16:01:08.144  c.z.h.p.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@48648c3d 
+2024-11-27 16:01:08.147  c.z.h.HikariDataSource - HikariPool-1 - Start completed. 
+2024-11-27 16:01:08.208  o.h.o.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default) 
+2024-11-27 16:01:10.393  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration) 
+2024-11-27 16:01:10.500  o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "alter table Review drop foreign key FKq2dhec7j40qwcmshkxha8usbf" via JDBC [Can't DROP 'FKq2dhec7j40qwcmshkxha8usbf'; check that column/key exists] 
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "alter table Review drop foreign key FKq2dhec7j40qwcmshkxha8usbf" via JDBC [Can't DROP 'FKq2dhec7j40qwcmshkxha8usbf'; check that column/key exists]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:94)
+	at org.hibernate.tool.schema.internal.Helper.applySqlString(Helper.java:233)
+	at org.hibernate.tool.schema.internal.Helper.applySqlStrings(Helper.java:217)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applyConstraintDropping(SchemaDropperImpl.java:476)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.dropConstraintsTablesSequences(SchemaDropperImpl.java:242)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.dropFromMetadata(SchemaDropperImpl.java:215)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.performDrop(SchemaDropperImpl.java:185)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:155)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:115)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:238)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:144)
+	at java.base/java.util.HashMap.forEach(HashMap.java:1421)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:141)
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:37)
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:35)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:322)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:457)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1506)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1853)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1802)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:954)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352)
+	at com.example.hobbyheavy.HobbyheavyApplication.main(HobbyheavyApplication.java:14)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+Caused by: java.sql.SQLSyntaxErrorException: Can't DROP 'FKq2dhec7j40qwcmshkxha8usbf'; check that column/key exists
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:770)
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:653)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80)
+	... 44 common frames omitted
+2024-11-27 16:01:10.508  o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "alter table Schedule drop foreign key FKljabgrkwiotb2bfrdpco60gav" via JDBC [Table 'hobbyheavy.schedule' doesn't exist] 
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "alter table Schedule drop foreign key FKljabgrkwiotb2bfrdpco60gav" via JDBC [Table 'hobbyheavy.schedule' doesn't exist]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:94)
+	at org.hibernate.tool.schema.internal.Helper.applySqlString(Helper.java:233)
+	at org.hibernate.tool.schema.internal.Helper.applySqlStrings(Helper.java:217)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applyConstraintDropping(SchemaDropperImpl.java:476)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.dropConstraintsTablesSequences(SchemaDropperImpl.java:242)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.dropFromMetadata(SchemaDropperImpl.java:215)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.performDrop(SchemaDropperImpl.java:185)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:155)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:115)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:238)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:144)
+	at java.base/java.util.HashMap.forEach(HashMap.java:1421)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:141)
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:37)
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:35)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:322)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:457)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1506)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1853)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1802)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:954)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352)
+	at com.example.hobbyheavy.HobbyheavyApplication.main(HobbyheavyApplication.java:14)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+Caused by: java.sql.SQLSyntaxErrorException: Table 'hobbyheavy.schedule' doesn't exist
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:770)
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:653)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80)
+	... 44 common frames omitted
+2024-11-27 16:01:10.510  o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "alter table schedule_votes drop foreign key FK24wk6v3floqq4g0xrr3a9eykv" via JDBC [Table 'hobbyheavy.schedule_votes' doesn't exist] 
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "alter table schedule_votes drop foreign key FK24wk6v3floqq4g0xrr3a9eykv" via JDBC [Table 'hobbyheavy.schedule_votes' doesn't exist]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:94)
+	at org.hibernate.tool.schema.internal.Helper.applySqlString(Helper.java:233)
+	at org.hibernate.tool.schema.internal.Helper.applySqlStrings(Helper.java:217)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applyConstraintDropping(SchemaDropperImpl.java:476)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.dropConstraintsTablesSequences(SchemaDropperImpl.java:242)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.dropFromMetadata(SchemaDropperImpl.java:215)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.performDrop(SchemaDropperImpl.java:185)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:155)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:115)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:238)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:144)
+	at java.base/java.util.HashMap.forEach(HashMap.java:1421)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:141)
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:37)
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:35)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:322)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:457)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1506)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1853)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1802)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:954)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352)
+	at com.example.hobbyheavy.HobbyheavyApplication.main(HobbyheavyApplication.java:14)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+Caused by: java.sql.SQLSyntaxErrorException: Table 'hobbyheavy.schedule_votes' doesn't exist
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:770)
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:653)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80)
+	... 44 common frames omitted
+2024-11-27 16:01:10.529  o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "drop table if exists Meetup" via JDBC [Cannot drop table 'meetup' referenced by a foreign key constraint 'FKfrnf633bg40fm8627sjjcfuby' on table 'MeetupSchedule'.] 
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "drop table if exists Meetup" via JDBC [Cannot drop table 'meetup' referenced by a foreign key constraint 'FKfrnf633bg40fm8627sjjcfuby' on table 'MeetupSchedule'.]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:94)
+	at org.hibernate.tool.schema.internal.Helper.applySqlString(Helper.java:233)
+	at org.hibernate.tool.schema.internal.Helper.applySqlStrings(Helper.java:217)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.dropTables(SchemaDropperImpl.java:381)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.dropConstraintsTablesSequences(SchemaDropperImpl.java:253)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.dropFromMetadata(SchemaDropperImpl.java:215)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.performDrop(SchemaDropperImpl.java:185)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:155)
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:115)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:238)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:144)
+	at java.base/java.util.HashMap.forEach(HashMap.java:1421)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:141)
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:37)
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:35)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:322)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:457)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1506)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1853)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1802)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:954)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352)
+	at com.example.hobbyheavy.HobbyheavyApplication.main(HobbyheavyApplication.java:14)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+Caused by: java.sql.SQLException: Cannot drop table 'meetup' referenced by a foreign key constraint 'FKfrnf633bg40fm8627sjjcfuby' on table 'MeetupSchedule'.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:130)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:770)
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:653)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80)
+	... 44 common frames omitted
+2024-11-27 16:01:10.576  o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "create table Meetup (deleted bit, max_participants integer, created_at datetime(6), deleted_at datetime(6), hobby_id bigint, host_id bigint not null, meetup_id bigint not null auto_increment, updated_at datetime(6), recurrence_rule varchar(50), location varchar(100), meetup_name varchar(100), description varchar(255), thumbnail varchar(255), primary key (meetup_id)) engine=InnoDB" via JDBC [Table 'meetup' already exists] 
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "create table Meetup (deleted bit, max_participants integer, created_at datetime(6), deleted_at datetime(6), hobby_id bigint, host_id bigint not null, meetup_id bigint not null auto_increment, updated_at datetime(6), recurrence_rule varchar(50), location varchar(100), meetup_name varchar(100), description varchar(255), thumbnail varchar(255), primary key (meetup_id)) engine=InnoDB" via JDBC [Table 'meetup' already exists]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:94)
+	at org.hibernate.tool.schema.internal.Helper.applySqlString(Helper.java:233)
+	at org.hibernate.tool.schema.internal.Helper.applySqlStrings(Helper.java:217)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.createTables(SchemaCreatorImpl.java:428)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.createSequencesTablesConstraints(SchemaCreatorImpl.java:344)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.createFromMetadata(SchemaCreatorImpl.java:239)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.performCreation(SchemaCreatorImpl.java:172)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:142)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:118)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:250)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:144)
+	at java.base/java.util.HashMap.forEach(HashMap.java:1421)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:141)
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:37)
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:35)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:322)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:457)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1506)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1853)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1802)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:954)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352)
+	at com.example.hobbyheavy.HobbyheavyApplication.main(HobbyheavyApplication.java:14)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+Caused by: java.sql.SQLSyntaxErrorException: Table 'meetup' already exists
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:770)
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:653)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80)
+	... 44 common frames omitted
+2024-11-27 16:01:10.772  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2024-11-27 16:01:11.542  o.s.d.j.r.q.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used. 
+2024-11-27 16:01:13.134  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService 
+2024-11-27 16:01:13.973  o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration - Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false) 
+2024-11-27 16:01:14.172  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729 
+2024-11-27 16:01:14.213  o.a.c.h.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"] 
+2024-11-27 16:01:14.233  o.s.b.w.e.t.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/' 
+2024-11-27 16:01:14.257  c.e.h.HobbyheavyApplication - Started HobbyheavyApplication in 11.684 seconds (process running for 12.445) 
+2024-11-27 16:01:41.528  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default' 
+2024-11-27 16:01:41.535  c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated... 
+2024-11-27 16:01:41.547  c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed. 
+2024-11-27 16:01:45.447  o.h.v.i.u.Version - HV000001: Hibernate Validator 8.0.1.Final 
+2024-11-27 16:01:45.574  c.e.h.HobbyheavyApplication - Starting HobbyheavyApplication using Java 17.0.9 with PID 2305 (/Users/sooho/Desktop/ZEROBASE 21/Project/build/classes/java/main started by sooho in /Users/sooho/Desktop/ZEROBASE 21/Project) 
+2024-11-27 16:01:45.579  c.e.h.HobbyheavyApplication - The following 1 profile is active: "secret" 
+2024-11-27 16:01:45.685  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable 
+2024-11-27 16:01:45.686  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG' 
+2024-11-27 16:01:47.598  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2024-11-27 16:01:47.848  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 238 ms. Found 8 JPA repository interfaces. 
+2024-11-27 16:01:49.273  o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port 8080 (http) 
+2024-11-27 16:01:49.282  o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"] 
+2024-11-27 16:01:49.286  o.a.c.c.StandardService - Starting service [Tomcat] 
+2024-11-27 16:01:49.287  o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.31] 
+2024-11-27 16:01:49.383  o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext 
+2024-11-27 16:01:49.383  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3697 ms 
+2024-11-27 16:01:49.675  o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default] 
+2024-11-27 16:01:49.716  o.h.Version - HHH000412: Hibernate ORM core version 6.5.3.Final 
+2024-11-27 16:01:49.743  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled 
+2024-11-27 16:01:50.008  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer 
+2024-11-27 16:01:50.054  c.z.h.HikariDataSource - HikariPool-1 - Starting... 
+2024-11-27 16:01:50.239  c.z.h.p.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@76ba096 
+2024-11-27 16:01:50.241  c.z.h.HikariDataSource - HikariPool-1 - Start completed. 
+2024-11-27 16:01:50.289  o.h.o.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default) 
+2024-11-27 16:01:52.149  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration) 
+2024-11-27 16:01:52.156  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2024-11-27 16:01:52.970  o.s.d.j.r.q.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used. 
+2024-11-27 16:01:54.158  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService 
+2024-11-27 16:01:55.031  o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration - Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false) 
+2024-11-27 16:01:55.229  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729 
+2024-11-27 16:01:55.282  o.a.c.h.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"] 
+2024-11-27 16:01:55.302  o.s.b.w.e.t.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/' 
+2024-11-27 16:01:55.324  c.e.h.HobbyheavyApplication - Started HobbyheavyApplication in 10.697 seconds (process running for 11.501) 
+2024-11-27 16:02:14.658  o.a.c.c.C.[.[.[/] - Initializing Spring DispatcherServlet 'dispatcherServlet' 
+2024-11-27 16:02:14.659  o.s.w.s.DispatcherServlet - Initializing Servlet 'dispatcherServlet' 
+2024-11-27 16:02:14.662  o.s.w.s.DispatcherServlet - Completed initialization in 3 ms 
+2024-11-27 16:02:14.937  c.e.h.c.UserController - 회원가입 요청: com.example.hobbyheavy.dto.request.UserJoinRequest@4ac04dab 
+2024-11-27 16:02:15.407  c.e.h.s.UserService - 새 사용자 가입 완료. 사용자 ID: ad4 
+2024-11-27 16:02:15.408  c.e.h.c.UserController - 회원가입 처리 완료: ad4 
+2024-11-27 16:02:35.796  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default' 
+2024-11-27 16:02:35.803  c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated... 
+2024-11-27 16:02:35.827  c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed. 

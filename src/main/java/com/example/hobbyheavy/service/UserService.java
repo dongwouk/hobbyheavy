@@ -1,8 +1,8 @@
 package com.example.hobbyheavy.service;
 
-import com.example.hobbyheavy.dto.request.JoinRequest;
-import com.example.hobbyheavy.dto.request.PasswordUpdateRequest;
-import com.example.hobbyheavy.dto.request.UpdateUserRequest;
+import com.example.hobbyheavy.dto.request.UserJoinRequest;
+import com.example.hobbyheavy.dto.request.UserPwUpdateRequest;
+import com.example.hobbyheavy.dto.request.UserUpdateRequest;
 import com.example.hobbyheavy.dto.response.UserInfoResponse;
 import com.example.hobbyheavy.entity.Hobby;
 import com.example.hobbyheavy.entity.User;
@@ -10,7 +10,7 @@ import com.example.hobbyheavy.exception.CustomException;
 import com.example.hobbyheavy.exception.ExceptionCode;
 import com.example.hobbyheavy.repository.HobbyRepository;
 import com.example.hobbyheavy.repository.UserRepository;
-import com.example.hobbyheavy.type.Role;
+import com.example.hobbyheavy.type.UserRole;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -31,15 +31,15 @@ public class UserService {
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     /** 회원가입 유효성 체크 메서드 **/
-    void checkJoin(JoinRequest joinRequest) {
+    void checkJoin(UserJoinRequest userJoinRequest) {
 
         // UserId 중복 체크 (탈퇴하지 않은 활성화된 아이디)
-        if (userRepository.existsByUserIdAndDeletedFalse(joinRequest.getUserId())) {
+        if (userRepository.existsByUserIdAndDeletedFalse(userJoinRequest.getUserId())) {
             throw new CustomException(ExceptionCode.USER_ID_ALREADY_IN_USE);
         }
 
         // Email 중복 체크 (탈퇴하지 않은 활성화된 이메일)
-        if (userRepository.existsByEmailAndDeletedFalse(joinRequest.getEmail())) {
+        if (userRepository.existsByEmailAndDeletedFalse(userJoinRequest.getEmail())) {
             throw new CustomException(ExceptionCode.EMAIL_ALREADY_IN_USE);
         }
 
@@ -71,28 +71,28 @@ public class UserService {
     /** ===비즈니스 로직=== **/
 
     /** 회원 가입 메서드 **/
-    public void JoinUser(JoinRequest joinRequest) {
+    public void JoinUser(UserJoinRequest userJoinRequest) {
 
         // 탈퇴된 계정 DB 에서 삭제
-        userRepository.findByUserIdAndDeletedTrue(joinRequest.getUserId())
+        userRepository.findByUserIdAndDeletedTrue(userJoinRequest.getUserId())
                 .ifPresent(user -> {
                     userRepository.delete(user);
                     log.info("탈퇴 상태의 기존 사용자(ID: {})를 삭제했습니다.", user.getUserId());
                 });
 
-        userRepository.findByEmailAndDeletedTrue(joinRequest.getEmail())
+        userRepository.findByEmailAndDeletedTrue(userJoinRequest.getEmail())
                 .ifPresent(user -> {
                     userRepository.delete(user);
                     log.info("탈퇴 상태의 기존 이메일({})을 가진 사용자를 삭제했습니다.", user.getEmail());
                 });
 
         // 유효성 체크
-        checkJoin(joinRequest);
+        checkJoin(userJoinRequest);
 
         // 취미 처리: hobbyIds를 기반으로 Hobby 엔터티 조회
         Set<Hobby> hobbies = new HashSet<>();
-        if (joinRequest.getHobbyIds() != null && !joinRequest.getHobbyIds().isEmpty()) {
-            for (Long hobbyId : joinRequest.getHobbyIds()) {
+        if (userJoinRequest.getHobbyIds() != null && !userJoinRequest.getHobbyIds().isEmpty()) {
+            for (Long hobbyId : userJoinRequest.getHobbyIds()) {
                 Hobby hobby = getHobbyById(hobbyId);
                 hobbies.add(hobby);
             }
@@ -100,17 +100,17 @@ public class UserService {
 
         // 사용자 저장
         userRepository.save(User.builder()
-                .userId(joinRequest.getUserId())
-                .username(joinRequest.getUsername())
-                .password(bCryptPasswordEncoder.encode(joinRequest.getPassword())) // 암호화된 비밀번호
-                .email(joinRequest.getEmail())
-                .gender(joinRequest.getGender())
-                .age(joinRequest.getAge())
+                .userId(userJoinRequest.getUserId())
+                .username(userJoinRequest.getUsername())
+                .password(bCryptPasswordEncoder.encode(userJoinRequest.getPassword())) // 암호화된 비밀번호
+                .email(userJoinRequest.getEmail())
+                .gender(userJoinRequest.getGender())
+                .age(userJoinRequest.getAge())
                 .hobbies(hobbies)
                 .alarm(true)
-                .role(Collections.singleton(Role.ROLE_USER)) // 역할이 존재할 때 설정
+                .userRole(Collections.singleton(UserRole.ROLE_USER)) // 역할이 존재할 때 설정
                 .build());
-        log.info("새 사용자 가입 완료. 사용자 ID: {}", joinRequest.getUserId());
+        log.info("새 사용자 가입 완료. 사용자 ID: {}", userJoinRequest.getUserId());
     }
 
     /** 나의 회원정보 조회 메서드 **/
@@ -126,7 +126,7 @@ public class UserService {
 
     /** 나의 회원정보 변경 메서드 **/
     @Transactional
-    public void updateUserInfo(String userId, UpdateUserRequest request) {
+    public void updateUserInfo(String userId, UserUpdateRequest request) {
 
         // 사용자 조회
         User user = getUser(userId);
@@ -157,7 +157,7 @@ public class UserService {
 
     /** 비밀번호 변경 메서드 **/
     @Transactional
-    public void updatePassword(String userId, PasswordUpdateRequest request) {
+    public void updatePassword(String userId, UserPwUpdateRequest request) {
 
         // 사용자 조회
         User user = getUser(userId);

@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 
 @Service
 @RequiredArgsConstructor
-public class ReissueService {
+public class TokenReissueService {
     private final JWTUtil jwtUtil;
     private final RefreshRepository refreshRepository;
 

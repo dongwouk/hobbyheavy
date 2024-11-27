@@ -3,16 +3,16 @@ package com.example.hobbyheavy.service;
 import com.example.hobbyheavy.dto.request.ScheduleRequest;
 import com.example.hobbyheavy.dto.response.ScheduleResponse;
 import com.example.hobbyheavy.entity.Meetup;
-import com.example.hobbyheavy.entity.MeetupSchedule;
+import com.example.hobbyheavy.entity.Schedule;
 import com.example.hobbyheavy.entity.Participant;
 import com.example.hobbyheavy.exception.CustomException;
 import com.example.hobbyheavy.exception.ExceptionCode;
 import com.example.hobbyheavy.repository.MeetupRepository;
 import com.example.hobbyheavy.repository.ParticipantRepository;
 import com.example.hobbyheavy.repository.ScheduleRepository;
-import com.example.hobbyheavy.type.MeetupScheduleStatus;
+import com.example.hobbyheavy.type.ScheduleStatus;
 import com.example.hobbyheavy.type.NotificationMessage;
-import com.example.hobbyheavy.util.ScheduleUtils;
+import com.example.hobbyheavy.util.ScheduleUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -32,7 +32,7 @@ import java.util.stream.Collectors;
 @Slf4j
 public class ScheduleService {
     private final ScheduleRepository scheduleRepository;
-    private final DynamicScheduleService dynamicScheduleService;
+    private final ScheduleDynamicService scheduleDynamicService;
     private final NotificationService notificationService;
     private final MeetupRepository meetupRepository;
     private final ParticipantRepository participantRepository;
@@ -62,23 +62,23 @@ public class ScheduleService {
         }
 
         // 스케줄 제안 날짜 검증
-        ScheduleUtils.validateProposalDate(scheduleRequest.getProposalDate());
+        ScheduleUtil.validateProposalDate(scheduleRequest.getProposalDate());
 
         // 투표 마감 기한 계산
-        LocalDateTime votingDeadline = ScheduleUtils.calculateVotingDeadline(scheduleRequest);
+        LocalDateTime votingDeadline = ScheduleUtil.calculateVotingDeadline(scheduleRequest);
 
         // 투표 마감 기한 검증
-        ScheduleUtils.validateVotingDeadline(votingDeadline);
-        ScheduleUtils.validateVotingDeadlineWithProposal(votingDeadline, scheduleRequest.getProposalDate());
+        ScheduleUtil.validateVotingDeadline(votingDeadline);
+        ScheduleUtil.validateVotingDeadlineWithProposal(votingDeadline, scheduleRequest.getProposalDate());
 
         // MeetupSchedule 객체 생성
-        MeetupSchedule meetupSchedule = createMeetupSchedule(scheduleRequest);
-        meetupSchedule.setVotingDeadline(votingDeadline);
+        Schedule schedule = createMeetupSchedule(scheduleRequest);
+        schedule.setVotingDeadline(votingDeadline);
 
         // 스케줄 저장
-        MeetupSchedule savedSchedule = scheduleRepository.save(meetupSchedule);
+        Schedule savedSchedule = scheduleRepository.save(schedule);
 
-        dynamicScheduleService.scheduleFinalization(savedSchedule);
+        scheduleDynamicService.scheduleFinalization(savedSchedule);
         log.info("스케줄이 생성되었습니다. ID: {}", savedSchedule.getScheduleId());
 
         notificationService.notifyParticipants(savedSchedule, NotificationMessage.SCHEDULE_CREATION);
@@ -97,11 +97,11 @@ public class ScheduleService {
      */
     public ScheduleResponse getSchedule(Long scheduleId, Long notificationId, String userId) {
         // 스케줄 조회 및 검증
-        MeetupSchedule meetupSchedule = verifyAndGetActiveSchedule(scheduleId);
+        Schedule schedule = verifyAndGetActiveSchedule(scheduleId);
         log.info("스케줄 조회: ID: {}", scheduleId);
 
         // 사용자가 해당 스케줄의 모임에 속해 있는지 확인
-        Long meetupId = meetupSchedule.getMeetup().getMeetupId();
+        Long meetupId = schedule.getMeetup().getMeetupId();
         boolean isParticipant = participantRepository.findByMeetup_MeetupIdAndUser_UserId(meetupId, userId).isPresent();
         if (!isParticipant) {
             throw new CustomException(ExceptionCode.FORBIDDEN_ACTION);
@@ -117,7 +117,7 @@ public class ScheduleService {
             }
         }
         // 스케줄 응답 생성 및 반환
-        return ScheduleResponse.fromEntity(meetupSchedule);
+        return ScheduleResponse.fromEntity(schedule);
     }
 
 
@@ -162,7 +162,7 @@ public class ScheduleService {
         log.info("스케줄 수정 요청 - 스케줄 ID: {}, 사용자 ID: {}, 요청 데이터: {}", scheduleId, userId, scheduleRequest);
 
         // 기존 스케줄 조회 및 검증
-        MeetupSchedule existingSchedule = verifyAndGetSchedule(scheduleId);
+        Schedule existingSchedule = verifyAndGetSchedule(scheduleId);
 
         // 모임이 존재하는지 검증
         if (!meetupRepository.existsById(scheduleRequest.getMeetupId())) {
@@ -177,21 +177,21 @@ public class ScheduleService {
         }
 
         // 스케줄 제안 날짜 검증
-        ScheduleUtils.validateProposalDate(scheduleRequest.getProposalDate());
+        ScheduleUtil.validateProposalDate(scheduleRequest.getProposalDate());
 
         // 투표 마감 기한 계산
-        LocalDateTime votingDeadline = ScheduleUtils.calculateVotingDeadline(scheduleRequest);
+        LocalDateTime votingDeadline = ScheduleUtil.calculateVotingDeadline(scheduleRequest);
 
         // 투표 마감 기한 검증
-        ScheduleUtils.validateVotingDeadline(votingDeadline);
-        ScheduleUtils.validateVotingDeadlineWithProposal(votingDeadline, scheduleRequest.getProposalDate());
+        ScheduleUtil.validateVotingDeadline(votingDeadline);
+        ScheduleUtil.validateVotingDeadlineWithProposal(votingDeadline, scheduleRequest.getProposalDate());
 
         // 스케줄 수정 적용
         existingSchedule.updateFromDTO(scheduleRequest);
         existingSchedule.setVotingDeadline(votingDeadline);
 
         // 수정된 스케줄 저장
-        MeetupSchedule updatedSchedule = scheduleRepository.save(existingSchedule);
+        Schedule updatedSchedule = scheduleRepository.save(existingSchedule);
 
         // 스케줄 수정 알림 발송
         notificationService.notifyParticipants(updatedSchedule, NotificationMessage.UPDATE);
@@ -213,10 +213,10 @@ public class ScheduleService {
         log.info("스케줄 삭제 요청 - 스케줄 ID: {}, 사용자 ID: {}", scheduleId, userId);
 
         // 기존 스케줄 조회 및 검증
-        MeetupSchedule meetupSchedule = verifyAndGetSchedule(scheduleId);
+        Schedule schedule = verifyAndGetSchedule(scheduleId);
 
         // 스케줄에 해당하는 모임 정보 가져오기
-        Long meetupId = meetupSchedule.getMeetup().getMeetupId();
+        Long meetupId = schedule.getMeetup().getMeetupId();
 
         // 참가자의 역할 조회 및 검증
         Optional<Participant> participantOpt = participantRepository.findByMeetup_MeetupIdAndUser_UserId(meetupId, userId);
@@ -224,8 +224,8 @@ public class ScheduleService {
             throw new CustomException(ExceptionCode.FORBIDDEN_ACTION);
         }
 
-        meetupSchedule.markAsDeleted();
-        scheduleRepository.save(meetupSchedule);
+        schedule.markAsDeleted();
+        scheduleRepository.save(schedule);
         log.info("스케줄이 논리적으로 삭제되었습니다. ID: {}", scheduleId);
     }
 
@@ -241,10 +241,10 @@ public class ScheduleService {
     public void cancelSchedule(Long scheduleId, String reason, String userId) {
         log.info("스케줄 취소 요청 - 스케줄 ID: {}, 사용자 ID: {}, 이유: {}", scheduleId, userId, reason);
 
-        MeetupSchedule meetupSchedule = verifyAndGetSchedule(scheduleId);
+        Schedule schedule = verifyAndGetSchedule(scheduleId);
 
         // 스케줄에 해당하는 모임 정보 가져오기
-        Long meetupId = meetupSchedule.getMeetup().getMeetupId();
+        Long meetupId = schedule.getMeetup().getMeetupId();
 
         // 참가자의 역할 조회 및 검증
         Optional<Participant> participantOpt = participantRepository.findByMeetup_MeetupIdAndUser_UserId(meetupId, userId);
@@ -252,16 +252,16 @@ public class ScheduleService {
             throw new CustomException(ExceptionCode.FORBIDDEN_ACTION);
         }
 
-        if (meetupSchedule.getScheduleStatus() == MeetupScheduleStatus.CANCELLED) {
+        if (schedule.getScheduleStatus() == ScheduleStatus.CANCELLED) {
             throw new CustomException(ExceptionCode.SCHEDULE_CANCELLATION_NOT_ALLOWED);
         }
 
-        meetupSchedule.setStatus(MeetupScheduleStatus.CANCELLED);
-        meetupSchedule.setCancellationReason(reason);
-        scheduleRepository.save(meetupSchedule);
+        schedule.setStatus(ScheduleStatus.CANCELLED);
+        schedule.setCancellationReason(reason);
+        scheduleRepository.save(schedule);
 
         // 스케줄 취소 알림 발송
-        notificationService.notifyParticipants(meetupSchedule, NotificationMessage.CANCELLATION);
+        notificationService.notifyParticipants(schedule, NotificationMessage.CANCELLATION);
 
         log.info("스케줄이 취소되었습니다. ID: {}, 이유: {}", scheduleId, reason);
     }
@@ -273,7 +273,7 @@ public class ScheduleService {
      * @return 생성된 MeetupSchedule 객체
      * @throws CustomException 스케줄 생성에 실패한 경우 발생
      */
-    private MeetupSchedule createMeetupSchedule(ScheduleRequest scheduleRequest) {
+    private Schedule createMeetupSchedule(ScheduleRequest scheduleRequest) {
         try {
             LocalDateTime proposalDate = scheduleRequest.getProposalDate();
 
@@ -282,15 +282,15 @@ public class ScheduleService {
             if (proposalDate.isBefore(now)) {
                 throw new CustomException(ExceptionCode.INVALID_PROPOSAL_DATE);
             }
-            LocalDateTime votingDeadline = ScheduleUtils.calculateVotingDeadline(scheduleRequest);
+            LocalDateTime votingDeadline = ScheduleUtil.calculateVotingDeadline(scheduleRequest);
 
-            return MeetupSchedule.builder()
+            return Schedule.builder()
                     .meetup(Meetup.builder().meetupId(scheduleRequest.getMeetupId()).build())
                     .proposalDate(proposalDate)
                     .activateTime(scheduleRequest.getActivateTime())
                     .votingDeadline(votingDeadline)
                     .location(scheduleRequest.getLocation())
-                    .scheduleStatus(MeetupScheduleStatus.PROPOSED)
+                    .scheduleStatus(ScheduleStatus.PROPOSED)
                     .build();
         } catch (Exception e) {
             throw new CustomException(ExceptionCode.SCHEDULE_CREATION_FAILED);
@@ -304,11 +304,11 @@ public class ScheduleService {
      * @return 조회된 스케줄 객체
      * @throws CustomException 스케줄이 존재하지 않을 경우 발생
      */
-    private MeetupSchedule verifyAndGetSchedule(Long scheduleId) {
+    private Schedule verifyAndGetSchedule(Long scheduleId) {
         return scheduleRepository.findById(scheduleId)
                 .orElseThrow(() -> new CustomException(ExceptionCode.SCHEDULE_NOT_FOUND));
     }
-    private MeetupSchedule verifyAndGetActiveSchedule(Long scheduleId) {
+    private Schedule verifyAndGetActiveSchedule(Long scheduleId) {
         return scheduleRepository.findByScheduleIdAndDeletedFalse(scheduleId)
                 .orElseThrow(() -> new CustomException(ExceptionCode.SCHEDULE_NOT_FOUND));
     }

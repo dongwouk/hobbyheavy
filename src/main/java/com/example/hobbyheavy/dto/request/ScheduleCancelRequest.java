@@ -10,7 +10,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CancelScheduleRequest {
+public class ScheduleCancelRequest {
     @NotBlank(message = "취소 이유는 필수 항목입니다.")
     private String reason; // 취소 사유
 }

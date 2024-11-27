@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class PasswordUpdateRequest {
+public class UserPwUpdateRequest {
 
     @NotBlank(message = "기존 비밀번호를 입력해주세요.")
     private String oldPassword;

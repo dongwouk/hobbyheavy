@@ -1,6 +1,6 @@
 package com.example.hobbyheavy.service;
 
-import com.example.hobbyheavy.entity.MeetupSchedule;
+import com.example.hobbyheavy.entity.Schedule;
 import com.example.hobbyheavy.exception.CustomException;
 import com.example.hobbyheavy.exception.ExceptionCode;
 import com.example.hobbyheavy.repository.ScheduleRepository;
@@ -13,38 +13,38 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @RequiredArgsConstructor
-public class VoteService {
+public class ScheduleVoteService {
 
     private final ScheduleRepository scheduleRepository;
 
     @Transactional
     public void voteOnSchedule(Long scheduleId, String userId) {
 
-        MeetupSchedule meetupSchedule = scheduleRepository.findById(scheduleId)
+        Schedule schedule = scheduleRepository.findById(scheduleId)
                 .orElseThrow(() -> new CustomException(ExceptionCode.SCHEDULE_NOT_FOUND));
 
         // 이미 해당 사용자가 투표했는지 확인
-        if (meetupSchedule.getVotes().contains(userId)) {
+        if (schedule.getVotes().contains(userId)) {
             throw new CustomException(ExceptionCode.ALREADY_VOTED);
         }
 
-        meetupSchedule.addVote(userId);
-        scheduleRepository.save(meetupSchedule);
+        schedule.addVote(userId);
+        scheduleRepository.save(schedule);
     }
 
     @Transactional
     public void removeVoteOnSchedule(Long scheduleId, String userId) {
-        MeetupSchedule meetupSchedule = scheduleRepository.findById(scheduleId)
+        Schedule schedule = scheduleRepository.findById(scheduleId)
                 .orElseThrow(() -> new CustomException(ExceptionCode.SCHEDULE_NOT_FOUND));
 
         // 해당 사용자가 투표한 기록이 있는지 확인
-        if (!meetupSchedule.getVotes().contains(userId)) {
+        if (!schedule.getVotes().contains(userId)) {
             throw new CustomException(ExceptionCode.VOTE_NOT_FOUND);
         }
 
         // 투표 삭제
-        meetupSchedule.removeVote(userId);
-        scheduleRepository.save(meetupSchedule);
+        schedule.removeVote(userId);
+        scheduleRepository.save(schedule);
     }
 }
 

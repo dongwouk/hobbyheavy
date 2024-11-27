@@ -12,7 +12,7 @@ import java.util.Set;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class JoinRequest {
+public class UserJoinRequest {
 
     @NotBlank(message = "아이디를 입력해주세요.")
     @Size(min = 3, max = 50, message = "아이디는 최소 3자 이상, 최대 50자 이하이어야 합니다.")

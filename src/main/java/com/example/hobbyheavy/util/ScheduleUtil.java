@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
  * 스케줄 관련 유틸리티 메서드를 제공하는 클래스.
  */
 @UtilityClass
-public class ScheduleUtils {
+public class ScheduleUtil {
 
     // 투표 제한 시간
     private static final int MAX_HOURS = 48;
@@ -45,7 +45,7 @@ public class ScheduleUtils {
             return now.plusHours(3);
         } else {
             // 요청 데이터에서 투표 마감 기한을 설정
-            Duration votingDuration = DurationParser.parseDuration(scheduleRequest.getVotingDeadline());
+            Duration votingDuration = DurationParserUtil.parseDuration(scheduleRequest.getVotingDeadline());
             return now.plus(votingDuration);
         }
     }

@@ -28,11 +28,11 @@ public class UserController {
 
     /** 회원가입 **/
     @PostMapping("/join")
-    public ResponseEntity<String> joinUser(@Valid @RequestBody JoinRequest joinRequest) {
-        log.info("회원가입 요청: {}", joinRequest);
+    public ResponseEntity<String> joinUser(@Valid @RequestBody UserJoinRequest userJoinRequest) {
+        log.info("회원가입 요청: {}", userJoinRequest);
         try {
-            userService.JoinUser(joinRequest);
-            log.info("회원가입 처리 완료: {}", joinRequest.getUserId());
+            userService.JoinUser(userJoinRequest);
+            log.info("회원가입 처리 완료: {}", userJoinRequest.getUserId());
             return ResponseEntity
                     .status(HttpStatus.CREATED)
                     .body("회원가입 성공");
@@ -63,7 +63,7 @@ public class UserController {
 
     /** 나의 회원정보 변경 **/
     @PutMapping("/user/my-info")
-    public ResponseEntity<String> updateUserInfo(@Valid @RequestBody UpdateUserRequest request, Authentication authentication) {
+    public ResponseEntity<String> updateUserInfo(@Valid @RequestBody UserUpdateRequest request, Authentication authentication) {
 
         // 현재 인증된 사용자 ID를 가져옴
         String userId = authentication.getName();
@@ -90,7 +90,7 @@ public class UserController {
 
     /** 비밀번호 변경 **/
     @PutMapping("/user/password")
-    public ResponseEntity<String> updatePassword(@Valid @RequestBody PasswordUpdateRequest request, Authentication authentication) {
+    public ResponseEntity<String> updatePassword(@Valid @RequestBody UserPwUpdateRequest request, Authentication authentication) {
 
         // 현재 인증된 사용자 ID를 가져옴
         String userId = authentication.getName();
@@ -105,7 +105,7 @@ public class UserController {
 
     /** 회원 탈퇴 **/
     @DeleteMapping("/user")
-    public ResponseEntity<String> deleteUser(@Valid @RequestBody DeleteUserRequest request, @AuthenticationPrincipal CustomUserDetails userDetails) {
+    public ResponseEntity<String> deleteUser(@Valid @RequestBody UserDeleteRequest request, @AuthenticationPrincipal CustomUserDetails userDetails) {
         String password = request.getPassword();
 
         try {

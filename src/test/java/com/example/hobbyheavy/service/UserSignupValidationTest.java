@@ -1,7 +1,7 @@
 package com.example.hobbyheavy.service;
 
 import com.example.hobbyheavy.entity.User;
-import com.example.hobbyheavy.type.Role;
+import com.example.hobbyheavy.type.UserRole;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validator;
 import org.junit.jupiter.api.BeforeEach;
@@ -38,7 +38,7 @@ public class UserSignupValidationTest {
                 .email("invalid-email-format") // 이메일 형식 오류
                 .gender(true)
                 .age(25)
-                .role(Set.of(Role.ROLE_USER))
+                .userRole(Set.of(UserRole.ROLE_USER))
                 .build();
 
         // When: 유효성 검사를 수행한다.
@@ -59,7 +59,7 @@ public class UserSignupValidationTest {
                 .email("testuser@example.com")
                 .gender(true)
                 .age(25)
-                .role(Set.of(Role.ROLE_USER))
+                .userRole(Set.of(UserRole.ROLE_USER))
                 .build();
 
         // When: 유효성 검사를 수행한다.
@@ -79,7 +79,7 @@ public class UserSignupValidationTest {
                 .email(null)     // 이메일 누락
                 .gender(null)    // 성별 누락
                 .age(null)       // 나이 누락
-                .role(null)      // 역할 누락
+                .userRole(null)      // 역할 누락
                 .build();
 
         // When: 유효성 검사를 수행한다.
@@ -99,7 +99,7 @@ public class UserSignupValidationTest {
                 .email("testuser@example.com")
                 .gender(true)
                 .age(25)
-                .role(Set.of(Role.ROLE_USER))
+                .userRole(Set.of(UserRole.ROLE_USER))
                 .build();
 
         // When: 유효성 검사를 수행한다.
@@ -119,7 +119,7 @@ public class UserSignupValidationTest {
                 .email("testuser@example.com")
                 .gender(true)
                 .age(150) // 유효하지 않은 나이
-                .role(Set.of(Role.ROLE_USER))
+                .userRole(Set.of(UserRole.ROLE_USER))
                 .build();
 
         // When: 유효성 검사를 수행한다.

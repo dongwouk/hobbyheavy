@@ -3,7 +3,7 @@ package com.example.hobbyheavy.jwt;
 import com.example.hobbyheavy.auth.CustomUserDetails;
 import com.example.hobbyheavy.entity.User;
 import com.example.hobbyheavy.exception.CustomException;
-import com.example.hobbyheavy.type.Role;
+import com.example.hobbyheavy.type.UserRole;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.ExpiredJwtException;
 import jakarta.servlet.FilterChain;
@@ -116,9 +116,9 @@ public class JWTFilter extends OncePerRequestFilter {
         log.info("JWTFilter - UserId: {}, Role: {}", userId, roleString);
 
         // 열거형 Role 값으로 변환
-        Role role;
+        UserRole userRole;
         try {
-            role = Role.valueOf(roleString);
+            userRole = UserRole.valueOf(roleString);
         } catch (CustomException e) {
             log.error("JWTFilter - Invalid role: {}", roleString);
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
@@ -129,7 +129,7 @@ public class JWTFilter extends OncePerRequestFilter {
         // UserEntity 생성 및 역할 설정
         User user = User.builder()
                 .userId(userId)
-                .role(Collections.singleton(role))
+                .userRole(Collections.singleton(userRole))
                 .build();
 
 
