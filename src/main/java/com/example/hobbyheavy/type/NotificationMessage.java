@@ -12,8 +12,9 @@ import lombok.Getter;
 public enum NotificationMessage {
 
     SCHEDULE_CREATION("새로운 스케줄이 생성되었습니다. 스케줄 ID: %d"),
-    CONFIRMATION("스케줄이 확정되었습니다. 스케줄 ID: %s"),
-    CANCELLATION("스케줄이 취소되었습니다. 스케줄 ID: %s");
+    SCHEDULE_CONFIRMATION("스케줄이 확정되었습니다. 스케줄 ID: %s"),
+    CANCELLATION("스케줄이 취소되었습니다. 스케줄 ID: %s"),
+    UPDATE("스케줄이 업데이트되었습니다. 스케줄 ID: %d");
 
     private final String template;
 

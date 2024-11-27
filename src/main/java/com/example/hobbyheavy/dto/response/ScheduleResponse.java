@@ -15,11 +15,11 @@ public class ScheduleResponse {
     private Long scheduleId;
     private Long meetupId;
     private LocalDateTime proposalDate;
-    private Duration activateTime;
+    private String activateTime;
     private String status;
-    private String participant;
-    private Integer votes;
+    private int voteCount; // 투표한 사용자 수
     private String location;
+    private LocalDateTime votingDeadline;
 
     public static ScheduleResponse fromEntity(MeetupSchedule entity) {
         if (entity == null) {
@@ -31,9 +31,9 @@ public class ScheduleResponse {
                 .proposalDate(entity.getProposalDate())
                 .activateTime(entity.getActivateTime())
                 .status(entity.getScheduleStatus().name())
-                .participant(entity.getParticipant())
-                .votes(entity.getVotes())
+                .voteCount(entity.getVotes().size()) // Set<String> votes의 크기를 이용해 투표자 수를 반환
                 .location(entity.getLocation())
+                .votingDeadline(entity.getVotingDeadline())
                 .build();
     }
 }

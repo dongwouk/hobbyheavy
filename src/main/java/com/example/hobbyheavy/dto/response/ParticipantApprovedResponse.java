@@ -12,11 +12,6 @@ public class ParticipantApprovedResponse {
     private ParticipantStatus status;
     private String meetupRole;
 
-    private boolean hasVoted;
-
-//    public boolean hasVoted() {
-//        return hasVoted;
-//    }
 
 
 }

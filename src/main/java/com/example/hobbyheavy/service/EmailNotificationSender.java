@@ -48,6 +48,8 @@ public class EmailNotificationSender implements NotificationSender {
             mailMessage.setTo(recipient);
             mailMessage.setSubject(subject);
             mailMessage.setText(message);
+//            mailMessage.setFrom("hobbyheavy@naver.com"); // 발신자 이메일 주소 설정
+
 
             javaMailSender.send(mailMessage);
             log.info("[이메일 전송 성공] 수신자: {}, 제목: {}", recipient, subject);

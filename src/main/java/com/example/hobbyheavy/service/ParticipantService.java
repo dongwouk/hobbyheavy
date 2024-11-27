@@ -14,6 +14,7 @@ import com.example.hobbyheavy.repository.UserRepository;
 import com.example.hobbyheavy.type.ParticipantRole;
 import com.example.hobbyheavy.type.ParticipantStatus;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,6 +23,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class ParticipantService {
 
     private final ParticipantRepository participantRepository;
@@ -36,8 +38,7 @@ public class ParticipantService {
                 .user(user)
                 .status(status)
                 .meetupRole(role.name())
-                .meetupAlarm(true)
-                .hasVoted(false).build();
+                .meetupAlarm(true).build();
 
         participantRepository.save(participant);
     }
@@ -52,8 +53,8 @@ public class ParticipantService {
                 .map(participant -> new ParticipantApprovedResponse(
                         participant.getUser().getUserId(),
                         participant.getStatus(),
-                        participant.getMeetupRole(),
-                        participant.getHasVoted())).toList();
+                        participant.getMeetupRole()
+                )).toList();
     }
 
     /**
@@ -85,7 +86,7 @@ public class ParticipantService {
                     Meetup meetup = meetupRepository.findById(meetupId)
                             .orElseThrow(() -> new CustomException(ExceptionCode.MEETUP_NOT_FOUND));
                     createParticipant(meetup, user, ParticipantStatus.WAITING, ParticipantRole.MEMBER);
-        });
+                });
     }
 
     @Transactional
@@ -112,5 +113,19 @@ public class ParticipantService {
     private User getUser(String userId) {
         return userRepository.findByUserId(userId)
                 .orElseThrow(() -> new CustomException(ExceptionCode.USER_NOT_FOUND));
+    }
+
+
+    public void toggleMeetupAlarm(Long meetupId, String userId) {
+        // 모임의 참가자 정보를 조회
+        Participant participant = participantRepository.findByMeetup_MeetupIdAndUser_UserId(meetupId, userId)
+                .orElseThrow(() -> new CustomException(ExceptionCode.PARTICIPANT_NOT_FOUND));
+
+        // 현재 알람 상태를 반대로 변경
+        participant.updateMeetupAlarm();
+
+        // 변경된 상태를 저장
+        participantRepository.save(participant);
+        log.info("Meetup alarm status toggled for user: {}, meetup: {}, new alarm status: {}", userId, meetupId, participant.getMeetupAlarm());
     }
 }
