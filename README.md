@@ -241,3 +241,6 @@ HobbyHeavy는 다양한 취미를 가진 사람들이 모여 서로의 취미를
 - **API 문서화**: Swagger
 
 ---
+
+![Frame 1](https://github.com/user-attachments/assets/daf19b09-5047-4995-98d8-b6da094ba42b)
+![hobbyheavy (1) (1)](https://github.com/user-attachments/assets/ce2f6f68-c674-4591-b138-799c7b1a4494)
