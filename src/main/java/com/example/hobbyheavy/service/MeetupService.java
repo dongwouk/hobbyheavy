@@ -56,7 +56,7 @@ public class MeetupService {
             case "new" ->
                     meetupRepository.findAllByOrderByCreatedDateDesc(pageable);
             case "hobby" ->
-                    meetupRepository.findAllByHobby_HobbyNameOrderByCreatedDateDesc(pageable, value);
+                    getHobbyList(value, pageable);
             case "search" ->
                     meetupRepository.findAllByMeetupNameContainingOrDescriptionContaining(pageable, value, value);
             case "location" ->
@@ -64,6 +64,13 @@ public class MeetupService {
             default -> throw new CustomException(ExceptionCode.INVALID_SEARCH_KEYWORD);
         };
         return meetupPage.map(MeetupListResponse::new);
+    }
+
+    private Page<Meetup> getHobbyList (String keyword, Pageable pageable) {
+        if (!hobbyRepository.existsByHobbyName(keyword)) {
+            throw new CustomException(ExceptionCode.HOBBY_NOT_FOUND);
+        }
+        return meetupRepository.findAllByHobby_HobbyNameOrderByCreatedDateDesc(pageable, keyword);
     }
 
     /**

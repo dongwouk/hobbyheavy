@@ -64,7 +64,7 @@ public class ParticipantService {
             log.error("요청한 참여자 : {}, 요청자 상태 : {}", userId, participant.getStatus());
             throw new CustomException(ExceptionCode.NOT_STATUS_WAITING);
         }
-        participant.updateStatus(ParticipantStatus.WITHDRAWN);
+        participant.updateStatus(ParticipantStatus.CANCELED);
 
     }
 
@@ -104,12 +104,16 @@ public class ParticipantService {
     public void setHostStatus(ParticipantStatusRequest request, String userId) {
         checkHost(request.getMeetupId(), userId);
         Participant participant = getParticipant(request.getMeetupId(), request.getUserId());
-        participant.updateStatus(ParticipantStatus.valueOf(request.getStatus()));
+        if (participant.getStatus() != ParticipantStatus.WAITING) {
+            log.error("요청한 유저의 상태 : {}, 변경은 대기자만 가능합니다.", participant.getStatus());
+            throw new CustomException(ExceptionCode.NOT_STATUS_WAITING);
+        }
+        participant.updateStatus(request.getStatus());
     }
 
     @Transactional
-    public void withdraw(ParticipantStatusRequest request, String userId) {
-        Participant participant = getParticipant(request.getMeetupId(), userId);
+    public void withdraw(Long meetupId, String userId) {
+        Participant participant = getParticipant(meetupId, userId);
         isApproved(participant);
         participant.updateStatus(ParticipantStatus.WITHDRAWN);
     }
@@ -119,7 +123,7 @@ public class ParticipantService {
         checkHost(request.getMeetupId(), userId);
         Participant participant = getParticipant(request.getMeetupId(), request.getUserId());
         isApproved(participant);
-        participant.updateMeetupRole(ParticipantRole.valueOf(request.getRole()));
+        participant.updateMeetupRole(request.getRole());
     }
 
     private Participant getParticipant(Long meetupId, String userId) {

@@ -110,6 +110,9 @@ public class ReviewService {
         if (!schedule.getVotes().contains(userId)) {
             throw new CustomException(ExceptionCode.SCHEDULE_NOT_JOIN);
         }
+        if (schedule.getProposalDate().toLocalDate().isBefore(LocalDate.now())) {
+            throw new CustomException(ExceptionCode.SCHEDULE_IS_BEFORE);
+        }
     }
 
     /**

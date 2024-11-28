@@ -6,6 +6,7 @@ import com.example.hobbyheavy.dto.response.ReviewResponse;
 import com.example.hobbyheavy.exception.CustomException;
 import com.example.hobbyheavy.exception.ExceptionCode;
 import com.example.hobbyheavy.service.ReviewService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -43,14 +44,14 @@ public class ReviewController {
 
     @PostMapping("/create")
     public ResponseEntity<String> createReview(
-            @RequestBody ReviewCreateRequest request, Authentication authentication) {
+            @Valid @RequestBody ReviewCreateRequest request, Authentication authentication) {
         reviewService.createReview(request, getUserId(authentication));
-        return ResponseEntity.ok("Create Review Successfully.");
+        return ResponseEntity.status(201).body("Create Review Successfully.");
     }
 
     @PutMapping("/{reviewId}")
     public ResponseEntity<String> updateReview(
-            @PathVariable Long reviewId, @RequestBody ReviewUpdateRequest request, Authentication authentication) {
+            @PathVariable Long reviewId, @Valid @RequestBody ReviewUpdateRequest request, Authentication authentication) {
         reviewService.updateReview(reviewId, request, getUserId(authentication));
         return ResponseEntity.ok("Update Review Successfully.");
     }

@@ -48,20 +48,20 @@ public class CommentService {
      */
     @Transactional
     public void updateComment(CommentChangeRequest request, String userId) {
-        Comment comment = getComment(request, getUser(userId));
+        Comment comment = getComment(request.getCommentId(), getUser(userId));
         comment.updateComment(request.getContent());
     }
 
     /**
      * 댓글 삭제
      */
-    public void deleteComment(CommentChangeRequest request, String userId) {
+    public void deleteComment(Long commentId, String userId) {
         try {
-            Comment comment = getComment(request, getUser(userId));
+            Comment comment = getComment(commentId, getUser(userId));
             comment.markAsDeleted();
             commentRepository.save(comment);
         } catch (Exception e) {
-            log.error("commentId : {}, 댓글 삭제 중 에러 발생 : {}", request.getCommentId(), e.getMessage());
+            log.error("commentId : {}, 댓글 삭제 중 에러 발생 : {}", commentId, e.getMessage());
             throw new CustomException(ExceptionCode.COMMENT_DELETE_FAILED);
         }
     }
@@ -72,8 +72,8 @@ public class CommentService {
     }
 
 
-    private Comment getComment(CommentChangeRequest request, User user) {
-        Comment comment = commentRepository.findById(request.getCommentId())
+    private Comment getComment(Long commentId, User user) {
+        Comment comment = commentRepository.findById(commentId)
                 .orElseThrow(() -> new CustomException(ExceptionCode.COMMENT_NOT_FOUND));
 
         if (!comment.getUser().getId().equals(user.getId())) {

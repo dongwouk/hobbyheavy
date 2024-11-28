@@ -43,7 +43,7 @@ public class Participant extends Base{
         this.status = status;
     }
 
-    public void updateMeetupRole(ParticipantRole role) { this.meetupRole = role.getRole(); }
+    public void updateMeetupRole(ParticipantRole role) { this.meetupRole = String.valueOf(role); }
 
     public void updateMeetupAlarm() {
         this.meetupAlarm = !this.meetupAlarm;

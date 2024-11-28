@@ -12,6 +12,6 @@ public class ParticipantStatusRequest {
     private Long meetupId;
     @NotBlank(message = "변경할 아이디는 필수입니다.")
     private String userId;
-    @NotBlank(message = "모임 권한은 필수입니다.")
-    private String status;
+    @NotNull(message = "모임 권한은 필수입니다.")
+    private ParticipantStatus status;
 }

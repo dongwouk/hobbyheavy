@@ -12,6 +12,6 @@ public class ParticipantRoleRequest {
     private Long meetupId;
     @NotBlank(message = "변경할 아이디는 필수입니다.")
     private String userId;
-    @NotBlank(message = "변경할 권한은 필수입니다.")
-    private String role;
+    @NotNull(message = "변경할 권한은 필수입니다.")
+    private ParticipantRole role;
 }
