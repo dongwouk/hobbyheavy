@@ -110,6 +110,9 @@ public class ReviewService {
         if (!schedule.getVotes().contains(userId)) {
             throw new CustomException(ExceptionCode.SCHEDULE_NOT_JOIN);
         }
+        if (schedule.getProposalDate().toLocalDate().isBefore(LocalDate.now())) {
+            throw new CustomException(ExceptionCode.SCHEDULE_IS_BEFORE);
+        }
     }
 
     /**
@@ -125,7 +128,7 @@ public class ReviewService {
             throw new CustomException(ExceptionCode.SCHEDULE_NOT_CONFIRMED);
         }
 
-        if (!review.getSchedule().getProposalDate().toLocalDate().isBefore(LocalDate.now())) {
+        if (review.getSchedule().getProposalDate().toLocalDate().isBefore(LocalDate.now())) {
             throw new CustomException(ExceptionCode.SCHEDULE_IS_BEFORE);
         }
         return review;

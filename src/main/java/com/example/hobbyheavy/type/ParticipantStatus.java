@@ -1,5 +1,7 @@
 package com.example.hobbyheavy.type;
 
+import com.example.hobbyheavy.exception.CustomException;
+import com.example.hobbyheavy.exception.ExceptionCode;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import lombok.Getter;
 
@@ -20,7 +22,14 @@ public enum ParticipantStatus {
     }
 
     @JsonCreator
-    public static ParticipantStatus parsing(ParticipantStatus inputValue) {
+    public static ParticipantStatus fromString(String inputValue) {
+        return Stream.of(ParticipantStatus.values())
+                .filter(status -> status.name().equalsIgnoreCase(inputValue))
+                .findFirst()
+                .orElseThrow(() -> new CustomException(ExceptionCode.PARTICIPANT_STATUS_NOT_FOUND));
+    }
+
+    public static ParticipantStatus fromEnum(ParticipantStatus inputValue) {
         return Stream.of(ParticipantStatus.values())
                 .filter(status -> status.equals(inputValue))
                 .findFirst()

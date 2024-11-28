@@ -30,7 +30,7 @@ public class CommentController {
             (@Valid @RequestBody CommentCreateRequest commentRequest,
              Authentication authentication){
         commentService.createComment(commentRequest, getUserId(authentication));
-        return ResponseEntity.ok("Create Comment Successfully.");
+        return ResponseEntity.status(201).body("Create Comment Successfully.");
     }
 
     @PutMapping
@@ -40,10 +40,10 @@ public class CommentController {
         return ResponseEntity.ok("Create Comment Successfully.");
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{commentId}")
     public ResponseEntity<String> deleteComment (
-            @Valid @RequestBody CommentChangeRequest commentRequest, Authentication authentication) {
-        commentService.deleteComment(commentRequest, getUserId(authentication));
+            @PathVariable Long commentId, Authentication authentication) {
+        commentService.deleteComment(commentId, getUserId(authentication));
         return  ResponseEntity.ok("Delete Comment Successfully.");
     }
 }

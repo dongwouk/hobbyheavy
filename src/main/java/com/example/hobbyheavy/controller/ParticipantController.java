@@ -67,12 +67,12 @@ public class ParticipantController {
         return ResponseEntity.ok("Change Participant Status Successfully.");
     }
 
-    @PutMapping("/withdraw")
+    @PutMapping("/withdraw/{meetupId}")
     public ResponseEntity<String> changeParticipant
-            (@Valid @RequestBody ParticipantStatusRequest request,
+            (@PathVariable Long meetupId,
              Authentication authentication) {
-        participantService.withdraw(request, getUserId(authentication));
-        return ResponseEntity.ok("Change Participant Status Successfully.");
+        participantService.withdraw(meetupId, getUserId(authentication));
+        return ResponseEntity.ok("Withdraw Participant Successfully.");
     }
 
     @PutMapping("/sub-host")

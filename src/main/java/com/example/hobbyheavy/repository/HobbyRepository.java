@@ -10,4 +10,6 @@ import java.util.Optional;
 public interface HobbyRepository extends JpaRepository<Hobby, Long> {
 
     Optional<Hobby> findFirstByHobbyName(String hobbyName);
+
+    Boolean existsByHobbyName(String hobbyName);
 }
