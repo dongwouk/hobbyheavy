@@ -3,6 +3,7 @@ package com.example.hobbyheavy.entity;
 import com.example.hobbyheavy.type.UserRole;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.Where;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -14,13 +15,14 @@ import java.util.Set;
 @AllArgsConstructor
 @Builder
 @Table(name = "user")
+@Where(clause = "deleted = false")
 public class User extends Base {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id; // PK
 
-    @Column(name = "user_id", unique = true, length = 50, nullable = false)
+    @Column(name = "user_id", length = 50, nullable = false)
     private String userId; // 로그인 시 사용하는 ID
 
     @Column(name = "user_name", length = 20, nullable = false)
