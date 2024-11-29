@@ -269,7 +269,7 @@ HobbyHeavy 는 Layered Architecture(계층형 아키텍처)를 따르며, 각 �
 
 
 ## 🗺️ ERD
-![hobbyheavy (2)](https://github.com/user-attachments/assets/fb7f6291-6d04-4de5-a403-ab6116a2eee3)
+![hobbyheavy (2)](https://github.com/user-attachments/assets/9a043c7f-4c70-40f9-873c-a04f7f883f24)
 https://www.erdcloud.com/d/Yjk8NgXHZkgntsodG
 
 ---
