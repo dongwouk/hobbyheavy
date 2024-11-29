@@ -1,10 +1,25 @@
-# 🧩 HobbyHeavy Project
+<br/><br/>
+![header](https://capsule-render.vercel.app/api?type=Venom&color=auto&height=150&section=header&text=HobbyHeavy&fontSize=40)
+<br/><br/>
+다양한 취미를 가진 사람들이 모여 서로의 취미를 공유하고, 같은 관심사를 가진 사람들과 소통할 수 있는 플랫폼입니다.<br/><br/><br/>
 
 
 ## 🔍 프로젝트 개요
-HobbyHeavy는 다양한 취미를 가진 사람들이 모여 서로의 취미를 공유하고, 같은 관심사를 가진 사람들과 소통할 수 있는 플랫폼입니다.
-사용자 인증을 통해 보안이 강화된 환경에서 서비스 회원가입, 로그인, 회원정보 변경 및 탈퇴 등 기본 회원서비스를 제공하고, 모임 생성, 참가 신청, 모임 일정 및 투표, 후기와 알림서비스 기능을 제공합니다.
+- 기간 : 2024.10.23 ~ 2024.11.29
+- 팀원 : 이은선, 권동욱, 유수호
+- 워크 스페이스 : https://www.notion.so/127a0ad20d79801f9ad3dcf55e11bb7b 
+<br/>
 
+## 🛠️ 기술 스택
+<img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white"> <img src="https://img.shields.io/badge/Spring boot-green?style=for-the-badge&logoColor=white"><br/>
+<img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=MySQL&logoColor=white"><br/>
+<img src="https://img.shields.io/badge/JWT-gray?style=for-the-badge&logoColor=white"> <img src="https://img.shields.io/badge/Spring Security-6DB33F?style=for-the-badge&logo=Spring Security&logoColor=white">
+<img src="https://img.shields.io/badge/Gradle-yellow?style=for-the-badge&logoColor=white"/><br/>
+<img src="https://img.shields.io/badge/SendGrid-black?style=for-the-badge&&logoColor=white"><br/>
+<img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white"/>
+<img src="https://img.shields.io/badge/Swagger-red?style=for-the-badge&logoColor=white"/>
+<img src="https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&logo=discord&logoColor=white"><br/>
+<br/>
 
 ## 📱 와이어 프레임
 ![Frame 1](https://github.com/user-attachments/assets/daf19b09-5047-4995-98d8-b6da094ba42b)
@@ -119,6 +134,17 @@ HobbyHeavy는 다양한 취미를 가진 사람들이 모여 서로의 취미를
  
 - **스케줄 취소**:
     - 모임 일정(스케줄)을 취소합니다.
+
+ 
+### ⏰ 6. 후기 서비스
+- **후기 생성**:
+    - 모임 이후 스케쥴에 대한 후기와 별점을 작성합니다.
+      
+- **후기 수정**:
+    - 작성했던 내용과 별점을 수정합니다.
+      
+- **후기 삭제**:
+    - 작성자의 요청으로 후기를 삭제합니다.
  
 
 ## ⚙️ 시스템 설계
@@ -246,14 +272,3 @@ HobbyHeavy 는 Layered Architecture(계층형 아키텍처)를 따르며, 각 �
 ![hobbyheavy (1) (1)](https://github.com/user-attachments/assets/ce2f6f68-c674-4591-b138-799c7b1a4494)
 
 ---
-
-## 🛠️ 기술 스택
-
-- **백엔드**: Java, Spring Boot
-- **데이터베이스**: MySQL
-- **인증 및 보안**: JWT (JSON Web Token), Spring Security
-- **알림 서비스**: 이메일 전송(SendGrid)
-- **빌드 도구**: gradle
-- **버전 관리**: Git
-- **API 문서화**: Swagger
-
