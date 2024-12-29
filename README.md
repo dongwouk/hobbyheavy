@@ -4,11 +4,17 @@
 다양한 취미를 가진 사람들이 모여 서로의 취미를 공유하고, 같은 관심사를 가진 사람들과 소통할 수 있는 플랫폼입니다.<br/><br/><br/>
 
 ## 🔍 프로젝트 개요  
-- **기간:** 2024.10.23 ~ 2024.11.29
-- **팀원:** 이은선, 권동욱, 유수호  
+- **기간:** 2024.10.23 ~ 2024.11.29 
 - **워크 스페이스:** [Notion 링크](https://www.notion.so/127a0ad20d79801f9ad3dcf55e11bb7b)  
 
-
+## 💻 팀원  
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/dongwouk"><img src="https://avatars.githubusercontent.com/u/129401432?v=4" width="100px;"><br><sub><b>dongwouk</b></sub></a></td>
+    <td align="center"><a href="https://github.com/Soohomode"><img src="https://avatars.githubusercontent.com/u/135407758?v=4" width="100px;"><br><sub><b>Soohomode</b></sub></a></td>
+    <td align="center"><a href="https://github.com/vgcgc"><img src="https://avatars.githubusercontent.com/u/71873426?v=4" width="100px;"><br><sub><b>vgcgc</b></sub></a></td>
+  </tr>
+</table>  
 
 ## 🛠️ 기술 스택  
 - **Java (JDK 17)**  
