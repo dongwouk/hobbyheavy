@@ -4,7 +4,7 @@
 다양한 취미를 가진 사람들이 모여 서로의 취미를 공유하고, 같은 관심사를 가진 사람들과 소통할 수 있는 플랫폼입니다.<br/><br/><br/>
 
 ## 🔍 프로젝트 개요  
-- **기간:** 2024.10.23 ~ 2024.11.29  
+- **기간:** 2024.10.23 ~ 2024.11.29
 - **팀원:** 이은선, 권동욱, 유수호  
 - **워크 스페이스:** [Notion 링크](https://www.notion.so/127a0ad20d79801f9ad3dcf55e11bb7b)  
 
@@ -54,9 +54,8 @@
 
 
 
-## 📱 와이어 프레임  
-![Frame 1](https://github.com/user-attachments/assets/daf19b09-5047-4995-98d8-b6da094ba42b)
-
+## 📱 유저플로우  
+![hobbyheavy유저플로우](https://github.com/user-attachments/assets/f4425d6e-b2da-4014-aa7f-c73b22e0cc61)
 
 
 ## ⚙️ 시스템 아키텍처  
@@ -76,11 +75,11 @@
 
 
 ## 🗺️ ERD  
-![hobbyheavy (2)](https://github.com/user-attachments/assets/9a043c7f-4c70-40f9-873c-a04f7f883f24)  
-[ERD 상세 보기](https://www.erdcloud.com/d/Yjk8NgXHZkgntsodG)  
+![ERD](https://github.com/user-attachments/assets/e18a0f35-8e61-41cd-9236-62d0c096a604)
+[ERD 상세 보기](https://www.erdcloud.com/d/QXGZ2z8xQdKcmpoNh)  
 
-**성과:**  
-- **스케줄 생성 및 알림 기능** 구현 중 발생한 성능 문제를 해결하기 위해 비동기 작업을 도입하여 성능을 개선했습니다.  
-- 팀원들과의 **코드 리뷰**를 통해 협업의 중요성을 배우고, 이를 바탕으로 코드 품질을 개선했습니다.  
-- 이번 프로젝트를 통해 **성능 최적화** 및 **효율적인 팀 협업**에 대한 깊은 이해와 경험을 쌓았습니다.
+### 프로젝트 성과
+- **성능 최적화**: 비동기 작업 도입으로 스케줄 생성 및 알림 기능의 성능을 개선.  
+- **팀 협업**: 코드 리뷰를 통해 협업의 중요성을 배우고, 코드 품질 향상 경험.  
+- **기술 습득**: Spring Boot, JPA, MySQL 등을 실무에 적용하며 기술 역량 강화.  
 
