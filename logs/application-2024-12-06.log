@@ -1,0 +1,67 @@
+2024-12-06 22:24:12.530  o.h.v.i.u.Version - HV000001: Hibernate Validator 8.0.1.Final 
+2024-12-06 22:24:12.565  c.e.h.HobbyheavyApplication - Starting HobbyheavyApplication using Java 17.0.12 with PID 24132 (D:\workspace\hobbyheavy\build\classes\java\main started by user in D:\workspace\hobbyheavy) 
+2024-12-06 22:24:12.565  c.e.h.HobbyheavyApplication - The following 1 profile is active: "secret" 
+2024-12-06 22:24:12.602  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable 
+2024-12-06 22:24:12.603  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG' 
+2024-12-06 22:24:14.604  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2024-12-06 22:24:14.659  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 50 ms. Found 9 JPA repository interfaces. 
+2024-12-06 22:24:15.168  o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port 8090 (http) 
+2024-12-06 22:24:15.178  o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8090"] 
+2024-12-06 22:24:15.180  o.a.c.c.StandardService - Starting service [Tomcat] 
+2024-12-06 22:24:15.180  o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.31] 
+2024-12-06 22:24:15.224  o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext 
+2024-12-06 22:24:15.224  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2621 ms 
+2024-12-06 22:24:15.327  o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default] 
+2024-12-06 22:24:15.373  o.h.Version - HHH000412: Hibernate ORM core version 6.5.3.Final 
+2024-12-06 22:24:15.401  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled 
+2024-12-06 22:24:15.608  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer 
+2024-12-06 22:24:15.630  c.z.h.HikariDataSource - HikariPool-1 - Starting... 
+2024-12-06 22:24:15.723  c.z.h.p.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@134ac45b 
+2024-12-06 22:24:15.724  c.z.h.HikariDataSource - HikariPool-1 - Start completed. 
+2024-12-06 22:24:15.763  o.h.o.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default) 
+2024-12-06 22:24:16.505  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration) 
+2024-12-06 22:24:16.507  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2024-12-06 22:24:16.761  o.s.d.j.r.q.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used. 
+2024-12-06 22:24:17.149  c.e.h.s.ScheduleDynamicService - 마감 시간이 지난 스케줄은 초기화에서 제외됩니다. 스케줄 ID: 1 
+2024-12-06 22:24:17.149  c.e.h.s.ScheduleDynamicService - 마감 시간이 지난 스케줄은 초기화에서 제외됩니다. 스케줄 ID: 2 
+2024-12-06 22:24:17.149  c.e.h.s.ScheduleDynamicService - 마감 시간이 지난 스케줄은 초기화에서 제외됩니다. 스케줄 ID: 3 
+2024-12-06 22:24:17.253  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService 
+2024-12-06 22:24:17.616  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729 
+2024-12-06 22:24:17.629  o.a.c.h.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8090"] 
+2024-12-06 22:24:17.641  o.s.b.w.e.t.TomcatWebServer - Tomcat started on port 8090 (http) with context path '/' 
+2024-12-06 22:24:17.650  c.e.h.HobbyheavyApplication - Started HobbyheavyApplication in 5.438 seconds (process running for 6.042) 
+2024-12-06 22:24:33.230  o.a.c.c.C.[.[.[/] - Initializing Spring DispatcherServlet 'dispatcherServlet' 
+2024-12-06 22:24:33.230  o.s.w.s.DispatcherServlet - Initializing Servlet 'dispatcherServlet' 
+2024-12-06 22:24:33.231  o.s.w.s.DispatcherServlet - Completed initialization in 1 ms 
+2024-12-06 22:24:33.245  c.e.h.j.JWTFilter - JWTFilter - Request URI: /swagger-ui/index.html 
+2024-12-06 22:24:33.245  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /swagger-ui/index.html 
+2024-12-06 22:24:33.278  c.e.h.j.JWTFilter - JWTFilter - Request URI: /swagger-ui/swagger-ui.css 
+2024-12-06 22:24:33.278  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /swagger-ui/swagger-ui.css 
+2024-12-06 22:24:33.278  c.e.h.j.JWTFilter - JWTFilter - Request URI: /swagger-ui/index.css 
+2024-12-06 22:24:33.278  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /swagger-ui/index.css 
+2024-12-06 22:24:33.278  c.e.h.j.JWTFilter - JWTFilter - Request URI: /swagger-ui/swagger-ui-bundle.js 
+2024-12-06 22:24:33.278  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /swagger-ui/swagger-ui-bundle.js 
+2024-12-06 22:24:33.279  c.e.h.j.JWTFilter - JWTFilter - Request URI: /swagger-ui/swagger-initializer.js 
+2024-12-06 22:24:33.279  c.e.h.j.JWTFilter - JWTFilter - Request URI: /swagger-ui/swagger-ui-standalone-preset.js 
+2024-12-06 22:24:33.279  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /swagger-ui/swagger-ui-standalone-preset.js 
+2024-12-06 22:24:33.279  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /swagger-ui/swagger-initializer.js 
+2024-12-06 22:24:33.417  c.e.h.j.JWTFilter - JWTFilter - Request URI: /v3/api-docs/swagger-config 
+2024-12-06 22:24:33.418  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /v3/api-docs/swagger-config 
+2024-12-06 22:24:33.430  c.e.h.j.JWTFilter - JWTFilter - Request URI: /swagger-ui/favicon-32x32.png 
+2024-12-06 22:24:33.430  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /swagger-ui/favicon-32x32.png 
+2024-12-06 22:24:33.449  c.e.h.j.JWTFilter - JWTFilter - Request URI: /v3/api-docs 
+2024-12-06 22:24:33.450  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: /v3/api-docs 
+2024-12-06 22:24:33.768  o.s.a.AbstractOpenApiResource - Init duration for springdoc-openapi is: 309 ms 
+2024-12-06 23:47:33.710  o.a.c.h.Http11Processor - Error parsing HTTP request header
+ Note: further occurrences of HTTP request parsing errors will be logged at DEBUG level. 
+java.lang.IllegalArgumentException: Invalid character found in method name [0x160x030x010x050xa80x010x000x050xa40x030x030xb70xba0xf20xea0x93%0xc50xed0x0ad(0xebqbh0xce0xa0v0xde0xb6H0x9a|0xa6X*"0xe50xc9~]0x9e ]. HTTP method names must be tokens
+	at org.apache.coyote.http11.Http11InputBuffer.parseRequestLine(Http11InputBuffer.java:406)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:257)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:840)

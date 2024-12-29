@@ -1,0 +1,11 @@
+2024-12-07 03:28:11.196  c.e.h.j.JWTFilter - JWTFilter - Request URI: / 
+2024-12-07 03:28:11.216  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: / 
+2024-12-07 03:28:11.251  c.e.h.e.GlobalExceptionHandler - 예기치 못한 예외 발생: No static resource . 
+2024-12-07 03:28:11.296  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource .] 
+2024-12-07 05:00:41.327  c.e.h.j.JWTFilter - JWTFilter - Request URI: / 
+2024-12-07 05:00:41.328  c.e.h.j.JWTFilter - JWTFilter - No access token found. Request URI: / 
+2024-12-07 05:00:41.330  c.e.h.e.GlobalExceptionHandler - 예기치 못한 예외 발생: No static resource . 
+2024-12-07 05:00:41.332  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource .] 
+2024-12-07 05:28:46.933  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default' 
+2024-12-07 05:28:47.005  c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated... 
+2024-12-07 05:28:47.022  c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed. 

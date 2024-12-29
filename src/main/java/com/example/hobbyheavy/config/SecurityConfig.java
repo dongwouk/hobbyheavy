@@ -59,7 +59,6 @@ public class SecurityConfig {
                             public CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
 
                                 CorsConfiguration configuration = new CorsConfiguration();
-
                                 configuration.setAllowedOrigins(Collections.singletonList("http://localhost:3000"));
                                 configuration.setAllowedMethods(Collections.singletonList("*"));
                                 configuration.setAllowCredentials(true);
@@ -94,7 +93,7 @@ public class SecurityConfig {
 
                         .requestMatchers("/user/my-info").authenticated()
                         .requestMatchers("/user/password").authenticated()
-                        .requestMatchers(HttpMethod.GET,"/meetup").permitAll() // POST 요청 허용
+                        .requestMatchers(HttpMethod.GET, "/meetup").permitAll() // POST 요청 허용
                         .requestMatchers("/admin").hasRole("ADMIN")
                         .requestMatchers("/reissue").permitAll()
                         // 스케줄 관련 요청은 ROLE_HOST 또는 ROLE_MEMBER 권한을 가진 사용자만 접근 가능
