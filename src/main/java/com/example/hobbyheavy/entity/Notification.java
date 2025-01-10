@@ -42,6 +42,7 @@ public class Notification extends Base {
 
     // 알림의 읽음 상태를 변경하는 메서드
     public void setIsRead(Boolean isRead) {
+
         this.isRead = isRead;
     }
 }
