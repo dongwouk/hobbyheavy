@@ -25,95 +25,103 @@ import org.springframework.web.cors.CorsConfigurationSource;
 
 import java.util.Collections;
 
+/**
+ * Spring Security 설정 클래스
+ * 인증, 권한 부여, 필터 및 보안 정책을 설정.
+ */
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfig {
 
-    //AuthenticationManager가 인자로 받을 AuthenticationConfiguraion 객체 생성자 주입
-    private final AuthenticationConfiguration authenticationConfiguration;
-    private final JWTUtil jwtUtil;
-    private final RefreshRepository refreshRepository;
-    private final UserRepository userRepository;
+    private final AuthenticationConfiguration authenticationConfiguration; // 인증 매니저 설정 객체
+    private final JWTUtil jwtUtil; // JWT 유틸리티 클래스
+    private final RefreshRepository refreshRepository; // Refresh 토큰 저장소
+    private final UserRepository userRepository; // 사용자 저장소
 
-    //AuthenticationManager Bean 등록
+    /**
+     * AuthenticationManager Bean 등록
+     * Spring Security의 인증 과정을 관리.
+     *
+     * @param configuration AuthenticationConfiguration 객체
+     * @return AuthenticationManager
+     * @throws Exception 예외 처리
+     */
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception {
-
         return configuration.getAuthenticationManager();
     }
 
+    /**
+     * 비밀번호 암호화를 위한 BCryptPasswordEncoder Bean 등록
+     *
+     * @return BCryptPasswordEncoder 인스턴스
+     */
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
-
         return new BCryptPasswordEncoder();
     }
 
+    /**
+     * SecurityFilterChain 설정
+     * CORS, CSRF, 경로별 권한 설정, 필터 및 세션 관리 정책을 정의.
+     *
+     * @param http HttpSecurity 객체
+     * @return SecurityFilterChain
+     * @throws Exception 예외 처리
+     */
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
-        http
-                .cors((cors) -> cors
-                        .configurationSource(new CorsConfigurationSource() {
-                            @Override
-                            public CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
+        // CORS 설정
+        http.cors(cors -> cors.configurationSource(new CorsConfigurationSource() {
+            @Override
+            public CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
+                CorsConfiguration configuration = new CorsConfiguration();
+                configuration.setAllowedOrigins(Collections.singletonList("http://localhost:3000")); // 허용된 출처
+                configuration.setAllowedMethods(Collections.singletonList("*")); // 모든 HTTP 메서드 허용
+                configuration.setAllowCredentials(true); // 쿠키 허용
+                configuration.setAllowedHeaders(Collections.singletonList("*")); // 모든 헤더 허용
+                configuration.setMaxAge(3600L); // 캐싱 시간 설정 (1시간)
+                return configuration;
+            }
+        }));
 
-                                CorsConfiguration configuration = new CorsConfiguration();
-                                configuration.setAllowedOrigins(Collections.singletonList("http://localhost:3000"));
-                                configuration.setAllowedMethods(Collections.singletonList("*"));
-                                configuration.setAllowCredentials(true);
-                                configuration.setAllowedHeaders(Collections.singletonList("*"));
-                                configuration.setMaxAge(3600L);
-                                return configuration;
-                            }
-                        }));
+        // CSRF 비활성화 (JWT 사용 시 비활성화가 일반적)
+        http.csrf(csrf -> csrf.disable());
 
-        //csrf disable
-        http
-                .csrf((auth) -> auth.disable());
+        // Form 기반 로그인 비활성화
+        http.formLogin(form -> form.disable());
 
-        //Form 로그인 방식 disable
-        http
-                .formLogin((auth) -> auth.disable());
+        // HTTP Basic 인증 비활성화
+        http.httpBasic(basic -> basic.disable());
 
-        //http basic 인증 방식 disable
-        http
-                .httpBasic((auth) -> auth.disable());
+        // 경로별 권한 설정
+        http.authorizeHttpRequests(auth -> auth
+                .requestMatchers("/login", "/", "/join").permitAll() // 로그인, 회원가입은 인증 없이 접근 가능
+                .requestMatchers("/swagger-ui/**", "/v3/api-docs/**", "/swagger-resources/**", "/webjars/**").permitAll() // Swagger 문서 경로
+                .requestMatchers("/user/my-info").authenticated() // 인증 필요
+                .requestMatchers("/user/password").authenticated() // 인증 필요
+                .requestMatchers(HttpMethod.GET, "/meetup").permitAll() // GET 요청만 허용
+                .requestMatchers("/admin").hasRole("ADMIN") // 관리자 권한 필요
+                .requestMatchers("/reissue").permitAll() // 토큰 재발급은 인증 없이 가능
+                // .requestMatchers("/schedules/**").hasAnyRole("HOST", "MEMBER") // 주석: 특정 역할만 접근 가능
+                .anyRequest().authenticated() // 그 외 요청은 인증 필요
+        );
 
-        //경로별 인가 작업
-        http
-                .authorizeHttpRequests((auth) -> auth
-                        .requestMatchers("/login", "/", "/join").permitAll()
+        // 세션 관리 정책: STATELESS (JWT 사용 시 세션을 사용하지 않음)
+        http.sessionManagement(session -> session
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
-                        .requestMatchers("/swagger-ui/**",
-                                "/v3/api-docs/**",
-                                "/swagger-resources/**",
-                                "/webjars/**"
-                        ).permitAll()
+        // 필터 설정
+        // JWTFilter를 LoginFilter 전에 추가
+        http.addFilterBefore(new JWTFilter(jwtUtil), LoginFilter.class);
+        // LoginFilter를 UsernamePasswordAuthenticationFilter 위치에 추가
+        http.addFilterAt(new LoginFilter(authenticationManager(authenticationConfiguration), jwtUtil, refreshRepository, userRepository),
+                UsernamePasswordAuthenticationFilter.class);
+        // CustomLogoutFilter를 LogoutFilter 전에 추가
+        http.addFilterBefore(new CustomLogoutFilter(jwtUtil, refreshRepository), LogoutFilter.class);
 
-                        .requestMatchers("/user/my-info").authenticated()
-                        .requestMatchers("/user/password").authenticated()
-                        .requestMatchers(HttpMethod.GET, "/meetup").permitAll() // POST 요청 허용
-                        .requestMatchers("/admin").hasRole("ADMIN")
-                        .requestMatchers("/reissue").permitAll()
-                        // 스케줄 관련 요청은 ROLE_HOST 또는 ROLE_MEMBER 권한을 가진 사용자만 접근 가능
-//                        .requestMatchers("/schedules/**").hasAnyRole("HOST", "MEMBER")
-                        .anyRequest().authenticated());
-
-        //세션 설정
-        http
-                .sessionManagement((session) -> session
-                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS));
-
-        //필터 추가 LoginFilter()는 인자를 받음 (AuthenticationManager() 메소드에 authenticationConfiguration 객체를 넣어야 함) 따라서 등록 필요
-        http
-                .addFilterBefore(new JWTFilter(jwtUtil), LoginFilter.class);
-        http
-                .addFilterAt(new LoginFilter(authenticationManager(authenticationConfiguration), jwtUtil, refreshRepository, userRepository),
-                        UsernamePasswordAuthenticationFilter.class);
-        http
-                .addFilterBefore(new CustomLogoutFilter(jwtUtil, refreshRepository), LogoutFilter.class);
-
-        return http.build();
+        return http.build(); // SecurityFilterChain 반환
     }
 }

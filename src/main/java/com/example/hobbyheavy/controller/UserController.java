@@ -20,14 +20,14 @@ import java.util.HashSet;
 
 @Slf4j
 @RestController
-@RequestMapping
+@RequestMapping("/api/users")
 @RequiredArgsConstructor
 public class UserController {
 
     private final UserService userService;
 
     /** 회원가입 **/
-    @PostMapping("/join")
+    @PostMapping
     public ResponseEntity<String> joinUser(@Valid @RequestBody UserJoinRequest userJoinRequest) {
         log.info("회원가입 요청: {}", userJoinRequest);
         try {
@@ -50,7 +50,7 @@ public class UserController {
     }
 
     /** 나의 회원정보 조회 **/
-    @GetMapping("/user/my-info")
+    @GetMapping("/me")
     public ResponseEntity<UserInfoResponse> getMyInfo(@AuthenticationPrincipal UserDetails userDetails) {
 
         // userDetails에서 userId 추출
@@ -62,7 +62,7 @@ public class UserController {
     }
 
     /** 나의 회원정보 변경 **/
-    @PutMapping("/user/my-info")
+    @PutMapping("/me")
     public ResponseEntity<String> updateUserInfo(@Valid @RequestBody UserUpdateRequest request, Authentication authentication) {
 
         // 현재 인증된 사용자 ID를 가져옴
@@ -89,7 +89,7 @@ public class UserController {
     }
 
     /** 비밀번호 변경 **/
-    @PutMapping("/user/password")
+    @PutMapping("/me/password")
     public ResponseEntity<String> updatePassword(@Valid @RequestBody UserPwUpdateRequest request, Authentication authentication) {
 
         // 현재 인증된 사용자 ID를 가져옴
@@ -101,10 +101,10 @@ public class UserController {
         return ResponseEntity.ok("패스워드 변경 성공.");
     }
 
-    /* 비밀번호 찾기 **/
+    /** 비밀번호 찾기 **/
 
     /** 회원 탈퇴 **/
-    @DeleteMapping("/user")
+    @DeleteMapping("/me")
     public ResponseEntity<String> deleteUser(@Valid @RequestBody UserDeleteRequest request, @AuthenticationPrincipal CustomUserDetails userDetails) {
         String password = request.getPassword();
 
